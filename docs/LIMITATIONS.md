@@ -26,8 +26,28 @@ network diagrams should not be read as though a person sits behind each node.
 
 Building the person layer needs the Registrar-General's company filings. Ghana's register
 is not freely searchable online; the realistic route is a paid physical search in Accra.
-UK Companies House would give directors for one entity, First African Remittances (UK),
-and has not been searched.
+
+**UK Companies House has now been searched, and the layer is still empty — by decision.**
+The register holds FIRST AFRICAN REMITTANCES LIMITED (02722739), incorporated 12 June 1992
+as First African Forex Bureau Limited, in financial intermediation, dissolved by voluntary
+strike-off on 22 October 2019. It names two directors serving at dissolution, both
+recorded as Ghanaian nationals resident in Accra, and one person with significant control.
+
+Those names are public and are not reproduced in this repository. Two reasons, and both
+have to hold before a name goes in:
+
+- **No regulator has named any individual in connection with this failure.** The Bank of
+  Ghana notice names the company, not its officers.
+- **The identification is undecided.** Nothing in hand states that company 02722739 *is*
+  the "First African Remittances, UK" the Bank of Ghana describes, and this project has
+  never resolved an identity on convergence alone. It is recorded as `RR007`.
+
+Naming three private individuals in a repository about a banking collapse, on the strength
+of an identification the project itself marks open, would assert by juxtaposition a
+connection no document makes. The counts, nationalities and filing sequence are recorded
+in `data/raw/`; the names are not. So the person layer is empty because of a choice about
+what the evidence supports, not because the data could not be found — and that is a
+different and more honest kind of gap.
 
 ## 2. Two documents, both written for another purpose
 
@@ -238,11 +258,18 @@ In rough order of value against effort:
    layer this project was conceived around. Needs money and a physical search in Accra.
 2. **Receiver's reports and the loan books.** Not public. They would replace
    *"eight related companies"* with eight names.
-3. **UK Companies House** for First African Remittances (UK). Free, and it names
-   directors — one documented person-level node, in reach and not yet taken.
+3. **A document settling `RR007`** — anything stating that UK company 02722739 is the
+   affiliate the Bank of Ghana names. A receiver's report, a filed account naming the
+   Ghanaian counterparty, or a court listing would do it. Companies House alone gives
+   convergence, not identification.
 4. **The Bank of Ghana notice of 4 January 2019.** Public, not yet read.
 5. **The Court of Appeal judgment of 21 May 2026**, from GhaLII, to replace press
    reporting on GN's status with the document.
+
+**Done, and recorded either way:** UK Companies House (section 1) and the Bank of Ghana's
+universal-bank notice of 1 August 2018 (section 2). The first found a strong candidate and
+no identification; the second names none of these entities. Both are written down so that
+nobody, including a later version of this project, searches them twice.
 
 Nothing in this list is a reason to discount what is here. The point of the list is that
 the ceiling on this analysis is a property of the public record, not of the method — and

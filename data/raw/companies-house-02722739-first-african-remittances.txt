@@ -1,0 +1,87 @@
+COMPANIES HOUSE REGISTER EXTRACT
+FIRST AFRICAN REMITTANCES LIMITED, company number 02722739
+
+Retrieved 4 September 2026 from the Companies House public register at
+find-and-update.company-information.service.gov.uk, pages:
+  /company/02722739
+  /company/02722739/officers
+  /company/02722739/persons-with-significant-control
+  /company/02722739/filing-history
+
+PROVENANCE NOTE. This file is a transcription of what those pages showed on the
+date above, not a document downloaded from the register. The register has no
+public archived-PDF form for a company record, and its API requires a key. A
+quote verified against this file is therefore verified against the transcription
+and not against the register itself. Anyone relying on it should re-open the
+company number above and check. This is weaker provenance than every other
+source in this evidence base, and the source row says so.
+
+OFFICER AND CONTROL DETAIL IS DELIBERATELY OMITTED. The register names two
+serving directors, several resigned officers and one person with significant
+control. Those names are public and are not reproduced here. No regulator has
+named any individual in connection with the failure of First African Savings and
+Loans Limited, and the identification of this company as the affiliate the Bank
+of Ghana describes is an open question recorded as RR007. Reproducing the names
+would assert by juxtaposition a connection that no document makes. Only counts
+appear below.
+
+COMPANY DETAILS
+
+Registered name: FIRST AFRICAN REMITTANCES LIMITED
+
+Company number: 02722739
+
+Company type: Private limited company
+
+Incorporated: 12 June 1992
+
+Registered office: 1st Floor, 10 Station Parade, Balham High Road, London, SW12 9AZ
+
+Nature of business: SIC 64999, Financial intermediation not elsewhere classified
+
+Previous name: FIRST AFRICAN FOREX BUREAU LIMITED, from 12 June 1992 to 30 June 1998
+
+Status: Dissolved
+
+Date of dissolution: 22 October 2019
+
+Last accounts filed: made up to 31 December 2017
+
+OFFICER AND CONTROL COUNTS
+
+Serving directors at dissolution: 2. Both are recorded on the register as
+Ghanaian nationals resident in Ghana, appointed 12 June 1992, sharing a single
+correspondence address in Accra-North, Ghana.
+
+Resigned officers: 7, including two corporate nominee entities that were
+appointed and resigned on the date of incorporation.
+
+Persons with significant control: 1, notified 6 April 2016, recorded as British
+and resident in Britain, with the nature of control given as "has significant
+influence or control". No cessation date is recorded.
+
+FILING HISTORY, THE CLOSING SEQUENCE
+
+29 April 2019: TM01, termination of a director's appointment.
+
+10 May 2019: TM02, termination of a secretary's appointment.
+
+30 May 2019: DS01, application to strike the company off the register.
+
+11 June 2019: GAZ1(A), first Gazette notice for voluntary strike-off.
+
+4 July 2019: SOAS(A), voluntary strike-off action suspended.
+
+22 October 2019: GAZ2(A), final Gazette, dissolved via voluntary strike-off.
+
+EARLIER FILINGS OF NOTE
+
+31 January 2019: accounts made up to 31 December 2017.
+
+14 May 2018: CS01 confirmation statement with updates.
+
+6 July 2017: PSC01, notification of a person with significant control.
+
+22 June 2016: AR01 annual return, stated capital GBP 650,000.
+
+10 February 2016: SH01 statement of share allotment, capital GBP 540,000.

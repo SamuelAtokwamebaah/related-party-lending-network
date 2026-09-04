@@ -134,6 +134,33 @@ Capital, is recorded as placing 50% of its funds under management with Commerz *
 related party*. The clean 17-against-6 split is a property of the Bank of Ghana notice,
 not of the record as a whole.
 
+## The search that found something and changed nothing
+
+`docs/LIMITATIONS.md` named UK Companies House as the one route in reach to a documented
+person-level node. It has now been searched, and the result is worth reading as a method
+rather than as a finding.
+
+The register holds **FIRST AFRICAN REMITTANCES LIMITED (02722739)**, incorporated in 1992
+as First African Forex Bureau Limited, in financial intermediation, which applied to strike
+itself off on 30 May 2019 and was dissolved on 22 October 2019 — two months after the Bank
+of Ghana revoked First African Savings and Loans' licence, citing GHS 5.40m its UK
+affiliate had not reimbursed. Two directors serving at dissolution, both recorded as
+Ghanaian nationals resident in Accra. One person with significant control.
+
+Name, jurisdiction, business, director residence and timing all converge. **Nothing states
+the identification**, so it is `RR007`, undecided, and no edge depends on it. The company
+sits in the evidence base and not in the graph: 63 nodes and 54 edges, exactly as before.
+
+The register also names the individuals. They are **not reproduced here**. No regulator has
+named any individual in connection with this failure, and the identification is open —
+naming them would assert by juxtaposition a connection no document makes. Counts,
+nationalities and the filing sequence are recorded; names are not.
+
+The provenance is also weaker than everything else here, and the source row says so: the
+register publishes no archived document and its API needs a key, so `data/raw/` holds a
+transcription rather than an original. A quote checked against it is checked against the
+transcription.
+
 ## Repository layout
 
 ```
@@ -209,7 +236,7 @@ visible in the data rather than buried:
   related party of uniSecurities, is the Hoda Group of Companies that the Bank of Ghana
   says acquired uniCredit. A sixth was closed at v0.4: the Commission calls Legacy Capital
   Savings a related party of Legacy Fund Management, so that pair no longer rests on a
-  shared name.
+  shared name. A seventh was opened at v0.5 by the Companies House search — see below.
 - Two edges are classed `inferred`. They rest on no source, carry no citation, and are
   excluded from every figure and from the map.
 
