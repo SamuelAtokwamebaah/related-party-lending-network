@@ -23,17 +23,17 @@ Work the sheets with a non-zero **To check** count first: those sections contain
 | 11 | First Allied Savings and Loans Limited | [11-first-allied-savings-and-loans.md](11-first-allied-savings-and-loans.md) | 2 | **1** | 11 |
 | 12 | First African Savings and Loans Limited | [12-first-african-savings-and-loans.md](12-first-african-savings-and-loans.md) | 2 | **1** | 7 |
 | 13 | First Ghana Savings and Loans Limited | [13-first-ghana-savings-and-loans.md](13-first-ghana-savings-and-loans.md) | 0 | **1** | 3 |
-| 14 | FirsTrust Savings and Loans Limited | [14-firstrust-savings-and-loans.md](14-firstrust-savings-and-loans.md) | 4 | **2** | 6 |
+| 14 | FirsTrust Savings and Loans Limited | [14-firstrust-savings-and-loans.md](14-firstrust-savings-and-loans.md) | 5 | **2** | 6 |
 | 15 | Global Access Savings and Loans Company Limited | [15-global-access-savings-and-loans-company.md](15-global-access-savings-and-loans-company.md) | 2 | **1** | 9 |
 | 16 | GN Savings and Loans Ltd. | [16-gn-savings-and-loans.md](16-gn-savings-and-loans.md) | 4 | **4** | 7 |
 | 17 | Ideal Finance Limited | [17-ideal-finance.md](17-ideal-finance.md) | 5 | **6** | 15 |
 | 18 | IFS Financial Services Limited | [18-ifs-financial-services.md](18-ifs-financial-services.md) | 0 | **1** | 8 |
 | 19 | Legacy Capital Savings and Loans Ltd. | [19-legacy-capital-savings-and-loans.md](19-legacy-capital-savings-and-loans.md) | 1 | **1** | 7 |
-| 20 | Midland Savings and Loans Company Limited | [20-midland-savings-and-loans-company.md](20-midland-savings-and-loans-company.md) | 3 | **1** | 9 |
+| 20 | Midland Savings and Loans Company Limited | [20-midland-savings-and-loans-company.md](20-midland-savings-and-loans-company.md) | 4 | **1** | 9 |
 | 21 | Sterling Financial Services Limited | [21-sterling-financial-services.md](21-sterling-financial-services.md) | 0 | **1** | 1 |
 | 22 | uniCredit Ghana Limited | [22-unicredit-ghana.md](22-unicredit-ghana.md) | 2 | **2** | 5 |
 | 23 | Women's World Banking Ghana (WWBG) Savings and Loans Limited | [23-women-s-world-banking-ghana-wwbg-savings-and-loa.md](23-women-s-world-banking-ghana-wwbg-savings-and-loa.md) | 0 | **1** | 8 |
 
-**Totals:** 39 seeded edges to verify, 40 uncited passages carrying relationship wording, 174 other passages, across 23 institutions.
+**Totals:** 41 seeded edges to verify, 40 uncited passages carrying relationship wording, 174 other passages, across 23 institutions.
 
 Regenerate with `python scripts/build_review_pack.py`. It rewrites the sheets and adds rows to `data/verification.csv` for any new edge, but never overwrites a decision already recorded there.

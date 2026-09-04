@@ -110,6 +110,9 @@ strong { color: var(--text-primary); font-weight: 600; }
         background: var(--border); border: 1px solid var(--border); border-radius: 4px;
         overflow: hidden; }
 .panel { background: var(--surface-1); padding: 10px 10px 4px; }
+.panel .status { font-size: 0.72rem; line-height: 1.45; color: var(--text-muted);
+                 border-top: 1px solid var(--border); margin-top: 6px; padding: 8px 4px 4px; }
+.panel .status strong { color: var(--series-2); }
 .panel .cap { font-size: 0.72rem; color: var(--text-muted); font-family: "IBM Plex Mono", monospace;
               padding: 2px 4px 6px; letter-spacing: 0.02em; }
 .panel svg, .case svg { width: 100%; height: auto; display: block; }

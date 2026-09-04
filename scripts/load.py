@@ -347,11 +347,12 @@ def build(tables, db_path):
          for r in tables["relationship_types"]])
 
     con.executemany(
-        "INSERT INTO entities VALUES (?,?,?,?,?,?,?,?,?,?)",
+        "INSERT INTO entities VALUES (?,?,?,?,?,?,?,?,?,?,?)",
         [(r["entity_id"], r["canonical_name"], r["entity_type"], r["scope_class"],
           nullable(r["regulator"]), nullable(r["jurisdiction"]),
           int(r["member_count"]) if (r["member_count"] or "").strip() else None,
-          int(r["is_named"]), nullable(r["admitted_by_edge_id"]), nullable(r["notes"]))
+          int(r["is_named"]), nullable(r["admitted_by_edge_id"]), nullable(r["notes"]),
+          nullable(r.get("status_note")))
          for r in tables["entities"]])
 
     aliases = []

@@ -1,6 +1,6 @@
 # 14. FirsTrust Savings and Loans Limited
 
-`inst-firstrust` · notice section **L657–L712** · 4 seeded edge(s) · 8 uncited passage(s)
+`inst-firstrust` · notice section **L657–L712** · 5 seeded edge(s) · 8 uncited passage(s)
 
 Read the section in `data/raw/` from L657 to L712, then work through both parts below. Record every decision in `data/verification.csv`.
 
@@ -69,6 +69,22 @@ For each: does the quote support the relationship, the direction, the amount and
 > FirsTrust Savings and Loans Company Limited (FTSL) was authorised as a savings and loans by the Bank of Ghana on September 19, 2014 and was issued a license as FTSL on January 28, 2015. The name was changed to FirstTrust in January 2015. . Prior to this, the institution was known as EZI Savings and Loans (EZI) Limited which was licensed by the BOG as a savings and loans institution on October 11, 2007 until its acquisition by Ideal Financial Holdings in 2014.
 
 *Note carried from compilation:* Acquisition dated 2014
+
+### S002 — FirsTrust Savings and Loans Limited ← Ideal Capital Partners
+
+| | |
+|---|---|
+| relationship | `placed_funds_with` |
+| amount | — |
+| confidence | `documented` |
+| anchor | `sec-2019-11-08-fund-manager-revocation:L859` |
+| current decision | pending |
+
+> 14. IDEAL CAPITAL PARTNERS LIMITED Ideal Capital Partners Limited (“Ideal”) was incorporated on the 21st July 2011. It was licensed by the SEC as a Fund Manager on 18th June, 2014. The SEC has had a number of engagements with Ideal including Hearings pursuant to section 19 of Act 929, decisions have been issued by the SEC against Ideal with directives to take steps to comply and resolve its regulatory infractions, all to no avail. The Specific issues that led to the revocation of its licence included the following a) Failure to honour clients’ redemption requests; b) Placement of client funds without proper due diligence and the requisite standard of professional conduct contrary to Paragraphs, 2, 3, 6 and 13 of Part X of the Commission’s Compliance Manual for Broker-Dealers, Investment Advisers and Representatives 2008. The firm had 19% of AUM in related parties (Ideal Financial Holdings Ltd, Firstrust Savings and Loans, Ideal Trade Limited, Ideal Bottling Limited) and over 48% of funds placed in illiquid instruments.
+
+*Note carried from compilation:* The link that connects one counterparty to two of the 23; source spells FirsTrust as Firstrust
+
+*Amount note:* 19% of assets under management across the four related parties named
 
 ---
 

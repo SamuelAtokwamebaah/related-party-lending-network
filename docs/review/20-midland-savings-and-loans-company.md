@@ -1,6 +1,6 @@
 # 20. Midland Savings and Loans Company Limited
 
-`inst-midland` · notice section **L1040–L1085** · 3 seeded edge(s) · 10 uncited passage(s)
+`inst-midland` · notice section **L1040–L1085** · 4 seeded edge(s) · 10 uncited passage(s)
 
 Read the section in `data/raw/` from L1040 to L1085, then work through both parts below. Record every decision in `data/verification.csv`.
 
@@ -51,6 +51,22 @@ For each: does the quote support the relationship, the direction, the amount and
 > The institution is over exposed to related parties such as Liberty Asset Management, Liberty DMI Microfinance and Griffin Financial Services continue to be rolled over in spite of the liquidity challenges it faces.
 
 *Note carried from compilation:* Notice says "such as", so the list is not exhaustive
+
+### S005 — Midland Savings and Loans Company Limited ← Liberty Asset Management
+
+| | |
+|---|---|
+| relationship | `placed_funds_with` |
+| amount | — |
+| confidence | `documented` |
+| anchor | `sec-2019-11-08-fund-manager-revocation:L945` |
+| current decision | pending |
+
+> 19. LIBERTY ASSET MANAGEMENT LIMITED. Liberty Asset Management Limited (“Liberty”) was licensed by the SEC as a Fund Manager on 15th April, 2008. The SEC has had a number of engagements with Liberty including Hearings pursuant to section 19 of Act 929, decisions have been issued by the SEC against Liberty with directives to take steps to comply and resolve its regulatory infractions, all to no avail. a) Failure to honour clients’ redemption request; b) Placement of client funds with related parties due diligence and the requisite standard of professional conduct contrary to Paragraphs, 2, 3, 6 and 13 of Part X of the Commission’s Compliance Manual for Broker-Dealers, Investment Advisers and Representatives 2008. The firm had 9.45 % of its funds with Midland Savings & Loans Limited (in receivership) and 10.93% in Liberty Commodities Limited (both are related parties);
+
+*Note carried from compilation:* Midland was over-exposed to Liberty and Liberty held funds with Midland: each held the other
+
+*Amount note:* 9.45% of funds under management; a ratio, not an amount
 
 ---
 

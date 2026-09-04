@@ -74,6 +74,9 @@ CREATE TABLE entities (
     -- edge whose citation admitted a non-S&L institution to the graph.
     admitted_by_edge_id TEXT,
     notes               TEXT,
+    -- Set where an institution's position is contested, so no view or page can
+    -- present it as settled. Never used as evidence for an edge.
+    status_note         TEXT,
     -- A placeholder is by definition not named, and vice versa.
     CHECK ((entity_type = 'placeholder_group') <= (is_named = 0)),
     CHECK ((scope_class = 'placeholder') = (is_named = 0)),

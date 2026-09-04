@@ -97,7 +97,7 @@ def hubs(g):
             if g.nodes[neighbour]["scope_class"] == "core_23":
                 institutions_touched[node].add(neighbour)
 
-    multi = {n: sorted(g.nodes[i]["name"] for i in insts)
+    multi = {g.nodes[n]["name"]: sorted(g.nodes[i]["name"] for i in insts)
              for n, insts in institutions_touched.items() if len(insts) > 1}
 
     ranked = sorted(g.nodes, key=lambda n: (-degree[n], g.nodes[n]["name"]))

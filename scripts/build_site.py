@@ -246,7 +246,25 @@ def build():
     undirected = nx.Graph(g)
     components = sorted((sorted(c) for c in nx.connected_components(undirected)),
                         key=lambda c: (-len(c), sorted(g.nodes[n]["name"] for n in c)[0]))
-    cases, others = components[:2], components[2:]
+
+    contested = dict(con.execute(
+        "SELECT entity_id, status_note FROM entities "
+        "WHERE status_note IS NOT NULL AND status_note <> ''"))
+
+    # Case studies are keyed by a representative entity rather than by size, and
+    # a component holding a contested institution is never one: the standard is
+    # that contested institutions stay out of worked examples.
+    cases, used = [], set()
+    for key, blurb in CASE_NOTES:
+        for i, comp in enumerate(components):
+            if i in used or key not in comp:
+                continue
+            if any(n in contested for n in comp):
+                continue
+            cases.append((comp, blurb))
+            used.add(i)
+            break
+    others = [c for i, c in enumerate(components) if i not in used]
 
     pending = metrics["verification"]["counts"].get("pending", 0)
     total_edges = sum(metrics["verification"]["counts"].values())
@@ -273,40 +291,48 @@ def build():
 <header>
 <h1>Seventeen structures, not one network</h1>
 <p class="lede">Related-party lending appears in 17 of the 23 savings &amp; loans companies
-and finance houses whose licences the Bank of Ghana revoked on 16&nbsp;August&nbsp;2019.
-This is what those relationships look like when the published notice is read as a graph &mdash;
-and what it turns out not to show.</p>
+and finance houses whose licences the Bank of Ghana revoked on 16&nbsp;August&nbsp;2019. This
+is what those relationships look like when two regulators&rsquo; notices are read as a graph
+&mdash; including one loop that neither document shows on its own.</p>
 </header>''')
 
     if pending:
         checked = total_edges - pending
         phrase = ("None of the" if checked == 0 else
-                  f"Only {checked} of the")
+                  f"{checked} of the")
         parts.append(f'''<div class="banner"><strong>Provisional.</strong> {phrase}
-{total_edges} edges in the evidence base has been checked against the notice by hand.
+{total_edges} edges in the evidence base have been checked against the notice by hand.
 Every figure on this page is provisional and is recomputed as verification is
 recorded.</div>''')
 
     parts.append(f'''
 <div class="tiles">
   <div class="tile"><div class="n">23</div><div class="k">institutions</div></div>
+  <div class="tile"><div class="n">2</div><div class="k">regulators&rsquo; notices</div></div>
   <div class="tile"><div class="n">{shape['edges']}</div><div class="k">documented edges</div></div>
   <div class="tile"><div class="n">{shape['components']}</div><div class="k">separate structures</div></div>
   <div class="tile"><div class="n">{hubs_multi}</div><div class="k">entities linking two institutions</div></div>
+  <div class="tile"><div class="n">{metrics["loops"]["extraction_loops"]}</div><div class="k">closed extraction loops</div></div>
 </div>
-<p class="section-note">Every edge restates something the Bank of Ghana published. Hover or
-focus any connection to read the passage behind it.</p>
+<p class="section-note">Every edge restates something a regulator published. Hover or focus
+any connection to read the passage behind it.</p>
 
-<h2>What the record supports</h2>
-<p>The project set out to find the people and companies sitting behind more than one failure.
-The public record does not contain them. Each named counterparty, holding company and
-unnamed related party in the notice attaches to <strong>exactly one</strong> institution, so
-the graph falls into {shape['components']} disconnected pieces rather than forming a single
-insider network.</p>
-<p>That is a finding about the source, not about the sector. The revocation notice was
-written to explain why each institution failed, never to map ownership across them.
-Establishing whether the same people recur needs company-registry or court records, which
-the repository&rsquo;s limitations set out.</p>
+<h2>What one regulator sees, and what two see</h2>
+<p>Read on its own, the Bank of Ghana&rsquo;s notice shows no entity connecting two of the 23
+institutions. Every counterparty it names attaches to exactly one. That is a fact about the
+document: it was written to explain why each institution failed, not to map ownership across
+them.</p>
+<p>Adding the Securities and Exchange Commission&rsquo;s notice of 8 November 2019, which
+revoked 53 fund-management licences, changes that. Four counterparties in this graph appear
+on it with their own regulatory record, and the SEC states what the banking regulator had no
+reason to: where those firms had placed their clients&rsquo; money.</p>
+<p>The clearest result needs both documents and appears in neither alone. The Bank of Ghana
+records <strong>Midland</strong> as over-exposed to <strong>Liberty Asset Management</strong>;
+the SEC records Liberty holding 9.45% of its funds with Midland. Each held the other, and
+value moves along both arrows &mdash; the one closed extraction loop in the evidence base.</p>
+<p>The graph is still in {shape['components']} pieces, and one entity now connects two
+institutions where none did before. A negative result from a single source is a statement
+about that source.</p>
 
 <div class="legend">
   <span class="item"><span class="swatch" style="background:var(--series-1)"></span>failed institution</span>
@@ -317,10 +343,11 @@ the repository&rsquo;s limitations set out.</p>
 </div>
 ''')
 
-    parts.append('<h2>The two documented networks</h2>')
-    parts.append('<p class="section-note">The only structures in the record with more than '
-                 'four entities. Both are worth reading edge by edge.</p>')
-    for comp, blurb in zip(cases, CASE_NOTES):
+    parts.append('<h2>The documented networks</h2>')
+    parts.append('<p class="section-note">The largest structures in the record, each worth '
+                 'reading edge by edge. A component containing a contested institution is '
+                 'not shown here as a case study.</p>')
+    for comp, blurb in cases:
         names = sorted(g.nodes[n]["name"] for n in comp)
         title = blurb["title"]
         parts.append(f'''<div class="case"><h3>{html.escape(title)}</h3>
@@ -328,7 +355,7 @@ the repository&rsquo;s limitations set out.</p>
 {draw(g, comp, CASE_W, CASE_H, evidence, label_size=11, radius=11)}
 </div>''')
 
-    parts.append('<h2>The other fifteen</h2>')
+    parts.append(f'<h2>The other {len(others)}</h2>')
     parts.append('<p class="section-note">Each is an institution and the related parties the '
                  'notice attributes to it. None connects to any other panel &mdash; that '
                  'disconnection is the finding, not a drawing artefact.</p>')
@@ -337,8 +364,11 @@ the repository&rsquo;s limitations set out.</p>
         inst = sorted((g.nodes[n]["name"] for n in comp
                        if g.nodes[n]["scope_class"] == "core_23"), key=len)
         cap = short_name(inst[0], "institution") if inst else "—"
+        note = next((contested[n] for n in comp if n in contested), "")
+        flag = (f'<div class="status"><strong>Contested.</strong> {html.escape(note)}</div>'
+                if note else "")
         parts.append(f'''<div class="panel"><div class="cap">{html.escape(cap)}</div>
-{draw(g, comp, PANEL_W, PANEL_H, evidence)}</div>''')
+{draw(g, comp, PANEL_W, PANEL_H, evidence)}{flag}</div>''')
     parts.append('</div>')
 
     parts.append('''<div id="cite" hidden><div class="meta"></div><blockquote></blockquote>
@@ -400,18 +430,38 @@ and the page takes no position on any proceeding. Evidence base
 
 
 CASE_NOTES = [
-    {"title": "Ideal Financial Holdings, Ideal Finance and FirsTrust",
-     "text": "A common owner above two separately licensed institutions that lent to each "
-             "other. Ideal Financial Holdings acquired EZI Savings and Loans in 2014 and "
-             "renamed it FirsTrust. Ideal Finance then carried related-party exposure to "
-             "FirsTrust and to Ideal Capital Partners. In June 2019 the two applied to "
-             "merge and the Bank of Ghana declined, both being insolvent."},
-    {"title": "GN Savings and Loans within the Groupe Nduom network",
-     "text": "The largest quantified structure in the notice. GN placed GHS 761.55 million "
-             "with two sister companies licensed by the Securities and Exchange Commission "
-             "rather than the Bank of Ghana, and a further transfer went to a company the "
-             "notice states is owned by the same group and based in the United States."},
+    ("corp-unisecurities",
+     {"title": "uniCredit Ghana, uniSecurities and the Hoda companies",
+      "text": "The largest structure in the evidence base, and it takes both regulators "
+              "to see it. The Bank of Ghana records that uniCredit, formerly Kantamanto "
+              "Savings and Loans, was acquired by the Hoda Group of Companies in 2006, and "
+              "that it was over-exposed to its sister company uniSecurities to the tune of "
+              "GHS 160.10 million. The SEC then records uniSecurities placing client funds "
+              "with seven related parties of its own, the first of which is Hoda Holdings. "
+              "Whether Hoda Holdings and the Hoda Group are one entity is an open question "
+              "in this repository, not an assumption: if they are, the ownership closes "
+              "back on itself."}),
+    ("corp-ideal-capital-partners",
+     {"title": "Ideal Financial Holdings, Ideal Finance, FirsTrust and the group companies",
+      "text": "A common owner above two separately licensed institutions that lent to each "
+              "other. Ideal Financial Holdings acquired EZI Savings and Loans in 2014 and "
+              "renamed it FirsTrust; Ideal Finance then carried related-party exposure to "
+              "FirsTrust and to Ideal Capital Partners; in June 2019 the two applied to "
+              "merge and the Bank of Ghana declined, both being insolvent. The SEC adds the "
+              "piece the banking regulator had no reason to record: Ideal Capital Partners "
+              "held related-party positions in the holding company, in FirsTrust, and in "
+              "two non-financial group companies, Ideal Trade and Ideal Bottling. It is the "
+              "only entity in the evidence base that connects two of the 23."}),
+    ("corp-liberty-asset-management",
+     {"title": "Midland and Liberty Asset Management",
+      "text": "The smallest of the three and the most complete. The Bank of Ghana records "
+              "Midland as over-exposed to related parties including Liberty Asset "
+              "Management; the SEC records Liberty holding 9.45% of its funds with Midland, "
+              "and 10.93% with Liberty Commodities. Each institution held the other, and "
+              "value moves along both arrows. This is the only closed extraction loop in "
+              "the evidence base, and neither regulator&rsquo;s notice shows it alone."}),
 ]
+
 
 
 if __name__ == "__main__":

@@ -1,13 +1,13 @@
 {
   "shape": {
-    "nodes": 50,
-    "edges": 37,
+    "nodes": 60,
+    "edges": 51,
     "components": 17,
     "component_sizes": [
+      10,
+      8,
       6,
-      6,
-      4,
-      3,
+      5,
       3,
       3,
       3,
@@ -24,105 +24,218 @@
     ],
     "largest_components": [
       [
+        "Alban Logistics",
+        "Bolton Portfolio Ltd",
+        "Hoda Group of Companies",
+        "Hoda Holdings Ltd",
+        "Integrated Properties Ltd",
+        "Intrepid Venture Capital Ltd",
+        "Numa Logistics",
+        "Premier Portfolio",
+        "uniCredit Ghana Limited",
+        "uniSecurities Limited"
+      ],
+      [
         "FirsTrust Savings and Loans Limited",
+        "Ideal Bottling Limited",
         "Ideal Capital Partners",
         "Ideal Finance Limited",
         "Ideal Financial Holdings",
+        "Ideal Trade Limited",
         "UNNAMED affiliates of Ideal Finance",
         "UNNAMED six related companies of FirsTrust"
-      ],
-      [
-        "GN Savings and Loans Ltd.",
-        "Ghana Growth Fund",
-        "Gold Coast Fund Management Limited",
-        "Groupe Nduom",
-        "International Business Solutions",
-        "UNNAMED related parties of GN in the Groupe Nduom network"
       ]
     ],
-    "density": 0.0139
+    "density": 0.0136
   },
   "hubs": {
-    "nonzero_betweenness": 11,
-    "max_betweenness": 0.0077,
+    "nonzero_betweenness": 14,
+    "max_betweenness": 0.0205,
     "top_degree": [
       {
-        "name": "GN Savings and Loans Ltd.",
-        "type": "institution",
-        "degree": 4,
-        "degree_centrality": 0.0816,
-        "betweenness": 0.0077
+        "name": "uniSecurities Limited",
+        "type": "corporate_entity",
+        "degree": 8,
+        "degree_centrality": 0.1356,
+        "betweenness": 0.0205
+      },
+      {
+        "name": "Ideal Capital Partners",
+        "type": "corporate_entity",
+        "degree": 5,
+        "degree_centrality": 0.0847,
+        "betweenness": 0.007
       },
       {
         "name": "FirsTrust Savings and Loans Limited",
         "type": "institution",
-        "degree": 3,
-        "degree_centrality": 0.0612,
-        "betweenness": 0.006
+        "degree": 4,
+        "degree_centrality": 0.0678,
+        "betweenness": 0.0041
+      },
+      {
+        "name": "GN Savings and Loans Ltd.",
+        "type": "institution",
+        "degree": 4,
+        "degree_centrality": 0.0678,
+        "betweenness": 0.0047
       },
       {
         "name": "Ideal Finance Limited",
         "type": "institution",
         "degree": 3,
-        "degree_centrality": 0.0612,
-        "betweenness": 0.006
+        "degree_centrality": 0.0508,
+        "betweenness": 0.0035
       },
       {
         "name": "Midland Savings and Loans Company Limited",
         "type": "institution",
         "degree": 3,
-        "degree_centrality": 0.0612,
-        "betweenness": 0.0026
+        "degree_centrality": 0.0508,
+        "betweenness": 0.0029
       },
       {
         "name": "AllTime Finance Limited",
         "type": "institution",
         "degree": 2,
-        "degree_centrality": 0.0408,
-        "betweenness": 0.0009
+        "degree_centrality": 0.0339,
+        "betweenness": 0.0006
       },
       {
         "name": "CDH Savings and Loans Ltd.",
         "type": "institution",
         "degree": 2,
-        "degree_centrality": 0.0408,
-        "betweenness": 0.0009
+        "degree_centrality": 0.0339,
+        "betweenness": 0.0006
       },
       {
         "name": "Crest Finance House Limited",
         "type": "institution",
         "degree": 2,
-        "degree_centrality": 0.0408,
-        "betweenness": 0.0009
+        "degree_centrality": 0.0339,
+        "betweenness": 0.0006
       },
       {
         "name": "First African Savings and Loans Limited",
         "type": "institution",
         "degree": 2,
-        "degree_centrality": 0.0408,
-        "betweenness": 0.0009
-      },
-      {
-        "name": "First Allied Savings and Loans Limited",
-        "type": "institution",
-        "degree": 2,
-        "degree_centrality": 0.0408,
-        "betweenness": 0.0009
-      },
-      {
-        "name": "International Business Solutions",
-        "type": "corporate_entity",
-        "degree": 2,
-        "degree_centrality": 0.0408,
-        "betweenness": 0.0034
+        "degree_centrality": 0.0339,
+        "betweenness": 0.0006
       }
     ],
-    "connect_multiple_institutions": {}
+    "connect_multiple_institutions": {
+      "Ideal Capital Partners": [
+        "FirsTrust Savings and Loans Limited",
+        "Ideal Finance Limited"
+      ]
+    }
   },
   "loops": {
-    "count": 1,
-    "extraction_loops": 0,
+    "count": 4,
+    "extraction_loops": 1,
     "cycles": [
+      {
+        "members": [
+          "Midland Savings and Loans Company Limited",
+          "Liberty Asset Management"
+        ],
+        "legs": [
+          {
+            "from": "Midland Savings and Loans Company Limited",
+            "to": "Liberty Asset Management",
+            "relationships": [
+              "over_exposed_to"
+            ],
+            "extracts_value": true
+          },
+          {
+            "from": "Liberty Asset Management",
+            "to": "Midland Savings and Loans Company Limited",
+            "relationships": [
+              "placed_funds_with"
+            ],
+            "extracts_value": true
+          }
+        ],
+        "all_legs_extract_value": true
+      },
+      {
+        "members": [
+          "Ideal Capital Partners",
+          "Ideal Financial Holdings",
+          "FirsTrust Savings and Loans Limited",
+          "Ideal Finance Limited"
+        ],
+        "legs": [
+          {
+            "from": "Ideal Capital Partners",
+            "to": "Ideal Financial Holdings",
+            "relationships": [
+              "placed_funds_with"
+            ],
+            "extracts_value": true
+          },
+          {
+            "from": "Ideal Financial Holdings",
+            "to": "FirsTrust Savings and Loans Limited",
+            "relationships": [
+              "acquired"
+            ],
+            "extracts_value": false
+          },
+          {
+            "from": "FirsTrust Savings and Loans Limited",
+            "to": "Ideal Finance Limited",
+            "relationships": [
+              "proposed_merger_with"
+            ],
+            "extracts_value": false
+          },
+          {
+            "from": "Ideal Finance Limited",
+            "to": "Ideal Capital Partners",
+            "relationships": [
+              "related_party_exposure_to"
+            ],
+            "extracts_value": true
+          }
+        ],
+        "all_legs_extract_value": false
+      },
+      {
+        "members": [
+          "Ideal Capital Partners",
+          "FirsTrust Savings and Loans Limited",
+          "Ideal Finance Limited"
+        ],
+        "legs": [
+          {
+            "from": "Ideal Capital Partners",
+            "to": "FirsTrust Savings and Loans Limited",
+            "relationships": [
+              "placed_funds_with"
+            ],
+            "extracts_value": true
+          },
+          {
+            "from": "FirsTrust Savings and Loans Limited",
+            "to": "Ideal Finance Limited",
+            "relationships": [
+              "proposed_merger_with"
+            ],
+            "extracts_value": false
+          },
+          {
+            "from": "Ideal Finance Limited",
+            "to": "Ideal Capital Partners",
+            "relationships": [
+              "related_party_exposure_to"
+            ],
+            "extracts_value": true
+          }
+        ],
+        "all_legs_extract_value": false
+      },
       {
         "members": [
           "Ideal Finance Limited",
@@ -154,7 +267,7 @@
     "components": 17,
     "communities_detected": 17,
     "communities_equal_components": true,
-    "modularity": 0.9164
+    "modularity": 0.8856
   },
   "typology": [
     {
@@ -273,8 +386,8 @@
       "category": "placement",
       "relationship": "placed_funds_with",
       "extracts_value": true,
-      "edges": 3,
-      "named_counterparty": 2
+      "edges": 17,
+      "named_counterparty": 16
     },
     {
       "category": "placement",
@@ -623,8 +736,9 @@
   },
   "verification": {
     "counts": {
-      "confirmed": 39
+      "confirmed": 39,
+      "pending": 14
     },
-    "version": "v0.2"
+    "version": "v0.3"
   }
 }
