@@ -3,3 +3,7 @@
 
 # Keep the extracted source text out of the language bar; it is evidence, not code.
 data/raw/*.txt linguist-generated=true
+
+# SQL carries the schema and the analysis, so count it in the language bar.
+*.sql linguist-detectable=true
+*.sql linguist-language=SQL

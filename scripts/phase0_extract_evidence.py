@@ -33,12 +33,16 @@ HEADER = re.compile(r"^\s*(\d{1,2})\.\s+([A-Z][A-Z0-9'&().,\- ]{8,})\s*$")
 # A bullet starts with a letter or number enumerator: "a. ", "3. ", "c) ".
 BULLET = re.compile(r"^\s*(?:[a-z]|\d{1,2})[.)]\s+\S")
 
+# A line holding nothing but a printed page number. There are 27 of them, one
+# per page break, and they are furniture rather than text.
+PAGE_NUMBER = re.compile(r"^\s*\d{1,3}\s*$")
+
 # Signal vocabulary, grouped so the inventory can report which kind of
 # relationship each passage evidences.
 SIGNALS = {
     "related_party": r"related[- ]part(?:y|ies)",
     "affiliate_group": r"\baffiliate[sd]?\b|\bsister compan|\bparent compan|\bgroup compan|related compan",
-    "ownership": r"\bshareholder(?:s|s')?\b|\bowner(?:s|ship)\b|\bsubsidiar",
+    "ownership": r"\bshareholder(?:s|s')?\b|\bown(?:s|ed|er|ers|ership)\b|\bsubsidiar",
     # Ownership history: acquisitions, takeovers and renamings are how one
     # entity comes to sit behind two separately licensed institutions.
     "ownership_history": (
@@ -95,7 +99,11 @@ def read_lines():
     # The cedi sign survives the PDF text extraction as a replacement character.
     text = text.replace("�", "GHS ")
     text = text.replace("GHGHS ", "GHS ").replace("GHS  ", "GHS ")
-    return text.splitlines()
+    # Split on real newlines only. str.splitlines() also breaks on form feeds,
+    # and this document carries 27 of them as page breaks - which would put
+    # every line number up to 26 ahead of what grep, sed or a text editor
+    # shows, and an anchor nobody can follow is not a citation.
+    return text.replace("\r\n", "\n").replace("\r", "\n").split("\n")
 
 
 def split_sections(lines):
@@ -114,13 +122,42 @@ def split_sections(lines):
     return out
 
 
+def spans_page_break(lines, i, current, end):
+    """True if the blank at line i is a page break interrupting a sentence.
+
+    The notice wraps paragraphs across pages, leaving blank / page-number /
+    blank between the halves. Flushing the block there would truncate a quote
+    mid-sentence, so a block continues across the break - but only when the
+    text so far does not end on sentence-final punctuation, which keeps this
+    from gluing genuinely separate bullets together.
+    """
+    if not current or current[-1].rstrip().endswith((".", ":", ";")):
+        return False
+    saw_page_number = False
+    for j in range(i + 1, min(end, len(lines)) + 1):
+        stripped = lines[j - 1].strip()
+        if not stripped:
+            continue
+        if PAGE_NUMBER.match(stripped):
+            saw_page_number = True
+            continue
+        if not saw_page_number:
+            return False
+        return not (BULLET.match(lines[j - 1]) or HEADER.match(lines[j - 1]))
+    return False
+
+
 def blocks(lines, start, end):
     """Group a section's wrapped lines into bullets. Yields (line_no, text)."""
     current, first_line = [], None
     for i in range(start + 1, end + 1):
         raw = lines[i - 1]
         stripped = raw.strip()
+        if PAGE_NUMBER.match(stripped):
+            continue  # furniture, never part of a quote
         if not stripped:
+            if current and spans_page_break(lines, i, current, end):
+                continue
             if current:
                 yield first_line, " ".join(current)
                 current, first_line = [], None

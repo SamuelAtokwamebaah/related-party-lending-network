@@ -3,8 +3,8 @@
 Modelling the insider relationships behind Ghana's 2019 savings & loans failures as a
 network, built only from what the Bank of Ghana published.
 
-> **Status: Phase 0 complete.** This repository is private while the evidence base is
-> assembled. Nothing here is a finding about any institution or person — Phase 0 is a
+> **Status: Phase 0 complete; Phase 1 schema and templates under review.** This
+> repository is private while the evidence base is assembled. Nothing here is a finding about any institution or person — Phase 0 is a
 > count of what the source documents state, and every passage used is quoted and
 > anchored to a line number in the published notice.
 
@@ -59,13 +59,17 @@ The full assessment, including the recommended project mode and the open questio
 ## Repository layout
 
 ```
+data/         the evidence base: sources, entities, edges, evidence, roles,
+              changelog, and the entity-resolution review file
 data/raw/     extracted text of the source notice, as working copy
 sources/      the source document as published
-scripts/      phase0_extract_evidence.py — splits the notice, extracts evidence
+scripts/      phase0_extract_evidence.py    splits the notice, extracts evidence
+              phase1_seed_from_phase0.py    reshapes Phase 0 into the CSV model
 docs/phase0/  SOURCE-INVENTORY.md   the feasibility assessment and mode decision
               evidence-extract.md   every matched bullet, quoted and anchored
               source-inventory.csv  one row per institution
-              candidate-edges.csv   hand-curated candidate edges for review
+              candidate-edges.csv   hand-curated candidate edges
+docs/phase1/  SCHEMA-PROPOSAL.md    the data model, under review
 ```
 
 ## Reproducing Phase 0

@@ -60,3 +60,6 @@ htmlcov/
 .DS_Store
 Thumbs.db
 desktop.ini
+
+# The graph database is a build artefact, rebuilt by run_all.py
+db/

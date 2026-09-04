@@ -1,7 +1,7 @@
 # Phase 0 — source inventory and feasibility gate
 
 Status: complete. Mode decided 4 September 2026 — see section 5.
-Date: 4 September 2026.
+Date: 4 September 2026. Corrected the same day — see section 7.
 
 This document answers one question: **what network can the sources in hand actually
 support?** Nothing here is a finding about any institution or person. It is a count of
@@ -40,11 +40,12 @@ Hand-curating those bullets into edges gives `docs/phase0/candidate-edges.csv`:
 
 | | Count |
 |---|---|
-| Candidate edges | 41 |
-| — documented, counterparty named | 22 |
-| — documented, counterparty unnamed | 17 |
+| Candidate edges | 43 |
+| — documented, counterparty named | 19 |
+| — documented, counterparty unnamed | 18 |
 | — inferred, excluded from headline findings | 2 |
-| Distinct nodes | 52 |
+| — renamings, folded into aliases rather than kept as edges | 4 |
+| Distinct nodes in the built graph | 50 |
 | Institutions carrying at least one related-party edge | **17 of 23** |
 
 That 17 reproduces the headline finding already published in `ghana-banking-collapse`,
@@ -61,16 +62,16 @@ the argument for extracting passages and reading them rather than counting keywo
 
 ### Named entities the notice puts on the record
 
-Eighteen entities other than the 23 institutions are named outright:
+Nineteen entities other than the 23 institutions are named outright:
 
 **Counterparties (11)** — AllTime Capital Limited; Ivory Finance Company Limited;
 First African Remittances, UK; Ghana Growth Fund (Gold Coast Advisors); Gold Coast Fund
 Management Limited (now Blackshield Capital Management); Ideal Capital Partners;
 uniSecurities Limited; Liberty Asset Management; Liberty DMI Microfinance; Griffin
-Financial Services; the Groupe Nduom network of businesses.
+Financial Services; International Business Solutions (USA).
 
-**Holding companies (3)** — Ideal Financial Holdings; Nordcom Africa Holdings Limited;
-Hoda Group of Companies.
+**Holding companies (4)** — Groupe Nduom; Ideal Financial Holdings; Nordcom Africa
+Holdings Limited; Hoda Group of Companies.
 
 **Former names (4)** — Sterling Savings and Loans Limited; Apex Finance House Limited;
 EZI Savings and Loans Limited; Kantamanto Savings and Loans Company Limited.
@@ -81,7 +82,7 @@ directorship and shareholding would attach if a registry source is ever obtained
 
 ### Documented but unnamed
 
-Seventeen edges are real edges with an unlabelled endpoint. The notice states the
+Eighteen edges are real edges with an unlabelled endpoint. The notice states the
 relationship, often the count, and sometimes the amount, but not the identity:
 
 - First Allied — "the current accounts of eight (8) related companies linked to the
@@ -101,13 +102,15 @@ them usable without overstating them.
 
 ## 3. The honest problem: the graph is fragmented
 
-Union-find over the 39 non-inferred candidate edges:
+Union-find over the 37 non-inferred edges as built:
 
-- 52 nodes, 39 edges, **17 connected components**
-- largest component: **7 nodes** — Ideal Financial Holdings, Ideal Finance Limited,
-  FirsTrust Savings and Loans (formerly EZI), Ideal Capital Partners and two unnamed
-  related-party groups
-- second largest: 4 nodes
+- 50 nodes, 37 edges, **17 connected components**
+- two components of **6 nodes** each, and they are the two case networks:
+  - Ideal Financial Holdings, Ideal Finance, FirsTrust (formerly EZI), Ideal Capital
+    Partners and two unnamed related-party groups
+  - Groupe Nduom, GN Savings and Loans, Ghana Growth Fund, Gold Coast Fund Management,
+    International Business Solutions and one unnamed related-party group
+- the remaining fifteen components hold 2 to 4 nodes each
 - adding both inferred edges changes nothing: still 17 components
 
 **This matters more than any other line in this document.** Degree centrality,
@@ -210,3 +213,33 @@ widened. That decision should be made against the evidence then, not assumed now
    another. Different bases, probably; worth resolving before either number is published.
 4. **Ideal Financial Holdings → Ideal Finance Limited.** Currently inferred from the
    shared name only. Confirmed or dropped, not assumed.
+
+---
+
+## 7. Corrections, 4 September 2026
+
+Logged here and in `data/changelog.csv` because the affected artefacts were already
+committed. Nothing published outside this repository relied on them.
+
+1. **Every line anchor was wrong by up to 26 lines.** The extractor used Python's
+   `str.splitlines()`, which breaks on form feeds as well as newlines. This notice
+   carries 27 form feeds, one per page break, so anchors ran progressively ahead of the
+   line a reader sees in `grep`, `sed` or an editor. Anchors now match. The quotes were
+   never wrong — only the pointers to them — but an anchor nobody can follow is not a
+   citation, so this was worth stopping for.
+2. **Three GN edges pointed at the wrong paragraph.** E021, E022 and E023 were anchored
+   to a generic passage rather than to the sister-company placements. Corrected to L798.
+   The loader now carries a rule (12) that catches exactly this: a named counterparty
+   must be named in the passage cited for it.
+3. **Page-break truncation.** Quotes spanning a page break stopped mid-sentence and
+   printed page numbers were being absorbed into them. The blocker now continues a
+   passage across a page break when the sentence is unfinished, and treats a page number
+   as furniture.
+4. **One documented relationship had been missed.** The ownership pattern matched
+   *owner* and *ownership* but not *owned*, hiding a passage that names **International
+   Business Solutions**, a company the notice states is owned by Groupe Nduom and based
+   in the USA, to which USD 62,255,516.93, GBP 718,528.59 and EUR 4,200 of depositors'
+   funds were transferred without supporting documentation. This is now two edges, and
+   it made Groupe Nduom a documented owner rather than only a network label.
+5. **Amounts are not always in cedis.** Item 4 forced a schema change: `amount_ghs_m`
+   became `amount_value` with `amount_currency` and `amount_unit` beside it.

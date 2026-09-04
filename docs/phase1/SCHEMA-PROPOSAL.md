@@ -1,6 +1,8 @@
 # Phase 1 — data model and CSV templates (proposal for review)
 
-Status: **proposal**. No loader code is written until this is agreed.
+Status: **agreed 4 September 2026**, and built. The schema is in `sql/schema.sql`, the
+loader in `scripts/load.py`, and the templates in `data/`. Section 5 records what was
+decided and what is still open.
 Date: 4 September 2026.
 
 Built to the mode decided at the Phase 0 gate: a real-entity spine, with
@@ -33,9 +35,9 @@ Phase 0 candidate sheet I modelled these as edges to `former_name` nodes, which 
 single entity instead. Only a transaction between two distinct legal persons is an edge.
 
 **The notice misspells things, and the schema has to absorb that.** It writes "FirstTrust"
-for FirsTrust and "Bank of Gnana" for Bank of Ghana. Aliases carry a `typo_in_source`
-type so the raw string that appears in a quoted passage always resolves to the right
-entity without silently editing the quote.
+for FirsTrust and "Bank of Gnana" for Bank of Ghana; it also spells Groupe Nduom both
+"Nduom" and "Ndoum". Aliases carry a `[typo]` type so the raw string that appears in a
+quoted passage always resolves to the right entity without silently editing the quote.
 
 **Placeholders are typed, counted, and never merged.** `UNNAMED eight related companies of
 First Allied` is one node standing for eight companies, with `member_count = 8`. It is
@@ -83,7 +85,9 @@ Nine tables in SQLite, built from six CSVs you populate plus two the tooling mai
 | `edge_id` | stable, e.g. `E018`. Never reused, never renumbered |
 | `source_entity_id`, `target_entity_id` | direction is source → target, value flowing along the arrow where the relationship is a transfer |
 | `relationship` | from the controlled vocabulary in `relationship_types` |
-| `amount_ghs_m` | numeric or blank |
+| `amount_value` | numeric or blank |
+| `amount_currency` | `GHS` / `USD` / `GBP` / `EUR`. Required whenever an amount is present |
+| `amount_unit` | `million` / `units`. Required whenever an amount is present |
 | `amount_basis` | `exact` / `floor` / `combined_total` / `ratio_only` / `none`. Required whenever an amount is present |
 | `amount_note` | e.g. "combined GHS 63.19m across E024 and E025" |
 | `as_at_date` | the date the source attaches to the figure, not the date of the notice |
@@ -95,7 +99,7 @@ Nine tables in SQLite, built from six CSVs you populate plus two the tooling mai
 ### `relationship_types` — the controlled vocabulary
 | column | notes |
 |---|---|
-| `relationship` | `owns`, `acquired`, `part_of`, `controls`, `directs`, `lends_to`, `over_exposed_to`, `related_party_exposure_to`, `placed_funds_with`, `holds_deposits_in`, `overdrawn_current_accounts`, `transferred_collateral_to`, `pays_management_fees_to`, `pays_rent_to`, `assumed_liability_of_loan_of`, `pre_financed_receivable_from`, `proposed_merger_with`, `succeeded` |
+| `relationship` | `owns`, `acquired`, `part_of`, `controls`, `directs`, `lends_to`, `over_exposed_to`, `related_party_exposure_to`, `placed_funds_with`, `holds_deposits_in`, `overdrawn_current_accounts`, `transferred_collateral_to`, `transferred_funds_to`, `extended_overdraft_facilities_to`, `funded_projects_of`, `pays_management_fees_to`, `pays_rent_to`, `assumed_liability_of_loan_of`, `pre_financed_receivable_from`, `proposed_merger_with`, `succeeded` |
 | `category` | `ownership` / `lending` / `placement` / `fee_extraction` / `governance` / `corporate_action` |
 | `extracts_value` | 0/1 — does this relationship move value *out* of the institution? |
 | `description` | one plain sentence |
@@ -109,7 +113,7 @@ is answerable without any centrality measure at all.
 ### `evidence` — one row per quoted passage
 | column | notes |
 |---|---|
-| `anchor` | `bog-2019-08-16:L592`. Source slug plus line number in the working text |
+| `anchor` | `<source_id>:L<line>`. The line number as `grep`, `sed` or an editor counts it — see rule 11 |
 | `source_id` | FK to `sources` |
 | `quote` | **verbatim**, including the source's own typos |
 | `page` | printed page number where visible, for citing the PDF rather than the text file |
@@ -205,24 +209,62 @@ Refuse to build the database, with a named row and reason, if any of these fail:
 8. `entity_type = placeholder_group` implies `is_named = 0`
 9. `scope_class = scope_exception` implies a populated `admitted_by_edge_id`
 10. No duplicate `edge_id` or `entity_id`
-11. Every quote in `evidence` is found verbatim in the source text at the anchored line
-    (whitespace-normalised) — this is the check that makes the citations mean something,
-    and it will catch a mistyped anchor immediately
+11. Every quote in `evidence` is found verbatim **at the line its anchor names**
+    (whitespace-normalised), not merely somewhere in the document
+12. For an edge whose counterparty is a named company, that company's name — or one of
+    its aliases — appears in the passage cited for that edge
 
-Rule 11 is the one worth the effort. Without it, an anchor is a claim; with it, an anchor
-is verified.
+Rules 11 and 12 are the ones worth the effort, and both were written the hard way.
+
+Rule 11 originally checked only that a quote appeared *somewhere* in the source. That
+passed while every anchor in the repository was wrong by up to 26 lines, because the
+extractor used `str.splitlines()` and the notice carries 27 form feeds as page breaks.
+The quotes were right; the pointers were not. Checking at the anchored line is what makes
+an anchor followable.
+
+Rule 12 catches the failure rule 11 cannot: an anchor that is verbatim, in range, and
+still aimed at the wrong paragraph. Three GN edges were anchored to a generic passage
+rather than to the sister-company placements. If a passage cited for "GN placed funds
+with Gold Coast Fund Management" does not mention Gold Coast Fund Management, something
+is wrong — and that is now a build failure rather than a reader's problem.
+
+Both rules are covered by a negative test: deliberately mis-anchoring a quote fires
+rule 11, and repointing an edge at a real but unrelated passage fires rule 12.
 
 ## 5. Questions on this proposal
 
-1. **Six CSVs, or fewer?** Evidence could be folded into `edges.csv` as a quote column,
-   dropping a file, at the cost of retyping a passage that supports several edges and
-   losing the guarantee that both copies match. I lean to keeping it separate, but you are
-   the one typing.
-2. **`amount_basis` — is the four-value vocabulary right** against what you have seen in
-   receiver's reports, or is there a fifth kind of figure it misses?
-3. **Should `roles` exist at all yet**, given it will hold three placeholder rows? I say
-   yes, for the migration reason above, but it is dead weight until a registry source
-   lands.
-4. **Version stamping** — one version per compilation session, or per institution
-   completed? Per session is less bookkeeping; per institution is finer-grained
-   traceability.
+1. ~~**Six CSVs, or fewer?**~~ **Decided 4 September 2026: six.** Evidence keeps its own
+   file. A passage supporting several edges is typed once, and the verbatim-match check
+   (rule 11) has a single authoritative copy to verify against the source.
+2. **`amount_basis`** — the four-value vocabulary held, but the source answered a
+   different question first: **not every figure is in cedis.** The notice states one GN
+   transfer as USD 62,255,516.93, GBP 718,528.59 and EUR 4,200. `amount_ghs_m` became
+   `amount_value` with `amount_currency` and `amount_unit` beside it. Still open, and
+   still needing your eye: (a) is there a fifth *basis* you have seen in receiver's
+   reports, and (b) that GN transfer is **one relationship carrying three currencies**,
+   which the current one-amount-per-edge model cannot hold. It sits in `amount_note` for
+   now. If more multi-currency cases turn up as you compile, the right fix is a small
+   `edge_amounts` child table — one edge, many amounts — rather than stretching the edge
+   row. One case does not justify a seventh file; three or four would.
+3. ~~**Should `roles` exist at all yet?**~~ **Kept**, on the migration argument above: it
+   holds three placeholder rows today, but its existence means adding a registry source
+   later is data entry rather than a schema change. Say if you would rather drop it.
+4. ~~**Version stamping.**~~ **Decided 4 September 2026: per compilation session.** One
+   bump per sitting — `v0.1`, `v0.2` — logged in `changelog.csv` with what changed and
+   why.
+
+## 6. Alias types
+
+`also_known_as` entries carry a bracketed type so a raw string in a quoted passage always
+resolves to the right entity without editing the quote:
+
+| marker | meaning | example |
+|---|---|---|
+| `[former]` | earlier name of the same legal person | `EZI Savings and Loans Limited[former]` on FirsTrust |
+| `[later]` | name adopted after the conduct described | `Blackshield Capital Management[later]` on Gold Coast Fund Management |
+| `[typo]` | the source's own misspelling | `FirstTrust[typo]` on FirsTrust |
+| `[variant]` | punctuation or abbreviation difference | `uniCredit Savings & Loans Ltd.[variant]` |
+
+Canonical name is the name the entity held **at the time of the conduct described**, so
+Gold Coast Fund Management Limited is canonical and Blackshield is the alias. Reversing
+that would make the citation read oddly against the notice.
