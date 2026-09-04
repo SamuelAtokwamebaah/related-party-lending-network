@@ -207,6 +207,16 @@ All 69 edges have been checked by hand against the source and the decision recor
 verbatim **at the line its anchor names**, and unless a named counterparty is actually
 named in the passage cited for its edge.
 
+**The two passes were not identical, and the record says which was which.** The 39 edges
+from the Bank of Ghana notice were worked institution by institution from the sheets in
+`docs/review/`, each of which pairs an edge with its passage *and* lists every uncited
+passage in the same section. The 30 edges from the Commission's notice were checked
+against `docs/review/sec/01-sections-with-edges.md`, which reproduces each cited section
+in full; the guarantee that nothing was missed comes from a different control there —
+`02-coverage.md`, which lists all 53 sections of that notice and flags any that names one
+of the 23 without carrying an edge. Per-edge checking shows the edges that exist are
+right. Only the coverage sheet shows that the ones that should exist do.
+
 That guarantees the citations are real. It does not guarantee the *reading* is right — a
 passage can be quoted correctly and still be interpreted too strongly. Two classes of
 judgment are not mechanically checkable and were made by a person:
