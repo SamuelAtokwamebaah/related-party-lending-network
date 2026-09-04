@@ -154,6 +154,7 @@ def loops(g):
             # coming back, and the distinction decides what may be claimed.
             edges = list(g.get_edge_data(u, v).values())
             legs.append({
+                "_from_id": u,
                 "from": g.nodes[u]["name"],
                 "to": g.nodes[v]["name"],
                 "relationships": sorted({d["relationship"] for d in edges}),
@@ -163,13 +164,30 @@ def loops(g):
             "members": members,
             "legs": legs,
             "all_legs_extract_value": all(leg["extracts_value"] for leg in legs),
+            # Whether any leg runs out of one of the 23. A loop where value only
+            # ever moves toward an institution is circular funding, not value
+            # leaving it, and the two should not carry the same name.
+            "leaves_an_institution": any(
+                g.nodes[leg["_from_id"]]["scope_class"] == "core_23"
+                and leg["extracts_value"] for leg in legs),
         })
     # And the cycles themselves come back in search order, which varies too.
     found.sort(key=lambda c: (len(c["members"]), c["members"]))
     closed = [c for c in found if c["all_legs_extract_value"]]
+    for c in found:
+        for leg in c["legs"]:
+            leg.pop("_from_id", None)
     return {
         "count": len(found),
-        "extraction_loops": len(closed),
+        # Every leg moves value. Named for what it is rather than for what it
+        # would be nice to have found: in the one case here, value leaves an
+        # institution to a related party and that related party's client money
+        # funds the same institution. That is circular funding between related
+        # parties. Calling it an extraction loop claims a direction the
+        # documents do not establish.
+        "circular_funding_loops": len(closed),
+        "of_which_leave_an_institution": sum(
+            1 for c in closed if c["leaves_an_institution"]),
         "cycles": found,
     }
 
@@ -195,17 +213,33 @@ def communities(g):
 
 
 def typology(con, layer="related_party"):
-    """The extraction mechanisms the notices describe, counted."""
+    """The mechanisms the notices describe, counted.
+
+    Split by which end of the edge one of the 23 sits at. extracts_value says
+    value moved along the relationship; it does not say which way relative to a
+    failed institution. Counting all of them together as "how value left the
+    institutions" overstated it: of the related-party edges, well under half
+    have one of the 23 as the source, and thirteen involve none of them at all -
+    they are fund managers draining their own related parties, which is a real
+    finding and a different one.
+    """
     rows = con.execute("""
         SELECT rt.category, rt.relationship, rt.extracts_value, COUNT(*) AS n,
-               SUM(CASE WHEN e.confidence = 'documented' THEN 1 ELSE 0 END)
-        FROM edges e JOIN relationship_types rt ON rt.relationship = e.relationship
+               SUM(CASE WHEN e.confidence = 'documented' THEN 1 ELSE 0 END),
+               CASE WHEN se.scope_class = 'core_23' THEN 'from_institution'
+                    WHEN te.scope_class = 'core_23' THEN 'into_institution'
+                    ELSE 'between_third_parties' END
+        FROM edges e
+        JOIN relationship_types rt ON rt.relationship = e.relationship
+        JOIN entities se ON se.entity_id = e.source_entity_id
+        JOIN entities te ON te.entity_id = e.target_entity_id
         WHERE e.confidence <> 'inferred'
           AND (? IS NULL OR rt.layer = ?)
-        GROUP BY rt.category, rt.relationship, rt.extracts_value
+        GROUP BY rt.category, rt.relationship, rt.extracts_value, 6
         ORDER BY rt.category, n DESC""", (layer, layer)).fetchall()
     return [{"category": r[0], "relationship": r[1], "extracts_value": bool(r[2]),
-             "edges": r[3], "named_counterparty": r[4]} for r in rows]
+             "edges": r[3], "named_counterparty": r[4], "direction": r[5]}
+            for r in rows]
 
 
 def placement_layer(con):
@@ -263,6 +297,16 @@ def placement_layer(con):
     }
 
 
+def _median(values):
+    if not values:
+        return None
+    values = sorted(values)
+    mid = len(values) // 2
+    if len(values) % 2:
+        return values[mid]
+    return (values[mid - 1] + values[mid]) / 2
+
+
 def comparative(con):
     """Question 4: do the 17 differ structurally from the other 6?
 
@@ -294,8 +338,10 @@ def comparative(con):
             "with_value_extracting_edge": sum(1 for r in rs if r[7]),
             "total_value_extracting_edges": sum(r[7] for r in rs),
             "with_a_named_counterparty": sum(1 for r in rs if r[9]),
-            "median_cause_count": sorted(r[5] for r in rs if r[5] is not None)[len(rs) // 2]
-            if any(r[5] is not None for r in rs) else None,
+            # Indexing the filtered list by len(rs) would read past its end the
+            # moment any cause_count were missing, and it takes the upper of the
+            # two middle values on an even count rather than the median.
+            "median_cause_count": _median([r[5] for r in rs if r[5] is not None]),
             "quantified_ghs_m": round(sum(amounts), 2) if amounts else None,
             "institutions_with_an_amount": len(amounts),
         }

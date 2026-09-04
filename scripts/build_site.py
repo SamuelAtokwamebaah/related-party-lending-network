@@ -174,8 +174,15 @@ def draw(g, nodes, width, height, evidence, label_size=10, radius=9):
         anchor = evidence.get(key, {}).get("anchor", "")
         amount = ""
         if d["amount_value"]:
-            unit = "m" if d["amount_unit"] == "million" else ""
-            amount = f"{d['amount_currency']} {d['amount_value']:,.2f}{unit}"
+            if d["amount_unit"] == "percent":
+                # A ratio has no currency, and printing the empty one put
+                # "None 9.45" on screen for every figure the Commission states.
+                amount = f"{d['amount_value']:g}%"
+                if d["amount_basis"] == "combined_total":
+                    amount += " combined"
+            else:
+                unit = "m" if d["amount_unit"] == "million" else ""
+                amount = f"{d['amount_currency']} {d['amount_value']:,.2f}{unit}"
         edges.append(
             f'<g class="edge" tabindex="0" role="button"'
             f' data-edge="{html.escape(key)}"'
@@ -259,13 +266,24 @@ def draw(g, nodes, width, height, evidence, label_size=10, radius=9):
 
 
 def evidence_for_edges(con):
+    """The passage to show for each edge: the longest one it cites.
+
+    An edge can carry more than one anchor. Seven of them also cite their
+    section heading, added at v0.4 so rule 12 could check that the passage
+    identifies the institution and not only the counterparty. A heading is a
+    supporting citation, not the evidence, and taking whichever anchor the join
+    happened to return first put "22. UNICREDIT GHANA LIMITED" on screen in
+    place of the passage recording GHS 160.10m - the largest figure here.
+    """
     out = {}
     for edge_id, anchor, quote in con.execute("""
             SELECT e.edge_id, ev.anchor, ev.quote
             FROM edges e
             LEFT JOIN edge_evidence ee ON ee.edge_id = e.edge_id
-            LEFT JOIN evidence ev ON ev.anchor = ee.anchor"""):
-        if edge_id not in out or (anchor and not out[edge_id]["anchor"]):
+            LEFT JOIN evidence ev ON ev.anchor = ee.anchor
+            ORDER BY e.edge_id, ev.anchor"""):
+        best = out.get(edge_id)
+        if best is None or len(quote or "") > len(best["quote"]):
             out[edge_id] = {"anchor": anchor or "", "quote": quote or ""}
     return out
 
@@ -345,7 +363,7 @@ recorded.</div>''')
   <div class="tile"><div class="n">{shape['edges']}</div><div class="k">documented edges</div></div>
   <div class="tile"><div class="n">{shape['components']}</div><div class="k">separate structures</div></div>
   <div class="tile"><div class="n">{hubs_multi}</div><div class="k">entities linking two institutions</div></div>
-  <div class="tile"><div class="n">{metrics["loops"]["extraction_loops"]}</div><div class="k">closed extraction loops</div></div>
+  <div class="tile"><div class="n">{metrics["loops"]["circular_funding_loops"]}</div><div class="k">circular funding loops</div></div>
 </div>
 <p class="section-note">Every edge restates something a regulator published. Hover or focus
 any connection to read the passage behind it.</p>
@@ -362,7 +380,7 @@ Eleven of its 53 sections name one of the 23 institutions.</p>
 <p>The clearest result needs both documents and appears in neither alone. The Bank of Ghana
 records <strong>Midland</strong> as over-exposed to <strong>Liberty Asset Management</strong>;
 the SEC records Liberty holding 9.45% of its funds with Midland. Each held the other, and
-value moves along both arrows &mdash; the one closed extraction loop in the evidence base.</p>
+value moves along both arrows &mdash; the one closed funding loop in the evidence base. Money leaves Midland to a related party, and that party&rsquo;s client funds come back in. Whether either side ended better off is not something these documents say.</p>
 <p>The graph is still in {shape['components']} pieces, and one entity now connects two
 institutions where none did before. A negative result from a single source is a statement
 about that source.</p>
@@ -447,13 +465,26 @@ and the least true one.</p>
               'is a property of that notice, not of the whole record.</p>')
 
     # -- typology: one series, so a single hue and no legend --------------------
-    typ = {}
+    # Only edges running OUT of one of the 23. extracts_value says value moved
+    # along a relationship, not which way: counting every related-party edge
+    # here put fund managers draining their own related parties, and money
+    # flowing into an institution, under a heading that says value left it.
+    typ, elsewhere = {}, 0
     for row in metrics["typology"]:
-        typ[row["category"]] = typ.get(row["category"], 0) + row["edges"]
+        if row["direction"] == "from_institution" and row["extracts_value"]:
+            typ[row["category"]] = typ.get(row["category"], 0) + row["edges"]
+        elif row["extracts_value"]:
+            elsewhere += row["edges"]
     top = max(typ.values())
-    parts.append('''<h2>How value left the institutions</h2>
+    parts.append(f'''<h2>How value left the institutions</h2>
 <p class="section-note">Every edge carries a relationship from a controlled vocabulary.
 On this evidence base the mechanism counts carry more than any network measure does.</p>
+<p>Counted here are only the {sum(typ.values())} relationships that move value
+<em>out of one of the 23</em>. A further {elsewhere} move value along a related-party
+relationship that runs the other way, or between two parties neither of which is one of
+the 23 &mdash; mostly fund managers placing their clients&rsquo; money with their own
+related companies. That is a real finding and a different one, and adding it here would
+make this chart say more than it means.</p>
 <div class="bars">''')
     for cat, n in sorted(typ.items(), key=lambda kv: -kv[1]):
         parts.append(f'''<div class="bar-row"><span class="lab">{html.escape(cat)}</span>
@@ -470,8 +501,15 @@ On this evidence base the mechanism counts carry more than any network measure d
     for u, v, key, d in sorted(g.edges(keys=True, data=True), key=lambda e: e[2]):
         amount = ""
         if d["amount_value"]:
-            unit = "m" if d["amount_unit"] == "million" else ""
-            amount = f"{d['amount_currency']} {d['amount_value']:,.2f}{unit}"
+            if d["amount_unit"] == "percent":
+                # A ratio has no currency, and printing the empty one put
+                # "None 9.45" on screen for every figure the Commission states.
+                amount = f"{d['amount_value']:g}%"
+                if d["amount_basis"] == "combined_total":
+                    amount += " combined"
+            else:
+                unit = "m" if d["amount_unit"] == "million" else ""
+                amount = f"{d['amount_currency']} {d['amount_value']:,.2f}{unit}"
         anchor = evidence.get(key, {}).get("anchor", "")
         parts.append(
             f"<tr><td>{html.escape(key)}</td><td>{html.escape(g.nodes[u]['name'])}</td>"
@@ -537,8 +575,10 @@ CASE_NOTES = [
               "Midland as over-exposed to related parties including Liberty Asset "
               "Management; the SEC records Liberty holding 9.45% of its funds with Midland, "
               "and 10.93% with Liberty Commodities. Each institution held the other, and "
-              "value moves along both arrows. This is the only closed extraction loop in "
-              "the evidence base, and neither regulator&rsquo;s notice shows it alone."}),
+              "value moves along both arrows. It is the only cycle here in which every "
+              "leg moves value, and neither regulator&rsquo;s notice shows it alone. "
+              "Circular funding between related parties is what the documents establish; "
+              "calling it extraction would claim a direction they do not."}),
 ]
 
 

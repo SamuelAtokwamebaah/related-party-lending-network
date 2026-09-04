@@ -115,8 +115,16 @@ CREATE TABLE institution_attributes (
 -- Edges
 -- ---------------------------------------------------------------------------
 
--- The controlled vocabulary. extracts_value marks relationships that move value
--- out of the institution, as against those that only describe structure.
+-- The controlled vocabulary.
+--
+-- extracts_value marks relationships along which value MOVES, as against those
+-- that only describe structure. It is a property of the relationship, not of a
+-- direction of travel relative to the 23: a fund manager placing client money
+-- in one of them carries extracts_value = 1 and moves value *into* that
+-- institution. Whether value left one of the 23 is answered by the edge's
+-- direction as well as this flag, which is why v_institution_profile restricts
+-- to edges where one of the 23 is the source. Reading this column alone as
+-- "value left the institution" overstates it, and did once.
 --
 -- layer separates two things the sources state in similar words. A related_party
 -- relationship is one a regulator described as being with a related party. A
@@ -352,4 +360,8 @@ LEFT JOIN institution_attributes ia ON ia.entity_id = en.entity_id
 LEFT JOIN verification v ON v.edge_id = e.edge_id
 WHERE rt.layer = 'placement'
   AND en.scope_class = 'core_23'
+  -- Inferred edges rest on no source and are excluded from every other figure;
+  -- there are none in this layer today, and this makes sure adding one would
+  -- not quietly put it on the page.
+  AND e.confidence <> 'inferred'
   AND (e.version_removed IS NULL OR e.version_removed = '');

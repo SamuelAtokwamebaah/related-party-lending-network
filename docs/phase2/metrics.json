@@ -132,7 +132,8 @@
   },
   "loops": {
     "count": 4,
-    "extraction_loops": 1,
+    "circular_funding_loops": 1,
+    "of_which_leave_an_institution": 1,
     "cycles": [
       {
         "members": [
@@ -157,7 +158,8 @@
             "extracts_value": true
           }
         ],
-        "all_legs_extract_value": false
+        "all_legs_extract_value": false,
+        "leaves_an_institution": true
       },
       {
         "members": [
@@ -182,7 +184,8 @@
             "extracts_value": true
           }
         ],
-        "all_legs_extract_value": true
+        "all_legs_extract_value": true,
+        "leaves_an_institution": true
       },
       {
         "members": [
@@ -216,7 +219,8 @@
             "extracts_value": true
           }
         ],
-        "all_legs_extract_value": false
+        "all_legs_extract_value": false,
+        "leaves_an_institution": true
       },
       {
         "members": [
@@ -259,7 +263,8 @@
             "extracts_value": true
           }
         ],
-        "all_legs_extract_value": false
+        "all_legs_extract_value": false,
+        "leaves_an_institution": true
       }
     ]
   },
@@ -275,140 +280,176 @@
       "relationship": "proposed_merger_with",
       "extracts_value": false,
       "edges": 1,
-      "named_counterparty": 1
+      "named_counterparty": 1,
+      "direction": "from_institution"
     },
     {
       "category": "corporate_action",
       "relationship": "succeeded",
       "extracts_value": false,
       "edges": 1,
-      "named_counterparty": 1
+      "named_counterparty": 1,
+      "direction": "from_institution"
     },
     {
       "category": "fee_extraction",
       "relationship": "assumed_liability_of_loan_of",
       "extracts_value": true,
       "edges": 1,
-      "named_counterparty": 1
+      "named_counterparty": 1,
+      "direction": "from_institution"
     },
     {
       "category": "fee_extraction",
       "relationship": "pays_management_fees_to",
       "extracts_value": true,
       "edges": 1,
-      "named_counterparty": 0
+      "named_counterparty": 0,
+      "direction": "from_institution"
     },
     {
       "category": "fee_extraction",
       "relationship": "pays_rent_to",
       "extracts_value": true,
       "edges": 1,
-      "named_counterparty": 1
+      "named_counterparty": 1,
+      "direction": "from_institution"
     },
     {
       "category": "lending",
       "relationship": "over_exposed_to",
       "extracts_value": true,
       "edges": 11,
-      "named_counterparty": 5
+      "named_counterparty": 5,
+      "direction": "from_institution"
     },
     {
       "category": "lending",
       "relationship": "lends_to",
       "extracts_value": true,
       "edges": 4,
-      "named_counterparty": 0
+      "named_counterparty": 0,
+      "direction": "from_institution"
     },
     {
       "category": "lending",
       "relationship": "related_party_exposure_to",
       "extracts_value": true,
       "edges": 2,
-      "named_counterparty": 2
+      "named_counterparty": 2,
+      "direction": "from_institution"
     },
     {
       "category": "lending",
       "relationship": "extended_overdraft_facilities_to",
       "extracts_value": true,
       "edges": 1,
-      "named_counterparty": 0
+      "named_counterparty": 0,
+      "direction": "from_institution"
     },
     {
       "category": "lending",
       "relationship": "funded_projects_of",
       "extracts_value": true,
       "edges": 1,
-      "named_counterparty": 0
+      "named_counterparty": 0,
+      "direction": "from_institution"
     },
     {
       "category": "lending",
       "relationship": "overdrawn_current_accounts",
       "extracts_value": true,
       "edges": 1,
-      "named_counterparty": 0
+      "named_counterparty": 0,
+      "direction": "from_institution"
     },
     {
       "category": "lending",
       "relationship": "transferred_collateral_to",
       "extracts_value": true,
       "edges": 1,
-      "named_counterparty": 0
+      "named_counterparty": 0,
+      "direction": "from_institution"
     },
     {
       "category": "ownership",
       "relationship": "acquired",
       "extracts_value": false,
       "edges": 2,
-      "named_counterparty": 2
+      "named_counterparty": 2,
+      "direction": "into_institution"
     },
     {
       "category": "ownership",
       "relationship": "controls",
       "extracts_value": false,
       "edges": 1,
-      "named_counterparty": 0
+      "named_counterparty": 0,
+      "direction": "from_institution"
     },
     {
       "category": "ownership",
       "relationship": "owns",
       "extracts_value": false,
       "edges": 1,
-      "named_counterparty": 1
+      "named_counterparty": 1,
+      "direction": "between_third_parties"
     },
     {
       "category": "ownership",
       "relationship": "part_of",
       "extracts_value": false,
       "edges": 1,
-      "named_counterparty": 1
+      "named_counterparty": 1,
+      "direction": "from_institution"
     },
     {
       "category": "placement",
       "relationship": "placed_funds_with",
       "extracts_value": true,
-      "edges": 20,
-      "named_counterparty": 19
+      "edges": 12,
+      "named_counterparty": 12,
+      "direction": "between_third_parties"
+    },
+    {
+      "category": "placement",
+      "relationship": "placed_funds_with",
+      "extracts_value": true,
+      "edges": 5,
+      "named_counterparty": 5,
+      "direction": "into_institution"
+    },
+    {
+      "category": "placement",
+      "relationship": "placed_funds_with",
+      "extracts_value": true,
+      "edges": 3,
+      "named_counterparty": 2,
+      "direction": "from_institution"
     },
     {
       "category": "placement",
       "relationship": "holds_deposits_in",
       "extracts_value": true,
       "edges": 1,
-      "named_counterparty": 0
+      "named_counterparty": 0,
+      "direction": "from_institution"
     },
     {
       "category": "placement",
       "relationship": "pre_financed_receivable_from",
       "extracts_value": true,
       "edges": 1,
-      "named_counterparty": 1
+      "named_counterparty": 1,
+      "direction": "from_institution"
     },
     {
       "category": "placement",
       "relationship": "transferred_funds_to",
       "extracts_value": true,
       "edges": 1,
-      "named_counterparty": 1
+      "named_counterparty": 1,
+      "direction": "from_institution"
     }
   ],
   "comparative": {
@@ -428,7 +469,7 @@
       "with_value_extracting_edge": 0,
       "total_value_extracting_edges": 0,
       "with_a_named_counterparty": 1,
-      "median_cause_count": 3,
+      "median_cause_count": 3.0,
       "quantified_ghs_m": null,
       "institutions_with_an_amount": 0
     },

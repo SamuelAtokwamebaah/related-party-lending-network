@@ -85,9 +85,9 @@ project is expected to produce:
 - **No claim of "one insider network" is available.** The public record describes
   seventeen separate structures.
 
-What carries the analysis instead is the typology of extraction mechanisms, the
-per-institution comparison on structural attributes, and three worked examples. Those do
-not depend on connectivity.
+What carries the analysis instead is the typology of mechanisms, the per-institution
+comparison on structural attributes, and three worked examples. Those do not depend on
+connectivity — though see section 7 on how much the comparison can actually bear.
 
 ## 5. Amounts are barely comparable, and most edges have none
 
@@ -102,8 +102,9 @@ Twenty-nine of sixty-nine edges carry a figure. They are not the same kind of fi
 `amount_basis` records *how a figure was stated*, and only exact cedi amounts on
 value-extracting edges are ever summed. **GHS 261.72m is quantified across 7 of the 17
 flagged institutions.** That is a floor on a floor: it is what two notices happened to
-state in cedis, not an estimate of what was extracted. The actual losses are much larger
-and this project does not estimate them.
+state in cedis, not an estimate of what was extracted. It is also a stock of exposure
+rather than a loss — see section 9. The actual losses are much larger and this project
+does not estimate them.
 
 One transfer is stated in three currencies at once (USD, GBP and EUR) and is held in a
 note rather than as a figure, because the schema will not let three currencies become one
@@ -125,7 +126,56 @@ for related-party exposure — Commerz — appears in the Commission's notice on
 end of a placement its fund manager describes as related-party. The 17-against-6 split is
 a property of the Bank of Ghana notice, not of the record.
 
-## 7. Five entity-resolution questions are open
+## 7. The 17-against-6 comparison is a consistency check, not a test
+
+Section 4 of the findings reports that every institution carrying a value-extracting edge
+is one of the 17 the Bank of Ghana flagged for related-party exposure, and that none of
+the other six carries one. A clean separation on 23 observations looks like a result. It
+is not one.
+
+The `related_party_exposure` flag comes from `ghana-banking-collapse`, which coded it from
+the Bank of Ghana notice of 16 August 2019. The edges were extracted from **the same
+notice**. Two readings of one document agreeing tells you the extraction pipeline neither
+dropped an institution nor invented one — genuinely worth knowing, and the reason it is
+reported — but it is not corroboration by a second source, and the separation was close to
+guaranteed by where both variables come from.
+
+The same caution applies to any future comparison built on these two variables. They are
+not independent and must not be treated as though they were.
+
+## 8. "Value moves" is not the same as "value left"
+
+Each relationship type carries an `extracts_value` flag. It means value moves **along the
+relationship**. It does not say which way relative to a failed institution, and the two
+were conflated once in this repository's own output.
+
+Of the related-party edges, 30 run out of one of the 23. A further 17 either point into an
+institution — a fund manager placing client money there moves value *in* — or run between
+two parties neither of which is one of the 23, mostly fund managers placing their clients'
+money with their own related companies. That last group is a real finding about those fund
+managers and a different finding from anything about the 23.
+
+The findings and the page now report direction alongside the flag, and the mechanism
+counts include only the edges running out of an institution. The one cycle in which every
+leg moves value is called a **circular funding loop** rather than an extraction loop, for
+the same reason: value leaves Midland to a related party and that party's client money
+funds Midland. Whether either side ended up better off is a question these documents do
+not answer.
+
+## 9. Exposure is not loss
+
+Every cedi figure here is a **stock of exposure at a point in time** — a related-party
+credit exposure, a liability assumed, a receivable pre-financed. None is a realised loss,
+a recovery, or a transfer out of the institution's estate. GHS 160.10m of over-exposure at
+uniCredit says the concentration breached the limit, not that GHS 160.10m disappeared.
+
+The figures are also of four incompatible kinds and the schema records which
+(`amount_basis`), so nothing sums a floor into an exact figure or a percentage into a cedi
+total. But even the cedi total is a heterogeneous aggregate of exposure types, and it
+should be described as *quantified related-party exposure the notices happened to state*,
+never as an amount extracted.
+
+## 10. Five entity-resolution questions are open
 
 `data/resolution_review.csv` holds five candidates marked `undecided`. Nothing in hand
 settles them, and the tooling never merges entities on its own. The one that would change
@@ -138,7 +188,7 @@ A shared name is not evidence, and none of these are resolved on one. One candid
 closed at v0.4 on a document rather than on a name: the Commission calls Legacy Capital
 Savings a related party of Legacy Fund Management.
 
-## 8. One institution's position is contested
+## 11. One institution's position is contested
 
 On **21 May 2026 the Court of Appeal quashed** the Bank of Ghana's revocation of GN
 Savings and Loans' licence and ordered it restored. The Bank has appealed to the Supreme
@@ -150,7 +200,7 @@ note wherever it appears, because this project takes no position on live litigat
 appeal is recorded from press reporting; **the judgment itself has not been read**, and
 the source row forbids citing it as evidence for any edge until it is.
 
-## 9. What verification does and does not guarantee
+## 12. What verification does and does not guarantee
 
 All 69 edges have been checked by hand against the source and the decision recorded in
 `data/verification.csv`. The loader additionally refuses to build unless every quote is
@@ -170,7 +220,7 @@ missed relationship would hide, and it has caught one — the Commission's notic
 under-read at v0.3, and eight sections naming one of the 23 went unnoticed until every
 section was listed rather than only the cited ones.
 
-## 10. What would change the answer
+## 13. What would change the answer
 
 In rough order of value against effort:
 

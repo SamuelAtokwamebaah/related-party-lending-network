@@ -69,9 +69,12 @@ both ends named, 18 name the relationship but not the counterparty, and 2 are in
 and excluded from every figure. Of those, **54 edges form the related-party graph** and
 13 sit in a separate placement layer described below.
 
-Built independently from passages, it reproduces the published **17-of-23** finding: the
-17 institutions carrying a value-extracting edge are exactly the 17 flagged for
-related-party exposure in `ghana-banking-collapse`.
+The 17 institutions carrying a value-extracting edge are exactly the 17 flagged for
+related-party exposure in `ghana-banking-collapse` — but that agreement is a **consistency
+check, not a confirmation**. Both sides are readings of the same Bank of Ghana notice, so
+the separation was close to guaranteed. It shows the extraction pipeline neither dropped
+an institution nor invented one. It is not a second source corroborating the first, and
+this repository does not present it as one.
 
 It also surfaced the constraint that shapes the whole project: **the documented graph
 falls into 17 disconnected components**, largest 10 nodes, so whole-network centrality and
@@ -87,12 +90,14 @@ sourcing standard rather than against it:
   notice alone, that no entity did. That was stated as a property of the document — *the
   notice does not name one* — rather than of the world, which is why the finding could be
   updated instead of retracted.
-- **The first closed extraction loop appears in neither notice alone.** The Bank of Ghana
+- **The one closed funding loop appears in neither notice alone.** The Bank of Ghana
   records Midland as over-exposed to Liberty Asset Management; the Securities and Exchange
   Commission records Liberty placing 9.45% of its funds with Midland. Each held the other,
-  and value moves along both arrows. Four cycles exist in the graph and exactly one
-  qualifies: the other three carry a merger application or an acquisition on some leg,
-  which is structure, not extraction.
+  and value moves along both arrows. Four cycles exist and exactly one qualifies: the
+  other three carry a merger application or an acquisition on some leg, which is
+  structure, not money. It is called a *funding* loop rather than an extraction loop on
+  purpose — value leaves Midland to a related party and that party's client money funds
+  Midland. Whether either side ended better off is not something these documents say.
 
 The three worked examples are the uniCredit / uniSecurities / Hoda component, the Ideal
 Financial Holdings cluster, and Midland / Liberty. GN Savings and Loans is **not** among

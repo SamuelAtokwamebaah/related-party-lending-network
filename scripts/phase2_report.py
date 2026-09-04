@@ -139,8 +139,16 @@ def write_findings(m, path):
         "and control over it returns, or two institutions fund each other. Direction "
         "matters, so this runs on the directed graph.",
         "",
-        f"**Cycles found: {c['count']}. Of those, closed extraction loops — where "
-        f"every leg moves value: {c['extraction_loops']}.**",
+        f"**Cycles found: {c['count']}. Of those, closed loops where every leg moves "
+        f"value: {c['circular_funding_loops']}.**",
+        "",
+        "These are named *circular funding* rather than *extraction* loops, which is "
+        "the weaker and more accurate word. A leg marked as moving value says the "
+        "relationship moves money; it does not say the money left one of the 23. In "
+        "the one case below it moves both ways — out of the institution to a related "
+        "party, and back in from that party's client funds. That is circular funding "
+        "between related parties. Whether either side ended up better off is a "
+        "question these documents do not answer.",
         "",
     ]
     if c["cycles"]:
@@ -151,7 +159,7 @@ def write_findings(m, path):
                 md.append(f"    - {leg['from']} → {leg['to']}: "
                           f"`{'`, `'.join(leg['relationships'])}` — {mark}")
             md.append("")
-        if not c["extraction_loops"]:
+        if not c["circular_funding_loops"]:
             md += [
                 "**None of these is a closed extraction loop.** In each, at least one "
                 "leg is a relationship that does not move value, so the arrows return "
@@ -249,9 +257,17 @@ def write_findings(m, path):
         "",
         "**The groups separate cleanly.** Every institution carrying a "
         "value-extracting edge is one of the flagged 17, and none outside the 17 "
-        "carries one. The graph was built from passages without reference to the "
-        "flag, so this is an independent reconstruction of that finding rather than a "
-        "restatement of it.",
+        "carries one.",
+        "",
+        "**This is a consistency check, not a confirmation, and the distinction "
+        "matters.** The flag comes from `ghana-banking-collapse`, which coded it from "
+        "the Bank of Ghana notice of 16 August 2019. The edges were extracted from "
+        "the same notice. Two readings of one document agreeing is evidence that the "
+        "extraction pipeline neither dropped an institution nor invented one — which "
+        "is worth knowing, and is why it is reported — but it is not a second source "
+        "corroborating the first. A perfect separation here was close to guaranteed "
+        "by where both variables come from, and it should not be read as the graph "
+        "validating the published count.",
         "",
         "What it does **not** show is a difference in connectedness. Outside the two "
         "case networks, almost every institution's related parties attach only to it, "
@@ -272,20 +288,44 @@ def write_findings(m, path):
         "",
         "---",
         "",
-        "## 5. The extraction mechanisms, counted",
+        "## 5. The mechanisms, counted, and which way value moved",
         "",
         "Each edge carries a relationship from a controlled vocabulary, and each "
-        "relationship is marked for whether it moves value *out* of the institution. "
-        "This part of the analysis does not depend on connectivity, and on this "
-        "evidence base it carries more weight than the network measures do.",
+        "relationship is marked for whether value moves along it. This part of the "
+        "analysis does not depend on connectivity, and on this evidence base it "
+        "carries more weight than the network measures do.",
         "",
-        "| category | relationship | extracts value | edges | counterparty named |",
-        "|---|---|---|---|---|",
+        "**Direction is reported separately from the flag, because they are different "
+        "things.** `extracts_value` says money moves along the relationship. It does "
+        "not say the money left one of the 23: a fund manager placing client funds in "
+        "an institution moves value *into* it, and a fund manager placing them with "
+        "its own related company involves none of the 23 at all. Only the "
+        "`from_institution` rows below describe value leaving a failed institution.",
+        "",
+        "| direction | category | relationship | moves value | edges | counterparty named |",
+        "|---|---|---|---|---|---|",
     ]
-    for row in m["typology"]:
-        md.append(f"| {row['category']} | `{row['relationship']}` | "
+    order = {"from_institution": 0, "into_institution": 1, "between_third_parties": 2}
+    for row in sorted(m["typology"],
+                      key=lambda r: (order.get(r["direction"], 9), r["category"],
+                                     -r["edges"], r["relationship"])):
+        md.append(f"| `{row['direction']}` | {row['category']} | "
+                  f"`{row['relationship']}` | "
                   f"{'yes' if row['extracts_value'] else 'no'} | {row['edges']} "
                   f"| {row['named_counterparty']} |")
+    out_of = sum(r["edges"] for r in m["typology"]
+                 if r["direction"] == "from_institution" and r["extracts_value"])
+    other = sum(r["edges"] for r in m["typology"]
+                if r["direction"] != "from_institution" and r["extracts_value"])
+    md += [
+        "",
+        f"**{out_of} relationships move value out of one of the 23.** A further "
+        f"{other} move value along a related-party relationship pointing the other "
+        "way, or between two parties neither of which is one of the 23. The second "
+        "group is mostly fund managers placing their clients' money with their own "
+        "related companies, which is the Commission's finding about those firms "
+        "rather than this project's finding about the 23.",
+    ]
 
     pl = m["placement_layer"]
     ifa = pl["if_admitted"]
