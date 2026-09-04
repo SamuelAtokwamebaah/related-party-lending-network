@@ -260,6 +260,52 @@ def validate(tables, problems):
                          f"source_id '{row['source_id']}' not in sources.csv")
 
 
+def attr_key(name):
+    """Normalise an institution name for joining the vendored dataset."""
+    name = re.sub(r"\(.*?\)", " ", name.lower())
+    name = re.sub(r"[^a-z ]", " ", name)
+    drop = {"limited", "ltd", "company", "co", "the", "savings", "and", "loans",
+            "loan", "finance", "financial", "services", "house", "ghana"}
+    return tuple(sorted(w for w in name.split() if w not in drop))
+
+
+def institution_attribute_rows(con):
+    """Institution attributes from the vendored ghana-banking-collapse dataset.
+
+    Carried over rather than retyped. Joined on a normalised name because the
+    notice and the dataset spell several institutions differently.
+    """
+    path = DATA / "vendor" / "savings_loans_verified.csv"
+    if not path.exists():
+        return []
+    with path.open(encoding="utf-8", newline="") as fh:
+        source = {attr_key(r["institution_name"]): r for r in csv.DictReader(fh)}
+
+    yn = lambda v: 1 if (v or "").strip().upper() == "Y" else 0
+    rows, unmatched = [], []
+    for entity_id, name in con.execute(
+            "SELECT entity_id, canonical_name FROM entities WHERE scope_class = 'core_23'"):
+        # Try the canonical name, then the aliases. The vendored dataset carries
+        # the notice's own misspelling of FirsTrust, which is registered as a
+        # [typo] alias - so the alias table does the join.
+        candidates = [name] + [a for (a,) in con.execute(
+            "SELECT alias_name FROM aliases WHERE entity_id = ?", (entity_id,))]
+        r = next((source[k] for k in map(attr_key, candidates) if k in source), None)
+        if r is None:
+            unmatched.append(name)
+            continue
+        rows.append((entity_id, r["licence_type"] or None, r["incorporated"] or None,
+                     r["licensed"] or None, r["insolvent_since"] or None,
+                     number(r["net_worth_ghs_m"]), number(r["car_pct"]),
+                     yn(r["related_party_exposure"]), yn(r["governance_failure"]),
+                     yn(r["liquidity_failure"]), yn(r["misreporting"]),
+                     yn(r["high_npl"]),
+                     int(r["cause_count"]) if (r["cause_count"] or "").strip() else None))
+    if unmatched:
+        print(f"  note: no vendored attributes matched for {unmatched}")
+    return rows
+
+
 def nullable(value):
     value = (value or "").strip()
     return value if value else None
@@ -343,6 +389,16 @@ def build(tables, db_path):
                      for a in split_list(r.get("evidence_anchors"))])
 
     con.executemany(
+        "INSERT INTO verification VALUES (?,?,?,?,?)",
+        [(r["edge_id"], r["decision"] or "pending", nullable(r["note"]),
+          nullable(r["verified_date"]), nullable(r["verified_by"]))
+         for r in tables["verification"]])
+
+    con.executemany(
+        "INSERT INTO institution_attributes VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?)",
+        institution_attribute_rows(con))
+
+    con.executemany(
         "INSERT INTO resolution_review VALUES (?,?,?,?,?,?,?,?,?,?)",
         [(r["candidate_id"], r["name_a"], nullable(r["entity_id_a"]), r["name_b"],
           nullable(r["entity_id_b"]), number(r["similarity"]), nullable(r["reason"]),
@@ -362,8 +418,9 @@ def build(tables, db_path):
 def summarise(con):
     q = lambda sql: con.execute(sql).fetchone()[0]
     print("\nbuilt:")
-    for table in ("sources", "evidence", "entities", "aliases", "relationship_types",
-                  "edges", "edge_evidence", "roles", "resolution_review", "changelog"):
+    for table in ("sources", "evidence", "entities", "aliases", "institution_attributes",
+                  "relationship_types", "edges", "edge_evidence", "roles",
+                  "verification", "resolution_review", "changelog"):
         print(f"  {table:22} {q(f'SELECT COUNT(*) FROM {table}'):>4}")
 
     print("\nedges by confidence:")
@@ -374,6 +431,17 @@ def summarise(con):
     extracting = q("SELECT COUNT(*) FROM edges e JOIN relationship_types rt "
                    "ON rt.relationship = e.relationship WHERE rt.extracts_value = 1")
     print(f"\nvalue-extracting edges  {extracting:>4} of {q('SELECT COUNT(*) FROM edges')}")
+
+    print("\nverification:")
+    seen = dict(con.execute(
+        "SELECT COALESCE(v.decision,'pending'), COUNT(*) FROM edges e "
+        "LEFT JOIN verification v ON v.edge_id = e.edge_id GROUP BY 1"))
+    for state in ("confirmed", "corrected", "rejected", "pending"):
+        if seen.get(state):
+            print(f"  {state:22} {seen[state]:>4}")
+    if seen.get("pending"):
+        print(f"  -> {seen['pending']} edge(s) not yet checked against the notice; "
+              f"see docs/review/README.md")
 
     undecided = q("SELECT COUNT(*) FROM resolution_review WHERE decision = 'undecided'")
     if undecided:
@@ -395,6 +463,9 @@ def main():
     tables = {name: read(f"{name}.csv") for name in (
         "sources", "evidence", "entities", "relationship_types",
         "edges", "roles", "resolution_review", "changelog")}
+    # Optional: created by scripts/build_review_pack.py.
+    path = DATA / "verification.csv"
+    tables["verification"] = read("verification.csv") if path.exists() else []
 
     problems = Problems()
     validate(tables, problems)

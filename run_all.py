@@ -24,6 +24,8 @@ STEPS = [
      [sys.executable, "scripts/phase1_seed_from_phase0.py"]),
     ("Validate and build the graph database",
      [sys.executable, "scripts/load.py"]),
+    ("Rebuild the verification pack",
+     [sys.executable, "scripts/build_review_pack.py"]),
 ]
 
 

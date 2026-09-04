@@ -3,10 +3,12 @@
 Modelling the insider relationships behind Ghana's 2019 savings & loans failures as a
 network, built only from what the Bank of Ghana published.
 
-> **Status: Phase 0 complete; Phase 1 schema and templates under review.** This
-> repository is private while the evidence base is assembled. Nothing here is a finding about any institution or person — Phase 0 is a
-> count of what the source documents state, and every passage used is quoted and
-> anchored to a line number in the published notice.
+> **Status: Phase 1 built; evidence base awaiting verification.** This repository is
+> private while the evidence base is assembled. The 39 seeded edges are a machine-built
+> first pass and none has yet been checked against the notice by hand — see
+> [docs/review/](docs/review/). Nothing here is a finding about any institution or
+> person: it is a record of what the source documents state, with every passage quoted
+> and anchored to a line in the published notice.
 
 ---
 
@@ -44,14 +46,20 @@ It is the third repository in a deliberate arc:
 
 ## Where things stand
 
-Phase 0 read the 16 August 2019 notice end to end and inventoried what it can support:
-41 candidate edges over 52 nodes, of which 22 are documented with both ends named. The
-extraction reproduces the published 17-of-23 finding by an independent route.
+Phase 0 read the 16 August 2019 notice end to end and inventoried what it can support.
+The evidence base now holds 55 entities and 39 edges, of which 19 are documented with
+both ends named and 18 name the relationship but not the counterparty.
+
+Built independently from passages, it reproduces the published **17-of-23** finding: the
+17 institutions carrying a value-extracting edge are exactly the 17 flagged for
+related-party exposure in `ghana-banking-collapse`.
 
 It also surfaced the constraint that shapes the whole project: **the documented graph
-falls into 17 disconnected components**, so whole-network centrality and community
-detection are not yet meaningful and will not be presented as though they were. Two
-genuine multi-entity structures do exist in the public record and carry the analysis.
+falls into 17 disconnected components**, largest 6 nodes, so whole-network centrality and
+community detection are not yet meaningful and will not be presented as though they were.
+Two genuine multi-entity structures do exist in the record and carry the analysis — the
+Ideal Financial Holdings / FirsTrust / Ideal Finance cluster, and GN Savings and Loans
+within the Groupe Nduom network.
 
 The full assessment, including the recommended project mode and the open questions, is in
 [docs/phase0/SOURCE-INVENTORY.md](docs/phase0/SOURCE-INVENTORY.md).
@@ -60,26 +68,41 @@ The full assessment, including the recommended project mode and the open questio
 
 ```
 data/         the evidence base: sources, entities, edges, evidence, roles,
-              changelog, and the entity-resolution review file
+              verification, changelog, entity-resolution review
 data/raw/     extracted text of the source notice, as working copy
+data/vendor/  the verified dataset carried over from ghana-banking-collapse
 sources/      the source document as published
+sql/          schema.sql - nine tables and two views
 scripts/      phase0_extract_evidence.py    splits the notice, extracts evidence
-              phase1_seed_from_phase0.py    reshapes Phase 0 into the CSV model
-docs/phase0/  SOURCE-INVENTORY.md   the feasibility assessment and mode decision
-              evidence-extract.md   every matched bullet, quoted and anchored
-              source-inventory.csv  one row per institution
-              candidate-edges.csv   hand-curated candidate edges
-docs/phase1/  SCHEMA-PROPOSAL.md    the data model, under review
+              phase1_seed_from_phase0.py    one-off seed of the CSV model
+              load.py                       validates, then builds the database
+              build_review_pack.py          builds the verification sheets
+docs/phase0/  SOURCE-INVENTORY.md   feasibility, mode decision, corrections
+docs/phase1/  SCHEMA-PROPOSAL.md    the data model as built
+docs/review/  one verification sheet per institution
 ```
 
-## Reproducing Phase 0
+## Reproducing
 
 ```
-python scripts/phase0_extract_evidence.py
+python run_all.py
 ```
 
-Standard library only. It rewrites `docs/phase0/evidence-extract.md` and
-`docs/phase0/source-inventory.csv` from the source text.
+Standard library only. Extracts the evidence from the notice, builds the database from
+the CSVs, and rebuilds the verification pack. The database is a build artefact and is not
+committed: if a figure is wrong, a CSV row is wrong.
+
+The loader refuses to build if any validation rule fails, and names the row and the
+reason. Two rules carry most of the weight: a quote must be verbatim **at the line its
+anchor names**, and a named counterparty must actually be named in the passage cited for
+its edge. Both exist because both failures happened.
+
+## Verification
+
+The seeded rows were built by script and none is verified. `docs/review/` holds one sheet
+per institution pairing each edge with the passage behind it, and listing every passage in
+that section that no edge cites — which is where a missed relationship hides. Decisions go
+in `data/verification.csv`, and the loader reports how many edges remain unchecked.
 
 ## Licence
 

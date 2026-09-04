@@ -10,6 +10,7 @@
 
 PRAGMA foreign_keys = ON;
 
+DROP TABLE IF EXISTS verification;
 DROP TABLE IF EXISTS edge_evidence;
 DROP TABLE IF EXISTS role_evidence;
 DROP TABLE IF EXISTS entity_evidence;
@@ -152,6 +153,17 @@ CREATE TABLE edges (
     CHECK (confidence <> 'inferred' OR (review_note IS NOT NULL AND review_note <> ''))
 );
 
+-- Whether a human has checked a seeded row against the notice. Seeded rows are
+-- a first pass; nothing here is verified until it carries a decision.
+CREATE TABLE verification (
+    edge_id        TEXT PRIMARY KEY REFERENCES edges(edge_id),
+    decision       TEXT NOT NULL CHECK (decision IN (
+                       'pending', 'confirmed', 'corrected', 'rejected')),
+    note           TEXT,
+    verified_date  TEXT,
+    verified_by    TEXT
+);
+
 CREATE TABLE edge_evidence (
     edge_id  TEXT NOT NULL REFERENCES edges(edge_id),
     anchor   TEXT NOT NULL REFERENCES evidence(anchor),
@@ -242,12 +254,14 @@ SELECT
     e.amount_unit,
     e.amount_basis,
     e.confidence,
+    COALESCE(v.decision, 'pending') AS verification,
     ev.anchor,
     ev.quote
 FROM edges e
 JOIN entities se ON se.entity_id = e.source_entity_id
 JOIN entities te ON te.entity_id = e.target_entity_id
 JOIN relationship_types rt ON rt.relationship = e.relationship
+LEFT JOIN verification v ON v.edge_id = e.edge_id
 LEFT JOIN edge_evidence ee ON ee.edge_id = e.edge_id
 LEFT JOIN evidence ev ON ev.anchor = ee.anchor
 WHERE e.version_removed IS NULL OR e.version_removed = '';
@@ -264,8 +278,13 @@ SELECT
     COUNT(DISTINCT e.target_entity_id)                  AS distinct_counterparties,
     SUM(CASE WHEN e.confidence = 'documented' THEN 1 ELSE 0 END)        AS named_edges,
     SUM(CASE WHEN e.confidence = 'documented_unnamed' THEN 1 ELSE 0 END) AS unnamed_edges,
+    -- Only value-extracting edges are summed. amount_basis records how a
+    -- figure was stated, not what it measures, so without this filter a
+    -- projected merger cash injection lands in the same total as a
+    -- related-party exposure.
     SUM(CASE WHEN e.amount_basis = 'exact' AND e.amount_currency = 'GHS'
-             THEN e.amount_value END)                                   AS exact_amount_ghs_m
+                  AND rt.extracts_value = 1
+             THEN e.amount_value END)                                   AS extracted_ghs_m
 FROM entities en
 JOIN edges e ON e.source_entity_id = en.entity_id
 JOIN relationship_types rt ON rt.relationship = e.relationship

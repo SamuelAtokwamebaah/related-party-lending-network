@@ -13,6 +13,7 @@ Run once:  python scripts/phase1_seed_from_phase0.py
 Outputs the six templates plus relationship_types.csv into data/.
 """
 
+import argparse
 import csv
 import sys
 from pathlib import Path
@@ -25,6 +26,7 @@ from phase0_extract_evidence import blocks, read_lines, tidy  # noqa: E402
 CANDIDATES = ROOT / "docs" / "phase0" / "candidate-edges.csv"
 DATA = ROOT / "data"
 SOURCE_ID = "bog-2019-08-16-savings-loans-revocation"
+FORCE = False
 VERSION = "v0.1"
 TODAY = "2026-09-04"
 
@@ -241,8 +243,17 @@ def build_evidence_index():
     return index
 
 
+SKIPPED = []
+
+
 def write_csv(name, header, rows):
     path = DATA / name
+    # This is a one-off seed. Once a file exists it is hand-maintained, and
+    # re-running must not overwrite compilation work. --force overrides.
+    if path.exists() and not FORCE:
+        SKIPPED.append(name)
+        print(f"  {name:26}    - exists, left alone")
+        return path
     with path.open("w", newline="", encoding="utf-8") as fh:
         w = csv.writer(fh)
         w.writerow(header)
@@ -252,6 +263,11 @@ def write_csv(name, header, rows):
 
 
 def main():
+    global FORCE
+    ap = argparse.ArgumentParser(description=__doc__)
+    ap.add_argument("--force", action="store_true",
+                    help="overwrite existing CSVs, discarding any hand edits")
+    FORCE = ap.parse_args().force
     DATA.mkdir(parents=True, exist_ok=True)
     evidence_index = build_evidence_index()
     candidates = list(csv.DictReader(CANDIDATES.open(encoding="utf-8")))
