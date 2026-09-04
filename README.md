@@ -3,7 +3,7 @@
 Modelling the insider relationships behind Ghana's 2019 savings & loans failures as a
 network, built only from what the Bank of Ghana published.
 
-> **Status: Phase 1 built; evidence base awaiting verification.** This repository is
+> **Status: Phase 2 analysis built on a provisional evidence base.** This repository is
 > private while the evidence base is assembled. The 39 seeded edges are a machine-built
 > first pass and none has yet been checked against the notice by hand — see
 > [docs/review/](docs/review/). Nothing here is a finding about any institution or
@@ -77,8 +77,12 @@ scripts/      phase0_extract_evidence.py    splits the notice, extracts evidence
               phase1_seed_from_phase0.py    one-off seed of the CSV model
               load.py                       validates, then builds the database
               build_review_pack.py          builds the verification sheets
+              analyse_graph.py              builds the graph, computes the metrics
+              phase2_report.py              writes the findings document
 docs/phase0/  SOURCE-INVENTORY.md   feasibility, mode decision, corrections
 docs/phase1/  SCHEMA-PROPOSAL.md    the data model as built
+docs/phase2/  FINDINGS.md           the analyses, with what they cannot show
+              metrics.json          the same numbers, machine-readable
 docs/review/  one verification sheet per institution
 ```
 
@@ -88,8 +92,9 @@ docs/review/  one verification sheet per institution
 python run_all.py
 ```
 
-Standard library only. Extracts the evidence from the notice, builds the database from
-the CSVs, and rebuilds the verification pack. The database is a build artefact and is not
+Needs `networkx` (`pip install -r requirements.txt`); everything else is standard
+library. Extracts the evidence from the notice, builds the database from the CSVs,
+rebuilds the verification pack, and runs the analyses. The database is a build artefact and is not
 committed: if a figure is wrong, a CSV row is wrong.
 
 The loader refuses to build if any validation rule fails, and names the row and the

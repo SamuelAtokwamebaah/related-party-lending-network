@@ -26,6 +26,8 @@ STEPS = [
      [sys.executable, "scripts/load.py"]),
     ("Rebuild the verification pack",
      [sys.executable, "scripts/build_review_pack.py"]),
+    ("Build the graph and run the Phase 2 analyses",
+     [sys.executable, "scripts/phase2_report.py"]),
 ]
 
 

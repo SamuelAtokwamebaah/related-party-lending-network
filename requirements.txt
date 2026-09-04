@@ -1,4 +1,3 @@
-# Phase 0 uses only the standard library. NetworkX and the rest arrive at Phase 2.
-# pandas>=2.0
-# networkx>=3.0
-# plotly>=5.0
+# Phase 0 and Phase 1 use the standard library only.
+# Phase 2 builds the graph.
+networkx>=3.0

@@ -1,0 +1,630 @@
+{
+  "shape": {
+    "nodes": 50,
+    "edges": 37,
+    "components": 17,
+    "component_sizes": [
+      6,
+      6,
+      4,
+      3,
+      3,
+      3,
+      3,
+      3,
+      3,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2
+    ],
+    "largest_components": [
+      [
+        "FirsTrust Savings and Loans Limited",
+        "Ideal Capital Partners",
+        "Ideal Finance Limited",
+        "Ideal Financial Holdings",
+        "UNNAMED affiliates of Ideal Finance",
+        "UNNAMED six related companies of FirsTrust"
+      ],
+      [
+        "GN Savings and Loans Ltd.",
+        "Ghana Growth Fund",
+        "Gold Coast Fund Management Limited",
+        "Groupe Nduom",
+        "International Business Solutions",
+        "UNNAMED related parties of GN in the Groupe Nduom network"
+      ]
+    ],
+    "density": 0.0139
+  },
+  "hubs": {
+    "nonzero_betweenness": 11,
+    "max_betweenness": 0.0077,
+    "top_degree": [
+      {
+        "name": "GN Savings and Loans Ltd.",
+        "type": "institution",
+        "degree": 4,
+        "degree_centrality": 0.0816,
+        "betweenness": 0.0077
+      },
+      {
+        "name": "FirsTrust Savings and Loans Limited",
+        "type": "institution",
+        "degree": 3,
+        "degree_centrality": 0.0612,
+        "betweenness": 0.006
+      },
+      {
+        "name": "Ideal Finance Limited",
+        "type": "institution",
+        "degree": 3,
+        "degree_centrality": 0.0612,
+        "betweenness": 0.006
+      },
+      {
+        "name": "Midland Savings and Loans Company Limited",
+        "type": "institution",
+        "degree": 3,
+        "degree_centrality": 0.0612,
+        "betweenness": 0.0026
+      },
+      {
+        "name": "AllTime Finance Limited",
+        "type": "institution",
+        "degree": 2,
+        "degree_centrality": 0.0408,
+        "betweenness": 0.0009
+      },
+      {
+        "name": "CDH Savings and Loans Ltd.",
+        "type": "institution",
+        "degree": 2,
+        "degree_centrality": 0.0408,
+        "betweenness": 0.0009
+      },
+      {
+        "name": "Crest Finance House Limited",
+        "type": "institution",
+        "degree": 2,
+        "degree_centrality": 0.0408,
+        "betweenness": 0.0009
+      },
+      {
+        "name": "First African Savings and Loans Limited",
+        "type": "institution",
+        "degree": 2,
+        "degree_centrality": 0.0408,
+        "betweenness": 0.0009
+      },
+      {
+        "name": "First Allied Savings and Loans Limited",
+        "type": "institution",
+        "degree": 2,
+        "degree_centrality": 0.0408,
+        "betweenness": 0.0009
+      },
+      {
+        "name": "International Business Solutions",
+        "type": "corporate_entity",
+        "degree": 2,
+        "degree_centrality": 0.0408,
+        "betweenness": 0.0034
+      }
+    ],
+    "connect_multiple_institutions": {}
+  },
+  "loops": {
+    "count": 1,
+    "extraction_loops": 0,
+    "cycles": [
+      {
+        "members": [
+          "FirsTrust Savings and Loans Limited",
+          "Ideal Finance Limited"
+        ],
+        "legs": [
+          {
+            "from": "FirsTrust Savings and Loans Limited",
+            "to": "Ideal Finance Limited",
+            "relationships": [
+              "proposed_merger_with"
+            ],
+            "extracts_value": false
+          },
+          {
+            "from": "Ideal Finance Limited",
+            "to": "FirsTrust Savings and Loans Limited",
+            "relationships": [
+              "related_party_exposure_to"
+            ],
+            "extracts_value": true
+          }
+        ],
+        "all_legs_extract_value": false
+      }
+    ]
+  },
+  "communities": {
+    "components": 17,
+    "communities_detected": 17,
+    "communities_equal_components": true,
+    "modularity": 0.9164
+  },
+  "typology": [
+    {
+      "category": "corporate_action",
+      "relationship": "proposed_merger_with",
+      "extracts_value": false,
+      "edges": 1,
+      "named_counterparty": 1
+    },
+    {
+      "category": "corporate_action",
+      "relationship": "succeeded",
+      "extracts_value": false,
+      "edges": 1,
+      "named_counterparty": 1
+    },
+    {
+      "category": "fee_extraction",
+      "relationship": "assumed_liability_of_loan_of",
+      "extracts_value": true,
+      "edges": 1,
+      "named_counterparty": 1
+    },
+    {
+      "category": "fee_extraction",
+      "relationship": "pays_management_fees_to",
+      "extracts_value": true,
+      "edges": 1,
+      "named_counterparty": 0
+    },
+    {
+      "category": "fee_extraction",
+      "relationship": "pays_rent_to",
+      "extracts_value": true,
+      "edges": 1,
+      "named_counterparty": 1
+    },
+    {
+      "category": "lending",
+      "relationship": "over_exposed_to",
+      "extracts_value": true,
+      "edges": 11,
+      "named_counterparty": 5
+    },
+    {
+      "category": "lending",
+      "relationship": "lends_to",
+      "extracts_value": true,
+      "edges": 4,
+      "named_counterparty": 0
+    },
+    {
+      "category": "lending",
+      "relationship": "related_party_exposure_to",
+      "extracts_value": true,
+      "edges": 2,
+      "named_counterparty": 2
+    },
+    {
+      "category": "lending",
+      "relationship": "extended_overdraft_facilities_to",
+      "extracts_value": true,
+      "edges": 1,
+      "named_counterparty": 0
+    },
+    {
+      "category": "lending",
+      "relationship": "funded_projects_of",
+      "extracts_value": true,
+      "edges": 1,
+      "named_counterparty": 0
+    },
+    {
+      "category": "lending",
+      "relationship": "overdrawn_current_accounts",
+      "extracts_value": true,
+      "edges": 1,
+      "named_counterparty": 0
+    },
+    {
+      "category": "lending",
+      "relationship": "transferred_collateral_to",
+      "extracts_value": true,
+      "edges": 1,
+      "named_counterparty": 0
+    },
+    {
+      "category": "ownership",
+      "relationship": "acquired",
+      "extracts_value": false,
+      "edges": 2,
+      "named_counterparty": 2
+    },
+    {
+      "category": "ownership",
+      "relationship": "controls",
+      "extracts_value": false,
+      "edges": 1,
+      "named_counterparty": 0
+    },
+    {
+      "category": "ownership",
+      "relationship": "owns",
+      "extracts_value": false,
+      "edges": 1,
+      "named_counterparty": 1
+    },
+    {
+      "category": "ownership",
+      "relationship": "part_of",
+      "extracts_value": false,
+      "edges": 1,
+      "named_counterparty": 1
+    },
+    {
+      "category": "placement",
+      "relationship": "placed_funds_with",
+      "extracts_value": true,
+      "edges": 3,
+      "named_counterparty": 2
+    },
+    {
+      "category": "placement",
+      "relationship": "holds_deposits_in",
+      "extracts_value": true,
+      "edges": 1,
+      "named_counterparty": 0
+    },
+    {
+      "category": "placement",
+      "relationship": "pre_financed_receivable_from",
+      "extracts_value": true,
+      "edges": 1,
+      "named_counterparty": 1
+    },
+    {
+      "category": "placement",
+      "relationship": "transferred_funds_to",
+      "extracts_value": true,
+      "edges": 1,
+      "named_counterparty": 1
+    }
+  ],
+  "comparative": {
+    "flagged_related_party": {
+      "institutions": 17,
+      "with_any_edge": 17,
+      "with_value_extracting_edge": 17,
+      "total_value_extracting_edges": 30,
+      "with_a_named_counterparty": 9,
+      "median_cause_count": 5,
+      "quantified_ghs_m": 261.72,
+      "institutions_with_an_amount": 7
+    },
+    "not_flagged": {
+      "institutions": 6,
+      "with_any_edge": 1,
+      "with_value_extracting_edge": 0,
+      "total_value_extracting_edges": 0,
+      "with_a_named_counterparty": 1,
+      "median_cause_count": 3,
+      "quantified_ghs_m": null,
+      "institutions_with_an_amount": 0
+    },
+    "rows": [
+      {
+        "name": "GN Savings and Loans Ltd.",
+        "flagged": true,
+        "net_worth_ghs_m": -30.7,
+        "car_pct": -61.2,
+        "cause_count": 6,
+        "edges_out": 4,
+        "value_extracting": 4,
+        "counterparties": 4,
+        "named": 3,
+        "unnamed": 1,
+        "extracted_ghs_m": null
+      },
+      {
+        "name": "Ideal Finance Limited",
+        "flagged": true,
+        "net_worth_ghs_m": -117.5,
+        "car_pct": -32.8,
+        "cause_count": 6,
+        "edges_out": 3,
+        "value_extracting": 3,
+        "counterparties": 3,
+        "named": 2,
+        "unnamed": 1,
+        "extracted_ghs_m": 52.7
+      },
+      {
+        "name": "Midland Savings and Loans Company Limited",
+        "flagged": true,
+        "net_worth_ghs_m": -148.92,
+        "car_pct": -311.91,
+        "cause_count": 4,
+        "edges_out": 3,
+        "value_extracting": 3,
+        "counterparties": 3,
+        "named": 3,
+        "unnamed": 0,
+        "extracted_ghs_m": null
+      },
+      {
+        "name": "Adom Savings and Loans Limited",
+        "flagged": true,
+        "net_worth_ghs_m": -9.6,
+        "car_pct": -126.23,
+        "cause_count": 5,
+        "edges_out": 2,
+        "value_extracting": 2,
+        "counterparties": 1,
+        "named": 0,
+        "unnamed": 2,
+        "extracted_ghs_m": null
+      },
+      {
+        "name": "AllTime Finance Limited",
+        "flagged": true,
+        "net_worth_ghs_m": -23.15,
+        "car_pct": -47.41,
+        "cause_count": 6,
+        "edges_out": 2,
+        "value_extracting": 2,
+        "counterparties": 2,
+        "named": 1,
+        "unnamed": 1,
+        "extracted_ghs_m": 18.19
+      },
+      {
+        "name": "CDH Savings and Loans Ltd.",
+        "flagged": true,
+        "net_worth_ghs_m": -171.36,
+        "car_pct": -35.9,
+        "cause_count": 4,
+        "edges_out": 3,
+        "value_extracting": 2,
+        "counterparties": 2,
+        "named": 1,
+        "unnamed": 2,
+        "extracted_ghs_m": null
+      },
+      {
+        "name": "Crest Finance House Limited",
+        "flagged": true,
+        "net_worth_ghs_m": -17.55,
+        "car_pct": -6873.5,
+        "cause_count": 5,
+        "edges_out": 2,
+        "value_extracting": 2,
+        "counterparties": 2,
+        "named": 0,
+        "unnamed": 2,
+        "extracted_ghs_m": null
+      },
+      {
+        "name": "First African Savings and Loans Limited",
+        "flagged": true,
+        "net_worth_ghs_m": -22.29,
+        "car_pct": -90.15,
+        "cause_count": 3,
+        "edges_out": 2,
+        "value_extracting": 2,
+        "counterparties": 2,
+        "named": 1,
+        "unnamed": 1,
+        "extracted_ghs_m": 5.4
+      },
+      {
+        "name": "Global Access Savings and Loans Company Limited",
+        "flagged": true,
+        "net_worth_ghs_m": -58.19,
+        "car_pct": -195.06,
+        "cause_count": 5,
+        "edges_out": 2,
+        "value_extracting": 2,
+        "counterparties": 1,
+        "named": 2,
+        "unnamed": 0,
+        "extracted_ghs_m": 2.91
+      },
+      {
+        "name": "Accent Financial Services Limited",
+        "flagged": true,
+        "net_worth_ghs_m": -55.76,
+        "car_pct": -144.3,
+        "cause_count": 4,
+        "edges_out": 1,
+        "value_extracting": 1,
+        "counterparties": 1,
+        "named": 0,
+        "unnamed": 1,
+        "extracted_ghs_m": null
+      },
+      {
+        "name": "ASN Financial Services Limited",
+        "flagged": true,
+        "net_worth_ghs_m": 0.628311,
+        "car_pct": -81.39,
+        "cause_count": 5,
+        "edges_out": 1,
+        "value_extracting": 1,
+        "counterparties": 1,
+        "named": 0,
+        "unnamed": 1,
+        "extracted_ghs_m": null
+      },
+      {
+        "name": "Dream Finance Limited",
+        "flagged": true,
+        "net_worth_ghs_m": -333.46,
+        "car_pct": -7508.1,
+        "cause_count": 7,
+        "edges_out": 1,
+        "value_extracting": 1,
+        "counterparties": 1,
+        "named": 0,
+        "unnamed": 1,
+        "extracted_ghs_m": null
+      },
+      {
+        "name": "Express Savings and Loan Limited",
+        "flagged": true,
+        "net_worth_ghs_m": -119.83,
+        "car_pct": -610.52,
+        "cause_count": 4,
+        "edges_out": 1,
+        "value_extracting": 1,
+        "counterparties": 1,
+        "named": 0,
+        "unnamed": 1,
+        "extracted_ghs_m": null
+      },
+      {
+        "name": "First Allied Savings and Loans Limited",
+        "flagged": true,
+        "net_worth_ghs_m": -661.84,
+        "car_pct": -263.21,
+        "cause_count": 5,
+        "edges_out": 2,
+        "value_extracting": 1,
+        "counterparties": 2,
+        "named": 0,
+        "unnamed": 2,
+        "extracted_ghs_m": null
+      },
+      {
+        "name": "FirsTrust Savings and Loans Limited",
+        "flagged": true,
+        "net_worth_ghs_m": -175.9,
+        "car_pct": -132.96,
+        "cause_count": 5,
+        "edges_out": 2,
+        "value_extracting": 1,
+        "counterparties": 2,
+        "named": 1,
+        "unnamed": 1,
+        "extracted_ghs_m": 17.93
+      },
+      {
+        "name": "Legacy Capital Savings and Loans Ltd.",
+        "flagged": true,
+        "net_worth_ghs_m": -19.52,
+        "car_pct": -16.96,
+        "cause_count": 4,
+        "edges_out": 1,
+        "value_extracting": 1,
+        "counterparties": 1,
+        "named": 0,
+        "unnamed": 1,
+        "extracted_ghs_m": 4.49
+      },
+      {
+        "name": "uniCredit Ghana Limited",
+        "flagged": true,
+        "net_worth_ghs_m": -221.32,
+        "car_pct": -97.83,
+        "cause_count": 4,
+        "edges_out": 1,
+        "value_extracting": 1,
+        "counterparties": 1,
+        "named": 1,
+        "unnamed": 0,
+        "extracted_ghs_m": 160.1
+      },
+      {
+        "name": "Commerz Savings and Loans Limited",
+        "flagged": false,
+        "net_worth_ghs_m": -40.99,
+        "car_pct": -126.15,
+        "cause_count": 3,
+        "edges_out": 1,
+        "value_extracting": 0,
+        "counterparties": 1,
+        "named": 1,
+        "unnamed": 0,
+        "extracted_ghs_m": null
+      },
+      {
+        "name": "Alpha Capital Savings and Loans Ltd.",
+        "flagged": false,
+        "net_worth_ghs_m": -11.51,
+        "car_pct": -81.05,
+        "cause_count": 5,
+        "edges_out": 0,
+        "value_extracting": 0,
+        "counterparties": 0,
+        "named": 0,
+        "unnamed": 0,
+        "extracted_ghs_m": null
+      },
+      {
+        "name": "First Ghana Savings and Loans Limited",
+        "flagged": false,
+        "net_worth_ghs_m": -14.08,
+        "car_pct": -54.47,
+        "cause_count": 2,
+        "edges_out": 0,
+        "value_extracting": 0,
+        "counterparties": 0,
+        "named": 0,
+        "unnamed": 0,
+        "extracted_ghs_m": null
+      },
+      {
+        "name": "IFS Financial Services Limited",
+        "flagged": false,
+        "net_worth_ghs_m": -2.29,
+        "car_pct": -18.77,
+        "cause_count": 2,
+        "edges_out": 0,
+        "value_extracting": 0,
+        "counterparties": 0,
+        "named": 0,
+        "unnamed": 0,
+        "extracted_ghs_m": null
+      },
+      {
+        "name": "Sterling Financial Services Limited",
+        "flagged": false,
+        "net_worth_ghs_m": null,
+        "car_pct": -1469.39,
+        "cause_count": 4,
+        "edges_out": 0,
+        "value_extracting": 0,
+        "counterparties": 0,
+        "named": 0,
+        "unnamed": 0,
+        "extracted_ghs_m": null
+      },
+      {
+        "name": "Women's World Banking Ghana (WWBG) Savings and Loans Limited",
+        "flagged": false,
+        "net_worth_ghs_m": -45.56,
+        "car_pct": -46.62,
+        "cause_count": 3,
+        "edges_out": 0,
+        "value_extracting": 0,
+        "counterparties": 0,
+        "named": 0,
+        "unnamed": 0,
+        "extracted_ghs_m": null
+      }
+    ]
+  },
+  "verification": {
+    "counts": {
+      "pending": 39
+    },
+    "version": "v0.1"
+  }
+}
