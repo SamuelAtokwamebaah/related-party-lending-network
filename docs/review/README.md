@@ -37,3 +37,12 @@ Work the sheets with a non-zero **To check** count first: those sections contain
 **Totals:** 57 seeded edges to verify, 40 uncited passages carrying relationship wording, 174 other passages, across 23 institutions.
 
 Regenerate with `python scripts/build_review_pack.py`. It rewrites the sheets and adds rows to `data/verification.csv` for any new edge, but never overwrites a decision already recorded there.
+
+## The other notice
+
+These sheets cover the Bank of Ghana notice only. The Securities and Exchange Commission's notice is arranged by fund manager rather than by institution, so its pack is built separately and lives in [sec/](sec/):
+
+- [sec/01-sections-with-edges.md](sec/01-sections-with-edges.md) — every section an edge cites, reproduced in full, with the edges drawn from it
+- [sec/02-coverage.md](sec/02-coverage.md) — all 53 sections, marked for whether they name one of the 23 and whether an edge exists. Read this one first: v0.3 read four sections and stopped, and eight more named one of the 23.
+
+Regenerate with `python scripts/build_sec_review.py`.

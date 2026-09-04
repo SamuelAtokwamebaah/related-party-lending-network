@@ -80,7 +80,7 @@ For each: does the quote support the relationship, the direction, the amount and
 | amount |  10.06 (ratio_only) |
 | confidence | `documented` |
 | anchor | `sec-2019-11-08-fund-manager-revocation:L835` |
-| current decision | **pending** |
+| current decision | confirmed |
 
 > 13. GOLDSTREET FUND MANAGEMENT LIMITED (FORMERLY GOLDSTREET INVESTMENTS LTD) Goldstreet Fund Management Limited (“Goldstreet”) was incorporated on the 17th December, 2014. It was licensed by the SEC as a Fund Manager on 29th September, 2015. The SEC has had a number of engagements with Goldstreet including Hearings pursuant to section 19 of Act 929, decisions have been issued by the SEC against Goldstreet with directives to take steps to comply and resolve its regulatory infractions, all to no avail. The Specific issues that led to the revocation of its licence included the following a) Failure to honour clients’ redemption requests; b) Payment of operational activities using client funds contrary to Section 160 of the Act 929; c) Non submission of statutory reports contrary to Regulations 33 (1) (a) (b) (c ) and (6) of LI 1728 d) Placement of client funds with out proper due diligence and the requisite standard of professional conduct contrary to Paragraphs, 2, 3, 6 and 13 of Part X of the Commission’s Compliance Manual for Broker -Dealers, Investment Advisers and Representatives 2008. Placements include 50.61% with Ideal Finance Ltd ( in receivership) and 10.06% with First Trust Savings & Loans (in receivership)
 
@@ -92,7 +92,7 @@ For each: does the quote support the relationship, the direction, the amount and
 | amount |  80 (combined_total) |
 | confidence | `documented` |
 | anchor | `sec-2019-11-08-fund-manager-revocation:L875` |
-| current decision | **pending** |
+| current decision | confirmed |
 
 > 15. INTEGRITY FUND MANAGEMENT LTD Integrity Fund Management Ltd (“Integrity”) was incorporated on 22nd August, 2015 and licensed as a Fund Manager on 10th December, 2015. The SEC has directed Integrity to resolve its regulatory infractions, all to no avail. The Specific issue that led to the revocation of its licence was the following: a) Placement of client funds without proper due diligence and the requisite standard of professional conduct contrary to Paragraphs, 2, 3, 6 and 13 of Part X of the Commission’s Compliance Manual for Broker-Dealers, Investment Advisers and Representatives 2008. Over 80% placement of client funds in revoked savings & loans including, Midland S avings & Loans, First Trust Savings & Loans and Legacy Savings & Loans.
 
@@ -106,7 +106,7 @@ For each: does the quote support the relationship, the direction, the amount and
 | amount |  68 (combined_total) |
 | confidence | `documented` |
 | anchor | `sec-2019-11-08-fund-manager-revocation:L1054` |
-| current decision | **pending** |
+| current decision | confirmed |
 
 > 25. PROCAP FINANCE LIMITED Procap Finance Ltd (“Procap”) was incorporated on 13 th June, 2016 and licensed by the SEC on a 4th December 2017 as a Fund Manager. The SEC has directed Procap to resolve its regulatory infractions, all to no avail. The Specific issue that led to the revocation of its licence: a) Placement of client funds without proper due diligence and the requisite standard of professional conduct contrary to Paragraphs, 2, 3, 6 and 13 of Part X of the Commission’s Compliance Manual for Broker -Dealers, Investment Advisers and Representatives 200 8. Over 68% placement in revoked Savings and Loans institutions including Midland Savings and Loans and FirsTrust Savings & Loans .
 
@@ -120,7 +120,7 @@ For each: does the quote support the relationship, the direction, the amount and
 | amount |  19 (combined_total) |
 | confidence | `documented` |
 | anchor | `sec-2019-11-08-fund-manager-revocation:L859` |
-| current decision | pending |
+| current decision | confirmed |
 
 > 14. IDEAL CAPITAL PARTNERS LIMITED Ideal Capital Partners Limited (“Ideal”) was incorporated on the 21st July 2011. It was licensed by the SEC as a Fund Manager on 18th June, 2014. The SEC has had a number of engagements with Ideal including Hearings pursuant to section 19 of Act 929, decisions have been issued by the SEC against Ideal with directives to take steps to comply and resolve its regulatory infractions, all to no avail. The Specific issues that led to the revocation of its licence included the following a) Failure to honour clients’ redemption requests; b) Placement of client funds without proper due diligence and the requisite standard of professional conduct contrary to Paragraphs, 2, 3, 6 and 13 of Part X of the Commission’s Compliance Manual for Broker-Dealers, Investment Advisers and Representatives 2008. The firm had 19% of AUM in related parties (Ideal Financial Holdings Ltd, Firstrust Savings and Loans, Ideal Trade Limited, Ideal Bottling Limited) and over 48% of funds placed in illiquid instruments.
 

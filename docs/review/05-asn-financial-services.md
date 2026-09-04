@@ -32,7 +32,7 @@ For each: does the quote support the relationship, the direction, the amount and
 | amount | — |
 | confidence | `documented` |
 | anchor | `sec-2019-11-08-fund-manager-revocation:L508` |
-| current decision | **pending** |
+| current decision | confirmed |
 
 > 17. STANDARD SECURITIES LIMITED (FORMERLY ASN INVESTMENTS LIMITED) Standard Securities Limited (“Standard”) was incorporated on the 2 nd of February, 2013 and licensed by the SEC as a Fund Manager on 21st March, 2013. The SEC has had a number of engagements with Standard including Hearings pursuant to section 19 of Act 929, decisions have been issued by the SEC against Standard with directives to take steps to comply and resolve its regulatory infractions, all to no avail. The Specific issues that led to the revocation of its licence included the following: a) Failure to honour clients’ redemption request; b) Placement of client funds with related parties without proper due diligence and the requisite standard of professional conduct contrary to Paragraphs, 2, 3, 6 and 13 of Part X of the Commission’s Compliance Manual for Broker-Dealers, Investment Advisers and Representatives 2008. Related party placement with related party called ASN Financial Services Limited (in receivership). Other Placements include Dwadifo Adanfo Microfinance (in receivership), Express Savings & Loans (in receivership), Eclipse Microfinance (in receivership), CIG Microfinance (in receivership) and Midland Savings & Loans (in receivership);
 
@@ -46,7 +46,7 @@ For each: does the quote support the relationship, the direction, the amount and
 | amount |  54.19 (ratio_only) |
 | confidence | `documented` |
 | anchor | `sec-2019-11-08-fund-manager-revocation:L722` |
-| current decision | **pending** |
+| current decision | confirmed |
 
 > 7. CORPORATE HILLS INVESTMENT LTD. Corporate Hills Investment Limited (“Corporate Hills”) was incorporated on the 7th of April, 2014 and was licensed by the SEC as a Fund Manager on 9th December, 2014. The SEC has had a number of engagements with Corporate Hills including Hearings pursuant to section 19 of Act 929, decisions have been issued by the SEC against Corporate Hills with directives to take steps to comply and resolve its regulatory infractions, all to no avail. The Specific issues that led to the revocation of its licence included the following: a) Failure to honour clients’ redemption requests; 20 b) Placement of client funds without due diligence and the requisite standard of professional conduct contrary to Paragraphs, 2, 3, 6 and 13 of Part X of the Commission’s Compliance Manual for Broker-Dealers, Investment Advisers and Representatives 2008. Placements include 54.19% of its assets under management with ASN Financial Services Ltd. (in receivership) and 35.98% in a commercial paper issued by Samba Transfer Services (a breach of the Guidelines on Comme rcial Paper issued by the Commission);
 

@@ -52,7 +52,7 @@ g) Failure to pay penalties levied by the Commission for violation of Securities
 | amount | — |
 | confidence | `documented` |
 | anchor | `sec-2019-11-08-fund-manager-revocation:L508` |
-| current decision | **pending** |
+| current decision | confirmed |
 
 *Note carried from compilation:* The notice says 'Related party placement with related party called ASN Financial Services Limited'. No figure is stated for it.
 
@@ -66,7 +66,7 @@ g) Failure to pay penalties levied by the Commission for violation of Securities
 | amount | — |
 | confidence | `documented` |
 | anchor | `sec-2019-11-08-fund-manager-revocation:L508` |
-| current decision | **pending** |
+| current decision | confirmed |
 
 *Note carried from compilation:* Listed under 'Other Placements', distinct from the related-party placement in the same bullet. No figure is stated.
 
@@ -80,7 +80,7 @@ g) Failure to pay penalties levied by the Commission for violation of Securities
 | amount | — |
 | confidence | `documented` |
 | anchor | `sec-2019-11-08-fund-manager-revocation:L508` |
-| current decision | **pending** |
+| current decision | confirmed |
 
 *Note carried from compilation:* Listed under 'Other Placements', distinct from the related-party placement in the same bullet. No figure is stated.
 
@@ -131,7 +131,7 @@ Securities Industry Act, 2016 (Act 929) and Securities and Exchange Commission R
 | amount | 99.41% (ratio_only) |
 | confidence | `documented` |
 | anchor | `sec-2019-11-08-fund-manager-revocation:L658` |
-| current decision | pending |
+| current decision | confirmed |
 
 *Amount note:* 99.41% of funds under management; a ratio, not an amount
 
@@ -178,7 +178,7 @@ e) Failure to conduct regular board meetings (Section 188(1) of the Companies Ac
 | amount | 54.19% (ratio_only) |
 | confidence | `documented` |
 | anchor | `sec-2019-11-08-fund-manager-revocation:L722` |
-| current decision | **pending** |
+| current decision | confirmed |
 
 ---
 
@@ -217,7 +217,7 @@ Trust Savings & Loans (in receivership)
 | amount | 50.61% (ratio_only) |
 | confidence | `documented` |
 | anchor | `sec-2019-11-08-fund-manager-revocation:L835` |
-| current decision | **pending** |
+| current decision | confirmed |
 
 ### P006 — Goldstreet Fund Management Limited → FirsTrust Savings and Loans Limited
 
@@ -229,7 +229,7 @@ Trust Savings & Loans (in receivership)
 | amount | 10.06% (ratio_only) |
 | confidence | `documented` |
 | anchor | `sec-2019-11-08-fund-manager-revocation:L835` |
-| current decision | **pending** |
+| current decision | confirmed |
 
 ---
 
@@ -265,7 +265,7 @@ c) Failure to adhere to voluntary payment plans agreed on at Complaints hearings
 | amount | 19% (combined_total) |
 | confidence | `documented` |
 | anchor | `sec-2019-11-08-fund-manager-revocation:L859` |
-| current decision | pending |
+| current decision | confirmed |
 
 *Amount note:* Stated as '19% of AUM in related parties' across Ideal Financial Holdings, FirsTrust, Ideal Trade and Ideal Bottling together. No per-counterparty split is given.
 
@@ -281,7 +281,7 @@ c) Failure to adhere to voluntary payment plans agreed on at Complaints hearings
 | amount | 19% (combined_total) |
 | confidence | `documented` |
 | anchor | `sec-2019-11-08-fund-manager-revocation:L859` |
-| current decision | pending |
+| current decision | confirmed |
 
 *Amount note:* Stated as '19% of AUM in related parties' across Ideal Financial Holdings, FirsTrust, Ideal Trade and Ideal Bottling together. No per-counterparty split is given.
 
@@ -297,7 +297,7 @@ c) Failure to adhere to voluntary payment plans agreed on at Complaints hearings
 | amount | 19% (combined_total) |
 | confidence | `documented` |
 | anchor | `sec-2019-11-08-fund-manager-revocation:L859` |
-| current decision | pending |
+| current decision | confirmed |
 
 *Amount note:* Stated as '19% of AUM in related parties' across Ideal Financial Holdings, FirsTrust, Ideal Trade and Ideal Bottling together. No per-counterparty split is given.
 
@@ -313,7 +313,7 @@ c) Failure to adhere to voluntary payment plans agreed on at Complaints hearings
 | amount | 19% (combined_total) |
 | confidence | `documented` |
 | anchor | `sec-2019-11-08-fund-manager-revocation:L859` |
-| current decision | pending |
+| current decision | confirmed |
 
 *Amount note:* Stated as '19% of AUM in related parties' across Ideal Financial Holdings, FirsTrust, Ideal Trade and Ideal Bottling together. No per-counterparty split is given.
 
@@ -348,7 +348,7 @@ Loans and Legacy Savings & Loans.
 | amount | 80% (combined_total) |
 | confidence | `documented` |
 | anchor | `sec-2019-11-08-fund-manager-revocation:L875` |
-| current decision | **pending** |
+| current decision | confirmed |
 
 *Amount note:* Stated as 'Over 80% placement of client funds in revoked savings & loans' across Midland, FirsTrust and Legacy Capital together. The notice gives no per-institution split, and the figure is a floor.
 
@@ -362,7 +362,7 @@ Loans and Legacy Savings & Loans.
 | amount | 80% (combined_total) |
 | confidence | `documented` |
 | anchor | `sec-2019-11-08-fund-manager-revocation:L875` |
-| current decision | **pending** |
+| current decision | confirmed |
 
 *Amount note:* Stated as 'Over 80% placement of client funds in revoked savings & loans' across Midland, FirsTrust and Legacy Capital together. The notice gives no per-institution split, and the figure is a floor.
 
@@ -376,7 +376,7 @@ Loans and Legacy Savings & Loans.
 | amount | 80% (combined_total) |
 | confidence | `documented` |
 | anchor | `sec-2019-11-08-fund-manager-revocation:L875` |
-| current decision | **pending** |
+| current decision | confirmed |
 
 *Amount note:* Stated as 'Over 80% placement of client funds in revoked savings & loans' across Midland, FirsTrust and Legacy Capital together. The notice gives no per-institution split, and the figure is a floor.
 
@@ -420,7 +420,7 @@ practice.
 | amount | 18% (ratio_only) |
 | confidence | `documented` |
 | anchor | `sec-2019-11-08-fund-manager-revocation:L919` |
-| current decision | **pending** |
+| current decision | confirmed |
 
 *Note carried from compilation:* 'Placement of 18% of funds in related party Legacy Capital Savings Limited'. Settles resolution candidate RR006: the Commission states the relationship, so it no longer rests on a shared name.
 
@@ -461,7 +461,7 @@ international industry practice.
 | amount | 9.45% (ratio_only) |
 | confidence | `documented` |
 | anchor | `sec-2019-11-08-fund-manager-revocation:L945` |
-| current decision | pending |
+| current decision | confirmed |
 
 *Amount note:* 9.45% of funds under management; a ratio, not an amount
 
@@ -477,7 +477,7 @@ international industry practice.
 | amount | 10.93% (ratio_only) |
 | confidence | `documented` |
 | anchor | `sec-2019-11-08-fund-manager-revocation:L945` |
-| current decision | pending |
+| current decision | confirmed |
 
 *Amount note:* 10.93% of funds under management; a ratio, not an amount
 
@@ -509,7 +509,7 @@ funds with Legacy Capital Savings & Loans (in receivership).
 | amount | 78% (ratio_only) |
 | confidence | `documented` |
 | anchor | `sec-2019-11-08-fund-manager-revocation:L964` |
-| current decision | **pending** |
+| current decision | confirmed |
 
 ---
 
@@ -551,7 +551,7 @@ industry practice.
 | amount | 54% (combined_total) |
 | confidence | `documented` |
 | anchor | `sec-2019-11-08-fund-manager-revocation:L974` |
-| current decision | **pending** |
+| current decision | confirmed |
 
 *Amount note:* Stated as '54% of placement of client funds with Commerz Savings & Loans, CDH Savings & Loans' together. The notice gives no per-institution split.
 
@@ -567,7 +567,7 @@ industry practice.
 | amount | 54% (combined_total) |
 | confidence | `documented` |
 | anchor | `sec-2019-11-08-fund-manager-revocation:L974` |
-| current decision | **pending** |
+| current decision | confirmed |
 
 *Amount note:* Stated as '54% of placement of client funds with Commerz Savings & Loans, CDH Savings & Loans' together. The notice gives no per-institution split.
 
@@ -610,7 +610,7 @@ international industry practice.
 | amount | 50% (ratio_only) |
 | confidence | `documented` |
 | anchor | `sec-2019-11-08-fund-manager-revocation:L1014` |
-| current decision | **pending** |
+| current decision | confirmed |
 
 *Note carried from compilation:* 'Placement of 50% of Funds under management with a related party; Commerz Savings and Loans'. Commerz is one of the six institutions the Bank of Ghana did not flag for related-party exposure. The direction is into Commerz, so this does not show Commerz's own insiders extracting from it.
 
@@ -643,7 +643,7 @@ Savings & Loans .
 | amount | 68% (combined_total) |
 | confidence | `documented` |
 | anchor | `sec-2019-11-08-fund-manager-revocation:L1054` |
-| current decision | **pending** |
+| current decision | confirmed |
 
 *Amount note:* Stated as 'Over 68% placement in revoked Savings and Loans institutions including Midland Savings and Loans and FirsTrust' together. The notice gives no per-institution split, the figure is a floor, and 'including' leaves the list open.
 
@@ -657,7 +657,7 @@ Savings & Loans .
 | amount | 68% (combined_total) |
 | confidence | `documented` |
 | anchor | `sec-2019-11-08-fund-manager-revocation:L1054` |
-| current decision | **pending** |
+| current decision | confirmed |
 
 *Amount note:* Stated as 'Over 68% placement in revoked Savings and Loans institutions including Midland Savings and Loans and FirsTrust' together. The notice gives no per-institution split, the figure is a floor, and 'including' leaves the list open.
 
@@ -698,7 +698,7 @@ practice.
 | amount | — |
 | confidence | `documented` |
 | anchor | `sec-2019-11-08-fund-manager-revocation:L1140` |
-| current decision | pending |
+| current decision | confirmed |
 
 *Note carried from compilation:* Whether Hoda Holdings Ltd is the Hoda Group of Companies that acquired uniCredit is undecided; see RR004
 
@@ -712,7 +712,7 @@ practice.
 | amount | — |
 | confidence | `documented` |
 | anchor | `sec-2019-11-08-fund-manager-revocation:L1140` |
-| current decision | pending |
+| current decision | confirmed |
 
 ### S009 — uniSecurities Limited → Premier Portfolio
 
@@ -724,7 +724,7 @@ practice.
 | amount | — |
 | confidence | `documented` |
 | anchor | `sec-2019-11-08-fund-manager-revocation:L1140` |
-| current decision | pending |
+| current decision | confirmed |
 
 ### S010 — uniSecurities Limited → Integrated Properties Ltd
 
@@ -736,7 +736,7 @@ practice.
 | amount | — |
 | confidence | `documented` |
 | anchor | `sec-2019-11-08-fund-manager-revocation:L1140` |
-| current decision | pending |
+| current decision | confirmed |
 
 ### S011 — uniSecurities Limited → Bolton Portfolio Ltd
 
@@ -748,7 +748,7 @@ practice.
 | amount | — |
 | confidence | `documented` |
 | anchor | `sec-2019-11-08-fund-manager-revocation:L1140` |
-| current decision | pending |
+| current decision | confirmed |
 
 ### S012 — uniSecurities Limited → Numa Logistics
 
@@ -760,7 +760,7 @@ practice.
 | amount | — |
 | confidence | `documented` |
 | anchor | `sec-2019-11-08-fund-manager-revocation:L1140` |
-| current decision | pending |
+| current decision | confirmed |
 
 ### S013 — uniSecurities Limited → Alban Logistics
 
@@ -772,7 +772,7 @@ practice.
 | amount | — |
 | confidence | `documented` |
 | anchor | `sec-2019-11-08-fund-manager-revocation:L1140` |
-| current decision | pending |
+| current decision | confirmed |
 
 ---
 

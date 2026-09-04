@@ -136,23 +136,23 @@
     "cycles": [
       {
         "members": [
-          "Liberty Asset Management",
-          "Midland Savings and Loans Company Limited"
+          "Midland Savings and Loans Company Limited",
+          "Liberty Asset Management"
         ],
         "legs": [
-          {
-            "from": "Liberty Asset Management",
-            "to": "Midland Savings and Loans Company Limited",
-            "relationships": [
-              "placed_funds_with"
-            ],
-            "extracts_value": true
-          },
           {
             "from": "Midland Savings and Loans Company Limited",
             "to": "Liberty Asset Management",
             "relationships": [
               "over_exposed_to"
+            ],
+            "extracts_value": true
+          },
+          {
+            "from": "Liberty Asset Management",
+            "to": "Midland Savings and Loans Company Limited",
+            "relationships": [
+              "placed_funds_with"
             ],
             "extracts_value": true
           }
@@ -238,18 +238,10 @@
       },
       {
         "members": [
-          "Ideal Finance Limited",
-          "FirsTrust Savings and Loans Limited"
+          "FirsTrust Savings and Loans Limited",
+          "Ideal Finance Limited"
         ],
         "legs": [
-          {
-            "from": "Ideal Finance Limited",
-            "to": "FirsTrust Savings and Loans Limited",
-            "relationships": [
-              "related_party_exposure_to"
-            ],
-            "extracts_value": true
-          },
           {
             "from": "FirsTrust Savings and Loans Limited",
             "to": "Ideal Finance Limited",
@@ -257,6 +249,14 @@
               "proposed_merger_with"
             ],
             "extracts_value": false
+          },
+          {
+            "from": "Ideal Finance Limited",
+            "to": "FirsTrust Savings and Loans Limited",
+            "relationships": [
+              "related_party_exposure_to"
+            ],
+            "extracts_value": true
           }
         ],
         "all_legs_extract_value": false
@@ -794,7 +794,7 @@
           "amount_basis": "ratio_only",
           "amount_note": null,
           "edge_id": "P004",
-          "verification": "pending"
+          "verification": "confirmed"
         }
       ],
       "CDH Savings and Loans Ltd.": [
@@ -804,7 +804,7 @@
           "amount_basis": "combined_total",
           "amount_note": "Stated as '54% of placement of client funds with Commerz Savings & Loans, CDH Savings & Loans' together. The notice gives no per-institution split.",
           "edge_id": "P012",
-          "verification": "pending"
+          "verification": "confirmed"
         }
       ],
       "Commerz Savings and Loans Limited": [
@@ -814,7 +814,7 @@
           "amount_basis": "combined_total",
           "amount_note": "Stated as '54% of placement of client funds with Commerz Savings & Loans, CDH Savings & Loans' together. The notice gives no per-institution split.",
           "edge_id": "P011",
-          "verification": "pending"
+          "verification": "confirmed"
         }
       ],
       "Express Savings and Loan Limited": [
@@ -824,7 +824,7 @@
           "amount_basis": null,
           "amount_note": null,
           "edge_id": "P015",
-          "verification": "pending"
+          "verification": "confirmed"
         }
       ],
       "FirsTrust Savings and Loans Limited": [
@@ -834,7 +834,7 @@
           "amount_basis": "ratio_only",
           "amount_note": null,
           "edge_id": "P006",
-          "verification": "pending"
+          "verification": "confirmed"
         },
         {
           "fund_manager": "Integrity Fund Management Ltd",
@@ -842,7 +842,7 @@
           "amount_basis": "combined_total",
           "amount_note": "Stated as 'Over 80% placement of client funds in revoked savings & loans' across Midland, FirsTrust and Legacy Capital together. The notice gives no per-institution split, and the figure is a floor.",
           "edge_id": "P008",
-          "verification": "pending"
+          "verification": "confirmed"
         },
         {
           "fund_manager": "Procap Finance Limited",
@@ -850,7 +850,7 @@
           "amount_basis": "combined_total",
           "amount_note": "Stated as 'Over 68% placement in revoked Savings and Loans institutions including Midland Savings and Loans and FirsTrust' together. The notice gives no per-institution split, the figure is a floor, and 'including' leaves the list open.",
           "edge_id": "P014",
-          "verification": "pending"
+          "verification": "confirmed"
         }
       ],
       "Ideal Finance Limited": [
@@ -860,7 +860,7 @@
           "amount_basis": "ratio_only",
           "amount_note": null,
           "edge_id": "P005",
-          "verification": "pending"
+          "verification": "confirmed"
         }
       ],
       "Legacy Capital Savings and Loans Ltd.": [
@@ -870,7 +870,7 @@
           "amount_basis": "combined_total",
           "amount_note": "Stated as 'Over 80% placement of client funds in revoked savings & loans' across Midland, FirsTrust and Legacy Capital together. The notice gives no per-institution split, and the figure is a floor.",
           "edge_id": "P009",
-          "verification": "pending"
+          "verification": "confirmed"
         },
         {
           "fund_manager": "Monarch Capital Limited",
@@ -878,7 +878,7 @@
           "amount_basis": "ratio_only",
           "amount_note": null,
           "edge_id": "P010",
-          "verification": "pending"
+          "verification": "confirmed"
         }
       ],
       "Midland Savings and Loans Company Limited": [
@@ -888,7 +888,7 @@
           "amount_basis": "combined_total",
           "amount_note": "Stated as 'Over 80% placement of client funds in revoked savings & loans' across Midland, FirsTrust and Legacy Capital together. The notice gives no per-institution split, and the figure is a floor.",
           "edge_id": "P007",
-          "verification": "pending"
+          "verification": "confirmed"
         },
         {
           "fund_manager": "Procap Finance Limited",
@@ -896,7 +896,7 @@
           "amount_basis": "combined_total",
           "amount_note": "Stated as 'Over 68% placement in revoked Savings and Loans institutions including Midland Savings and Loans and FirsTrust' together. The notice gives no per-institution split, the figure is a floor, and 'including' leaves the list open.",
           "edge_id": "P013",
-          "verification": "pending"
+          "verification": "confirmed"
         },
         {
           "fund_manager": "Standard Securities Limited",
@@ -904,15 +904,14 @@
           "amount_basis": null,
           "amount_note": null,
           "edge_id": "P016",
-          "verification": "pending"
+          "verification": "confirmed"
         }
       ]
     }
   },
   "verification": {
     "counts": {
-      "confirmed": 39,
-      "pending": 30
+      "confirmed": 69
     },
     "version": "v0.4"
   }

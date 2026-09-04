@@ -66,7 +66,7 @@ For each: does the quote support the relationship, the direction, the amount and
 | amount |  80 (combined_total) |
 | confidence | `documented` |
 | anchor | `sec-2019-11-08-fund-manager-revocation:L875` |
-| current decision | **pending** |
+| current decision | confirmed |
 
 > 15. INTEGRITY FUND MANAGEMENT LTD Integrity Fund Management Ltd (“Integrity”) was incorporated on 22nd August, 2015 and licensed as a Fund Manager on 10th December, 2015. The SEC has directed Integrity to resolve its regulatory infractions, all to no avail. The Specific issue that led to the revocation of its licence was the following: a) Placement of client funds without proper due diligence and the requisite standard of professional conduct contrary to Paragraphs, 2, 3, 6 and 13 of Part X of the Commission’s Compliance Manual for Broker-Dealers, Investment Advisers and Representatives 2008. Over 80% placement of client funds in revoked savings & loans including, Midland S avings & Loans, First Trust Savings & Loans and Legacy Savings & Loans.
 
@@ -80,7 +80,7 @@ For each: does the quote support the relationship, the direction, the amount and
 | amount |  68 (combined_total) |
 | confidence | `documented` |
 | anchor | `sec-2019-11-08-fund-manager-revocation:L1054` |
-| current decision | **pending** |
+| current decision | confirmed |
 
 > 25. PROCAP FINANCE LIMITED Procap Finance Ltd (“Procap”) was incorporated on 13 th June, 2016 and licensed by the SEC on a 4th December 2017 as a Fund Manager. The SEC has directed Procap to resolve its regulatory infractions, all to no avail. The Specific issue that led to the revocation of its licence: a) Placement of client funds without proper due diligence and the requisite standard of professional conduct contrary to Paragraphs, 2, 3, 6 and 13 of Part X of the Commission’s Compliance Manual for Broker -Dealers, Investment Advisers and Representatives 200 8. Over 68% placement in revoked Savings and Loans institutions including Midland Savings and Loans and FirsTrust Savings & Loans .
 
@@ -94,7 +94,7 @@ For each: does the quote support the relationship, the direction, the amount and
 | amount | — |
 | confidence | `documented` |
 | anchor | `sec-2019-11-08-fund-manager-revocation:L508` |
-| current decision | **pending** |
+| current decision | confirmed |
 
 > 17. STANDARD SECURITIES LIMITED (FORMERLY ASN INVESTMENTS LIMITED) Standard Securities Limited (“Standard”) was incorporated on the 2 nd of February, 2013 and licensed by the SEC as a Fund Manager on 21st March, 2013. The SEC has had a number of engagements with Standard including Hearings pursuant to section 19 of Act 929, decisions have been issued by the SEC against Standard with directives to take steps to comply and resolve its regulatory infractions, all to no avail. The Specific issues that led to the revocation of its licence included the following: a) Failure to honour clients’ redemption request; b) Placement of client funds with related parties without proper due diligence and the requisite standard of professional conduct contrary to Paragraphs, 2, 3, 6 and 13 of Part X of the Commission’s Compliance Manual for Broker-Dealers, Investment Advisers and Representatives 2008. Related party placement with related party called ASN Financial Services Limited (in receivership). Other Placements include Dwadifo Adanfo Microfinance (in receivership), Express Savings & Loans (in receivership), Eclipse Microfinance (in receivership), CIG Microfinance (in receivership) and Midland Savings & Loans (in receivership);
 
@@ -108,7 +108,7 @@ For each: does the quote support the relationship, the direction, the amount and
 | amount |  9.45 (ratio_only) |
 | confidence | `documented` |
 | anchor | `sec-2019-11-08-fund-manager-revocation:L945` |
-| current decision | pending |
+| current decision | confirmed |
 
 > 19. LIBERTY ASSET MANAGEMENT LIMITED. Liberty Asset Management Limited (“Liberty”) was licensed by the SEC as a Fund Manager on 15th April, 2008. The SEC has had a number of engagements with Liberty including Hearings pursuant to section 19 of Act 929, decisions have been issued by the SEC against Liberty with directives to take steps to comply and resolve its regulatory infractions, all to no avail. a) Failure to honour clients’ redemption request; b) Placement of client funds with related parties due diligence and the requisite standard of professional conduct contrary to Paragraphs, 2, 3, 6 and 13 of Part X of the Commission’s Compliance Manual for Broker-Dealers, Investment Advisers and Representatives 2008. The firm had 9.45 % of its funds with Midland Savings & Loans Limited (in receivership) and 10.93% in Liberty Commodities Limited (both are related parties);
 

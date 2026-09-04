@@ -32,7 +32,7 @@ For each: does the quote support the relationship, the direction, the amount and
 | amount |  18 (ratio_only) |
 | confidence | `documented` |
 | anchor | `sec-2019-11-08-fund-manager-revocation:L919` |
-| current decision | **pending** |
+| current decision | confirmed |
 
 > 18. LEGACY FUND MANAGEMENT LIMITED (FORMERLY LEGACY FINANCIAL SERVICES LTD) Legacy Fund Management Limited (“Legacy”) was incorporated on the 23rd July 2013 and licensed by the SEC as a Fund Manager on 18thJune, 2014. The SEC has had a number of engagements with Legacy including Hearings pursuant to section 19 of Act 929, decisions have been issued by the SEC against Legacy with directives to take steps to comply and resolve its regulatory infractions, all to no avail. The Specific issues that led to the revocation of its licence included the following a) Failure to honour clients’ redemption requests; b) Placement of client funds with related parties without proper due diligence and the requisite standard of professional conduct contrary to Paragraphs, 2, 3, 6 and 13 of Part X of the Commission’s Compliance Manual for Broker-Dealers, Investment Advisers and Representatives 2008. Placement of 18% of funds in related party Legacy Capital Savings Limited (in receivership) and 33% of funds with other Fund Managers (23% with Firstbanc Financial Services);
 
@@ -46,7 +46,7 @@ For each: does the quote support the relationship, the direction, the amount and
 | amount |  80 (combined_total) |
 | confidence | `documented` |
 | anchor | `sec-2019-11-08-fund-manager-revocation:L875` |
-| current decision | **pending** |
+| current decision | confirmed |
 
 > 15. INTEGRITY FUND MANAGEMENT LTD Integrity Fund Management Ltd (“Integrity”) was incorporated on 22nd August, 2015 and licensed as a Fund Manager on 10th December, 2015. The SEC has directed Integrity to resolve its regulatory infractions, all to no avail. The Specific issue that led to the revocation of its licence was the following: a) Placement of client funds without proper due diligence and the requisite standard of professional conduct contrary to Paragraphs, 2, 3, 6 and 13 of Part X of the Commission’s Compliance Manual for Broker-Dealers, Investment Advisers and Representatives 2008. Over 80% placement of client funds in revoked savings & loans including, Midland S avings & Loans, First Trust Savings & Loans and Legacy Savings & Loans.
 
@@ -60,7 +60,7 @@ For each: does the quote support the relationship, the direction, the amount and
 | amount |  78 (ratio_only) |
 | confidence | `documented` |
 | anchor | `sec-2019-11-08-fund-manager-revocation:L964` |
-| current decision | **pending** |
+| current decision | confirmed |
 
 > 20. MONARCH CAPITAL LIMITED Monarch Capital Ltd (“Monarch”) was incorporated on 24 th March, 2013 and was licensed by the SEC as a Fund Manager on 29th December, 2015. The SEC has directed Monarch to resolve its regulatory infractions, all to no avail. The Specific issue that led to the revocation of its licence included the following: a) Placement of client funds without proper due diligence and the requisite standard of professional conduct contrary to Paragraphs, 2, 3, 6 and 13 of Part X of the Commission’s Compliance Manual for Broker-Dealers, Investment Advisers and Representatives 2008. The firm placed 78% of client funds with Legacy Capital Savings & Loans (in receivership).
 

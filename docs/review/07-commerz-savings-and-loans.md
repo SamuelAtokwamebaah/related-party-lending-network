@@ -32,7 +32,7 @@ For each: does the quote support the relationship, the direction, the amount and
 | amount |  50 (ratio_only) |
 | confidence | `documented` |
 | anchor | `sec-2019-11-08-fund-manager-revocation:L1014` |
-| current decision | **pending** |
+| current decision | confirmed |
 
 > 23. NORDEA CAPITAL LIMITED Nordea Capital Limited (“Nordea”) was i ncorporated on 28th March, 2013 and licensed by the SEC as a Fund Manager on 7th May, 2013. The SEC has had a number of engagements with Nordea including Hearings pursuant to section 19 of Act 929, decisions have been issued by the SEC against Nordea with directives to take steps to comply and resolve its regulatory infractions, all to no avail. The Specific issues that led to the revocation of its licence included the following a) Failure to honour clients’ redemption request; b) Placement of client fund s with related parties without proper due diligence and the requisite standard of professional conduct contrary to Paragraphs, 2, 3, 6 and 13 of Part X of the Commission’s Compliance Manual for Broker -Dealers, Investment Advisers and Representatives 2008. Placement of 50% of Funds under management with a related party; Commerz Savings and Loans (in receivership);
 
@@ -46,7 +46,7 @@ For each: does the quote support the relationship, the direction, the amount and
 | amount |  54 (combined_total) |
 | confidence | `documented` |
 | anchor | `sec-2019-11-08-fund-manager-revocation:L974` |
-| current decision | **pending** |
+| current decision | confirmed |
 
 > 21. MUTUAL INTEGRITY ASSET MANAGEMENT LIMITED Mutual Integrity Limited (“Mutual”) was incorporated on the 1st of November, 2013 and licensed by the SEC as a Fund Manager on 15th June, 2015. The SEC has had a number of engagements with Mutual including Hearings pursuant to section 19 of Act 929, decisions have been issued by the SEC against Mutual with directives to take steps to comply and resolve its regulatory infractions, all to no avail. The Specific issues that led to the revocation of its licence included the following: a) Failure to honour clients’ redemption requests; b) Submission of inaccurate report to the SEC, contrary to section 201 of the Securities Industry Act, 2016 (Act 929); c) Payment of operational activities using client funds contrary to Section 160 of the Securities Industry Act, 2016 (Act 929); 26 d) Placement of client funds without proper due diligence and the requisite standard of professional conduct contrary to Paragraphs, 2, 3, 6 and 13 of Part X of the Commission’s Compliance Manual for Broker-Dealers, Investment Advisers and Representatives 2008. 54% of placement of client funds with Commerz Savings & Loans, CDH Savings & Loans (both in receivership); and
 

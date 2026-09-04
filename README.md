@@ -3,13 +3,19 @@
 Modelling the insider relationships behind Ghana's 2019 savings & loans failures as a
 network, built only from what the regulators published.
 
-> **Status: Phases 0–3 complete; evidence base at `v0.4`.** This repository is private
-> until v1. The 39 edges drawn from the Bank of Ghana notice have been checked against it
-> by hand; the 30 drawn from the Securities and Exchange Commission notice are recorded
-> as `pending` and are marked as unverified wherever they appear. The pass is recorded in
-> `data/verification.csv` and versioned in `data/changelog.csv`. Nothing here is a finding
-> about any institution or person: it is a record of what the source documents state, with
-> every passage quoted and anchored to a line in the published notice.
+> **Status: complete at `v0.4`.** All 69 edges have been checked by hand against the
+> source that supports them, and the decisions are recorded in `data/verification.csv` and
+> versioned in `data/changelog.csv`. Nothing here is a finding about any institution or
+> person: it is a record of what two regulators published, with every passage quoted and
+> anchored to a line in the source document.
+
+**New here?** Three ways in, in ascending order of detail:
+
+| | |
+|---|---|
+| [`index.html`](index.html) | the map. Every connection is hoverable and shows the passage behind it |
+| [docs/LIMITATIONS.md](docs/LIMITATIONS.md) | **what this cannot show, and why.** Read it before the findings, not after |
+| [docs/phase2/FINDINGS.md](docs/phase2/FINDINGS.md) | the analyses in full, including the ones that returned nothing |
 
 ---
 
@@ -25,11 +31,20 @@ This project asks the structural question. Institutions, their owners, their hol
 companies and their connected borrowers are modelled as a graph, so that the shape of the
 extraction is visible rather than merely tallied.
 
-It is the third repository in a deliberate arc:
+It is the third repository in a deliberate arc, and each one answers a different kind of
+question about the same collapse:
 
-1. `ghana-banking-collapse` — institutional failure analysis
-2. `microfinance-fraud-detection` — transactional fraud detection
-3. **`related-party-lending-network`** — insider network analysis
+| | repository | question | method |
+|---|---|---|---|
+| 1 | `ghana-banking-collapse` | *which* institutions failed, and why | institutional failure analysis over a verified dataset |
+| 2 | `microfinance-fraud-detection` | what fraud looks like at **transaction** level | detection on transactional data |
+| 3 | **`related-party-lending-network`** | how insiders were **structurally** connected | network analysis over a cited evidence base |
+
+The third is the one that could most easily have been faked, and that is the point of how
+it is built. A network diagram is persuasive whether or not the relationships in it are
+real. So every node and every edge here carries a source document and a line number, the
+loader refuses to build if a quote is not verbatim at the line its citation names, and the
+analyses that returned nothing are published alongside the ones that did.
 
 ## Sourcing standard
 
@@ -135,6 +150,7 @@ scripts/      phase0_extract_evidence.py    splits the notice, extracts evidence
               integrate_sec_notice.py       one-off, idempotent: admits the SEC notice
               integrate_placement_layer.py  one-off: the rest of that notice, and
                                             the placement layer
+docs/LIMITATIONS.md  what this cannot show, and why - read first
 docs/phase0/  SOURCE-INVENTORY.md   feasibility, mode decision, corrections
 docs/phase1/  SCHEMA-PROPOSAL.md    the data model as built
 docs/phase2/  FINDINGS.md           the analyses, with what they cannot show
@@ -164,17 +180,24 @@ its edge. Both exist because both failures happened.
 ## Verification
 
 The evidence base was seeded by script and then checked by hand, edge by edge, against the
-notice. `docs/review/` holds the pack that pass was worked from: one sheet per institution,
-pairing each edge with the passage behind it and listing every passage in that section that
-no edge cites — which is where a missed relationship would hide. Decisions are recorded in
-`data/verification.csv` and the loader reports coverage on every build.
+source. [docs/review/](docs/review/) holds the pack that pass was worked from: one sheet
+per institution for the Bank of Ghana notice, and in [docs/review/sec/](docs/review/sec/)
+one sheet per cited section of the Commission's notice plus a coverage sheet listing all
+53 of its sections.
 
-Three things remain deliberately open, and all are visible in the data rather than buried:
+What makes the pack worth having is what it lists *besides* the citations: every passage
+in the same section that no edge cites, and every section of the Commission's notice from
+which no edge was drawn. That is where a missed relationship hides, and it has caught one
+— the Commission's notice was under-read at v0.3, and eight sections naming one of the 23
+went unnoticed until every section was listed rather than only the cited ones.
 
-- The 30 edges taken from the Securities and Exchange Commission notice (`S001`–`S014`,
-  `P001`–`P016`) are `pending`. They passed the loader's rules but have not been through
-  the hand pass, and the map says so. [docs/review/sec/](docs/review/sec/) is the pack
-  that pass works from.
+Decisions are recorded in `data/verification.csv` and the loader reports coverage on every
+build. A figure on the page or in the findings is marked provisional automatically for as
+long as any edge behind it is unchecked.
+
+All 69 edges now carry a decision. Two things remain deliberately open, and both are
+visible in the data rather than buried:
+
 - `data/resolution_review.csv` holds five entity-resolution questions marked `undecided`.
   Nothing in hand settles them, and the tooling never merges entities on its own. The one
   that would change the graph is whether Hoda Holdings Ltd, named by the Commission as a

@@ -482,13 +482,20 @@ On this evidence base the mechanism counts carry more than any network measure d
     parts.append('</tbody></table></div></details>')
 
     parts.append(f'''<footer>
-<p>Built from the Bank of Ghana&rsquo;s notice of 16 August 2019 revoking the licences of 23
-savings and loans companies and finance houses. Every node and edge carries a citation to a
-line in that notice; the quoted passages are in the repository&rsquo;s evidence base. Inferred
-relationships are excluded from this page.</p>
-<p>Nothing here is an allegation. Each relationship restates what the Bank of Ghana published,
-and the page takes no position on any proceeding. Evidence base
-<code>{metrics["verification"]["version"]}</code>.</p>
+<p>Built from two documents: the Bank of Ghana&rsquo;s notice of 16 August 2019 revoking the
+licences of 23 savings and loans companies and finance houses, and the Securities and Exchange
+Commission&rsquo;s notice of 8 November 2019 revoking 53 fund-management licences. Every node
+and edge carries a citation to a line in one of them; the quoted passages are in the
+repository&rsquo;s evidence base. Inferred relationships are excluded from this page.</p>
+<p><strong>What this cannot show is written down.</strong> No individual is named anywhere in
+the evidence base, the graph is in {shape["components"]} pieces, and most relationships carry
+no figure at all. The limitations are set out in full in
+<a href="docs/LIMITATIONS.md">docs/LIMITATIONS.md</a>, and are worth reading before the
+diagrams rather than after them.</p>
+<p>Nothing here is an allegation. Each relationship restates what a regulator published, and
+the page takes no position on any proceeding. Evidence base
+<code>{metrics["verification"]["version"]}</code>, all
+{sum(metrics["verification"]["counts"].values())} edges verified against source.</p>
 </footer>
 </div>
 <script>{SCRIPT}</script>
