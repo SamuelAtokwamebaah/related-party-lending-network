@@ -432,10 +432,11 @@ def summarise(con):
                    "ON rt.relationship = e.relationship WHERE rt.extracts_value = 1")
     print(f"\nvalue-extracting edges  {extracting:>4} of {q('SELECT COUNT(*) FROM edges')}")
 
-    print("\nverification:")
     seen = dict(con.execute(
         "SELECT COALESCE(v.decision,'pending'), COUNT(*) FROM edges e "
         "LEFT JOIN verification v ON v.edge_id = e.edge_id GROUP BY 1"))
+    if q("SELECT COUNT(*) FROM verification"):
+        print("\nverification:")
     for state in ("confirmed", "corrected", "rejected", "pending"):
         if seen.get(state):
             print(f"  {state:22} {seen[state]:>4}")

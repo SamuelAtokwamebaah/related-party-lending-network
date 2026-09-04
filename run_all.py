@@ -28,6 +28,8 @@ STEPS = [
      [sys.executable, "scripts/build_review_pack.py"]),
     ("Build the graph and run the Phase 2 analyses",
      [sys.executable, "scripts/phase2_report.py"]),
+    ("Render the network map",
+     [sys.executable, "scripts/build_site.py"]),
 ]
 
 

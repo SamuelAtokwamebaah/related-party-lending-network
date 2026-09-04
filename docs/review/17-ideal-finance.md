@@ -18,7 +18,7 @@ For each: does the quote support the relationship, the direction, the amount and
 | amount | GHS 127.00m (exact) |
 | confidence | `documented` |
 | anchor | `bog-2019-08-16-savings-loans-revocation:L702` |
-| current decision | pending |
+| current decision | confirmed |
 
 > Bank of Gnana declined a request dated 25th July, 2019 to merge the operations of FirsTrust Savings and Loans Limited and Ideal Finance Limited because the two institutions under consideration are both insolvent and illiquid. The total projected cash injection of GHS 127.00 million, if approved, will lead to total shareholders' funds of the proposed merged entity from negative GHS 291.60 million to negative GHS 164.60 million and CAR from negative 78.32% to negative 47.26% leaving a significant capital deficit of GHS 234.05 million. The merger was therefore, not going to address the current financial challenges facing the two institutions, or improve their future prospects.
 
@@ -34,7 +34,7 @@ For each: does the quote support the relationship, the direction, the amount and
 | amount | — |
 | confidence | `documented` |
 | anchor | `bog-2019-08-16-savings-loans-revocation:L894` |
-| current decision | pending |
+| current decision | confirmed |
 
 > Contrary to section 64 (2) of the Banks and Specialised Deposit-Taking Institutions Act, 2016 (Act 930), the institution's exposure to its related party has consistently been above the regulatory limit of 25% of net own funds (NOF). Exposures to related parties (FirstTrust Savings & Loans and Ideal Capital partners) were to the tune of Ghc63.19 million.
 
@@ -50,7 +50,7 @@ For each: does the quote support the relationship, the direction, the amount and
 | amount | — |
 | confidence | `documented` |
 | anchor | `bog-2019-08-16-savings-loans-revocation:L894` |
-| current decision | pending |
+| current decision | confirmed |
 
 > Contrary to section 64 (2) of the Banks and Specialised Deposit-Taking Institutions Act, 2016 (Act 930), the institution's exposure to its related party has consistently been above the regulatory limit of 25% of net own funds (NOF). Exposures to related parties (FirstTrust Savings & Loans and Ideal Capital partners) were to the tune of Ghc63.19 million.
 
@@ -66,7 +66,7 @@ For each: does the quote support the relationship, the direction, the amount and
 | amount | GHS 52.70m (exact) |
 | confidence | `documented_unnamed` |
 | anchor | `bog-2019-08-16-savings-loans-revocation:L924` |
-| current decision | pending |
+| current decision | confirmed |
 
 > Credit facilities granted to the affiliates of the Company were not approved by the Board and the exposures were not reported to Bank of Ghana in breach of Section 70(2) and 70(4) of Act 930. Total related party loans totaled GHS 52.70 million.
 
@@ -82,7 +82,7 @@ For each: does the quote support the relationship, the direction, the amount and
 | amount | — |
 | confidence | `inferred` |
 | anchor | `(none — inferred)` |
-| current decision | pending |
+| current decision | confirmed |
 
 *Note carried from compilation:* INFERRED from name only. No source in hand states it. Excluded from headline findings until documented
 

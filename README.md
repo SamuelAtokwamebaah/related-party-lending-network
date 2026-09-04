@@ -3,10 +3,10 @@
 Modelling the insider relationships behind Ghana's 2019 savings & loans failures as a
 network, built only from what the Bank of Ghana published.
 
-> **Status: Phase 2 analysis built on a provisional evidence base.** This repository is
-> private while the evidence base is assembled. The 39 seeded edges are a machine-built
-> first pass and none has yet been checked against the notice by hand — see
-> [docs/review/](docs/review/). Nothing here is a finding about any institution or
+> **Status: Phases 0–3 complete; evidence base verified at `v0.2`.** This repository is
+> private until v1. All 39 edges have been checked against the Bank of Ghana notice by
+> hand; the pass is recorded in `data/verification.csv` and versioned in
+> `data/changelog.csv`. Nothing here is a finding about any institution or
 > person: it is a record of what the source documents state, with every passage quoted
 > and anchored to a line in the published notice.
 
@@ -79,10 +79,13 @@ scripts/      phase0_extract_evidence.py    splits the notice, extracts evidence
               build_review_pack.py          builds the verification sheets
               analyse_graph.py              builds the graph, computes the metrics
               phase2_report.py              writes the findings document
+              build_site.py                 renders index.html
+              site_template.py              the page shell and palette
 docs/phase0/  SOURCE-INVENTORY.md   feasibility, mode decision, corrections
 docs/phase1/  SCHEMA-PROPOSAL.md    the data model as built
 docs/phase2/  FINDINGS.md           the analyses, with what they cannot show
               metrics.json          the same numbers, machine-readable
+index.html    the network map, rendered from the database
 docs/review/  one verification sheet per institution
 ```
 
@@ -94,7 +97,7 @@ python run_all.py
 
 Needs `networkx` (`pip install -r requirements.txt`); everything else is standard
 library. Extracts the evidence from the notice, builds the database from the CSVs,
-rebuilds the verification pack, and runs the analyses. The database is a build artefact and is not
+rebuilds the verification pack, runs the analyses, and renders the map. The database is a build artefact and is not
 committed: if a figure is wrong, a CSV row is wrong.
 
 The loader refuses to build if any validation rule fails, and names the row and the
@@ -104,10 +107,18 @@ its edge. Both exist because both failures happened.
 
 ## Verification
 
-The seeded rows were built by script and none is verified. `docs/review/` holds one sheet
-per institution pairing each edge with the passage behind it, and listing every passage in
-that section that no edge cites — which is where a missed relationship hides. Decisions go
-in `data/verification.csv`, and the loader reports how many edges remain unchecked.
+The evidence base was seeded by script and then checked by hand, edge by edge, against the
+notice. `docs/review/` holds the pack that pass was worked from: one sheet per institution,
+pairing each edge with the passage behind it and listing every passage in that section that
+no edge cites — which is where a missed relationship would hide. Decisions are recorded in
+`data/verification.csv` and the loader reports coverage on every build.
+
+Two things remain deliberately open, and both are visible in the data rather than buried:
+
+- `data/resolution_review.csv` holds three entity-resolution questions marked `undecided`.
+  Nothing in hand settles them, and the tooling never merges entities on its own.
+- Two edges are classed `inferred`. They rest on no source, carry no citation, and are
+  excluded from every figure and from the map.
 
 ## Licence
 

@@ -125,18 +125,10 @@
     "cycles": [
       {
         "members": [
-          "FirsTrust Savings and Loans Limited",
-          "Ideal Finance Limited"
+          "Ideal Finance Limited",
+          "FirsTrust Savings and Loans Limited"
         ],
         "legs": [
-          {
-            "from": "FirsTrust Savings and Loans Limited",
-            "to": "Ideal Finance Limited",
-            "relationships": [
-              "proposed_merger_with"
-            ],
-            "extracts_value": false
-          },
           {
             "from": "Ideal Finance Limited",
             "to": "FirsTrust Savings and Loans Limited",
@@ -144,6 +136,14 @@
               "related_party_exposure_to"
             ],
             "extracts_value": true
+          },
+          {
+            "from": "FirsTrust Savings and Loans Limited",
+            "to": "Ideal Finance Limited",
+            "relationships": [
+              "proposed_merger_with"
+            ],
+            "extracts_value": false
           }
         ],
         "all_legs_extract_value": false
@@ -623,8 +623,8 @@
   },
   "verification": {
     "counts": {
-      "pending": 39
+      "confirmed": 39
     },
-    "version": "v0.1"
+    "version": "v0.2"
   }
 }

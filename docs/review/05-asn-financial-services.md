@@ -18,7 +18,7 @@ For each: does the quote support the relationship, the direction, the amount and
 | amount | — |
 | confidence | `documented_unnamed` |
 | anchor | `bog-2019-08-16-savings-loans-revocation:L329` |
-| current decision | pending |
+| current decision | confirmed |
 
 > The use of depositors' funds to finance some related party projects.
 

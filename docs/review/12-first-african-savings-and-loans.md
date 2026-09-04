@@ -18,7 +18,7 @@ For each: does the quote support the relationship, the direction, the amount and
 | amount | GHS 5.40m (exact) |
 | confidence | `documented` |
 | anchor | `bog-2019-08-16-savings-loans-revocation:L618` |
-| current decision | pending |
+| current decision | confirmed |
 
 > The company's affiliate, First African Remittances, UK failed to reimburse funds totalling GHS 5.40 million due to First African Savings and Loans. First African Savings and Loans pre-financed remittance receivables and the said amount has been outstanding for over two years. The long outstanding remittance receivable has been provisioned as a loss.
 
@@ -32,7 +32,7 @@ For each: does the quote support the relationship, the direction, the amount and
 | amount | — |
 | confidence | `documented_unnamed` |
 | anchor | `bog-2019-08-16-savings-loans-revocation:L630` |
-| current decision | pending |
+| current decision | confirmed |
 
 > The institution is unable to meet the withdrawal demands of its depositors. The institution has related party exposure which it is unable to recover.
 

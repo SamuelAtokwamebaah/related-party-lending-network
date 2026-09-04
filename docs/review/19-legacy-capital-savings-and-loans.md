@@ -18,7 +18,7 @@ For each: does the quote support the relationship, the direction, the amount and
 | amount | GHS 4.49m (exact) |
 | confidence | `documented_unnamed` |
 | anchor | `bog-2019-08-16-savings-loans-revocation:L1027` |
-| current decision | pending |
+| current decision | confirmed |
 
 > Non-performing related party exposures of GHS 4.49 million constituted 200% of the institution's reported net own funds in breach of Act 930.
 

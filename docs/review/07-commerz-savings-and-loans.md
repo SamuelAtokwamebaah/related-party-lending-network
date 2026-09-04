@@ -18,7 +18,7 @@ For each: does the quote support the relationship, the direction, the amount and
 | amount | — |
 | confidence | `documented` |
 | anchor | `bog-2019-08-16-savings-loans-revocation:L387` |
-| current decision | pending |
+| current decision | confirmed |
 
 > Commerz Savings and Loans Limited (formerly known as Sterling Savings and Loans Limited and part of Nordcom Africa Holdings Limited) was licensed by the Bank of Ghana in December 2016 and commenced operations in February 2017. As a result of persistent complaints by customers that the institution was unable to meet their withdrawal request, the Bank of Ghana reviewed the operations of the institution.
 

@@ -18,7 +18,7 @@ For each: does the quote support the relationship, the direction, the amount and
 | amount | — |
 | confidence | `documented_unnamed` |
 | anchor | `bog-2019-08-16-savings-loans-revocation:L580` |
-| current decision | pending |
+| current decision | confirmed |
 
 > The current accounts of eight (8) related companies linked to the major shareholder were overdrawn in excess of GHS 100.00 million and were non- performing.
 
@@ -32,7 +32,7 @@ For each: does the quote support the relationship, the direction, the amount and
 | amount | GHS 100.00m (floor) |
 | confidence | `documented_unnamed` |
 | anchor | `bog-2019-08-16-savings-loans-revocation:L580` |
-| current decision | pending |
+| current decision | confirmed |
 
 > The current accounts of eight (8) related companies linked to the major shareholder were overdrawn in excess of GHS 100.00 million and were non- performing.
 

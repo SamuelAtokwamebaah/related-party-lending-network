@@ -16,7 +16,9 @@ Inferred edges are excluded from every figure. Edges are reported by confidence
 class throughout, so a reader can see how much rests on a named counterparty and
 how much on one the Bank of Ghana described but did not name.
 
-Usage:  python scripts/analyse_graph.py
+This module is imported, not run: scripts/phase2_report.py calls it and writes
+the output. Kept separate so the numbers cannot be adjusted while prose is being
+tuned around them.
 """
 
 import json

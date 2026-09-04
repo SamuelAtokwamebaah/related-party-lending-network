@@ -18,7 +18,7 @@ For each: does the quote support the relationship, the direction, the amount and
 | amount | — |
 | confidence | `documented_unnamed` |
 | anchor | `bog-2019-08-16-savings-loans-revocation:L472` |
-| current decision | pending |
+| current decision | confirmed |
 
 > The use of depositors' funds to finance related party projects. The institution is over exposed to six (6) of its related companies. The non-performing related party exposures, has contributed significantly to the liquidity challenges of the institution.
 

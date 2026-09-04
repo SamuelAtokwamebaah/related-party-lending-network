@@ -18,7 +18,7 @@ For each: does the quote support the relationship, the direction, the amount and
 | amount | — |
 | confidence | `documented_unnamed` |
 | anchor | `bog-2019-08-16-savings-loans-revocation:L434` |
-| current decision | pending |
+| current decision | confirmed |
 
 > Non-performing exposures to its parent company and a company in which the Chief Executive Officer is a director in excess of statutory limit. The exposures also contributed significantly to the institution's liquidity challenges.
 
@@ -32,7 +32,7 @@ For each: does the quote support the relationship, the direction, the amount and
 | amount | — |
 | confidence | `documented_unnamed` |
 | anchor | `bog-2019-08-16-savings-loans-revocation:L434` |
-| current decision | pending |
+| current decision | confirmed |
 
 > Non-performing exposures to its parent company and a company in which the Chief Executive Officer is a director in excess of statutory limit. The exposures also contributed significantly to the institution's liquidity challenges.
 

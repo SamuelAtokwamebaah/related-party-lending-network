@@ -18,7 +18,7 @@ For each: does the quote support the relationship, the direction, the amount and
 | amount | — |
 | confidence | `documented` |
 | anchor | `bog-2019-08-16-savings-loans-revocation:L1065` |
-| current decision | pending |
+| current decision | confirmed |
 
 > The institution is over exposed to related parties such as Liberty Asset Management, Liberty DMI Microfinance and Griffin Financial Services continue to be rolled over in spite of the liquidity challenges it faces.
 
@@ -32,7 +32,7 @@ For each: does the quote support the relationship, the direction, the amount and
 | amount | — |
 | confidence | `documented` |
 | anchor | `bog-2019-08-16-savings-loans-revocation:L1065` |
-| current decision | pending |
+| current decision | confirmed |
 
 > The institution is over exposed to related parties such as Liberty Asset Management, Liberty DMI Microfinance and Griffin Financial Services continue to be rolled over in spite of the liquidity challenges it faces.
 
@@ -46,7 +46,7 @@ For each: does the quote support the relationship, the direction, the amount and
 | amount | — |
 | confidence | `documented` |
 | anchor | `bog-2019-08-16-savings-loans-revocation:L1065` |
-| current decision | pending |
+| current decision | confirmed |
 
 > The institution is over exposed to related parties such as Liberty Asset Management, Liberty DMI Microfinance and Griffin Financial Services continue to be rolled over in spite of the liquidity challenges it faces.
 

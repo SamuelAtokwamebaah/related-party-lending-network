@@ -18,7 +18,7 @@ For each: does the quote support the relationship, the direction, the amount and
 | amount | GHS 2.91m (exact) |
 | confidence | `documented` |
 | anchor | `bog-2019-08-16-savings-loans-revocation:L737` |
-| current decision | pending |
+| current decision | confirmed |
 
 > The institution assumed the liability of a loan contracted by the majority shareholder amounting GHS 2.91 million. The loan amount was injected into the institution as equity capital. The liability was however concealed as a suspense account in the books of Global Access Savings and Loans Limited.
 
@@ -32,7 +32,7 @@ For each: does the quote support the relationship, the direction, the amount and
 | amount | — |
 | confidence | `documented` |
 | anchor | `bog-2019-08-16-savings-loans-revocation:L741` |
-| current decision | pending |
+| current decision | confirmed |
 
 > The institution continues to record accumulated losses due mainly to high rent expenses paid to the majority shareholder for the use of its premises.
 

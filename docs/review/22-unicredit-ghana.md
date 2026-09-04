@@ -18,7 +18,7 @@ For each: does the quote support the relationship, the direction, the amount and
 | amount | GHS 160.10m (exact) |
 | confidence | `documented` |
 | anchor | `bog-2019-08-16-savings-loans-revocation:L1127` |
-| current decision | pending |
+| current decision | confirmed |
 
 > The institution's adjusted capital adequacy ratio of negative 97.83% as at end May 2019 is in violation of Section 29(2) of Act 930. This is mainly due to the non- performing related party exposures of GHS 160.10 million to uniSecurities which is far in excess of its negative networth.
 
@@ -32,7 +32,7 @@ For each: does the quote support the relationship, the direction, the amount and
 | amount | — |
 | confidence | `documented` |
 | anchor | `bog-2019-08-16-savings-loans-revocation:L1102` |
-| current decision | pending |
+| current decision | confirmed |
 
 > uniCredit Ghana Limited (uniCredit), formerly Kantamanto Savings and Loans Company Limited, was given an operating license in October 1995 and commenced operations on 1st November, 1995. In 2006, the Institution was acquired by the Hoda Group of Companies and subsequently its name was changed from Kantamanto Savings and Loans Limited to uniCredit Ghana Limited in March 2007.
 

@@ -18,7 +18,7 @@ For each: does the quote support the relationship, the direction, the amount and
 | amount | — |
 | confidence | `documented_unnamed` |
 | anchor | `bog-2019-08-16-savings-loans-revocation:L224` |
-| current decision | pending |
+| current decision | confirmed |
 
 > Non-performing related party exposures were far in excess of the statutory limits.
 
@@ -32,7 +32,7 @@ For each: does the quote support the relationship, the direction, the amount and
 | amount | — |
 | confidence | `documented_unnamed` |
 | anchor | `bog-2019-08-16-savings-loans-revocation:L229` |
-| current decision | pending |
+| current decision | confirmed |
 
 > Poor earnings due mainly to high management fees paid to related parties.
 

@@ -18,7 +18,7 @@ For each: does the quote support the relationship, the direction, the amount and
 | amount | GHS 18.19m (exact) |
 | confidence | `documented` |
 | anchor | `bog-2019-08-16-savings-loans-revocation:L259` |
-| current decision | pending |
+| current decision | confirmed |
 
 > The institution is over-exposed to its related company, AllTime Capital Limited to the tune of GHS 18.19 million in violation of regulatory limits.
 
@@ -32,7 +32,7 @@ For each: does the quote support the relationship, the direction, the amount and
 | amount | — |
 | confidence | `documented_unnamed` |
 | anchor | `bog-2019-08-16-savings-loans-revocation:L273` |
-| current decision | pending |
+| current decision | confirmed |
 
 > and reliable account of its transactions. This is considered unsafe and unsound banking practices. Specific examples include misrepresentation of investments and deposits in related companies, and over exposure of Loan facilities to related parties.
 

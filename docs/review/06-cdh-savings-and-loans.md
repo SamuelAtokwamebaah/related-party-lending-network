@@ -18,7 +18,7 @@ For each: does the quote support the relationship, the direction, the amount and
 | amount | — |
 | confidence | `documented` |
 | anchor | `bog-2019-08-16-savings-loans-revocation:L340` |
-| current decision | pending |
+| current decision | confirmed |
 
 > CDH Savings and Loans Limited commenced operations in 2016 after taking over Ivory Finance Company Limited which had been operating since the year 2000. In September 2018, CDH Savings & Loans Limited (CDH) was identified as insolvent per the August 2018 prudential returns submitted. CDH itself reported a negative Capital Adequacy Ratio which was further adjusted downward by the Bank of Ghana. The Bank of Ghana also noted severe liquidity challenges which threatens the ability of the institution to operate as a going concern as an additional issue. The Bank of Ghana has since engaged extensively the Board and Senior Management on the need to inject additional capital into the company, and plans repeatedly submitted by CDH to the Bank of Ghana to address supervisory concerns have failed to materialise.
 
@@ -32,7 +32,7 @@ For each: does the quote support the relationship, the direction, the amount and
 | amount | — |
 | confidence | `documented_unnamed` |
 | anchor | `bog-2019-08-16-savings-loans-revocation:L368` |
-| current decision | pending |
+| current decision | confirmed |
 
 > The transfer of collateral security supporting the institution's non-performing loans/exposures to affiliate companies using creative accounting with no resultant cash inflow to the company which resulted in the overstatement of the balance sheet.
 
@@ -46,7 +46,7 @@ For each: does the quote support the relationship, the direction, the amount and
 | amount | — |
 | confidence | `documented_unnamed` |
 | anchor | `bog-2019-08-16-savings-loans-revocation:L373` |
-| current decision | pending |
+| current decision | confirmed |
 
 > The overexposure of CDH to its affiliate companies to the tune of 319% contrary to the regulatory limit of 25%.
 

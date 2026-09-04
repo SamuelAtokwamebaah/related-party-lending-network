@@ -18,7 +18,7 @@ For each: does the quote support the relationship, the direction, the amount and
 | amount | — |
 | confidence | `documented_unnamed` |
 | anchor | `bog-2019-08-16-savings-loans-revocation:L188` |
-| current decision | pending |
+| current decision | confirmed |
 
 > Most of the institution's investments portfolio had no supporting documents whilst loans granted to related parties were concealed from the Bank of Ghana.
 

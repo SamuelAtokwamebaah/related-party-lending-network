@@ -18,7 +18,7 @@ For each: does the quote support the relationship, the direction, the amount and
 | amount | — |
 | confidence | `documented_unnamed` |
 | anchor | `bog-2019-08-16-savings-loans-revocation:L798` |
-| current decision | pending |
+| current decision | confirmed |
 
 > It must be noted that GN's insolvency problems are largely attributable to overdraft and other facilities it extended to its related parties who are other companies in the Groupe Ndoum network of businesses, under circumstances that violated relevant prudential norms. Of particular interest are the funds totalling GHS 761.55 million that GN Bank as it then was, placed with its sister companies Ghana Growth Fund (Gold Coast Advisors) and Gold Coast Fund Management Limited (now Blackshield Capital Management), both licensed by the Securities and Exchange Commission. Some of these funds were used by the two related parties to pay their customers whose investments with them had matured, while some were also used to fund road and other contractors, who claim to have worked on Government projects. It is important to note that the IPCs claimed by GN are not supported by transactions that were entered into directly by GN and such contractors or Government and its entities. They reflect transactions entered into by Ghana Growth Fund or Gold Coast Fund Management with these contractors using funds taken from GN under circumstances that violated prudential norms. The failure of the two related parties to pay back these funds to GN affected GN's capital position, leading eventually to its insolvency and acute liquidity challenges.
 
@@ -32,7 +32,7 @@ For each: does the quote support the relationship, the direction, the amount and
 | amount | — |
 | confidence | `documented` |
 | anchor | `bog-2019-08-16-savings-loans-revocation:L798` |
-| current decision | pending |
+| current decision | confirmed |
 
 > It must be noted that GN's insolvency problems are largely attributable to overdraft and other facilities it extended to its related parties who are other companies in the Groupe Ndoum network of businesses, under circumstances that violated relevant prudential norms. Of particular interest are the funds totalling GHS 761.55 million that GN Bank as it then was, placed with its sister companies Ghana Growth Fund (Gold Coast Advisors) and Gold Coast Fund Management Limited (now Blackshield Capital Management), both licensed by the Securities and Exchange Commission. Some of these funds were used by the two related parties to pay their customers whose investments with them had matured, while some were also used to fund road and other contractors, who claim to have worked on Government projects. It is important to note that the IPCs claimed by GN are not supported by transactions that were entered into directly by GN and such contractors or Government and its entities. They reflect transactions entered into by Ghana Growth Fund or Gold Coast Fund Management with these contractors using funds taken from GN under circumstances that violated prudential norms. The failure of the two related parties to pay back these funds to GN affected GN's capital position, leading eventually to its insolvency and acute liquidity challenges.
 
@@ -48,7 +48,7 @@ For each: does the quote support the relationship, the direction, the amount and
 | amount | — |
 | confidence | `documented` |
 | anchor | `bog-2019-08-16-savings-loans-revocation:L798` |
-| current decision | pending |
+| current decision | confirmed |
 
 > It must be noted that GN's insolvency problems are largely attributable to overdraft and other facilities it extended to its related parties who are other companies in the Groupe Ndoum network of businesses, under circumstances that violated relevant prudential norms. Of particular interest are the funds totalling GHS 761.55 million that GN Bank as it then was, placed with its sister companies Ghana Growth Fund (Gold Coast Advisors) and Gold Coast Fund Management Limited (now Blackshield Capital Management), both licensed by the Securities and Exchange Commission. Some of these funds were used by the two related parties to pay their customers whose investments with them had matured, while some were also used to fund road and other contractors, who claim to have worked on Government projects. It is important to note that the IPCs claimed by GN are not supported by transactions that were entered into directly by GN and such contractors or Government and its entities. They reflect transactions entered into by Ghana Growth Fund or Gold Coast Fund Management with these contractors using funds taken from GN under circumstances that violated prudential norms. The failure of the two related parties to pay back these funds to GN affected GN's capital position, leading eventually to its insolvency and acute liquidity challenges.
 
@@ -64,7 +64,7 @@ For each: does the quote support the relationship, the direction, the amount and
 | amount | — |
 | confidence | `documented` |
 | anchor | `bog-2019-08-16-savings-loans-revocation:L840` |
-| current decision | pending |
+| current decision | confirmed |
 
 > A recent Bank of Ghana investigation conducted at GN revealed that a significant amount (USD62,255,516.93, GBP718,528.59 and EUR4,200) of depositors' funds held with GN had been transferred to International Business Solutions (another company owned by Groupe Nduom and which is based in the U.S.A) without any documentation to support such transfers in breach of section 19 of the Foreign Exchange Act 2006, Act 723, Section IV of Bank of Ghana Notice No. BG/GOV/SEC/2007/4, and subsequent Bank of Ghana Notices issued in August 2014 prohibiting such practices. The company is yet to publish its 2018 audited accounts contrary to section 90 (2) of the Banks and Specialised Deposit-Taking Institutions Act, 2016 (Act 930). Furthermore, the company did not keep accounting records in a manner that gives an accurate and reliable account of the transactions of the company, and did not therefore show a true and fair view of its operations. GN has suspended operations in seventy (70) of its branches including the Head office branch at Asylum Down and Castle Road branch, and temporarily suspended its entire management team without the approval of the Bank of Ghana contrary to section 25 (2) of the Banks and Specialised Deposit-Taking Institutions Act, 2016 (Act 930), mainly as a result of its insolvency and liquidity challenges.
 

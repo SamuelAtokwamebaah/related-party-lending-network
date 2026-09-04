@@ -1,40 +1,40 @@
 edge_id,decision,note,verified_date,verified_by
-E001,pending,,,
-E002,pending,,,
-E003,pending,,,
-E004,pending,,,
-E005,pending,,,
-E006,pending,,,
-E007,pending,,,
-E008,pending,,,
-E009,pending,,,
-E010,pending,,,
-E011,pending,,,
-E012,pending,,,
-E013,pending,,,
-E014,pending,,,
-E015,pending,,,
-E016,pending,,,
-E017,pending,,,
-E018,pending,,,
-E019,pending,,,
-E020,pending,,,
-E021,pending,,,
-E022,pending,,,
-E023,pending,,,
-E024,pending,,,
-E025,pending,,,
-E026,pending,,,
-E027,pending,,,
-E028,pending,,,
-E029,pending,,,
-E030,pending,,,
-E031,pending,,,
-E032,pending,,,
-E034,pending,,,
-E037,pending,,,
-E039,pending,,,
-E042,pending,,,
-E043,pending,,,
-I001,pending,,,
-I002,pending,,,
+E001,confirmed,Checked against the notice in the Phase 3 verification pass.,2026-09-04,Samuel Ato Kwame Baah
+E002,confirmed,Checked against the notice in the Phase 3 verification pass.,2026-09-04,Samuel Ato Kwame Baah
+E003,confirmed,Checked against the notice in the Phase 3 verification pass.,2026-09-04,Samuel Ato Kwame Baah
+E004,confirmed,Checked against the notice in the Phase 3 verification pass.,2026-09-04,Samuel Ato Kwame Baah
+E005,confirmed,Checked against the notice in the Phase 3 verification pass.,2026-09-04,Samuel Ato Kwame Baah
+E006,confirmed,Checked against the notice in the Phase 3 verification pass.,2026-09-04,Samuel Ato Kwame Baah
+E007,confirmed,Checked against the notice in the Phase 3 verification pass.,2026-09-04,Samuel Ato Kwame Baah
+E008,confirmed,Checked against the notice in the Phase 3 verification pass.,2026-09-04,Samuel Ato Kwame Baah
+E009,confirmed,Checked against the notice in the Phase 3 verification pass.,2026-09-04,Samuel Ato Kwame Baah
+E010,confirmed,Checked against the notice in the Phase 3 verification pass.,2026-09-04,Samuel Ato Kwame Baah
+E011,confirmed,Checked against the notice in the Phase 3 verification pass.,2026-09-04,Samuel Ato Kwame Baah
+E012,confirmed,Checked against the notice in the Phase 3 verification pass.,2026-09-04,Samuel Ato Kwame Baah
+E013,confirmed,Checked against the notice in the Phase 3 verification pass.,2026-09-04,Samuel Ato Kwame Baah
+E014,confirmed,Checked against the notice in the Phase 3 verification pass.,2026-09-04,Samuel Ato Kwame Baah
+E015,confirmed,Checked against the notice in the Phase 3 verification pass.,2026-09-04,Samuel Ato Kwame Baah
+E016,confirmed,Checked against the notice in the Phase 3 verification pass.,2026-09-04,Samuel Ato Kwame Baah
+E017,confirmed,Checked against the notice in the Phase 3 verification pass.,2026-09-04,Samuel Ato Kwame Baah
+E018,confirmed,Checked against the notice in the Phase 3 verification pass.,2026-09-04,Samuel Ato Kwame Baah
+E019,confirmed,Checked against the notice in the Phase 3 verification pass.,2026-09-04,Samuel Ato Kwame Baah
+E020,confirmed,Checked against the notice in the Phase 3 verification pass.,2026-09-04,Samuel Ato Kwame Baah
+E021,confirmed,Checked against the notice in the Phase 3 verification pass.,2026-09-04,Samuel Ato Kwame Baah
+E022,confirmed,Checked against the notice in the Phase 3 verification pass.,2026-09-04,Samuel Ato Kwame Baah
+E023,confirmed,Checked against the notice in the Phase 3 verification pass.,2026-09-04,Samuel Ato Kwame Baah
+E024,confirmed,Checked against the notice in the Phase 3 verification pass.,2026-09-04,Samuel Ato Kwame Baah
+E025,confirmed,Checked against the notice in the Phase 3 verification pass.,2026-09-04,Samuel Ato Kwame Baah
+E026,confirmed,Checked against the notice in the Phase 3 verification pass.,2026-09-04,Samuel Ato Kwame Baah
+E027,confirmed,Checked against the notice in the Phase 3 verification pass.,2026-09-04,Samuel Ato Kwame Baah
+E028,confirmed,Checked against the notice in the Phase 3 verification pass.,2026-09-04,Samuel Ato Kwame Baah
+E029,confirmed,Checked against the notice in the Phase 3 verification pass.,2026-09-04,Samuel Ato Kwame Baah
+E030,confirmed,Checked against the notice in the Phase 3 verification pass.,2026-09-04,Samuel Ato Kwame Baah
+E031,confirmed,Checked against the notice in the Phase 3 verification pass.,2026-09-04,Samuel Ato Kwame Baah
+E032,confirmed,Checked against the notice in the Phase 3 verification pass.,2026-09-04,Samuel Ato Kwame Baah
+E034,confirmed,Checked against the notice in the Phase 3 verification pass.,2026-09-04,Samuel Ato Kwame Baah
+E037,confirmed,Checked against the notice in the Phase 3 verification pass.,2026-09-04,Samuel Ato Kwame Baah
+E039,confirmed,Checked against the notice in the Phase 3 verification pass.,2026-09-04,Samuel Ato Kwame Baah
+E042,confirmed,Checked against the notice in the Phase 3 verification pass.,2026-09-04,Samuel Ato Kwame Baah
+E043,confirmed,Checked against the notice in the Phase 3 verification pass.,2026-09-04,Samuel Ato Kwame Baah
+I001,confirmed,Checked against the notice in the Phase 3 verification pass.,2026-09-04,Samuel Ato Kwame Baah
+I002,confirmed,Checked against the notice in the Phase 3 verification pass.,2026-09-04,Samuel Ato Kwame Baah
