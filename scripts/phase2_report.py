@@ -22,8 +22,8 @@ ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "scripts"))
 
 from analyse_graph import (  # noqa: E402
-    DB, comparative, communities, hubs, load_graph, loops, shape, typology,
-    verification_state,
+    DB, comparative, communities, hubs, load_graph, loops, placement_layer, shape,
+    typology, verification_state,
 )
 
 OUT = ROOT / "docs" / "phase2"
@@ -287,24 +287,76 @@ def write_findings(m, path):
                   f"{'yes' if row['extracts_value'] else 'no'} | {row['edges']} "
                   f"| {row['named_counterparty']} |")
 
+    pl = m["placement_layer"]
+    ifa = pl["if_admitted"]
     md += [
+        "",
+        "---",
+        "",
+        "## 6. The placement layer, and why it is kept out of the figures above",
+        "",
+        "The Securities and Exchange Commission notice describes a second kind of "
+        "relationship that the Bank of Ghana notice does not: a fund manager placing "
+        "client money in one of the 23, with no related-party claim attached. Value "
+        "moves. No insider relationship is alleged.",
+        "",
+        f"There are **{pl['edges']} such edges**, from **{pl['fund_managers']} fund "
+        f"managers**, reaching **{pl['institutions_reached']} of the 23**. They are "
+        "held in a separate layer, marked `placement` in `relationship_types`, "
+        "filtered out of `v_institution_profile`, and excluded from every figure in "
+        "sections 0 to 5.",
+        "",
+        "**What that separation is worth, as a number.** Five of the "
+        f"{pl['fund_managers']} fund managers name more than one of the 23. Admitting "
+        "these as ordinary edges would take the graph from "
+        f"**{ifa['components_related_party_only']} components, largest "
+        f"{ifa['largest_component_related_party_only']}**, to "
+        f"**{ifa['components_if_admitted']} components, largest "
+        f"{ifa['largest_component_if_admitted']}** — a single structure holding most "
+        "of the graph. That structure would be real, but it would not be an insider "
+        "network. It would be a set of institutions that happen to share a fund "
+        "manager who placed client money in both, which is a different fact and a "
+        "weaker one.",
+        "",
+        "| institution | fund managers placing client funds there |",
+        "|---|---|",
+    ]
+    for name, managers in sorted(pl["institutions_with_more_than_one_manager"].items()):
+        md.append(f"| {name} | {', '.join(sorted(managers))} |")
+    md += [
+        "",
+        "The one institution here that the Bank of Ghana did **not** flag for "
+        "related-party exposure is "
+        f"{', '.join(pl['institutions_unflagged_by_bog']) or 'none'}. Section 4's "
+        "comparison is therefore a statement about the Bank of Ghana notice, not "
+        "about the record as a whole.",
         "",
         "---",
         "",
         "## What this section does not claim",
         "",
-        "- No entity is shown to connect two of the 23 institutions. The notice does "
-        "not name one.",
+        "- The related-party graph is not shown to be one network. It is "
+        f"{s['components']} separate structures, and only one entity — "
+        f"{', '.join(h['connect_multiple_institutions']) or 'none'} — connects two "
+        "of the 23, on the Securities and Exchange Commission's notice. The Bank of "
+        "Ghana notice alone names no such entity, which is what section 1 reported "
+        "before that notice was read.",
         "- Betweenness centrality and community detection return nothing "
         "interpretable on a graph in seventeen pieces, and the high modularity score "
         "measures that fragmentation rather than any discovered structure.",
-        "- Amounts are not comparable across institutions. Some are exact, one is a "
-        "floor, two are totals shared between counterparties, and one transfer is "
-        "stated in three currencies. Only exact cedi amounts on value-extracting "
-        "edges are summed anywhere above.",
-        "- Nothing here is an allegation. Each edge restates what the Bank of Ghana "
+        "- The placement layer is not evidence of an insider relationship, and no "
+        "figure above treats it as one.",
+        "- Amounts are not comparable across institutions. Some are exact, some are "
+        "floors, some are totals shared between counterparties, one transfer is "
+        "stated in three currencies, and the Commission's figures are percentages of "
+        "a fund's own book rather than cedi sums. Only exact cedi amounts on "
+        "value-extracting edges are summed anywhere above; nothing sums a percentage.",
+        "- Nothing here is an allegation. Each edge restates what a regulator "
         "published, and the passage behind it is quoted in `data/evidence.csv` with a "
-        "line anchor into the notice.",
+        "line anchor into the source.",
+        "- GN Savings and Loans is excluded from the worked examples. The Court of "
+        "Appeal quashed the revocation of its licence on 21 May 2026 and the appeal "
+        "is pending; its edges remain, still attributed to the Bank of Ghana.",
     ]
     if pending:
         md.append(f"- {pending} edges are unverified, so every figure is provisional.")
@@ -325,6 +377,7 @@ def main():
         "communities": communities(g),
         "typology": typology(con),
         "comparative": comparative(con),
+        "placement_layer": placement_layer(con),
         "verification": verification_state(con),
     }
 
@@ -340,6 +393,10 @@ def main():
     print(f"communities == components       : "
           f"{metrics['communities']['communities_equal_components']}")
     print(f"modularity                      : {metrics['communities']['modularity']}")
+    pl = metrics["placement_layer"]
+    print(f"placement layer (kept separate) : {pl['edges']} edge(s), "
+          f"{pl['fund_managers']} fund manager(s), "
+          f"{pl['institutions_reached']} of the 23 reached")
     print(f"\nwrote docs/phase2/FINDINGS.md and metrics.json")
     con.close()
 

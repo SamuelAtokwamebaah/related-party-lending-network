@@ -1,22 +1,23 @@
-relationship,category,extracts_value,description
-owns,ownership,0,Holds an ownership interest in the target.
-acquired,ownership,0,Took ownership of the target on a stated date.
-part_of,ownership,0,Is a member of the target group or holding structure.
-controls,ownership,0,Exercises control without a stated shareholding figure.
-directs,governance,0,Holds a directorship or board position at the target.
-lends_to,lending,1,Extended credit to the target.
-over_exposed_to,lending,1,Credit exposure to the target beyond the regulatory limit.
-related_party_exposure_to,lending,1,Exposure the source document classifies as related-party.
-placed_funds_with,placement,1,Placed institutional or depositor funds with the target.
-holds_deposits_in,placement,1,Holds deposits or investments in the target.
-overdrawn_current_accounts,lending,1,Target's current accounts with the institution were overdrawn.
-extended_overdraft_facilities_to,lending,1,Extended overdraft and similar facilities to the target.
-funded_projects_of,lending,1,Used depositor funds to finance projects of the target.
-transferred_collateral_to,lending,1,Transferred collateral security to the target with no cash inflow.
-pays_management_fees_to,fee_extraction,1,Pays management fees to the target.
-pays_rent_to,fee_extraction,1,Pays rent or premises costs to the target.
-assumed_liability_of_loan_of,fee_extraction,1,Took onto its own books a loan contracted by the target.
-pre_financed_receivable_from,placement,1,Pre-financed a receivable the target failed to reimburse.
-transferred_funds_to,placement,1,Transferred depositor funds to the target.
-proposed_merger_with,corporate_action,0,Applied to merge operations with the target.
-succeeded,corporate_action,0,Took over the business of the target as a going concern.
+relationship,category,extracts_value,layer,description
+owns,ownership,0,related_party,Holds an ownership interest in the target.
+acquired,ownership,0,related_party,Took ownership of the target on a stated date.
+part_of,ownership,0,related_party,Is a member of the target group or holding structure.
+controls,ownership,0,related_party,Exercises control without a stated shareholding figure.
+directs,governance,0,related_party,Holds a directorship or board position at the target.
+lends_to,lending,1,related_party,Extended credit to the target.
+over_exposed_to,lending,1,related_party,Credit exposure to the target beyond the regulatory limit.
+related_party_exposure_to,lending,1,related_party,Exposure the source document classifies as related-party.
+placed_funds_with,placement,1,related_party,Placed institutional or depositor funds with the target.
+holds_deposits_in,placement,1,related_party,Holds deposits or investments in the target.
+overdrawn_current_accounts,lending,1,related_party,Target's current accounts with the institution were overdrawn.
+extended_overdraft_facilities_to,lending,1,related_party,Extended overdraft and similar facilities to the target.
+funded_projects_of,lending,1,related_party,Used depositor funds to finance projects of the target.
+transferred_collateral_to,lending,1,related_party,Transferred collateral security to the target with no cash inflow.
+pays_management_fees_to,fee_extraction,1,related_party,Pays management fees to the target.
+pays_rent_to,fee_extraction,1,related_party,Pays rent or premises costs to the target.
+assumed_liability_of_loan_of,fee_extraction,1,related_party,Took onto its own books a loan contracted by the target.
+pre_financed_receivable_from,placement,1,related_party,Pre-financed a receivable the target failed to reimburse.
+transferred_funds_to,placement,1,related_party,Transferred depositor funds to the target.
+proposed_merger_with,corporate_action,0,related_party,Applied to merge operations with the target.
+succeeded,corporate_action,0,related_party,Took over the business of the target as a going concern.
+placed_client_funds_with,placement,1,placement,"Placed client funds with the target, where the source states the placement but does not state that the target is a related party."

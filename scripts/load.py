@@ -25,7 +25,7 @@ SQL = ROOT / "sql" / "schema.sql"
 DEFAULT_DB = ROOT / "db" / "graph.db"
 
 CONFIDENCE = {"documented", "documented_unnamed", "inferred"}
-ALIAS_TYPES = {"former", "later", "typo", "variant"}
+ALIAS_TYPES = {"former", "later", "typo", "variant", "ocr"}
 
 
 class Problems:
@@ -197,17 +197,31 @@ def validate(tables, problems):
 
         if row.get("amount_value"):
             basis = row.get("amount_basis")
+            unit = row.get("amount_unit")
+            currency = row.get("amount_currency")
             if not basis or basis == "none":
                 problems.add(7, f"edges {eid}",
                              "an amount needs an amount_basis (exact / floor / "
                              "combined_total / ratio_only)")
-            if not row.get("amount_currency"):
+            if not unit:
+                problems.add(7, f"edges {eid}",
+                             "an amount needs a unit (million / units / percent)")
+            elif unit == "percent":
+                # A share of a fund's own book. It has no currency and cannot be
+                # added to a cedi figure, so both mistakes are refused here.
+                if currency:
+                    problems.add(7, f"edges {eid}",
+                                 "a percentage has no currency; leave amount_currency "
+                                 "empty")
+                if basis not in ("ratio_only", "combined_total"):
+                    problems.add(7, f"edges {eid}",
+                                 f"amount_basis '{basis}' with unit percent; a ratio is "
+                                 "'ratio_only', or 'combined_total' where the source "
+                                 "states one share across several counterparties")
+            elif not currency:
                 problems.add(7, f"edges {eid}",
                              "an amount needs a currency; not every figure in the "
                              "sources is in cedis")
-            if not row.get("amount_unit"):
-                problems.add(7, f"edges {eid}",
-                             "an amount needs a unit (million / units)")
 
     # --- rule 12: cited passage must name the counterparty ---------------
     # An anchor can be verbatim, in range, and still point at the wrong
@@ -217,7 +231,15 @@ def validate(tables, problems):
     quotes = {r["anchor"]: normalise(r["quote"]).lower() for r in tables["evidence"]}
     names = {}
     for row in tables["entities"]:
-        if row["entity_type"] not in ("corporate_entity", "holding_company"):
+        # Institutions were exempt until v0.4, which was an omission rather than
+        # a decision: an anchor aimed one section off is exactly as wrong when
+        # the endpoint is one of the 23. They are checked here on their aliases
+        # too, because the notices write them every way - "Midland Savings &
+        # Loans", "First Trust Savings & Loans", "Legacy Capital Savings
+        # Limited" - and a name the source actually uses belongs in the alias
+        # list rather than being waved through by a weaker rule.
+        if row["entity_type"] not in ("corporate_entity", "holding_company",
+                                      "institution"):
             continue
         variants = [row["canonical_name"]]
         variants += [parse_alias(a)[0] for a in split_list(row.get("also_known_as"))]
@@ -342,8 +364,9 @@ def build(tables, db_path):
           nullable(r["extracted_date"])) for r in tables["evidence"]])
 
     con.executemany(
-        "INSERT INTO relationship_types VALUES (?,?,?,?)",
-        [(r["relationship"], r["category"], int(r["extracts_value"]), r["description"])
+        "INSERT INTO relationship_types VALUES (?,?,?,?,?)",
+        [(r["relationship"], r["category"], int(r["extracts_value"]), r["layer"],
+          r["description"])
          for r in tables["relationship_types"]])
 
     con.executemany(

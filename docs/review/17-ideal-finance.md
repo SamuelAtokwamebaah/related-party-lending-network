@@ -1,6 +1,6 @@
 # 17. Ideal Finance Limited
 
-`inst-ideal-finance` · notice section **L861–L967** · 5 seeded edge(s) · 21 uncited passage(s)
+`inst-ideal-finance` · notice section **L861–L967** · 6 seeded edge(s) · 21 uncited passage(s)
 
 Read the section in `data/raw/` from L861 to L967, then work through both parts below. Record every decision in `data/verification.csv`.
 
@@ -33,10 +33,12 @@ For each: does the quote support the relationship, the direction, the amount and
 | relationship | `related_party_exposure_to` |
 | amount | — |
 | confidence | `documented` |
-| anchor | `bog-2019-08-16-savings-loans-revocation:L894` |
+| anchor | `bog-2019-08-16-savings-loans-revocation:L894; bog-2019-08-16-savings-loans-revocation:L861` |
 | current decision | confirmed |
 
 > Contrary to section 64 (2) of the Banks and Specialised Deposit-Taking Institutions Act, 2016 (Act 930), the institution's exposure to its related party has consistently been above the regulatory limit of 25% of net own funds (NOF). Exposures to related parties (FirstTrust Savings & Loans and Ideal Capital partners) were to the tune of Ghc63.19 million.
+
+> 17. IDEAL FINANCE LIMITED
 
 *Note carried from compilation:* Combined total GHS 63.19m across E024 and E025; source spells FirsTrust as FirstTrust
 
@@ -49,10 +51,12 @@ For each: does the quote support the relationship, the direction, the amount and
 | relationship | `related_party_exposure_to` |
 | amount | — |
 | confidence | `documented` |
-| anchor | `bog-2019-08-16-savings-loans-revocation:L894` |
+| anchor | `bog-2019-08-16-savings-loans-revocation:L894; bog-2019-08-16-savings-loans-revocation:L861` |
 | current decision | confirmed |
 
 > Contrary to section 64 (2) of the Banks and Specialised Deposit-Taking Institutions Act, 2016 (Act 930), the institution's exposure to its related party has consistently been above the regulatory limit of 25% of net own funds (NOF). Exposures to related parties (FirstTrust Savings & Loans and Ideal Capital partners) were to the tune of Ghc63.19 million.
+
+> 17. IDEAL FINANCE LIMITED
 
 *Note carried from compilation:* Combined total GHS 63.19m across E024 and E025
 
@@ -85,6 +89,18 @@ For each: does the quote support the relationship, the direction, the amount and
 | current decision | confirmed |
 
 *Note carried from compilation:* INFERRED from name only. No source in hand states it. Excluded from headline findings until documented
+
+### P005 — Ideal Finance Limited ← Goldstreet Fund Management Limited
+
+| | |
+|---|---|
+| relationship | `placed_client_funds_with` |
+| amount |  50.61 (ratio_only) |
+| confidence | `documented` |
+| anchor | `sec-2019-11-08-fund-manager-revocation:L835` |
+| current decision | **pending** |
+
+> 13. GOLDSTREET FUND MANAGEMENT LIMITED (FORMERLY GOLDSTREET INVESTMENTS LTD) Goldstreet Fund Management Limited (“Goldstreet”) was incorporated on the 17th December, 2014. It was licensed by the SEC as a Fund Manager on 29th September, 2015. The SEC has had a number of engagements with Goldstreet including Hearings pursuant to section 19 of Act 929, decisions have been issued by the SEC against Goldstreet with directives to take steps to comply and resolve its regulatory infractions, all to no avail. The Specific issues that led to the revocation of its licence included the following a) Failure to honour clients’ redemption requests; b) Payment of operational activities using client funds contrary to Section 160 of the Act 929; c) Non submission of statutory reports contrary to Regulations 33 (1) (a) (b) (c ) and (6) of LI 1728 d) Placement of client funds with out proper due diligence and the requisite standard of professional conduct contrary to Paragraphs, 2, 3, 6 and 13 of Part X of the Commission’s Compliance Manual for Broker -Dealers, Investment Advisers and Representatives 2008. Placements include 50.61% with Ideal Finance Ltd ( in receivership) and 10.06% with First Trust Savings & Loans (in receivership)
 
 ---
 

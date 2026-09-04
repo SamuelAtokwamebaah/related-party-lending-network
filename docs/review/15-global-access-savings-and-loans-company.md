@@ -31,10 +31,12 @@ For each: does the quote support the relationship, the direction, the amount and
 | relationship | `pays_rent_to` |
 | amount | — |
 | confidence | `documented` |
-| anchor | `bog-2019-08-16-savings-loans-revocation:L741` |
+| anchor | `bog-2019-08-16-savings-loans-revocation:L741; bog-2019-08-16-savings-loans-revocation:L713` |
 | current decision | confirmed |
 
 > The institution continues to record accumulated losses due mainly to high rent expenses paid to the majority shareholder for the use of its premises.
+
+> 15. GLOBAL ACCESS SAVINGS AND LOANS COMPANY LIMITED
 
 *Note carried from compilation:* Fee extraction; no amount stated
 

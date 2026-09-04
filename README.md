@@ -3,9 +3,9 @@
 Modelling the insider relationships behind Ghana's 2019 savings & loans failures as a
 network, built only from what the regulators published.
 
-> **Status: Phases 0–3 complete; evidence base at `v0.3`.** This repository is private
+> **Status: Phases 0–3 complete; evidence base at `v0.4`.** This repository is private
 > until v1. The 39 edges drawn from the Bank of Ghana notice have been checked against it
-> by hand; the 14 added from the Securities and Exchange Commission notice are recorded
+> by hand; the 30 drawn from the Securities and Exchange Commission notice are recorded
 > as `pending` and are marked as unverified wherever they appear. The pass is recorded in
 > `data/verification.csv` and versioned in `data/changelog.csv`. Nothing here is a finding
 > about any institution or person: it is a record of what the source documents state, with
@@ -33,8 +33,9 @@ It is the third repository in a deliberate arc:
 
 ## Sourcing standard
 
-- Primary sources only: Bank of Ghana notices, published court and regulatory documents,
-  official registry data, and the verified dataset in `ghana-banking-collapse`.
+- Primary sources only: Bank of Ghana and Securities and Exchange Commission notices,
+  published court and regulatory documents, official registry data, and the verified
+  dataset in `ghana-banking-collapse`.
 - Every node and every edge carries a source document and a line-level anchor.
 - Each edge carries a confidence class:
   - `documented` — the source names both ends of the relationship
@@ -48,9 +49,10 @@ It is the third repository in a deliberate arc:
 ## Where things stand
 
 Phase 0 read the 16 August 2019 notice end to end and inventoried what it can support.
-The evidence base now holds 65 entities and 53 edges, of which 33 are documented with
+The evidence base now holds 74 entities and 69 edges, of which 49 are documented with
 both ends named, 18 name the relationship but not the counterparty, and 2 are inferred
-and excluded from every figure.
+and excluded from every figure. Of those, **54 edges form the related-party graph** and
+13 sit in a separate placement layer described below.
 
 Built independently from passages, it reproduces the published **17-of-23** finding: the
 17 institutions carrying a value-extracting edge are exactly the 17 flagged for
@@ -88,6 +90,30 @@ its worked examples.
 The full assessment, including the recommended project mode and the open questions, is in
 [docs/phase0/SOURCE-INVENTORY.md](docs/phase0/SOURCE-INVENTORY.md).
 
+## The placement layer, and what it costs to keep it separate
+
+The Commission's notice describes a second kind of relationship the Bank of Ghana's does
+not: a fund manager placing client money in one of the 23, with **no related-party claim
+attached**. Value moves; no insider relationship is alleged. There are 13 such edges from
+7 fund managers, reaching 8 of the 23.
+
+They are held in a separate layer — `layer = 'placement'` in `relationship_types`,
+filtered out of `v_institution_profile`, excluded from every figure in the related-party
+analysis, and shown on the page in a table rather than in the diagrams.
+
+The reason is a number rather than a principle. Five of the seven fund managers name more
+than one of the 23. Admitting these as ordinary edges would take the graph from **17
+components, largest 10** to **12 components, largest 26** — one structure holding most of
+the graph. That structure is real, and it is not an insider network: it is a set of
+institutions that share a fund manager who placed client money in both. It would be the
+most impressive version of this project and the least true one.
+
+One of the eight institutions the placement layer reaches is **Commerz**, which the Bank
+of Ghana did *not* flag for related-party exposure — and a separate fund manager, Nordea
+Capital, is recorded as placing 50% of its funds under management with Commerz *as a
+related party*. The clean 17-against-6 split is a property of the Bank of Ghana notice,
+not of the record as a whole.
+
 ## Repository layout
 
 ```
@@ -96,22 +122,26 @@ data/         the evidence base: sources, entities, edges, evidence, roles,
 data/raw/     extracted text of the source notices, as working copies
 data/vendor/  the verified dataset carried over from ghana-banking-collapse
 sources/      the source documents as published
-sql/          schema.sql - nine tables and two views
+sql/          schema.sql - fourteen tables and three views
 scripts/      phase0_extract_evidence.py    splits the notice, extracts evidence
               phase1_seed_from_phase0.py    one-off seed of the CSV model
               load.py                       validates, then builds the database
-              build_review_pack.py          builds the verification sheets
+              build_review_pack.py          verification sheets, BoG notice
+              build_sec_review.py           verification sheets, SEC notice
               analyse_graph.py              builds the graph, computes the metrics
               phase2_report.py              writes the findings document
               build_site.py                 renders index.html
               site_template.py              the page shell and palette
               integrate_sec_notice.py       one-off, idempotent: admits the SEC notice
+              integrate_placement_layer.py  one-off: the rest of that notice, and
+                                            the placement layer
 docs/phase0/  SOURCE-INVENTORY.md   feasibility, mode decision, corrections
 docs/phase1/  SCHEMA-PROPOSAL.md    the data model as built
 docs/phase2/  FINDINGS.md           the analyses, with what they cannot show
               metrics.json          the same numbers, machine-readable
 index.html    the network map, rendered from the database
-docs/review/  one verification sheet per institution
+docs/review/  one verification sheet per institution (Bank of Ghana notice)
+docs/review/sec/  the SEC notice: sections with edges, and coverage of all 53
 ```
 
 ## Reproducing
@@ -141,15 +171,17 @@ no edge cites — which is where a missed relationship would hide. Decisions are
 
 Three things remain deliberately open, and all are visible in the data rather than buried:
 
-- The 14 edges taken from the Securities and Exchange Commission notice (`S001`–`S014`)
-  are `pending`. They passed the loader's rules but have not been through the hand pass,
-  and the map says so.
-- `data/resolution_review.csv` holds six entity-resolution questions marked `undecided`.
+- The 30 edges taken from the Securities and Exchange Commission notice (`S001`–`S014`,
+  `P001`–`P016`) are `pending`. They passed the loader's rules but have not been through
+  the hand pass, and the map says so. [docs/review/sec/](docs/review/sec/) is the pack
+  that pass works from.
+- `data/resolution_review.csv` holds five entity-resolution questions marked `undecided`.
   Nothing in hand settles them, and the tooling never merges entities on its own. The one
   that would change the graph is whether Hoda Holdings Ltd, named by the Commission as a
   related party of uniSecurities, is the Hoda Group of Companies that the Bank of Ghana
-  says acquired uniCredit. Three of the six rest on a shared name only, and a shared name
-  is not evidence.
+  says acquired uniCredit. A sixth was closed at v0.4: the Commission calls Legacy Capital
+  Savings a related party of Legacy Fund Management, so that pair no longer rests on a
+  shared name.
 - Two edges are classed `inferred`. They rest on no source, carry no citation, and are
   excluded from every figure and from the map.
 

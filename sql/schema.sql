@@ -88,7 +88,8 @@ CREATE TABLE entities (
 CREATE TABLE aliases (
     entity_id   TEXT NOT NULL REFERENCES entities(entity_id),
     alias_name  TEXT NOT NULL,
-    alias_type  TEXT NOT NULL CHECK (alias_type IN ('former', 'later', 'typo', 'variant')),
+    alias_type  TEXT NOT NULL CHECK (alias_type IN ('former', 'later', 'typo',
+                                                    'variant', 'ocr')),
     PRIMARY KEY (entity_id, alias_name)
 );
 
@@ -116,12 +117,21 @@ CREATE TABLE institution_attributes (
 
 -- The controlled vocabulary. extracts_value marks relationships that move value
 -- out of the institution, as against those that only describe structure.
+--
+-- layer separates two things the sources state in similar words. A related_party
+-- relationship is one a regulator described as being with a related party. A
+-- placement is a fund manager putting client money into one of the 23 with no
+-- related-party claim attached: value moves, but no insider relationship is
+-- alleged. The distinction is enforced here rather than in prose because
+-- admitting placements into the related-party figures would connect most of the
+-- graph through shared fund managers and claim more than the documents state.
 CREATE TABLE relationship_types (
     relationship    TEXT PRIMARY KEY,
     category        TEXT NOT NULL CHECK (category IN (
                         'ownership', 'lending', 'placement', 'fee_extraction',
                         'governance', 'corporate_action')),
     extracts_value  INTEGER NOT NULL CHECK (extracts_value IN (0, 1)),
+    layer           TEXT NOT NULL CHECK (layer IN ('related_party', 'placement')),
     description     TEXT NOT NULL
 );
 
@@ -136,9 +146,15 @@ CREATE TABLE edges (
     -- Amounts are not always in cedis: the notice states one transfer in USD,
     -- GBP and EUR. Value, currency and unit are kept apart so a figure cannot
     -- be added to another that means something different.
+    --
+    -- The SEC states its figures as shares of a fund's own book - 9.45% of funds
+    -- with Midland, 99.41% of funds under management with Ghana Growth Fund. A
+    -- ratio has a unit but no currency, and it is not comparable with a cedi
+    -- amount at all, so 'percent' is a unit and the currency requirement below
+    -- is lifted for it. Nothing sums percentages.
     amount_value      REAL,
     amount_currency   TEXT CHECK (amount_currency IN ('GHS', 'USD', 'GBP', 'EUR')),
-    amount_unit       TEXT CHECK (amount_unit IN ('million', 'units')),
+    amount_unit       TEXT CHECK (amount_unit IN ('million', 'units', 'percent')),
     amount_basis      TEXT CHECK (amount_basis IN (
                           'exact', 'floor', 'combined_total', 'ratio_only', 'none')),
     amount_note       TEXT,
@@ -151,7 +167,15 @@ CREATE TABLE edges (
     -- An amount without a basis is three different kinds of statement
     -- flattened into one number.
     CHECK (amount_value IS NULL OR (amount_basis IS NOT NULL AND amount_basis <> 'none'
-                                    AND amount_currency IS NOT NULL AND amount_unit IS NOT NULL)),
+                                    AND amount_unit IS NOT NULL)),
+    -- A percentage carries no currency and must not be given one; every other
+    -- unit must.
+    CHECK (amount_unit IS NULL
+           OR (amount_unit = 'percent' AND amount_currency IS NULL)
+           OR (amount_unit <> 'percent' AND amount_currency IS NOT NULL)),
+    -- A percentage is a ratio of some book, and 'ratio_only' is the basis that
+    -- says so. Pairing it with 'exact' would invite it into a sum.
+    CHECK (amount_unit <> 'percent' OR amount_basis IN ('ratio_only', 'combined_total')),
     -- An inferred edge rests on no source and must say why it is held at all.
     CHECK (confidence <> 'inferred' OR (review_note IS NOT NULL AND review_note <> ''))
 );
@@ -252,6 +276,7 @@ SELECT
     e.relationship,
     rt.category,
     rt.extracts_value,
+    rt.layer,
     e.amount_value,
     e.amount_currency,
     e.amount_unit,
@@ -294,4 +319,37 @@ JOIN relationship_types rt ON rt.relationship = e.relationship
 LEFT JOIN institution_attributes ia ON ia.entity_id = en.entity_id
 WHERE en.scope_class = 'core_23'
   AND e.confidence <> 'inferred'
+  -- Placement edges run into an institution from a fund manager, so none of
+  -- them would be picked up by this view in any case. The filter is written
+  -- anyway: this is the view every headline figure reads, and it should be
+  -- impossible to widen it into the placement layer by adding a row.
+  AND rt.layer = 'related_party'
 GROUP BY en.entity_id, en.canonical_name, ia.related_party_exposure;
+
+-- The placement layer, kept separate on purpose. A fund manager placing client
+-- money in one of the 23 is not an insider relationship and is not evidence of
+-- one; these rows exist because the same institutions recur as destinations
+-- across unrelated fund managers, which is a finding of its own and a different
+-- finding from the related-party graph.
+CREATE VIEW v_placement_into_23 AS
+SELECT
+    fm.entity_id      AS fund_manager_id,
+    fm.canonical_name AS fund_manager,
+    en.entity_id      AS institution_id,
+    en.canonical_name AS institution,
+    ia.related_party_exposure,
+    e.amount_value,
+    e.amount_unit,
+    e.amount_basis,
+    e.amount_note,
+    e.edge_id,
+    COALESCE(v.decision, 'pending') AS verification
+FROM edges e
+JOIN relationship_types rt ON rt.relationship = e.relationship
+JOIN entities fm ON fm.entity_id = e.source_entity_id
+JOIN entities en ON en.entity_id = e.target_entity_id
+LEFT JOIN institution_attributes ia ON ia.entity_id = en.entity_id
+LEFT JOIN verification v ON v.edge_id = e.edge_id
+WHERE rt.layer = 'placement'
+  AND en.scope_class = 'core_23'
+  AND (e.version_removed IS NULL OR e.version_removed = '');

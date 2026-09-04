@@ -142,7 +142,7 @@ RESOLUTION = [
 ]
 
 GN_STATUS = (
-    "Contested. On 21 May 2026 the Court of Appeal quashed the Bank of Ghana's "
+    "On 21 May 2026 the Court of Appeal quashed the Bank of Ghana's "
     "16 August 2019 revocation of this institution's licence and ordered it restored; "
     "the Bank of Ghana has appealed to the Supreme Court and the matter is pending. "
     "The edges below remain as published by the Bank of Ghana and are attributed to it. "

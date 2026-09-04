@@ -33,8 +33,16 @@ DB = ROOT / "db" / "graph.db"
 OUT = ROOT / "docs" / "phase2"
 
 
-def load_graph(con):
-    """A MultiDiGraph of the documented evidence base. Inferred edges excluded."""
+def load_graph(con, layer="related_party"):
+    """A MultiDiGraph of the documented evidence base. Inferred edges excluded.
+
+    layer defaults to related_party, which is the graph every headline figure in
+    this project describes. Passing layer=None returns both layers together, and
+    that combined graph is a different object with a different meaning: it also
+    contains fund managers placing client money in the 23 with no related-party
+    claim in the source. It is reported separately and never mixed into the
+    related-party figures.
+    """
     g = nx.MultiDiGraph()
     for row in con.execute("""
             SELECT entity_id, canonical_name, entity_type, scope_class, regulator,
@@ -46,14 +54,16 @@ def load_graph(con):
     for row in con.execute("""
             SELECT e.edge_id, e.source_entity_id, e.target_entity_id, e.relationship,
                    rt.category, rt.extracts_value, e.amount_value, e.amount_currency,
-                   e.amount_unit, e.amount_basis, e.confidence
+                   e.amount_unit, e.amount_basis, e.confidence, rt.layer
             FROM edges e
             JOIN relationship_types rt ON rt.relationship = e.relationship
             WHERE e.confidence <> 'inferred'
-              AND (e.version_removed IS NULL OR e.version_removed = '')"""):
+              AND (e.version_removed IS NULL OR e.version_removed = '')
+              AND (? IS NULL OR rt.layer = ?)""", (layer, layer)):
         g.add_edge(row[1], row[2], key=row[0], relationship=row[3], category=row[4],
                    extracts_value=row[5], amount_value=row[6], amount_currency=row[7],
-                   amount_unit=row[8], amount_basis=row[9], confidence=row[10])
+                   amount_unit=row[8], amount_basis=row[9], confidence=row[10],
+                   layer=row[11])
     # Nodes no edge touches are not part of the graph's structure.
     g.remove_nodes_from([n for n in list(g.nodes) if g.degree(n) == 0])
     return g
@@ -175,17 +185,73 @@ def communities(g):
     }
 
 
-def typology(con):
-    """The extraction mechanisms the notice describes, counted."""
+def typology(con, layer="related_party"):
+    """The extraction mechanisms the notices describe, counted."""
     rows = con.execute("""
         SELECT rt.category, rt.relationship, rt.extracts_value, COUNT(*) AS n,
                SUM(CASE WHEN e.confidence = 'documented' THEN 1 ELSE 0 END)
         FROM edges e JOIN relationship_types rt ON rt.relationship = e.relationship
         WHERE e.confidence <> 'inferred'
+          AND (? IS NULL OR rt.layer = ?)
         GROUP BY rt.category, rt.relationship, rt.extracts_value
-        ORDER BY rt.category, n DESC""").fetchall()
+        ORDER BY rt.category, n DESC""", (layer, layer)).fetchall()
     return [{"category": r[0], "relationship": r[1], "extracts_value": bool(r[2]),
              "edges": r[3], "named_counterparty": r[4]} for r in rows]
+
+
+def placement_layer(con):
+    """The placement layer, reported on its own.
+
+    A fund manager putting client money into one of the 23 is not an insider
+    relationship and is not evidence of one. What makes it worth reporting is
+    that the same institutions recur as destinations across fund managers with
+    no stated connection to each other, which is a fact about where client money
+    went and not about who owned whom. It is kept out of every related-party
+    figure and out of the component count.
+    """
+    rows = con.execute("""
+        SELECT fund_manager, institution, related_party_exposure,
+               amount_value, amount_basis, amount_note, edge_id, verification
+        FROM v_placement_into_23
+        ORDER BY institution, fund_manager""").fetchall()
+    by_institution = defaultdict(list)
+    for r in rows:
+        by_institution[r[1]].append({
+            "fund_manager": r[0], "amount_value": r[3], "amount_basis": r[4],
+            "amount_note": r[5], "edge_id": r[6], "verification": r[7],
+        })
+    managers = {r[0] for r in rows}
+    multi = {name: [p["fund_manager"] for p in placements]
+             for name, placements in by_institution.items() if len(placements) > 1}
+    # A fund manager naming more than one of the 23 is the reason this layer
+    # would collapse the component count if it were admitted as ordinary edges.
+    reach = defaultdict(set)
+    for r in rows:
+        reach[r[0]].add(r[1])
+    # What separating the layers is worth, stated as a number rather than as an
+    # assurance. Five of the seven fund managers name more than one of the 23,
+    # so admitting these as ordinary edges would merge components that share no
+    # owner, no director and no stated relationship - only a fund manager who
+    # placed client money in both.
+    rp = shape(load_graph(con, "related_party"))
+    combined = shape(load_graph(con, None))
+    return {
+        "edges": len(rows),
+        "fund_managers": len(managers),
+        "institutions_reached": len(by_institution),
+        "if_admitted": {
+            "components_related_party_only": rp["components"],
+            "components_if_admitted": combined["components"],
+            "largest_component_related_party_only": rp["component_sizes"][0],
+            "largest_component_if_admitted": combined["component_sizes"][0],
+        },
+        "institutions_unflagged_by_bog": sorted(
+            {r[1] for r in rows if r[2] == 0}),
+        "institutions_with_more_than_one_manager": multi,
+        "managers_reaching_more_than_one": {
+            m: sorted(i) for m, i in sorted(reach.items()) if len(i) > 1},
+        "by_institution": {k: v for k, v in sorted(by_institution.items())},
+    }
 
 
 def comparative(con):

@@ -151,8 +151,12 @@ summary { cursor: pointer; color: var(--accent); font-size: 0.9rem; }
            align-items: center; margin-bottom: 7px; font-size: 0.85rem; }
 .bar-row .lab { color: var(--text-secondary); text-align: right;
                 font-family: "IBM Plex Mono", monospace; font-size: 0.78rem; }
-.bar-track { background: var(--surface-2); border-radius: 0 3px 3px 0; height: 16px; }
-.bar-fill { background: var(--series-1); height: 100%; border-radius: 0 3px 3px 0; }
+/* Both must be blocks. As inline spans the fill had no width and no height, so
+   every bar rendered as an empty track - the chart drew nothing at all. */
+.bar-track { display: block; background: var(--surface-2);
+             border-radius: 0 3px 3px 0; height: 16px; }
+.bar-fill { display: block; background: var(--series-1); height: 100%;
+            border-radius: 0 3px 3px 0; }
 .bar-row .val { font-family: "IBM Plex Mono", monospace; color: var(--text-secondary); }
 
 footer { margin-top: 72px; padding-top: 24px; border-top: 1px solid var(--border);

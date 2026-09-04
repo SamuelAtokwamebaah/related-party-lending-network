@@ -1,6 +1,6 @@
 # 20. Midland Savings and Loans Company Limited
 
-`inst-midland` · notice section **L1040–L1085** · 4 seeded edge(s) · 10 uncited passage(s)
+`inst-midland` · notice section **L1040–L1085** · 7 seeded edge(s) · 10 uncited passage(s)
 
 Read the section in `data/raw/` from L1040 to L1085, then work through both parts below. Record every decision in `data/verification.csv`.
 
@@ -17,10 +17,12 @@ For each: does the quote support the relationship, the direction, the amount and
 | relationship | `over_exposed_to` |
 | amount | — |
 | confidence | `documented` |
-| anchor | `bog-2019-08-16-savings-loans-revocation:L1065` |
+| anchor | `bog-2019-08-16-savings-loans-revocation:L1065; bog-2019-08-16-savings-loans-revocation:L1040` |
 | current decision | confirmed |
 
 > The institution is over exposed to related parties such as Liberty Asset Management, Liberty DMI Microfinance and Griffin Financial Services continue to be rolled over in spite of the liquidity challenges it faces.
+
+> 20. MIDLAND SAVINGS AND LOANS COMPANY LIMITED
 
 *Note carried from compilation:* Named; no amount
 
@@ -31,10 +33,12 @@ For each: does the quote support the relationship, the direction, the amount and
 | relationship | `over_exposed_to` |
 | amount | — |
 | confidence | `documented` |
-| anchor | `bog-2019-08-16-savings-loans-revocation:L1065` |
+| anchor | `bog-2019-08-16-savings-loans-revocation:L1065; bog-2019-08-16-savings-loans-revocation:L1040` |
 | current decision | confirmed |
 
 > The institution is over exposed to related parties such as Liberty Asset Management, Liberty DMI Microfinance and Griffin Financial Services continue to be rolled over in spite of the liquidity challenges it faces.
+
+> 20. MIDLAND SAVINGS AND LOANS COMPANY LIMITED
 
 *Note carried from compilation:* Named; no amount
 
@@ -45,19 +49,63 @@ For each: does the quote support the relationship, the direction, the amount and
 | relationship | `over_exposed_to` |
 | amount | — |
 | confidence | `documented` |
-| anchor | `bog-2019-08-16-savings-loans-revocation:L1065` |
+| anchor | `bog-2019-08-16-savings-loans-revocation:L1065; bog-2019-08-16-savings-loans-revocation:L1040` |
 | current decision | confirmed |
 
 > The institution is over exposed to related parties such as Liberty Asset Management, Liberty DMI Microfinance and Griffin Financial Services continue to be rolled over in spite of the liquidity challenges it faces.
 
+> 20. MIDLAND SAVINGS AND LOANS COMPANY LIMITED
+
 *Note carried from compilation:* Notice says "such as", so the list is not exhaustive
+
+### P007 — Midland Savings and Loans Company Limited ← Integrity Fund Management Ltd
+
+| | |
+|---|---|
+| relationship | `placed_client_funds_with` |
+| amount |  80 (combined_total) |
+| confidence | `documented` |
+| anchor | `sec-2019-11-08-fund-manager-revocation:L875` |
+| current decision | **pending** |
+
+> 15. INTEGRITY FUND MANAGEMENT LTD Integrity Fund Management Ltd (“Integrity”) was incorporated on 22nd August, 2015 and licensed as a Fund Manager on 10th December, 2015. The SEC has directed Integrity to resolve its regulatory infractions, all to no avail. The Specific issue that led to the revocation of its licence was the following: a) Placement of client funds without proper due diligence and the requisite standard of professional conduct contrary to Paragraphs, 2, 3, 6 and 13 of Part X of the Commission’s Compliance Manual for Broker-Dealers, Investment Advisers and Representatives 2008. Over 80% placement of client funds in revoked savings & loans including, Midland S avings & Loans, First Trust Savings & Loans and Legacy Savings & Loans.
+
+*Amount note:* Stated as 'Over 80% placement of client funds in revoked savings & loans' across Midland, FirsTrust and Legacy Capital together. The notice gives no per-institution split, and the figure is a floor.
+
+### P013 — Midland Savings and Loans Company Limited ← Procap Finance Limited
+
+| | |
+|---|---|
+| relationship | `placed_client_funds_with` |
+| amount |  68 (combined_total) |
+| confidence | `documented` |
+| anchor | `sec-2019-11-08-fund-manager-revocation:L1054` |
+| current decision | **pending** |
+
+> 25. PROCAP FINANCE LIMITED Procap Finance Ltd (“Procap”) was incorporated on 13 th June, 2016 and licensed by the SEC on a 4th December 2017 as a Fund Manager. The SEC has directed Procap to resolve its regulatory infractions, all to no avail. The Specific issue that led to the revocation of its licence: a) Placement of client funds without proper due diligence and the requisite standard of professional conduct contrary to Paragraphs, 2, 3, 6 and 13 of Part X of the Commission’s Compliance Manual for Broker -Dealers, Investment Advisers and Representatives 200 8. Over 68% placement in revoked Savings and Loans institutions including Midland Savings and Loans and FirsTrust Savings & Loans .
+
+*Amount note:* Stated as 'Over 68% placement in revoked Savings and Loans institutions including Midland Savings and Loans and FirsTrust' together. The notice gives no per-institution split, the figure is a floor, and 'including' leaves the list open.
+
+### P016 — Midland Savings and Loans Company Limited ← Standard Securities Limited
+
+| | |
+|---|---|
+| relationship | `placed_client_funds_with` |
+| amount | — |
+| confidence | `documented` |
+| anchor | `sec-2019-11-08-fund-manager-revocation:L508` |
+| current decision | **pending** |
+
+> 17. STANDARD SECURITIES LIMITED (FORMERLY ASN INVESTMENTS LIMITED) Standard Securities Limited (“Standard”) was incorporated on the 2 nd of February, 2013 and licensed by the SEC as a Fund Manager on 21st March, 2013. The SEC has had a number of engagements with Standard including Hearings pursuant to section 19 of Act 929, decisions have been issued by the SEC against Standard with directives to take steps to comply and resolve its regulatory infractions, all to no avail. The Specific issues that led to the revocation of its licence included the following: a) Failure to honour clients’ redemption request; b) Placement of client funds with related parties without proper due diligence and the requisite standard of professional conduct contrary to Paragraphs, 2, 3, 6 and 13 of Part X of the Commission’s Compliance Manual for Broker-Dealers, Investment Advisers and Representatives 2008. Related party placement with related party called ASN Financial Services Limited (in receivership). Other Placements include Dwadifo Adanfo Microfinance (in receivership), Express Savings & Loans (in receivership), Eclipse Microfinance (in receivership), CIG Microfinance (in receivership) and Midland Savings & Loans (in receivership);
+
+*Note carried from compilation:* Listed under 'Other Placements', distinct from the related-party placement in the same bullet. No figure is stated.
 
 ### S005 — Midland Savings and Loans Company Limited ← Liberty Asset Management
 
 | | |
 |---|---|
 | relationship | `placed_funds_with` |
-| amount | — |
+| amount |  9.45 (ratio_only) |
 | confidence | `documented` |
 | anchor | `sec-2019-11-08-fund-manager-revocation:L945` |
 | current decision | pending |

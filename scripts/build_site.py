@@ -51,9 +51,12 @@ def short_name(name, entity_type):
                 s = s.split(cut)[0]
                 break
         return s
+    # Only the legal form and the "savings and loans" tail, which every one of
+    # the 23 carries. Trimming "Finance" too turned Ideal Finance Limited into
+    # "Ideal" in a panel that also holds Ideal Capital Partners, Ideal Trade and
+    # Ideal Bottling, where the label has to say which one it is.
     for suffix in (" Savings and Loans Company Limited", " Savings and Loans Limited",
-                   " Savings and Loans Ltd.", " Financial Services Limited",
-                   " Finance House Limited", " Finance Limited", " Company Limited",
+                   " Savings and Loans Ltd.", " Company Limited",
                    " Limited", " Ltd."):
         if name.endswith(suffix):
             return name[: -len(suffix)]
@@ -190,30 +193,60 @@ def draw(g, nodes, width, height, evidence, label_size=10, radius=9):
             f' stroke="transparent" stroke-width="14"/>'
             f'</g>')
 
+    # Node marks first, and each one is an obstacle the labels must avoid.
+    blocked = []
+    to_label = []
     for node in sorted(nodes):
         x, y = pos[node]
         data = g.nodes[node]
         slot = colour_slot(data)
         marks.append(node_mark(x, y, slot, shape_for(data["entity_type"]), radius))
+        blocked.append((x - radius - 2, y - radius - 2, x + radius + 2, y + radius + 2))
         # In a small panel the caption already names the institution, so
         # labelling the hub as well only crowds the leaves it points at.
         if label_size <= 10 and data["scope_class"] == "core_23":
             continue
         per_line = 18 if label_size <= 10 else 26
-        lines = wrap(short_name(data["name"], data["entity_type"]), per_line=per_line)
-        # Label above the node in the lower half of the panel, below it in the
-        # upper half, so a label never lands on the node beneath it.
-        if y > height * 0.58:
-            top = y - radius - 7 - (len(lines) - 1) * (label_size + 1)
-        else:
-            top = y + radius + label_size + 4
+        to_label.append((node, x, y,
+                         wrap(short_name(data["name"], data["entity_type"]),
+                              per_line=per_line)))
+
+    line_h = label_size + 1
+
+    def box_for(x, top, lines):
+        half = max(len(line) for line in lines) * label_size * 0.29
+        cx = min(max(x, half + 2), width - half - 2)
+        return (cx - half, top - label_size, cx + half, top + (len(lines) - 1) * line_h + 2)
+
+    def clashes(box):
+        return any(not (box[2] <= o[0] or box[0] >= o[2]
+                        or box[3] <= o[1] or box[1] >= o[3]) for o in blocked)
+
+    # Placing labels one at a time against everything already placed. Without
+    # this, two nodes close together in a small panel print their labels on top
+    # of each other, which happened to five panels once the second regulator's
+    # counterparties were added.
+    for node, x, y, lines in to_label:
+        above = y - radius - 7 - (len(lines) - 1) * line_h
+        below = y + radius + label_size + 4
+        # Preferred side first: below in the upper half of the panel, above in
+        # the lower half, so a label leans away from the middle of the drawing.
+        order = [below, above] if y <= height * 0.58 else [above, below]
+        candidates = list(order)
+        for step in range(1, 5):
+            candidates += [order[0] + step * (line_h + 3) * (1 if order[0] == below else -1),
+                           order[1] + step * (line_h + 3) * (1 if order[1] == below else -1)]
+        top = next((t for t in candidates
+                    if 2 + label_size <= t and t + (len(lines) - 1) * line_h <= height - 2
+                    and not clashes(box_for(x, t, lines))), order[0])
+        blocked.append(box_for(x, top, lines))
         for i, line in enumerate(lines):
             # Keep the label inside the viewBox: an outer SVG clips to its
             # viewport, so a centred label on an edge node would be cut off.
             half = len(line) * label_size * 0.29
             lx = min(max(x, half + 2), width - half - 2)
             labels.append(
-                f'<text x="{lx:.1f}" y="{top + i * (label_size + 1):.1f}" '
+                f'<text x="{lx:.1f}" y="{top + i * line_h:.1f}" '
                 f'text-anchor="middle" font-size="{label_size}" '
                 # Knock the label out of any edge line running behind it.
                 f'paint-order="stroke" stroke="var(--surface-1)" stroke-width="3" '
@@ -323,9 +356,9 @@ institutions. Every counterparty it names attaches to exactly one. That is a fac
 document: it was written to explain why each institution failed, not to map ownership across
 them.</p>
 <p>Adding the Securities and Exchange Commission&rsquo;s notice of 8 November 2019, which
-revoked 53 fund-management licences, changes that. Four counterparties in this graph appear
-on it with their own regulatory record, and the SEC states what the banking regulator had no
-reason to: where those firms had placed their clients&rsquo; money.</p>
+revoked 53 fund-management licences, changes that. The Commission states what the banking
+regulator had no reason to: where fund managers had placed their clients&rsquo; money.
+Eleven of its 53 sections name one of the 23 institutions.</p>
 <p>The clearest result needs both documents and appears in neither alone. The Bank of Ghana
 records <strong>Midland</strong> as over-exposed to <strong>Liberty Asset Management</strong>;
 the SEC records Liberty holding 9.45% of its funds with Midland. Each held the other, and
@@ -373,6 +406,45 @@ about that source.</p>
 
     parts.append('''<div id="cite" hidden><div class="meta"></div><blockquote></blockquote>
 <p class="hint" style="margin:8px 0 0">Passage as published by the Bank of Ghana. Press Escape to dismiss.</p></div>''')
+
+    # -- the placement layer, shown apart from the graph -----------------------
+    # Deliberately a table and not a diagram. Drawing it beside the components
+    # would put it in the reader's eye as part of the same structure, which is
+    # the exact confusion the layer exists to prevent.
+    pl = metrics["placement_layer"]
+    ifa = pl["if_admitted"]
+    parts.append(f'''<h2>What was left out, and why</h2>
+<p class="section-note">A separate finding, kept out of every number above.</p>
+<p>The Commission&rsquo;s notice describes a second kind of relationship the Bank of
+Ghana&rsquo;s does not: a fund manager placing client money in one of the 23, with
+<em>no related-party claim attached</em>. Value moves. No insider relationship is
+alleged. There are <strong>{pl["edges"]} such edges</strong>, from
+<strong>{pl["fund_managers"]} fund managers</strong>, reaching
+<strong>{pl["institutions_reached"]} of the 23</strong>.</p>
+<p>Admitting them as ordinary edges would take the graph from
+<strong>{ifa["components_related_party_only"]} components, largest
+{ifa["largest_component_related_party_only"]}</strong>, to
+<strong>{ifa["components_if_admitted"]} components, largest
+{ifa["largest_component_if_admitted"]}</strong> &mdash; one structure holding most of
+the graph. That structure is real. It is not an insider network: it is a set of
+institutions that happen to share a fund manager who placed client money in both.
+Presenting it as the headline would be the most flattering version of this project
+and the least true one.</p>
+<div class="scroll"><table>
+<thead><tr><th>institution</th><th>fund managers placing client funds there</th></tr></thead>
+<tbody>''')
+    multi = pl["institutions_with_more_than_one_manager"]
+    for name in sorted(multi):
+        parts.append(f'<tr><td>{html.escape(name)}</td><td>'
+                     f'{html.escape(", ".join(sorted(multi[name])))}</td></tr>')
+    parts.append('</tbody></table></div>')
+    unflagged = pl["institutions_unflagged_by_bog"]
+    if unflagged:
+        parts.append(
+            '<p class="section-note">' + html.escape(", ".join(unflagged))
+            + ' appears here, and is one of the six institutions the Bank of Ghana did '
+              '<strong>not</strong> flag for related-party exposure. The 17-of-23 split '
+              'is a property of that notice, not of the whole record.</p>')
 
     # -- typology: one series, so a single hue and no legend --------------------
     typ = {}
