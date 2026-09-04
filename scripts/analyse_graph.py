@@ -134,10 +134,17 @@ def loops(g):
     graph.
     """
     simple = nx.DiGraph()
-    for u, v, data in g.edges(data=True):
+    for u, v, data in sorted(g.edges(data=True), key=lambda e: (e[0], e[1])):
         simple.add_edge(u, v)
     found = []
     for cycle in nx.simple_cycles(simple):
+        # A cycle has no start. simple_cycles returns it rotated to wherever its
+        # search happened to begin, and that varies between processes, so two
+        # runs described the same loop from different nodes and the committed
+        # findings did not match a fresh build. Rotating to the lowest-sorting
+        # member fixes the description without changing the loop.
+        pivot = cycle.index(min(cycle))
+        cycle = cycle[pivot:] + cycle[:pivot]
         members = [g.nodes[n]["name"] for n in cycle]
         legs = []
         for i, u in enumerate(cycle):
@@ -157,6 +164,8 @@ def loops(g):
             "legs": legs,
             "all_legs_extract_value": all(leg["extracts_value"] for leg in legs),
         })
+    # And the cycles themselves come back in search order, which varies too.
+    found.sort(key=lambda c: (len(c["members"]), c["members"]))
     closed = [c for c in found if c["all_legs_extract_value"]]
     return {
         "count": len(found),

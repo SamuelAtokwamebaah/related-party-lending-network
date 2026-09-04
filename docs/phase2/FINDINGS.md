@@ -54,24 +54,24 @@ A **cycle** is a path returning to where it began. In a related-party structure 
 
 **Cycles found: 4. Of those, closed extraction loops — where every leg moves value: 1.**
 
-- Midland Savings and Loans Company Limited → Liberty Asset Management → Midland Savings and Loans Company Limited
-    - Midland Savings and Loans Company Limited → Liberty Asset Management: `over_exposed_to` — moves value
-    - Liberty Asset Management → Midland Savings and Loans Company Limited: `placed_funds_with` — moves value
-
-- Ideal Financial Holdings → FirsTrust Savings and Loans Limited → Ideal Finance Limited → Ideal Capital Partners → Ideal Financial Holdings
-    - Ideal Financial Holdings → FirsTrust Savings and Loans Limited: `acquired` — **does not move value**
+- FirsTrust Savings and Loans Limited → Ideal Finance Limited → FirsTrust Savings and Loans Limited
     - FirsTrust Savings and Loans Limited → Ideal Finance Limited: `proposed_merger_with` — **does not move value**
-    - Ideal Finance Limited → Ideal Capital Partners: `related_party_exposure_to` — moves value
-    - Ideal Capital Partners → Ideal Financial Holdings: `placed_funds_with` — moves value
+    - Ideal Finance Limited → FirsTrust Savings and Loans Limited: `related_party_exposure_to` — moves value
+
+- Liberty Asset Management → Midland Savings and Loans Company Limited → Liberty Asset Management
+    - Liberty Asset Management → Midland Savings and Loans Company Limited: `placed_funds_with` — moves value
+    - Midland Savings and Loans Company Limited → Liberty Asset Management: `over_exposed_to` — moves value
 
 - Ideal Capital Partners → FirsTrust Savings and Loans Limited → Ideal Finance Limited → Ideal Capital Partners
     - Ideal Capital Partners → FirsTrust Savings and Loans Limited: `placed_funds_with` — moves value
     - FirsTrust Savings and Loans Limited → Ideal Finance Limited: `proposed_merger_with` — **does not move value**
     - Ideal Finance Limited → Ideal Capital Partners: `related_party_exposure_to` — moves value
 
-- FirsTrust Savings and Loans Limited → Ideal Finance Limited → FirsTrust Savings and Loans Limited
+- Ideal Capital Partners → Ideal Financial Holdings → FirsTrust Savings and Loans Limited → Ideal Finance Limited → Ideal Capital Partners
+    - Ideal Capital Partners → Ideal Financial Holdings: `placed_funds_with` — moves value
+    - Ideal Financial Holdings → FirsTrust Savings and Loans Limited: `acquired` — **does not move value**
     - FirsTrust Savings and Loans Limited → Ideal Finance Limited: `proposed_merger_with` — **does not move value**
-    - Ideal Finance Limited → FirsTrust Savings and Loans Limited: `related_party_exposure_to` — moves value
+    - Ideal Finance Limited → Ideal Capital Partners: `related_party_exposure_to` — moves value
 
 The loops marked as moving value on every leg are the structural signature of related-party extraction and warrant a case walkthrough of their own.
 

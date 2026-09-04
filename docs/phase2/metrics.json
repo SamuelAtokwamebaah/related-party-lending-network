@@ -136,45 +136,10 @@
     "cycles": [
       {
         "members": [
-          "Midland Savings and Loans Company Limited",
-          "Liberty Asset Management"
-        ],
-        "legs": [
-          {
-            "from": "Midland Savings and Loans Company Limited",
-            "to": "Liberty Asset Management",
-            "relationships": [
-              "over_exposed_to"
-            ],
-            "extracts_value": true
-          },
-          {
-            "from": "Liberty Asset Management",
-            "to": "Midland Savings and Loans Company Limited",
-            "relationships": [
-              "placed_funds_with"
-            ],
-            "extracts_value": true
-          }
-        ],
-        "all_legs_extract_value": true
-      },
-      {
-        "members": [
-          "Ideal Financial Holdings",
           "FirsTrust Savings and Loans Limited",
-          "Ideal Finance Limited",
-          "Ideal Capital Partners"
+          "Ideal Finance Limited"
         ],
         "legs": [
-          {
-            "from": "Ideal Financial Holdings",
-            "to": "FirsTrust Savings and Loans Limited",
-            "relationships": [
-              "acquired"
-            ],
-            "extracts_value": false
-          },
           {
             "from": "FirsTrust Savings and Loans Limited",
             "to": "Ideal Finance Limited",
@@ -185,22 +150,39 @@
           },
           {
             "from": "Ideal Finance Limited",
-            "to": "Ideal Capital Partners",
+            "to": "FirsTrust Savings and Loans Limited",
             "relationships": [
               "related_party_exposure_to"
-            ],
-            "extracts_value": true
-          },
-          {
-            "from": "Ideal Capital Partners",
-            "to": "Ideal Financial Holdings",
-            "relationships": [
-              "placed_funds_with"
             ],
             "extracts_value": true
           }
         ],
         "all_legs_extract_value": false
+      },
+      {
+        "members": [
+          "Liberty Asset Management",
+          "Midland Savings and Loans Company Limited"
+        ],
+        "legs": [
+          {
+            "from": "Liberty Asset Management",
+            "to": "Midland Savings and Loans Company Limited",
+            "relationships": [
+              "placed_funds_with"
+            ],
+            "extracts_value": true
+          },
+          {
+            "from": "Midland Savings and Loans Company Limited",
+            "to": "Liberty Asset Management",
+            "relationships": [
+              "over_exposed_to"
+            ],
+            "extracts_value": true
+          }
+        ],
+        "all_legs_extract_value": true
       },
       {
         "members": [
@@ -238,10 +220,28 @@
       },
       {
         "members": [
+          "Ideal Capital Partners",
+          "Ideal Financial Holdings",
           "FirsTrust Savings and Loans Limited",
           "Ideal Finance Limited"
         ],
         "legs": [
+          {
+            "from": "Ideal Capital Partners",
+            "to": "Ideal Financial Holdings",
+            "relationships": [
+              "placed_funds_with"
+            ],
+            "extracts_value": true
+          },
+          {
+            "from": "Ideal Financial Holdings",
+            "to": "FirsTrust Savings and Loans Limited",
+            "relationships": [
+              "acquired"
+            ],
+            "extracts_value": false
+          },
           {
             "from": "FirsTrust Savings and Loans Limited",
             "to": "Ideal Finance Limited",
@@ -252,7 +252,7 @@
           },
           {
             "from": "Ideal Finance Limited",
-            "to": "FirsTrust Savings and Loans Limited",
+            "to": "Ideal Capital Partners",
             "relationships": [
               "related_party_exposure_to"
             ],
