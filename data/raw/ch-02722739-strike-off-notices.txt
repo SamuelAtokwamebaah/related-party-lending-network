@@ -1,0 +1,57 @@
+REGISTRAR OF COMPANIES NOTICES
+FIRST AFRICAN REMITTANCES LIMITED, company number 02722739
+
+Three notices issued by the Registrar of Companies, filed on the company's
+record at Companies House. The originals are vendored in this repository:
+
+  sources/ch-02722739-gaz1-2019-06-11.pdf   first Gazette notice
+  sources/ch-02722739-soas-2019-07-04.pdf   striking off action suspended
+  sources/ch-02722739-gaz2-2019-10-22.pdf   dissolved
+
+PROVENANCE. These are the register's own documents, downloaded from Companies
+House, not a summary of a web page. They are one-page scans with no text layer,
+so the transcription below cannot be machine-checked against them. It can be
+checked by eye in about a minute: each is a single page of a few lines, and the
+PDF is in sources/. That is a weaker guarantee than rule 11 gives for the two
+regulator notices, and a stronger one than a transcription whose original is not
+in the repository at all.
+
+None of the three names an individual. The first is addressed to "THE DIRECTORS"
+without naming them.
+
+DOCUMENT 1 of 3: FIRST GAZETTE NOTICE, 11 June 2019
+Ref DEF6A/02722739. Addressed to THE DIRECTORS, FIRST AFRICAN REMITTANCES
+LIMITED, 1ST FLOOR, 10 STATION PARADE, LONDON, BALHAM HIGH ROAD, SW12 9AZ.
+
+Companies Act 2006 (Section 1003(3))
+
+The Registrar of Companies gives notice that, unless cause is shown to the contrary, at the expiration of 3 months from the above date the name of
+
+FIRST AFRICAN REMITTANCES LIMITED
+
+will be struck off the register and the company will be dissolved.
+
+Upon dissolution all property and rights vested in, or held in trust for, the company are deemed to be bona vacantia, and accordingly will belong to the crown.
+
+DOCUMENT 2 of 3: STRIKING OFF ACTION SUSPENDED, 4 July 2019
+Form DISS6A / HD506A. Heading: STRIKING OFF ACTION SUSPENDED, over the line
+"02722739    FIRST AFRICAN REMITTANCES LIMITED".
+
+Action pursuant to Section 1003 of the Companies Act 2006 for the striking off and dissolution of the above company has been suspended as an objection has been received by the Registrar.
+
+DOCUMENT 3 of 3: DISSOLVED, 22 October 2019
+Form C25C / HC003. Heading: DISSOLVED, over the line
+"02722739    FIRST AFRICAN REMITTANCES LIMITED".
+
+This Company was dissolved on  22/10/19
+
+WHAT THESE DOCUMENTS DO AND DO NOT SETTLE
+
+They establish, in the Registrar's own words, that a voluntary strike-off of this
+company was begun, was suspended because an objection was received, and
+completed in dissolution on 22 October 2019.
+
+They do not name the objector. They do not name any individual. They do not
+mention Ghana, First African Savings and Loans, or any sum owed. Nothing here
+identifies this company as the affiliate the Bank of Ghana describes, and RR007
+remains undecided.

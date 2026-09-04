@@ -3,9 +3,9 @@
 What this project cannot show, and why. Written to be read on its own, before or instead
 of the findings.
 
-Figures are as at evidence base `v0.4`. `docs/phase2/metrics.json` is authoritative if
-this document and the data ever disagree; every claim below is checkable against
-`data/` and the two notices in `sources/`.
+Figures are as at evidence base `v0.5`. `docs/phase2/metrics.json` is authoritative if
+this document and the data ever disagree; every claim below is checkable against `data/`
+and the documents in `sources/`.
 
 ---
 
@@ -48,6 +48,12 @@ connection no document makes. The counts, nationalities and filing sequence are 
 in `data/raw/`; the names are not. So the person layer is empty because of a choice about
 what the evidence supports, not because the data could not be found — and that is a
 different and more honest kind of gap.
+
+The company's last filed accounts and its annual returns were also examined, and
+deliberately not vendored for the same reason — they name individuals and shareholdings.
+The relevant negative is recorded in the changelog: **the accounts contain no related-party
+note, name no Ghanaian counterparty, and mention no sum resembling the GHS 5.40m.** They do
+not settle `RR007` either.
 
 ## 2. Two documents, both written for another purpose
 

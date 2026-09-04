@@ -156,10 +156,21 @@ named any individual in connection with this failure, and the identification is 
 naming them would assert by juxtaposition a connection no document makes. Counts,
 nationalities and the filing sequence are recorded; names are not.
 
-The provenance is also weaker than everything else here, and the source row says so: the
-register publishes no archived document and its API needs a key, so `data/raw/` holds a
-transcription rather than an original. A quote checked against it is checked against the
-transcription.
+**On provenance.** The register's summary pages publish no archived document, so what
+could be transcribed from them was, at first, all there was — and a quote checked against a
+transcription is only checked against the transcription. That has been fixed where it
+matters. The Registrar's own notices are downloaded and vendored in `sources/`: the first
+Gazette notice, the striking-off suspension, and the dissolution. They are one-page scans
+with no text layer, so rule 11 cannot machine-check them, but a reader can check a few
+lines against a one-page PDF in the repository in about a minute.
+
+That upgrade also turned an inference into a quotation. The suspension of the strike-off
+had been read from the filing sequence; the notice states it outright — *"suspended as an
+objection has been received by the Registrar"*. The Registrar does not say who objected.
+
+The register-summary transcription now supports only what nothing else does: the registered
+and previous names, incorporation, office, business classification, and the officer and
+control counts.
 
 ## Repository layout
 
