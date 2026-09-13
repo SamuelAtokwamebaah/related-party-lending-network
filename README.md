@@ -3,7 +3,7 @@
 Modelling the insider relationships behind Ghana's 2019 savings & loans failures as a
 network, built only from what the regulators published.
 
-> **Status: complete at `v0.4`.** All 69 edges have been checked by hand against the
+> **Status: complete at `v0.5.1`.** All 69 edges have been checked by hand against the
 > source that supports them, and the decisions are recorded in `data/verification.csv` and
 > versioned in `data/changelog.csv`. Nothing here is a finding about any institution or
 > person: it is a record of what two regulators published, with every passage quoted and

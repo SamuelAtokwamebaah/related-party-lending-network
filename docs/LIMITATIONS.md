@@ -201,9 +201,10 @@ total. But even the cedi total is a heterogeneous aggregate of exposure types, a
 should be described as *quantified related-party exposure the notices happened to state*,
 never as an amount extracted.
 
-## 10. Five entity-resolution questions are open
+## 10. Six entity-resolution questions are open
 
-`data/resolution_review.csv` holds five candidates marked `undecided`. Nothing in hand
+`data/resolution_review.csv` holds six candidates marked `undecided`. The sixth, `RR007`,
+was added at v0.5 and is discussed in section 1. Nothing in hand
 settles them, and the tooling never merges entities on its own. The one that would change
 the graph is whether **Hoda Holdings Ltd**, named by the Commission as a related party of
 uniSecurities, is the **Hoda Group of Companies** that the Bank of Ghana says acquired
@@ -272,10 +273,11 @@ In rough order of value against effort:
 5. **The Court of Appeal judgment of 21 May 2026**, from GhaLII, to replace press
    reporting on GN's status with the document.
 
-**Done, and recorded either way:** UK Companies House (section 1) and the Bank of Ghana's
-universal-bank notice of 1 August 2018 (section 2). The first found a strong candidate and
-no identification; the second names none of these entities. Both are written down so that
-nobody, including a later version of this project, searches them twice.
+**Done, and recorded either way:** UK Companies House (section 1), the Bank of Ghana's
+universal-bank notice of 1 August 2018 (section 2), and the Court of Appeal judgment in
+*Kohl v Consolidated Bank Ghana* (2022). The first found a strong candidate and no
+identification; the second and third name none of these entities. All three are written
+down so that nobody, including a later version of this project, searches them twice.
 
 Nothing in this list is a reason to discount what is here. The point of the list is that
 the ceiling on this analysis is a property of the public record, not of the method — and
