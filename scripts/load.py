@@ -108,6 +108,18 @@ def validate(tables, problems):
     edge_ids = {r["edge_id"] for r in tables["edges"]}
     texts = source_lines()
 
+    # --- row shape (rule 0) ---------------------------------------------
+    # An unquoted comma inside a free-text field splits it, and every later
+    # column shifts one place. csv.DictReader does not complain: it files the
+    # overflow under a None key. At v0.6 that moved "v0.6" from version_added
+    # into version_removed, and the analysis silently dropped the edge.
+    for table, rows in tables.items():
+        for n, row in enumerate(rows, start=2):
+            if None in row:
+                problems.add(0, f"{table} line {n}",
+                             "more fields than the header; an unquoted comma in a "
+                             "text field has shifted the columns")
+
     # --- duplicates (rule 10) -------------------------------------------
     for table, key in (("entities", "entity_id"), ("edges", "edge_id"),
                        ("evidence", "anchor"), ("roles", "role_id")):

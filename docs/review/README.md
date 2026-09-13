@@ -25,7 +25,7 @@ Work the sheets with a non-zero **To check** count first: those sections contain
 | 13 | First Ghana Savings and Loans Limited | [13-first-ghana-savings-and-loans.md](13-first-ghana-savings-and-loans.md) | 0 | **1** | 3 |
 | 14 | FirsTrust Savings and Loans Limited | [14-firstrust-savings-and-loans.md](14-firstrust-savings-and-loans.md) | 8 | **2** | 6 |
 | 15 | Global Access Savings and Loans Company Limited | [15-global-access-savings-and-loans-company.md](15-global-access-savings-and-loans-company.md) | 2 | **1** | 9 |
-| 16 | GN Savings and Loans Ltd. | [16-gn-savings-and-loans.md](16-gn-savings-and-loans.md) | 4 | **4** | 7 |
+| 16 | GN Savings and Loans Ltd. | [16-gn-savings-and-loans.md](16-gn-savings-and-loans.md) | 5 | **4** | 7 |
 | 17 | Ideal Finance Limited | [17-ideal-finance.md](17-ideal-finance.md) | 6 | **6** | 15 |
 | 18 | IFS Financial Services Limited | [18-ifs-financial-services.md](18-ifs-financial-services.md) | 0 | **1** | 8 |
 | 19 | Legacy Capital Savings and Loans Ltd. | [19-legacy-capital-savings-and-loans.md](19-legacy-capital-savings-and-loans.md) | 4 | **1** | 7 |
@@ -34,7 +34,7 @@ Work the sheets with a non-zero **To check** count first: those sections contain
 | 22 | uniCredit Ghana Limited | [22-unicredit-ghana.md](22-unicredit-ghana.md) | 2 | **2** | 5 |
 | 23 | Women's World Banking Ghana (WWBG) Savings and Loans Limited | [23-women-s-world-banking-ghana-wwbg-savings-and-loa.md](23-women-s-world-banking-ghana-wwbg-savings-and-loa.md) | 0 | **1** | 8 |
 
-**Totals:** 57 seeded edges to verify, 40 uncited passages carrying relationship wording, 174 other passages, across 23 institutions.
+**Totals:** 58 seeded edges to verify, 40 uncited passages carrying relationship wording, 174 other passages, across 23 institutions.
 
 Regenerate with `python scripts/build_review_pack.py`. It rewrites the sheets and adds rows to `data/verification.csv` for any new edge, but never overwrites a decision already recorded there.
 

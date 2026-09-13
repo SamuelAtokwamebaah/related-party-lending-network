@@ -352,7 +352,7 @@ is what those relationships look like when two regulators&rsquo; notices are rea
         phrase = ("None of the" if checked == 0 else
                   f"{checked} of the")
         parts.append(f'''<div class="banner"><strong>Provisional.</strong> {phrase}
-{total_edges} edges in the evidence base have been checked against the notice by hand.
+{total_edges} edges in the evidence base have been checked against their source by hand.
 Every figure on this page is provisional and is recomputed as verification is
 recorded.</div>''')
 
@@ -365,7 +365,7 @@ recorded.</div>''')
   <div class="tile"><div class="n">{hubs_multi}</div><div class="k">entities linking two institutions</div></div>
   <div class="tile"><div class="n">{metrics["loops"]["circular_funding_loops"]}</div><div class="k">circular funding loops</div></div>
 </div>
-<p class="section-note">Every edge restates something a regulator published. Hover or focus
+<p class="section-note">Every edge restates something a regulator or a court published. Hover or focus
 any connection to read the passage behind it.</p>
 
 <h2>What one regulator sees, and what two see</h2>
@@ -522,15 +522,17 @@ make this chart say more than it means.</p>
     parts.append(f'''<footer>
 <p>Built from two documents: the Bank of Ghana&rsquo;s notice of 16 August 2019 revoking the
 licences of 23 savings and loans companies and finance houses, and the Securities and Exchange
-Commission&rsquo;s notice of 8 November 2019 revoking 53 fund-management licences. Every node
-and edge carries a citation to a line in one of them; the quoted passages are in the
-repository&rsquo;s evidence base. Inferred relationships are excluded from this page.</p>
+Commission&rsquo;s notice of 8 November 2019 revoking 53 fund-management licences. One edge,
+GN Savings and Loans&rsquo; membership of Groupe Nduom, comes from the Court of Appeal judgment
+of 21 May 2026, which the Supreme Court has stayed pending appeal. Every node and edge carries
+a citation to a line in its source; the quoted passages are in the repository&rsquo;s evidence
+base. Inferred relationships are excluded from this page.</p>
 <p><strong>What this cannot show is written down.</strong> No individual is named anywhere in
 the evidence base, the graph is in {shape["components"]} pieces, and most relationships carry
 no figure at all. The limitations are set out in full in
 <a href="docs/LIMITATIONS.md">docs/LIMITATIONS.md</a>, and are worth reading before the
 diagrams rather than after them.</p>
-<p>Nothing here is an allegation. Each relationship restates what a regulator published, and
+<p>Nothing here is an allegation. Each relationship restates what a regulator or a court published, and
 the page takes no position on any proceeding. Evidence base
 <code>{metrics["verification"]["version"]}</code>, all
 {sum(metrics["verification"]["counts"].values())} edges verified against source.</p>

@@ -1,6 +1,6 @@
 # 16. GN Savings and Loans Ltd.
 
-`inst-gn` · notice section **L754–L860** · 4 seeded edge(s) · 11 uncited passage(s)
+`inst-gn` · notice section **L754–L860** · 5 seeded edge(s) · 11 uncited passage(s)
 
 Read the section in `data/raw/` from L754 to L860, then work through both parts below. Record every decision in `data/verification.csv`.
 
@@ -69,6 +69,22 @@ For each: does the quote support the relationship, the direction, the amount and
 > A recent Bank of Ghana investigation conducted at GN revealed that a significant amount (USD62,255,516.93, GBP718,528.59 and EUR4,200) of depositors' funds held with GN had been transferred to International Business Solutions (another company owned by Groupe Nduom and which is based in the U.S.A) without any documentation to support such transfers in breach of section 19 of the Foreign Exchange Act 2006, Act 723, Section IV of Bank of Ghana Notice No. BG/GOV/SEC/2007/4, and subsequent Bank of Ghana Notices issued in August 2014 prohibiting such practices. The company is yet to publish its 2018 audited accounts contrary to section 90 (2) of the Banks and Specialised Deposit-Taking Institutions Act, 2016 (Act 930). Furthermore, the company did not keep accounting records in a manner that gives an accurate and reliable account of the transactions of the company, and did not therefore show a true and fair view of its operations. GN has suspended operations in seventy (70) of its branches including the Head office branch at Asylum Down and Castle Road branch, and temporarily suspended its entire management team without the approval of the Bank of Ghana contrary to section 25 (2) of the Banks and Specialised Deposit-Taking Institutions Act, 2016 (Act 930), mainly as a result of its insolvency and liquidity challenges.
 
 *Note carried from compilation:* Amounts are USD 62,255,516.93, GBP 718,528.59 and EUR 4,200 - not cedis, and three currencies in one transfer
+
+### E044 — GN Savings and Loans Ltd. → Groupe Nduom
+
+| | |
+|---|---|
+| relationship | `part_of` |
+| amount | — |
+| confidence | `documented` |
+| anchor | `ca-2026-05-21-gn-savings-appeal:L35;ca-2026-05-21-gn-savings-appeal:L47` |
+| current decision | confirmed |
+
+> 3. GN SAVINGS AND LOANS LTD ......3RD RESPONDENT
+
+> It is not disputed that the 3rd respondent is a member of Groupe Ndoum (3rd appellant), but since the Audit Reports are about the entire Groupe Ndoum and there is no indication anywhere therein that all or some of the IPCs are directly to the benefit of the 3rd respondent, we do not see how that can form a basis of saying that the figures therein form part of the assets of 3rd respondent; as debts owed it by the Government of Ghana.
+
+*Note carried from compilation:* Stated as undisputed by the Court of Appeal (p.14). The judgment writes '3rd respondent'; the title of the suit (p.1) fixes that as GN. Its introduction (pp.1-2, transcription L39) says the membership lasted until the receivership. The Bank of Ghana notice (L798) places GN's related parties in the Groupe Nduom network but never states GN's own membership. First edge attributed to a court
 
 ---
 

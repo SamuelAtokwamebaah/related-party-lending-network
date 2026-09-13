@@ -55,16 +55,31 @@ The relevant negative is recorded in the changelog: **the accounts contain no re
 note, name no Ghanaian counterparty, and mention no sum resembling the GHS 5.40m.** They do
 not settle `RR007` either.
 
+**At v0.6 a document did name an individual, and the layer is still empty.** The Court of
+Appeal judgment on GN Savings and Loans (21 May 2026) names its first appellant as a
+shareholder and the chairman of Groupe Nduom, and records a Bank of Ghana supervisor's
+recommendations about his position at GN. For this one institution the first reason
+above no longer holds: a document now makes the connection. The layer stays empty for a
+different reason. GN is the one institution where the latest decision found the
+revocation unjustified, and that decision is itself stayed pending appeal. Putting its
+chairman into a graph of the insider relationships behind the failures would imply a
+conclusion the most recent judgment cuts against. The judgment is not vendored, for the
+same reason the filings above were not.
+
 ## 2. Two documents, both written for another purpose
 
-Everything here rests on two regulator notices:
+Everything here but one edge rests on two regulator notices:
 
 | source | what it was written to do |
 |---|---|
 | Bank of Ghana, 16 August 2019 | explain why each of 23 institutions had its licence revoked |
 | Securities and Exchange Commission, 8 November 2019 | explain why 53 fund managers had theirs revoked |
 
-Neither was written to map ownership across institutions. Each is organised by the entity
+The exception is `E044`, GN Savings and Loans' membership of Groupe Nduom, taken from the
+Court of Appeal judgment of 21 May 2026. A judgment is written for another purpose too:
+it describes the parties only as far as deciding the dispute requires.
+
+Neither notice was written to map ownership across institutions. Each is organised by the entity
 being sanctioned, and describes its counterparties only as far as explaining that entity's
 own failure requires. **Absence of a relationship in these notices is not evidence that no
 relationship exists.** It is evidence that stating it was not necessary to the document's
@@ -93,7 +108,7 @@ Every edge carries a confidence class, and the counts matter as much as the grap
   by a shared name. They rest on nothing, carry no citation, and are excluded from every
   figure and from the map
 
-Eighteen of the sixty-nine edges are `documented_unnamed`, and seventeen nodes are
+Eighteen of the seventy edges are `documented_unnamed`, and seventeen nodes are
 placeholders. Those edges cannot participate in any finding about *who* a counterparty
 is, only about how many there were and what moved.
 
@@ -218,18 +233,23 @@ Savings a related party of Legacy Fund Management.
 ## 11. One institution's position is contested
 
 On **21 May 2026 the Court of Appeal quashed** the Bank of Ghana's revocation of GN
-Savings and Loans' licence and ordered it restored. The Bank has appealed to the Supreme
-Court and the matter is pending.
+Savings and Loans' licence and ordered it restored. On **14 July 2026 the Supreme Court
+stayed** that judgment pending the Bank of Ghana's appeal, so the licence has not been
+restored and the matter is live.
 
-GN's edges remain in the evidence base, still attributed to the Bank of Ghana, which did
-publish those statements. But GN is excluded from the worked examples and carries a status
-note wherever it appears, because this project takes no position on live litigation. The
-appeal is recorded from press reporting; **the judgment itself has not been read**, and
-the source row forbids citing it as evidence for any edge until it is.
+The Court of Appeal judgment has been read, from a certified true copy. The stay is
+recorded from press reporting; no document is in hand.
+
+GN's Bank of Ghana edges remain in the evidence base, still attributed to the Bank, which
+did publish those statements. One edge, `E044`, is attributed to the Court of Appeal, and
+it records only that GN was a member of Groupe Nduom, which the court treats as
+undisputed. Nothing the judgment says about solvency, valuation or the fairness of the
+revocation enters the evidence base, because that is what the appeal is about. GN is
+excluded from the worked examples and carries a status note wherever it appears.
 
 ## 12. What verification does and does not guarantee
 
-All 69 edges have been checked by hand against the source and the decision recorded in
+All 70 edges have been checked by hand against the source and the decision recorded in
 `data/verification.csv`. The loader additionally refuses to build unless every quote is
 verbatim **at the line its anchor names**, and unless a named counterparty is actually
 named in the passage cited for its edge.
@@ -243,6 +263,12 @@ in full; the guarantee that nothing was missed comes from a different control th
 `02-coverage.md`, which lists all 53 sections of that notice and flags any that names one
 of the 23 without carrying an edge. Per-edge checking shows the edges that exist are
 right. Only the coverage sheet shows that the ones that should exist do.
+
+The one edge from the Court of Appeal judgment, `E044`, had a third kind of check. The
+judgment is a scan with no text layer, so rule 11 checks its quotes against the
+transcription in `data/raw/`, and a person checked the transcription against the scan by
+printed page number, from `docs/review/ca-2026-05-21-gn-judgment.md`. The scan is not in
+this repository, so a reader cannot repeat that check here.
 
 That guarantees the citations are real. It does not guarantee the *reading* is right — a
 passage can be quoted correctly and still be interpreted too strongly. Two classes of
@@ -270,14 +296,16 @@ In rough order of value against effort:
    Ghanaian counterparty, or a court listing would do it. Companies House alone gives
    convergence, not identification.
 4. **The Bank of Ghana notice of 4 January 2019.** Public, not yet read.
-5. **The Court of Appeal judgment of 21 May 2026**, from GhaLII, to replace press
-   reporting on GN's status with the document.
+5. **The Supreme Court's decision on GN**, or its stay order of 14 July 2026, to replace
+   press reporting on the stay with the document.
 
 **Done, and recorded either way:** UK Companies House (section 1), the Bank of Ghana's
-universal-bank notice of 1 August 2018 (section 2), and the Court of Appeal judgment in
-*Kohl v Consolidated Bank Ghana* (2022). The first found a strong candidate and no
-identification; the second and third name none of these entities. All three are written
-down so that nobody, including a later version of this project, searches them twice.
+universal-bank notice of 1 August 2018 (section 2), the Court of Appeal judgment in
+*Kohl v Consolidated Bank Ghana* (2022), and the Court of Appeal judgment on GN of
+21 May 2026 (section 11). The first found a strong candidate and no identification; the
+second and third name none of these entities; the fourth added one edge. All four are
+written down so that nobody, including a later version of this project, searches them
+twice.
 
 Nothing in this list is a reason to discount what is here. The point of the list is that
 the ceiling on this analysis is a property of the public record, not of the method — and

@@ -1,0 +1,70 @@
+COURT OF APPEAL (CIVIL DIVISION), ACCRA
+Suit No. H1/71/2026, judgment of 21 May 2026
+
+Appeal against the judgment of the High Court (Human Rights Division) dated 24/01/24.
+A bench of three Justices of Appeal; one delivered the lead judgment.
+Parties: three applicants/appellants against the Bank of Ghana (1st respondent),
+the Attorney-General (2nd respondent) and GN Savings and Loans Ltd (3rd respondent).
+
+PROVENANCE. A certified true copy stamped by the Registrar of the Court of Appeal,
+31 pages, a scan with no text layer. The transcription below therefore cannot be
+machine-checked against the original. Each passage carries its printed page number
+so it can be checked by eye against the scan.
+
+THE ORIGINAL IS NOT VENDORED IN THIS REPOSITORY. It names individuals: the first
+appellant, the bench, counsel, the receiver, and officers named in the record. This
+project does not reproduce individuals' names (docs/LIMITATIONS.md section 1), and the
+Companies House filings that name directors were withheld for the same reason. Where a
+passage below would name an individual, the name is replaced with a bracketed
+description. In the title, the leader dots are shortened and the second party's name is
+joined onto one line. Nothing else in a transcribed passage is altered, including the
+judgment's own spelling "Groupe Ndoum".
+
+STATUS. The Supreme Court stayed execution of this judgment in July 2026 (press
+reporting; no document in hand). The appeal is live. This repository takes no position
+on solvency, valuation or the fairness of the revocation, and nothing on those questions
+enters the evidence base from this document.
+
+PAGE 1, the title of the suit
+
+1. [the first appellant, an individual, not reproduced] ......1ST APPLICANT/APPELLANTS
+2. COCONUT GROVE BEACH RESORT AND CONFERENCE CENTRE LTD ......2ND APPLICANT
+3. GROUPE NDUOM LTD ......3RD APPLICANT
+1. BANK OF GHANA ......1ST RESPONDENT
+2. THE ATTORNEY-GENERAL ......2ND RESPONDENT
+3. GN SAVINGS AND LOANS LTD ......3RD RESPONDENT
+
+PAGES 1 TO 2, the court's introduction
+
+The 1st applicant/appellant is a shareholder of the 2nd and 3rd applicants/appellants and chairman of the 3rd applicant/appellant. The 2nd applicant/appellant is shareholder of the 3rd respondent/respondent whilst the 3rd applicant/appellant is a holding company registered under the laws of Ghana. Both the 2nd applicant/appellant and the 3rd respondent/respondent are/were members of the 3rd applicant/appellant until the 3rd respondent/respondent went into receivership after its licence was revoked by the 1st respondent/respondent.
+
+PAGE 13, the trial judge, quoted by the Court of Appeal
+
+"Besides, while the applicants' case is to the effect, that the government of Ghana is indebted so much to Gold Coast Advisors Limited, an affiliate company of the 3rd respondent, such that if same were taken into account, its capital adequacy ratio would not be negative, that alone in my respectful view, does not absolve the 3rd Respondent from being declared insolvent.
+
+PAGE 14, the Court of Appeal
+
+It is not disputed that the 3rd respondent is a member of Groupe Ndoum (3rd appellant), but since the Audit Reports are about the entire Groupe Ndoum and there is no indication anywhere therein that all or some of the IPCs are directly to the benefit of the 3rd respondent, we do not see how that can form a basis of saying that the figures therein form part of the assets of 3rd respondent; as debts owed it by the Government of Ghana.
+
+PAGES 14 TO 15, the Court of Appeal
+
+Exhibit PNK 3 is an "Assignment of Receivables" by Gold Coast Advisors formerly known as Ghana Growth Fund Company Ltd to the 3rd respondent, in which as beneficial owner of the sum of Gh¢ 629, 091,335 owed it by the Government of Ghana in respect of projects financed for Government Agencies, particularly Cocoa Board, The Road Fund, GETFUND and Ministry of Finance and Economic Planning, it assigned same to the 3rd respondent.
+
+WHAT THIS DOCUMENT DOES AND DOES NOT SETTLE
+
+It states, in the court's own voice and as undisputed, that GN Savings and Loans is a
+member of Groupe Nduom. The introduction on pages 1 to 2 dates that membership: GN
+"are/were" a member "until" it went into receivership. The Bank of Ghana notice already
+places GN's related parties in "the Groupe Ndoum network of businesses" but never states
+GN's own membership in terms. This document does.
+
+It confirms, from a second source, that Gold Coast Advisors was formerly Ghana Growth
+Fund Company Ltd, the name change the Bank of Ghana and SEC notices already record.
+
+Two passages are transcribed here and deliberately not admitted as edges:
+
+- "an affiliate company of the 3rd respondent" (page 13) is the trial judge's summary of
+  the applicants' case, not a finding of the Court of Appeal.
+- The assignment of receivables (pages 14 to 15) is evidence the court weighed on the
+  value of GN's assets, which is the solvency question under appeal. It also runs into
+  GN, not out of it, so it is not insider lending in the sense this project models.

@@ -1,7 +1,7 @@
 {
   "shape": {
     "nodes": 63,
-    "edges": 54,
+    "edges": 55,
     "components": 17,
     "component_sizes": [
       10,
@@ -46,10 +46,10 @@
         "UNNAMED six related companies of FirsTrust"
       ]
     ],
-    "density": 0.0131
+    "density": 0.0133
   },
   "hubs": {
-    "nonzero_betweenness": 17,
+    "nonzero_betweenness": 16,
     "max_betweenness": 0.0185,
     "top_degree": [
       {
@@ -58,6 +58,13 @@
         "degree": 8,
         "degree_centrality": 0.129,
         "betweenness": 0.0185
+      },
+      {
+        "name": "GN Savings and Loans Ltd.",
+        "type": "institution",
+        "degree": 5,
+        "degree_centrality": 0.0806,
+        "betweenness": 0.0042
       },
       {
         "name": "Ideal Capital Partners",
@@ -72,13 +79,6 @@
         "degree": 4,
         "degree_centrality": 0.0645,
         "betweenness": 0.0037
-      },
-      {
-        "name": "GN Savings and Loans Ltd.",
-        "type": "institution",
-        "degree": 4,
-        "degree_centrality": 0.0645,
-        "betweenness": 0.0042
       },
       {
         "name": "Ideal Finance Limited",
@@ -272,7 +272,7 @@
     "components": 17,
     "communities_detected": 17,
     "communities_equal_components": true,
-    "modularity": 0.8955
+    "modularity": 0.8944
   },
   "typology": [
     {
@@ -381,6 +381,14 @@
     },
     {
       "category": "ownership",
+      "relationship": "part_of",
+      "extracts_value": false,
+      "edges": 2,
+      "named_counterparty": 2,
+      "direction": "from_institution"
+    },
+    {
+      "category": "ownership",
       "relationship": "controls",
       "extracts_value": false,
       "edges": 1,
@@ -394,14 +402,6 @@
       "edges": 1,
       "named_counterparty": 1,
       "direction": "between_third_parties"
-    },
-    {
-      "category": "ownership",
-      "relationship": "part_of",
-      "extracts_value": false,
-      "edges": 1,
-      "named_counterparty": 1,
-      "direction": "from_institution"
     },
     {
       "category": "placement",
@@ -480,10 +480,10 @@
         "net_worth_ghs_m": -30.7,
         "car_pct": -61.2,
         "cause_count": 6,
-        "edges_out": 4,
+        "edges_out": 5,
         "value_extracting": 4,
-        "counterparties": 4,
-        "named": 3,
+        "counterparties": 5,
+        "named": 4,
         "unnamed": 1,
         "extracted_ghs_m": null
       },
@@ -952,8 +952,8 @@
   },
   "verification": {
     "counts": {
-      "confirmed": 69
+      "confirmed": 70
     },
-    "version": "v0.5.1"
+    "version": "v0.6"
   }
 }

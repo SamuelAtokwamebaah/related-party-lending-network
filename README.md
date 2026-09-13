@@ -1,12 +1,13 @@
 # related-party-lending-network
 
 Modelling the insider relationships behind Ghana's 2019 savings & loans failures as a
-network, built only from what the regulators published.
+network, built only from primary sources: what the regulators published, and one court
+judgment.
 
-> **Status: complete at `v0.5.1`.** All 69 edges have been checked by hand against the
+> **Status: complete at `v0.6`.** All 70 edges have been checked by hand against the
 > source that supports them, and the decisions are recorded in `data/verification.csv` and
 > versioned in `data/changelog.csv`. Nothing here is a finding about any institution or
-> person: it is a record of what two regulators published, with every passage quoted and
+> person: it is a record of what two regulators and one court published, with every passage quoted and
 > anchored to a line in the source document.
 
 **New here?** Three ways in, in ascending order of detail:
@@ -64,9 +65,9 @@ analyses that returned nothing are published alongside the ones that did.
 ## Where things stand
 
 Phase 0 read the 16 August 2019 notice end to end and inventoried what it can support.
-The evidence base now holds 74 entities and 69 edges, of which 49 are documented with
+The evidence base now holds 75 entities and 70 edges, of which 50 are documented with
 both ends named, 18 name the relationship but not the counterparty, and 2 are inferred
-and excluded from every figure. Of those, **54 edges form the related-party graph** and
+and excluded from every figure. Of those, **55 edges form the related-party graph** and
 13 sit in a separate placement layer described below.
 
 The 17 institutions carrying a value-extracting edge are exactly the 17 flagged for
@@ -101,9 +102,10 @@ sourcing standard rather than against it:
 
 The three worked examples are the uniCredit / uniSecurities / Hoda component, the Ideal
 Financial Holdings cluster, and Midland / Liberty. GN Savings and Loans is **not** among
-them: on 21 May 2026 the Court of Appeal quashed the revocation of its licence and the
-Bank of Ghana's appeal to the Supreme Court is pending. Its edges remain in the data,
-still attributed to the Bank of Ghana, which did publish those statements, but the
+them: on 21 May 2026 the Court of Appeal quashed the revocation of its licence, and on
+14 July 2026 the Supreme Court stayed that judgment pending the Bank of Ghana's appeal.
+Its Bank of Ghana edges remain in the data, still attributed to the Bank, which did
+publish those statements, but the
 repository takes no position on a live proceeding and keeps contested institutions out of
 its worked examples.
 
@@ -149,7 +151,8 @@ Ghanaian nationals resident in Accra. One person with significant control.
 
 Name, jurisdiction, business, director residence and timing all converge. **Nothing states
 the identification**, so it is `RR007`, undecided, and no edge depends on it. The company
-sits in the evidence base and not in the graph: 63 nodes and 54 edges, exactly as before.
+sits in the evidence base and not in the graph: at v0.5 the graph stayed at 63 nodes and
+54 edges, exactly as before.
 
 The register also names the individuals. They are **not reproduced here**. No regulator has
 named any individual in connection with this failure, and the identification is open —
@@ -172,12 +175,35 @@ The register-summary transcription now supports only what nothing else does: the
 and previous names, incorporation, office, business classification, and the officer and
 control counts.
 
+## The GN judgment: one edge, and five things read and left out
+
+GN Savings and Loans' status had been recorded from a press explainer. At v0.6 it rests on
+the document: a certified true copy of the Court of Appeal judgment of 21 May 2026, Suit
+No. H1/71/2026, transcribed page by page in `data/raw/`. It is a scan with no text layer,
+so the transcription was checked against the scan by eye, as the Companies House notices
+were.
+
+It adds **one edge, `E044`: GN is a member of Groupe Nduom.** The court states it as
+undisputed. The Bank of Ghana notice had put GN's related parties in "the Groupe Ndoum
+network of businesses" without ever stating GN's own membership. GN and Groupe Nduom were
+already in the same component, so the graph gains an edge and no new structure. It is the
+first edge in this repository attributed to a court rather than a regulator.
+
+Five things in it were read and deliberately **not** admitted, each recorded in the
+changelog (`C027`): a company the court names as a GN shareholder, which the scope rule
+keeps out because no regulator's notice names it; the trial judge's description of Gold
+Coast Advisors as an affiliate, which is not the Court of Appeal's own finding; an
+assignment of receivables to GN and a capital deficit that differs from the notice, both
+evidence on solvency, the question under appeal; and individuals, because the person
+layer stays empty. The judgment itself is **not vendored**, because it names individuals.
+
 ## Repository layout
 
 ```
 data/         the evidence base: sources, entities, edges, evidence, roles,
               verification, changelog, entity-resolution review
-data/raw/     extracted text of the source notices, as working copies
+data/raw/     extracted text of the source notices, as working copies, and page-anchored
+              transcriptions of scanned documents
 data/vendor/  the verified dataset carried over from ghana-banking-collapse
 sources/      the source documents as published
 sql/          schema.sql - fourteen tables and three views
@@ -193,6 +219,8 @@ scripts/      phase0_extract_evidence.py    splits the notice, extracts evidence
               integrate_sec_notice.py       one-off, idempotent: admits the SEC notice
               integrate_placement_layer.py  one-off: the rest of that notice, and
                                             the placement layer
+              integrate_gn_judgment.py      one-off, idempotent: the GN Court of
+                                            Appeal judgment, one edge
 docs/LIMITATIONS.md  what this cannot show, and why - read first
 docs/phase0/  SOURCE-INVENTORY.md   feasibility, mode decision, corrections
 docs/phase1/  SCHEMA-PROPOSAL.md    the data model as built
@@ -201,6 +229,7 @@ docs/phase2/  FINDINGS.md           the analyses, with what they cannot show
 index.html    the network map, rendered from the database
 docs/review/  one verification sheet per institution (Bank of Ghana notice)
 docs/review/sec/  the SEC notice: sections with edges, and coverage of all 53
+docs/review/ca-2026-05-21-gn-judgment.md  the GN judgment: transcription against the scan
 ```
 
 ## Reproducing
@@ -238,7 +267,7 @@ Decisions are recorded in `data/verification.csv` and the loader reports coverag
 build. A figure on the page or in the findings is marked provisional automatically for as
 long as any edge behind it is unchecked.
 
-All 69 edges now carry a decision. Two things remain deliberately open, and both are
+All 70 edges now carry a decision. Two things remain deliberately open, and both are
 visible in the data rather than buried:
 
 - `data/resolution_review.csv` holds five entity-resolution questions marked `undecided`.

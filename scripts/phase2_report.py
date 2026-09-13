@@ -392,11 +392,13 @@ def write_findings(m, path):
         "a fund's own book rather than cedi sums. Only exact cedi amounts on "
         "value-extracting edges are summed anywhere above; nothing sums a percentage.",
         "- Nothing here is an allegation. Each edge restates what a regulator "
-        "published, and the passage behind it is quoted in `data/evidence.csv` with a "
+        "or, in one case, a court published, and the passage behind it is quoted in `data/evidence.csv` with a "
         "line anchor into the source.",
         "- GN Savings and Loans is excluded from the worked examples. The Court of "
-        "Appeal quashed the revocation of its licence on 21 May 2026 and the appeal "
-        "is pending; its edges remain, still attributed to the Bank of Ghana.",
+        "Appeal quashed the revocation of its licence on 21 May 2026, and the Supreme "
+        "Court stayed that judgment on 14 July 2026 pending appeal. Its Bank of Ghana "
+        "edges remain, attributed to the Bank; its membership of Groupe Nduom is "
+        "attributed to the Court of Appeal.",
     ]
     if pending:
         md.append(f"- {pending} edges are unverified, so every figure is provisional.")
