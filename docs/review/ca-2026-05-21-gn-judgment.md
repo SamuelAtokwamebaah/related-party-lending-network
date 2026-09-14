@@ -4,8 +4,8 @@ Suit No. H1/71/2026. Working text: `data/raw/ca-2026-05-21-gn-savings-appeal.txt
 Integrated by `scripts/integrate_gn_judgment.py`.
 
 The original is a 31-page certified true copy, a scan with no text layer. It is **not** in
-this repository because it names individuals; it is held in
-`act-930-resolution-timelines/sources/ca-2026-05-21-gn-savings-appeal.pdf`.
+this repository because it names individuals. It is held privately by the author; a
+certified true copy can be obtained from the Registry of the Court of Appeal, Accra.
 
 Rule 11 checks each quote against the transcription. Only a person can check the
 transcription against the scan, and that is what this sheet is for.
@@ -22,7 +22,7 @@ Open the PDF at the printed page and compare word for word.
 | L39 | 1 to 2 | `The 1st applicant/appellant is a shareholder of the 2nd and 3rd...` | E044 review note: membership "until" receivership |
 | L43 | 13 | `"Besides, while the applicants' case is to the effect...` | Declined, see Part 3 |
 | L47 | 14 | `It is not disputed that the 3rd respondent is a member of Groupe Ndoum...` | E044: the relationship |
-| L51 | 14 to 15 | `Exhibit PNK 3 is an "Assignment of Receivables"...` | Declined, see Part 3 |
+| L51 | 14 to 15 | `Exhibit [reference not reproduced] is an "Assignment of Receivables"...` | Declined, see Part 3 |
 
 ---
 
@@ -57,4 +57,4 @@ Recorded in `data/changelog.csv` as `C027`.
 | Assignment of receivables, GH¢629,091,335, to GN (L51) | Evidence on the value of GN's assets, the question under appeal. It also runs into GN, not out |
 | "formerly known as Ghana Growth Fund Company Ltd" (L51) | Corroborates an alias `corp-ghana-growth-fund` already carries. No row needed |
 | Capital deficit of GH¢344.46m in the Bank of Ghana's affidavit, against GHS 683.66m in its notice | A solvency figure. Recorded, not reconciled |
-| Individuals named as shareholder and chairman, and the supervisor's recommendations about them | The person layer stays empty. See `docs/LIMITATIONS.md` section 1 |
+| Individuals named in the judgment, and the roles it describes | The person layer stays empty. See `docs/LIMITATIONS.md` section 1 |

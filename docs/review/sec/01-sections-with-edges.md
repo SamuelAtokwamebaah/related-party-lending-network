@@ -133,9 +133,9 @@ Securities Industry Act, 2016 (Act 929) and Securities and Exchange Commission R
 | anchor | `sec-2019-11-08-fund-manager-revocation:L658` |
 | current decision | confirmed |
 
-*Amount note:* 99.41% of funds under management; a ratio, not an amount
+*Amount note:* 99.41% of funds under management per the 2nd Quarter 2018 placement report; a ratio, not an amount
 
-*Note carried from compilation:* Both are named in the BoG notice as sister companies of GN; this documents the link between them
+*Note carried from compilation:* The Bank of Ghana names both as sister companies of GN and calls them SEC-licensed; the Commission calls Ghana Growth Fund an unregulated related entity
 
 ---
 
@@ -350,7 +350,7 @@ Loans and Legacy Savings & Loans.
 | anchor | `sec-2019-11-08-fund-manager-revocation:L875` |
 | current decision | confirmed |
 
-*Amount note:* Stated as 'Over 80% placement of client funds in revoked savings & loans' across Midland, FirsTrust and Legacy Capital together. The notice gives no per-institution split, and the figure is a floor.
+*Amount note:* Stated as 'Over 80% placement of client funds in revoked savings & loans including' Midland, FirsTrust and Legacy Capital. The notice gives no per-institution split, the figure is a floor, and 'including' leaves the list open.
 
 ### P008 — Integrity Fund Management Ltd → FirsTrust Savings and Loans Limited
 
@@ -364,7 +364,7 @@ Loans and Legacy Savings & Loans.
 | anchor | `sec-2019-11-08-fund-manager-revocation:L875` |
 | current decision | confirmed |
 
-*Amount note:* Stated as 'Over 80% placement of client funds in revoked savings & loans' across Midland, FirsTrust and Legacy Capital together. The notice gives no per-institution split, and the figure is a floor.
+*Amount note:* Stated as 'Over 80% placement of client funds in revoked savings & loans including' Midland, FirsTrust and Legacy Capital. The notice gives no per-institution split, the figure is a floor, and 'including' leaves the list open.
 
 ### P009 — Integrity Fund Management Ltd → Legacy Capital Savings and Loans Ltd.
 
@@ -378,7 +378,7 @@ Loans and Legacy Savings & Loans.
 | anchor | `sec-2019-11-08-fund-manager-revocation:L875` |
 | current decision | confirmed |
 
-*Amount note:* Stated as 'Over 80% placement of client funds in revoked savings & loans' across Midland, FirsTrust and Legacy Capital together. The notice gives no per-institution split, and the figure is a floor.
+*Amount note:* Stated as 'Over 80% placement of client funds in revoked savings & loans including' Midland, FirsTrust and Legacy Capital. The notice gives no per-institution split, the figure is a floor, and 'including' leaves the list open.
 
 ---
 
@@ -463,7 +463,7 @@ international industry practice.
 | anchor | `sec-2019-11-08-fund-manager-revocation:L945` |
 | current decision | confirmed |
 
-*Amount note:* 9.45% of funds under management; a ratio, not an amount
+*Amount note:* 9.45% of its funds; a ratio, not an amount
 
 *Note carried from compilation:* Midland was over-exposed to Liberty and Liberty held funds with Midland: each held the other
 
@@ -479,7 +479,7 @@ international industry practice.
 | anchor | `sec-2019-11-08-fund-manager-revocation:L945` |
 | current decision | confirmed |
 
-*Amount note:* 10.93% of funds under management; a ratio, not an amount
+*Amount note:* 10.93% of its funds; a ratio, not an amount
 
 ---
 
@@ -555,7 +555,7 @@ industry practice.
 
 *Amount note:* Stated as '54% of placement of client funds with Commerz Savings & Loans, CDH Savings & Loans' together. The notice gives no per-institution split.
 
-*Note carried from compilation:* The second document to put Commerz on the receiving end of a placement, and the second reason the six unflagged institutions are unflagged only in the Bank of Ghana notice.
+*Note carried from compilation:* A second passage of the same notice placing client funds with Commerz; no related-party claim, so it does not bear on the related-party flag
 
 ### P012 — Mutual Integrity Asset Management Limited → CDH Savings and Loans Ltd.
 
@@ -700,7 +700,7 @@ practice.
 | anchor | `sec-2019-11-08-fund-manager-revocation:L1140` |
 | current decision | confirmed |
 
-*Note carried from compilation:* Whether Hoda Holdings Ltd is the Hoda Group of Companies that acquired uniCredit is undecided; see RR004
+*Note carried from compilation:* The Commission lists these as related parties inside a finding on placement of client funds; it does not state that funds were placed with each, or any amount. That the Commission's Unisecurities (Ghana) Limited is the Bank of Ghana's uniSecurities rests on the name; see LIMITATIONS section 10. Whether Hoda Holdings Ltd is the Hoda Group of Companies that acquired uniCredit is undecided; see RR004
 
 ### S008 — uniSecurities Limited → Intrepid Venture Capital Ltd
 
@@ -714,6 +714,8 @@ practice.
 | anchor | `sec-2019-11-08-fund-manager-revocation:L1140` |
 | current decision | confirmed |
 
+*Note carried from compilation:* The Commission lists these as related parties inside a finding on placement of client funds; it does not state that funds were placed with each, or any amount. That the Commission's Unisecurities (Ghana) Limited is the Bank of Ghana's uniSecurities rests on the name; see LIMITATIONS section 10
+
 ### S009 — uniSecurities Limited → Premier Portfolio
 
 | | |
@@ -725,6 +727,8 @@ practice.
 | confidence | `documented` |
 | anchor | `sec-2019-11-08-fund-manager-revocation:L1140` |
 | current decision | confirmed |
+
+*Note carried from compilation:* The Commission lists these as related parties inside a finding on placement of client funds; it does not state that funds were placed with each, or any amount. That the Commission's Unisecurities (Ghana) Limited is the Bank of Ghana's uniSecurities rests on the name; see LIMITATIONS section 10
 
 ### S010 — uniSecurities Limited → Integrated Properties Ltd
 
@@ -738,6 +742,8 @@ practice.
 | anchor | `sec-2019-11-08-fund-manager-revocation:L1140` |
 | current decision | confirmed |
 
+*Note carried from compilation:* The Commission lists these as related parties inside a finding on placement of client funds; it does not state that funds were placed with each, or any amount. That the Commission's Unisecurities (Ghana) Limited is the Bank of Ghana's uniSecurities rests on the name; see LIMITATIONS section 10
+
 ### S011 — uniSecurities Limited → Bolton Portfolio Ltd
 
 | | |
@@ -749,6 +755,8 @@ practice.
 | confidence | `documented` |
 | anchor | `sec-2019-11-08-fund-manager-revocation:L1140` |
 | current decision | confirmed |
+
+*Note carried from compilation:* The Commission lists these as related parties inside a finding on placement of client funds; it does not state that funds were placed with each, or any amount. That the Commission's Unisecurities (Ghana) Limited is the Bank of Ghana's uniSecurities rests on the name; see LIMITATIONS section 10
 
 ### S012 — uniSecurities Limited → Numa Logistics
 
@@ -762,6 +770,8 @@ practice.
 | anchor | `sec-2019-11-08-fund-manager-revocation:L1140` |
 | current decision | confirmed |
 
+*Note carried from compilation:* The Commission lists these as related parties inside a finding on placement of client funds; it does not state that funds were placed with each, or any amount. That the Commission's Unisecurities (Ghana) Limited is the Bank of Ghana's uniSecurities rests on the name; see LIMITATIONS section 10
+
 ### S013 — uniSecurities Limited → Alban Logistics
 
 | | |
@@ -773,6 +783,8 @@ practice.
 | confidence | `documented` |
 | anchor | `sec-2019-11-08-fund-manager-revocation:L1140` |
 | current decision | confirmed |
+
+*Note carried from compilation:* The Commission lists these as related parties inside a finding on placement of client funds; it does not state that funds were placed with each, or any amount. That the Commission's Unisecurities (Ghana) Limited is the Bank of Ghana's uniSecurities rests on the name; see LIMITATIONS section 10
 
 ---
 

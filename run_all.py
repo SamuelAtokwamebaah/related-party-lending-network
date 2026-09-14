@@ -37,7 +37,7 @@ STEPS = [
 
 def main():
     for number, (title, command) in enumerate(STEPS, start=1):
-        print(f"\n{'=' * 72}\n[{number}/{len(STEPS)}] {title}\n{'=' * 72}")
+        print(f"\n{'=' * 72}\n[{number}/{len(STEPS)}] {title}\n{'=' * 72}", flush=True)
         result = subprocess.run(command, cwd=ROOT)
         if result.returncode != 0:
             print(f"\nStopped at step {number}: {title}")

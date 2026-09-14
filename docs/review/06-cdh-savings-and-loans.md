@@ -1,6 +1,6 @@
 # 6. CDH Savings and Loans Ltd.
 
-`inst-cdh` · notice section **L338–L384** · 4 seeded edge(s) · 6 uncited passage(s)
+`inst-cdh` · notice section **L338–L384** · 5 seeded edge(s) · 5 uncited passage(s)
 
 Read the section in `data/raw/` from L338 to L384, then work through both parts below. Record every decision in `data/verification.csv`.
 
@@ -36,7 +36,7 @@ For each: does the quote support the relationship, the direction, the amount and
 
 > The transfer of collateral security supporting the institution's non-performing loans/exposures to affiliate companies using creative accounting with no resultant cash inflow to the company which resulted in the overstatement of the balance sheet.
 
-*Note carried from compilation:* Asset-stripping pattern
+*Note carried from compilation:* Collateral transferred to affiliates with no cash inflow; the notice frames it as an overstatement of the balance sheet
 
 ### E008 — CDH Savings and Loans Ltd. → UNNAMED affiliates of CDH
 
@@ -51,6 +51,20 @@ For each: does the quote support the relationship, the direction, the amount and
 > The overexposure of CDH to its affiliate companies to the tune of 319% contrary to the regulatory limit of 25%.
 
 *Note carried from compilation:* Ratio stated not an amount; count not stated
+
+### E045 — CDH Savings and Loans Ltd. → UNNAMED related companies of CDH
+
+| | |
+|---|---|
+| relationship | `placed_funds_with` |
+| amount | — |
+| confidence | `documented_unnamed` |
+| anchor | `bog-2019-08-16-savings-loans-revocation:L381` |
+| current decision | confirmed |
+
+> The inability of CDH to access placements/investments with other insolvent financial institutions, including related companies, worsened its solvency liquidity situation.
+
+*Note carried from compilation:* Placements/investments with related companies that CDH could not access; count and amount not stated. Held apart from ph-cdh-affiliates, because the notice says 'related companies' here and 'affiliate companies' elsewhere and does not say they are the same
 
 ### P012 — CDH Savings and Loans Ltd. ← Mutual Integrity Asset Management Limited
 
@@ -74,9 +88,6 @@ These carry related-party, affiliate, ownership, officer or exposure wording and
 
 - **`bog-2019-08-16-savings-loans-revocation:L361`**
   > The recognition of income on non-performing loans/exposures by the company contrary to Directives of the Bank of Ghana. Income on non-performing loans/exposures were to be suspended until such time as the loans/exposures became performing but CDH did not comply with this Directive, resulting in an overstatement of its revenue and assets in the financial statements over several years.
-
-- **`bog-2019-08-16-savings-loans-revocation:L381`**
-  > The inability of CDH to access placements/investments with other insolvent financial institutions, including related companies, worsened its solvency liquidity situation.
 
 ---
 

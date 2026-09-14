@@ -29,6 +29,13 @@ from analyse_graph import (  # noqa: E402
 OUT = ROOT / "docs" / "phase2"
 
 
+
+def num_word(n):
+    """Spell out small counts, which read better at the start of a sentence."""
+    words = ["zero", "one", "two", "three", "four", "five", "six", "seven", "eight",
+             "nine", "ten"]
+    return words[n] if 0 <= n < len(words) else str(n)
+
 def fmt(value):
     return "—" if value is None else f"{value:,.2f}"
 
@@ -50,14 +57,14 @@ def write_findings(m, path):
     if pending:
         md += [
             f"> **Unverified.** {pending} of the {total_edges} edges have not been "
-            "checked against the notice by hand. Every figure below is provisional "
+            "checked against their source by hand. Every figure below is provisional "
             "and is recomputed as decisions are recorded in `data/verification.csv`. "
             "See [../review/](../review/).",
             "",
         ]
     md += [
-        "Inferred edges are excluded throughout. Counts are split by whether the Bank "
-        "of Ghana named the counterparty or only described it.",
+        "Inferred edges are excluded throughout. Counts are split by whether the source "
+        "named the counterparty or only described it.",
         "",
         "---",
         "",
@@ -174,9 +181,8 @@ def write_findings(m, path):
             ]
         else:
             md += [
-                "The loops marked as moving value on every leg are the structural "
-                "signature of related-party extraction and warrant a case "
-                "walkthrough of their own.",
+                "The loops marked as moving value on every leg are the circular funding "
+                "described above, and each has a case walkthrough of its own.",
             ]
     else:
         md += [
@@ -239,14 +245,14 @@ def write_findings(m, path):
         "`ghana-banking-collapse` flagged 17 of the 23 for related-party exposure. "
         "The question is whether that flag corresponds to anything structural.",
         "",
-        "| | flagged (17) | not flagged (6) |",
+        f"| | flagged ({a.get('institutions')}) | not flagged ({b.get('institutions')}) |",
         "|---|---|---|",
     ]
     for label, key in (
             ("institutions", "institutions"),
             ("with any edge", "with_any_edge"),
-            ("with a value-extracting edge", "with_value_extracting_edge"),
-            ("value-extracting edges, total", "total_value_extracting_edges"),
+            ("with a value-moving edge", "with_value_extracting_edge"),
+            ("value-moving edges out, total", "total_value_extracting_edges"),
             ("with a named counterparty", "with_a_named_counterparty"),
             ("with a stated amount", "institutions_with_an_amount"),
             ("median cause count", "median_cause_count")):
@@ -255,9 +261,15 @@ def write_findings(m, path):
         f"| quantified exposure, GHS m | {fmt(a.get('quantified_ghs_m'))} "
         f"| {fmt(b.get('quantified_ghs_m'))} |",
         "",
-        "**The groups separate cleanly.** Every institution carrying a "
-        "value-extracting edge is one of the flagged 17, and none outside the 17 "
-        "carries one.",
+        ("**The groups separate cleanly.** Every institution carrying a "
+         "value-moving edge out is one of the flagged "
+         f"{a.get('institutions')}, and none outside them carries one."
+         if b.get("with_value_extracting_edge") == 0
+         and a.get("with_value_extracting_edge") == a.get("institutions")
+         else "**The groups do not separate cleanly.** "
+              f"{b.get('with_value_extracting_edge')} unflagged institution(s) carry a "
+              f"value-moving edge out, and {a.get('institutions', 0) - a.get('with_value_extracting_edge', 0)} "
+              "flagged institution(s) carry none."),
         "",
         "**This is a consistency check, not a confirmation, and the distinction "
         "matters.** The flag comes from `ghana-banking-collapse`, which coded it from "
@@ -275,7 +287,7 @@ def write_findings(m, path):
         "",
         "### Per institution",
         "",
-        "| institution | flagged | edges | value-extracting | counterparties | named | unnamed | GHS m |",
+        "| institution | flagged | edges out | value-moving | counterparties | named | unnamed | GHS m |",
         "|---|---|---|---|---|---|---|---|",
     ]
     for r in comp["rows"]:
@@ -346,8 +358,9 @@ def write_findings(m, path):
         "filtered out of `v_institution_profile`, and excluded from every figure in "
         "sections 0 to 5.",
         "",
-        "**What that separation is worth, as a number.** Five of the "
-        f"{pl['fund_managers']} fund managers name more than one of the 23. Admitting "
+        "**What that separation is worth, as a number.** "
+        f"{num_word(len(pl['managers_reaching_more_than_one'])).capitalize()} of the "
+        f"{num_word(pl['fund_managers'])} fund managers name more than one of the 23. Admitting "
         "these as ordinary edges would take the graph from "
         f"**{ifa['components_related_party_only']} components, largest "
         f"{ifa['largest_component_related_party_only']}**, to "
@@ -365,8 +378,9 @@ def write_findings(m, path):
         md.append(f"| {name} | {', '.join(sorted(managers))} |")
     md += [
         "",
-        "The one institution here that the Bank of Ghana did **not** flag for "
-        "related-party exposure is "
+        f"Of the {pl['institutions_reached']} institutions this layer reaches, the "
+        "table lists those with more than one fund manager. The one the Bank of Ghana "
+        "did **not** flag for related-party exposure is "
         f"{', '.join(pl['institutions_unflagged_by_bog']) or 'none'}. Section 4's "
         "comparison is therefore a statement about the Bank of Ghana notice, not "
         "about the record as a whole.",
@@ -378,11 +392,13 @@ def write_findings(m, path):
         "- The related-party graph is not shown to be one network. It is "
         f"{s['components']} separate structures, and only one entity — "
         f"{', '.join(h['connect_multiple_institutions']) or 'none'} — connects two "
-        "of the 23, on the Securities and Exchange Commission's notice. The Bank of "
-        "Ghana notice alone names no such entity, which is what section 1 reported "
-        "before that notice was read.",
+        "of the 23, and only when both notices are read: the Bank of Ghana records "
+        "one institution's exposure to it, and the Securities and Exchange "
+        "Commission records it placing funds with another. Neither notice alone "
+        "names such an entity, which is what section 1 reported before the second "
+        "was read.",
         "- Betweenness centrality and community detection return nothing "
-        "interpretable on a graph in seventeen pieces, and the high modularity score "
+        f"interpretable on a graph in {s['components']} pieces, and the high modularity score "
         "measures that fragmentation rather than any discovered structure.",
         "- The placement layer is not evidence of an insider relationship, and no "
         "figure above treats it as one.",
@@ -390,7 +406,7 @@ def write_findings(m, path):
         "floors, some are totals shared between counterparties, one transfer is "
         "stated in three currencies, and the Commission's figures are percentages of "
         "a fund's own book rather than cedi sums. Only exact cedi amounts on "
-        "value-extracting edges are summed anywhere above; nothing sums a percentage.",
+        "value-moving edges are summed anywhere above; nothing sums a percentage.",
         "- Nothing here is an allegation. Each edge restates what a regulator "
         "or, in one case, a court published, and the passage behind it is quoted in `data/evidence.csv` with a "
         "line anchor into the source.",
@@ -403,7 +419,7 @@ def write_findings(m, path):
     if pending:
         md.append(f"- {pending} edges are unverified, so every figure is provisional.")
 
-    path.write_text("\n".join(md) + "\n", encoding="utf-8")
+    path.write_text("\n".join(md) + "\n", encoding="utf-8", newline="\n")
 
 
 def main():
@@ -424,7 +440,8 @@ def main():
     }
 
     OUT.mkdir(parents=True, exist_ok=True)
-    (OUT / "metrics.json").write_text(json.dumps(metrics, indent=2), encoding="utf-8")
+    (OUT / "metrics.json").write_text(json.dumps(metrics, indent=2), encoding="utf-8",
+                                      newline="\n")
     write_findings(metrics, OUT / "FINDINGS.md")
 
     s, h = metrics["shape"], metrics["hubs"]

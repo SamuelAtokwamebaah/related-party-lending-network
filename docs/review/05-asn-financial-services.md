@@ -10,7 +10,7 @@ Read the section in `data/raw/` from L306 to L337, then work through both parts 
 
 For each: does the quote support the relationship, the direction, the amount and its basis, and the confidence class?
 
-### E031 — ASN Financial Services Limited → UNNAMED related party projects of ASN
+### E031 — ASN Financial Services Limited → UNNAMED related parties of ASN
 
 | | |
 |---|---|

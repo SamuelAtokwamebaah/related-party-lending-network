@@ -1,14 +1,14 @@
 {
   "shape": {
-    "nodes": 63,
-    "edges": 55,
+    "nodes": 64,
+    "edges": 60,
     "components": 17,
     "component_sizes": [
       10,
       8,
       6,
       5,
-      3,
+      4,
       3,
       3,
       3,
@@ -46,80 +46,80 @@
         "UNNAMED six related companies of FirsTrust"
       ]
     ],
-    "density": 0.0133
+    "density": 0.0134
   },
   "hubs": {
     "nonzero_betweenness": 16,
-    "max_betweenness": 0.0185,
+    "max_betweenness": 0.0179,
     "top_degree": [
       {
         "name": "uniSecurities Limited",
         "type": "corporate_entity",
         "degree": 8,
-        "degree_centrality": 0.129,
-        "betweenness": 0.0185
+        "degree_centrality": 0.127,
+        "betweenness": 0.0179
       },
       {
         "name": "GN Savings and Loans Ltd.",
         "type": "institution",
         "degree": 5,
-        "degree_centrality": 0.0806,
-        "betweenness": 0.0042
+        "degree_centrality": 0.0794,
+        "betweenness": 0.0041
       },
       {
         "name": "Ideal Capital Partners",
         "type": "corporate_entity",
         "degree": 5,
-        "degree_centrality": 0.0806,
-        "betweenness": 0.0063
+        "degree_centrality": 0.0794,
+        "betweenness": 0.0061
       },
       {
         "name": "FirsTrust Savings and Loans Limited",
         "type": "institution",
         "degree": 4,
-        "degree_centrality": 0.0645,
-        "betweenness": 0.0037
+        "degree_centrality": 0.0635,
+        "betweenness": 0.0036
+      },
+      {
+        "name": "CDH Savings and Loans Ltd.",
+        "type": "institution",
+        "degree": 3,
+        "degree_centrality": 0.0476,
+        "betweenness": 0.0015
       },
       {
         "name": "Ideal Finance Limited",
         "type": "institution",
         "degree": 3,
-        "degree_centrality": 0.0484,
-        "betweenness": 0.0032
+        "degree_centrality": 0.0476,
+        "betweenness": 0.0031
       },
       {
         "name": "Midland Savings and Loans Company Limited",
         "type": "institution",
         "degree": 3,
-        "degree_centrality": 0.0484,
+        "degree_centrality": 0.0476,
         "betweenness": 0.0026
       },
       {
         "name": "ASN Financial Services Limited",
         "type": "institution",
         "degree": 2,
-        "degree_centrality": 0.0323,
+        "degree_centrality": 0.0317,
         "betweenness": 0.0005
       },
       {
         "name": "AllTime Finance Limited",
         "type": "institution",
         "degree": 2,
-        "degree_centrality": 0.0323,
-        "betweenness": 0.0005
-      },
-      {
-        "name": "CDH Savings and Loans Ltd.",
-        "type": "institution",
-        "degree": 2,
-        "degree_centrality": 0.0323,
+        "degree_centrality": 0.0317,
         "betweenness": 0.0005
       },
       {
         "name": "Commerz Savings and Loans Limited",
         "type": "institution",
         "degree": 2,
-        "degree_centrality": 0.0323,
+        "degree_centrality": 0.0317,
         "betweenness": 0.0005
       }
     ],
@@ -131,10 +131,36 @@
     }
   },
   "loops": {
-    "count": 4,
+    "count": 5,
     "circular_funding_loops": 1,
     "of_which_leave_an_institution": 1,
     "cycles": [
+      {
+        "members": [
+          "Crest Finance House Limited",
+          "UNNAMED parent company of Crest"
+        ],
+        "legs": [
+          {
+            "from": "Crest Finance House Limited",
+            "to": "UNNAMED parent company of Crest",
+            "relationships": [
+              "over_exposed_to"
+            ],
+            "extracts_value": true
+          },
+          {
+            "from": "UNNAMED parent company of Crest",
+            "to": "Crest Finance House Limited",
+            "relationships": [
+              "owns"
+            ],
+            "extracts_value": false
+          }
+        ],
+        "all_legs_extract_value": false,
+        "leaves_an_institution": true
+      },
       {
         "members": [
           "FirsTrust Savings and Loans Limited",
@@ -272,7 +298,7 @@
     "components": 17,
     "communities_detected": 17,
     "communities_equal_components": true,
-    "modularity": 0.8944
+    "modularity": 0.8966
   },
   "typology": [
     {
@@ -292,42 +318,18 @@
       "direction": "from_institution"
     },
     {
-      "category": "fee_extraction",
-      "relationship": "assumed_liability_of_loan_of",
-      "extracts_value": true,
-      "edges": 1,
-      "named_counterparty": 1,
-      "direction": "from_institution"
-    },
-    {
-      "category": "fee_extraction",
-      "relationship": "pays_management_fees_to",
-      "extracts_value": true,
-      "edges": 1,
-      "named_counterparty": 0,
-      "direction": "from_institution"
-    },
-    {
-      "category": "fee_extraction",
-      "relationship": "pays_rent_to",
-      "extracts_value": true,
-      "edges": 1,
-      "named_counterparty": 1,
-      "direction": "from_institution"
-    },
-    {
       "category": "lending",
       "relationship": "over_exposed_to",
       "extracts_value": true,
-      "edges": 11,
+      "edges": 13,
       "named_counterparty": 5,
       "direction": "from_institution"
     },
     {
       "category": "lending",
-      "relationship": "lends_to",
+      "relationship": "funded_projects_of",
       "extracts_value": true,
-      "edges": 4,
+      "edges": 3,
       "named_counterparty": 0,
       "direction": "from_institution"
     },
@@ -335,21 +337,21 @@
       "category": "lending",
       "relationship": "related_party_exposure_to",
       "extracts_value": true,
-      "edges": 2,
+      "edges": 3,
       "named_counterparty": 2,
       "direction": "from_institution"
     },
     {
       "category": "lending",
-      "relationship": "extended_overdraft_facilities_to",
+      "relationship": "lends_to",
       "extracts_value": true,
-      "edges": 1,
+      "edges": 2,
       "named_counterparty": 0,
       "direction": "from_institution"
     },
     {
       "category": "lending",
-      "relationship": "funded_projects_of",
+      "relationship": "extended_overdraft_facilities_to",
       "extracts_value": true,
       "edges": 1,
       "named_counterparty": 0,
@@ -381,18 +383,18 @@
     },
     {
       "category": "ownership",
+      "relationship": "owns",
+      "extracts_value": false,
+      "edges": 2,
+      "named_counterparty": 0,
+      "direction": "into_institution"
+    },
+    {
+      "category": "ownership",
       "relationship": "part_of",
       "extracts_value": false,
       "edges": 2,
       "named_counterparty": 2,
-      "direction": "from_institution"
-    },
-    {
-      "category": "ownership",
-      "relationship": "controls",
-      "extracts_value": false,
-      "edges": 1,
-      "named_counterparty": 0,
       "direction": "from_institution"
     },
     {
@@ -402,6 +404,30 @@
       "edges": 1,
       "named_counterparty": 1,
       "direction": "between_third_parties"
+    },
+    {
+      "category": "payments",
+      "relationship": "assumed_liability_of_loan_of",
+      "extracts_value": true,
+      "edges": 1,
+      "named_counterparty": 0,
+      "direction": "from_institution"
+    },
+    {
+      "category": "payments",
+      "relationship": "pays_management_fees_to",
+      "extracts_value": true,
+      "edges": 1,
+      "named_counterparty": 0,
+      "direction": "from_institution"
+    },
+    {
+      "category": "payments",
+      "relationship": "pays_rent_to",
+      "extracts_value": true,
+      "edges": 1,
+      "named_counterparty": 0,
+      "direction": "from_institution"
     },
     {
       "category": "placement",
@@ -423,7 +449,7 @@
       "category": "placement",
       "relationship": "placed_funds_with",
       "extracts_value": true,
-      "edges": 3,
+      "edges": 4,
       "named_counterparty": 2,
       "direction": "from_institution"
     },
@@ -457,8 +483,8 @@
       "institutions": 17,
       "with_any_edge": 17,
       "with_value_extracting_edge": 17,
-      "total_value_extracting_edges": 30,
-      "with_a_named_counterparty": 9,
+      "total_value_extracting_edges": 34,
+      "with_a_named_counterparty": 8,
       "median_cause_count": 5,
       "quantified_ghs_m": 261.72,
       "institutions_with_an_amount": 7
@@ -480,11 +506,24 @@
         "net_worth_ghs_m": -30.7,
         "car_pct": -61.2,
         "cause_count": 6,
-        "edges_out": 5,
-        "value_extracting": 4,
+        "edges_out": 6,
+        "value_extracting": 5,
         "counterparties": 5,
         "named": 4,
-        "unnamed": 1,
+        "unnamed": 2,
+        "extracted_ghs_m": null
+      },
+      {
+        "name": "CDH Savings and Loans Ltd.",
+        "flagged": true,
+        "net_worth_ghs_m": -171.36,
+        "car_pct": -35.9,
+        "cause_count": 4,
+        "edges_out": 4,
+        "value_extracting": 3,
+        "counterparties": 3,
+        "named": 1,
+        "unnamed": 3,
         "extracted_ghs_m": null
       },
       {
@@ -540,19 +579,6 @@
         "extracted_ghs_m": 18.19
       },
       {
-        "name": "CDH Savings and Loans Ltd.",
-        "flagged": true,
-        "net_worth_ghs_m": -171.36,
-        "car_pct": -35.9,
-        "cause_count": 4,
-        "edges_out": 3,
-        "value_extracting": 2,
-        "counterparties": 2,
-        "named": 1,
-        "unnamed": 2,
-        "extracted_ghs_m": null
-      },
-      {
         "name": "Crest Finance House Limited",
         "flagged": true,
         "net_worth_ghs_m": -17.55,
@@ -564,6 +590,32 @@
         "named": 0,
         "unnamed": 2,
         "extracted_ghs_m": null
+      },
+      {
+        "name": "Dream Finance Limited",
+        "flagged": true,
+        "net_worth_ghs_m": -333.46,
+        "car_pct": -7508.1,
+        "cause_count": 7,
+        "edges_out": 2,
+        "value_extracting": 2,
+        "counterparties": 1,
+        "named": 0,
+        "unnamed": 2,
+        "extracted_ghs_m": null
+      },
+      {
+        "name": "FirsTrust Savings and Loans Limited",
+        "flagged": true,
+        "net_worth_ghs_m": -175.9,
+        "car_pct": -132.96,
+        "cause_count": 5,
+        "edges_out": 3,
+        "value_extracting": 2,
+        "counterparties": 2,
+        "named": 1,
+        "unnamed": 2,
+        "extracted_ghs_m": 17.93
       },
       {
         "name": "First African Savings and Loans Limited",
@@ -587,22 +639,9 @@
         "edges_out": 2,
         "value_extracting": 2,
         "counterparties": 1,
-        "named": 2,
-        "unnamed": 0,
-        "extracted_ghs_m": 2.91
-      },
-      {
-        "name": "Accent Financial Services Limited",
-        "flagged": true,
-        "net_worth_ghs_m": -55.76,
-        "car_pct": -144.3,
-        "cause_count": 4,
-        "edges_out": 1,
-        "value_extracting": 1,
-        "counterparties": 1,
         "named": 0,
-        "unnamed": 1,
-        "extracted_ghs_m": null
+        "unnamed": 2,
+        "extracted_ghs_m": 2.91
       },
       {
         "name": "ASN Financial Services Limited",
@@ -618,11 +657,11 @@
         "extracted_ghs_m": null
       },
       {
-        "name": "Dream Finance Limited",
+        "name": "Accent Financial Services Limited",
         "flagged": true,
-        "net_worth_ghs_m": -333.46,
-        "car_pct": -7508.1,
-        "cause_count": 7,
+        "net_worth_ghs_m": -55.76,
+        "car_pct": -144.3,
+        "cause_count": 4,
         "edges_out": 1,
         "value_extracting": 1,
         "counterparties": 1,
@@ -649,25 +688,12 @@
         "net_worth_ghs_m": -661.84,
         "car_pct": -263.21,
         "cause_count": 5,
-        "edges_out": 2,
+        "edges_out": 1,
         "value_extracting": 1,
-        "counterparties": 2,
+        "counterparties": 1,
         "named": 0,
-        "unnamed": 2,
-        "extracted_ghs_m": null
-      },
-      {
-        "name": "FirsTrust Savings and Loans Limited",
-        "flagged": true,
-        "net_worth_ghs_m": -175.9,
-        "car_pct": -132.96,
-        "cause_count": 5,
-        "edges_out": 2,
-        "value_extracting": 1,
-        "counterparties": 2,
-        "named": 1,
         "unnamed": 1,
-        "extracted_ghs_m": 17.93
+        "extracted_ghs_m": null
       },
       {
         "name": "Legacy Capital Savings and Loans Ltd.",
@@ -881,7 +907,7 @@
           "fund_manager": "Integrity Fund Management Ltd",
           "amount_value": 80.0,
           "amount_basis": "combined_total",
-          "amount_note": "Stated as 'Over 80% placement of client funds in revoked savings & loans' across Midland, FirsTrust and Legacy Capital together. The notice gives no per-institution split, and the figure is a floor.",
+          "amount_note": "Stated as 'Over 80% placement of client funds in revoked savings & loans including' Midland, FirsTrust and Legacy Capital. The notice gives no per-institution split, the figure is a floor, and 'including' leaves the list open.",
           "edge_id": "P008",
           "verification": "confirmed"
         },
@@ -909,7 +935,7 @@
           "fund_manager": "Integrity Fund Management Ltd",
           "amount_value": 80.0,
           "amount_basis": "combined_total",
-          "amount_note": "Stated as 'Over 80% placement of client funds in revoked savings & loans' across Midland, FirsTrust and Legacy Capital together. The notice gives no per-institution split, and the figure is a floor.",
+          "amount_note": "Stated as 'Over 80% placement of client funds in revoked savings & loans including' Midland, FirsTrust and Legacy Capital. The notice gives no per-institution split, the figure is a floor, and 'including' leaves the list open.",
           "edge_id": "P009",
           "verification": "confirmed"
         },
@@ -927,7 +953,7 @@
           "fund_manager": "Integrity Fund Management Ltd",
           "amount_value": 80.0,
           "amount_basis": "combined_total",
-          "amount_note": "Stated as 'Over 80% placement of client funds in revoked savings & loans' across Midland, FirsTrust and Legacy Capital together. The notice gives no per-institution split, and the figure is a floor.",
+          "amount_note": "Stated as 'Over 80% placement of client funds in revoked savings & loans including' Midland, FirsTrust and Legacy Capital. The notice gives no per-institution split, the figure is a floor, and 'including' leaves the list open.",
           "edge_id": "P007",
           "verification": "confirmed"
         },
@@ -952,8 +978,8 @@
   },
   "verification": {
     "counts": {
-      "confirmed": 70
+      "confirmed": 75
     },
-    "version": "v0.6"
+    "version": "v0.7"
   }
 }

@@ -1,5 +1,5 @@
 # Normalise line endings so Windows and Linux checkouts agree.
-* text=auto
+* text=auto eol=lf
 
 # Keep the extracted source text out of the language bar; it is evidence, not code.
 data/raw/*.txt linguist-generated=true

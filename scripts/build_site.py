@@ -154,7 +154,22 @@ def wrap(text, per_line=22, max_lines=2):
     return lines
 
 
-def draw(g, nodes, width, height, evidence, label_size=10, radius=9):
+SOURCE_SHORT = {
+    "bog-2019-08-16-savings-loans-revocation": "BoG",
+    "sec-2019-11-08-fund-manager-revocation": "SEC",
+    "ca-2026-05-21-gn-savings-appeal": "Court of Appeal",
+}
+
+
+def short_anchor(anchor):
+    """'bog-...:L798' -> 'BoG L798', so the table says which document a line is in."""
+    if not anchor:
+        return ""
+    sid, _, line = anchor.rpartition(":")
+    return f"{SOURCE_SHORT.get(sid, sid)} {line}"
+
+
+def draw(g, nodes, width, height, evidence, label_size=10, radius=9, label=""):
     """One panel of the small multiples, or one enlarged case view."""
     nodes = sorted(nodes)
     pos = layout(g, nodes, width, height)
@@ -172,6 +187,7 @@ def draw(g, nodes, width, height, evidence, label_size=10, radius=9):
         dash = "" if d["extracts_value"] else ' stroke-dasharray="3 3"'
         quote = evidence.get(key, {}).get("quote", "")
         anchor = evidence.get(key, {}).get("anchor", "")
+        publisher = evidence.get(key, {}).get("publisher", "")
         amount = ""
         if d["amount_value"]:
             if d["amount_unit"] == "percent":
@@ -185,6 +201,7 @@ def draw(g, nodes, width, height, evidence, label_size=10, radius=9):
                 amount = f"{d['amount_currency']} {d['amount_value']:,.2f}{unit}"
         edges.append(
             f'<g class="edge" tabindex="0" role="button"'
+            f' aria-label="{html.escape(g.nodes[u]["name"] + " " + d["relationship"] + " " + g.nodes[v]["name"])}"'
             f' data-edge="{html.escape(key)}"'
             f' data-from="{html.escape(g.nodes[u]["name"])}"'
             f' data-to="{html.escape(g.nodes[v]["name"])}"'
@@ -192,6 +209,7 @@ def draw(g, nodes, width, height, evidence, label_size=10, radius=9):
             f' data-amount="{html.escape(amount)}"'
             f' data-conf="{html.escape(d["confidence"])}"'
             f' data-anchor="{html.escape(anchor)}"'
+            f' data-source="{html.escape(publisher)}"'
             f' data-quote="{html.escape(quote)}">'
             f'<line x1="{x1 + ox:.1f}" y1="{y1 + oy:.1f}" x2="{x2 - ox:.1f}" y2="{y2 - oy:.1f}"'
             f' stroke="var(--edge)" stroke-width="2"{dash}'
@@ -260,7 +278,10 @@ def draw(g, nodes, width, height, evidence, label_size=10, radius=9):
                 f'stroke-linejoin="round" '
                 f'fill="var(--text-secondary)">{html.escape(line)}</text>')
 
-    return (f'<svg viewBox="0 0 {width} {height}" role="img" '
+    # role="group", not "img": an image hides its children from assistive
+    # technology, and these children are focusable buttons.
+    return (f'<svg viewBox="0 0 {width} {height}" role="group" '
+            f'aria-label="{html.escape(label or "network diagram")}" '
             f'preserveAspectRatio="xMidYMid meet">'
             + "".join(edges) + "".join(marks) + "".join(labels) + "</svg>")
 
@@ -276,15 +297,17 @@ def evidence_for_edges(con):
     place of the passage recording GHS 160.10m - the largest figure here.
     """
     out = {}
-    for edge_id, anchor, quote in con.execute("""
-            SELECT e.edge_id, ev.anchor, ev.quote
+    for edge_id, anchor, quote, publisher in con.execute("""
+            SELECT e.edge_id, ev.anchor, ev.quote, s.publisher
             FROM edges e
             LEFT JOIN edge_evidence ee ON ee.edge_id = e.edge_id
             LEFT JOIN evidence ev ON ev.anchor = ee.anchor
+            LEFT JOIN sources s ON s.source_id = ev.source_id
             ORDER BY e.edge_id, ev.anchor"""):
         best = out.get(edge_id)
         if best is None or len(quote or "") > len(best["quote"]):
-            out[edge_id] = {"anchor": anchor or "", "quote": quote or ""}
+            out[edge_id] = {"anchor": anchor or "", "quote": quote or "",
+                            "publisher": publisher or ""}
     return out
 
 
@@ -321,6 +344,11 @@ def build():
     total_edges = sum(metrics["verification"]["counts"].values())
     shape = metrics["shape"]
     hubs_multi = len(metrics["hubs"]["connect_multiple_institutions"])
+    loops = metrics["loops"]["circular_funding_loops"]
+    plural = lambda n, one, many: one if n == 1 else many
+    verified_phrase = (f"all {total_edges} edges verified against source" if not pending
+                       else f"{total_edges - pending} of {total_edges} edges verified "
+                            "against source")
 
     parts = []
     parts.append(f'''<!doctype html>
@@ -328,7 +356,7 @@ def build():
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Related-party lending network &middot; Ghana savings &amp; loans, 2019</title>
-<meta name="description" content="A network reconstruction of related-party lending behind the 23 Ghanaian savings and loans failures of 2019, built only from the Bank of Ghana revocation notice.">
+<meta name="description" content="A network reconstruction of related-party lending behind the 23 Ghanaian savings and loans failures of 2019, built from the Bank of Ghana and Securities and Exchange Commission revocation notices and one Court of Appeal judgment.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Newsreader:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -360,10 +388,10 @@ recorded.</div>''')
 <div class="tiles">
   <div class="tile"><div class="n">23</div><div class="k">institutions</div></div>
   <div class="tile"><div class="n">2</div><div class="k">regulators&rsquo; notices</div></div>
-  <div class="tile"><div class="n">{shape['edges']}</div><div class="k">documented edges</div></div>
+  <div class="tile"><div class="n">{shape['edges']}</div><div class="k">related-party edges</div></div>
   <div class="tile"><div class="n">{shape['components']}</div><div class="k">separate structures</div></div>
-  <div class="tile"><div class="n">{hubs_multi}</div><div class="k">entities linking two institutions</div></div>
-  <div class="tile"><div class="n">{metrics["loops"]["circular_funding_loops"]}</div><div class="k">circular funding loops</div></div>
+  <div class="tile"><div class="n">{hubs_multi}</div><div class="k">{plural(hubs_multi, "entity", "entities")} linking two institutions</div></div>
+  <div class="tile"><div class="n">{loops}</div><div class="k">circular funding {plural(loops, "loop", "loops")}</div></div>
 </div>
 <p class="section-note">Every edge restates something a regulator or a court published. Hover or focus
 any connection to read the passage behind it.</p>
@@ -389,8 +417,8 @@ about that source.</p>
   <span class="item"><span class="swatch" style="background:var(--series-1)"></span>failed institution</span>
   <span class="item"><span class="swatch sq" style="background:var(--series-2)"></span>named counterparty or owner</span>
   <span class="item"><span class="swatch ring"></span>party described but not named</span>
-  <span class="item"><svg width="34" height="10"><line x1="1" y1="5" x2="33" y2="5" stroke="var(--edge)" stroke-width="2"/></svg>moves value out</span>
-  <span class="item"><svg width="34" height="10"><line x1="1" y1="5" x2="33" y2="5" stroke="var(--edge)" stroke-width="2" stroke-dasharray="3 3"/></svg>structural only</span>
+  <span class="item"><svg width="34" height="10" aria-hidden="true"><line x1="1" y1="5" x2="33" y2="5" stroke="var(--edge)" stroke-width="2"/></svg>moves value</span>
+  <span class="item"><svg width="34" height="10" aria-hidden="true"><line x1="1" y1="5" x2="33" y2="5" stroke="var(--edge)" stroke-width="2" stroke-dasharray="3 3"/></svg>structural only</span>
 </div>
 ''')
 
@@ -403,12 +431,13 @@ about that source.</p>
         title = blurb["title"]
         parts.append(f'''<div class="case"><h3>{html.escape(title)}</h3>
 <p class="section-note">{blurb["text"]}</p>
-{draw(g, comp, CASE_W, CASE_H, evidence, label_size=11, radius=11)}
+{draw(g, comp, CASE_W, CASE_H, evidence, label_size=11, radius=11, label=title)}
 </div>''')
 
     parts.append(f'<h2>The other {len(others)}</h2>')
     parts.append('<p class="section-note">Each is an institution and the related parties the '
-                 'notice attributes to it. None connects to any other panel &mdash; that '
+                 'notices, and in one case a court, attribute to it. None connects to any '
+                 'other panel &mdash; that '
                  'disconnection is the finding, not a drawing artefact.</p>')
     parts.append('<div class="grid">')
     for comp in others:
@@ -419,11 +448,11 @@ about that source.</p>
         flag = (f'<div class="status"><strong>Contested.</strong> {html.escape(note)}</div>'
                 if note else "")
         parts.append(f'''<div class="panel"><div class="cap">{html.escape(cap)}</div>
-{draw(g, comp, PANEL_W, PANEL_H, evidence)}{flag}</div>''')
+{draw(g, comp, PANEL_W, PANEL_H, evidence, label=cap)}{flag}</div>''')
     parts.append('</div>')
 
-    parts.append('''<div id="cite" hidden><div class="meta"></div><blockquote></blockquote>
-<p class="hint" style="margin:8px 0 0">Passage as published by the Bank of Ghana. Press Escape to dismiss.</p></div>''')
+    parts.append('''<div id="cite" hidden aria-live="polite"><div class="meta"></div><blockquote></blockquote>
+<p class="hint" style="margin:8px 0 0"><span class="src"></span> Press Escape to dismiss.</p></div>''')
 
     # -- the placement layer, shown apart from the graph -----------------------
     # Deliberately a table and not a diagram. Drawing it beside the components
@@ -459,10 +488,11 @@ and the least true one.</p>
     unflagged = pl["institutions_unflagged_by_bog"]
     if unflagged:
         parts.append(
-            '<p class="section-note">' + html.escape(", ".join(unflagged))
-            + ' appears here, and is one of the six institutions the Bank of Ghana did '
-              '<strong>not</strong> flag for related-party exposure. The 17-of-23 split '
-              'is a property of that notice, not of the whole record.</p>')
+            f'<p class="section-note">Of the {pl["institutions_reached"]} institutions this '
+            'layer reaches, ' + html.escape(", ".join(unflagged))
+            + ' is one the Bank of Ghana did <strong>not</strong> flag for related-party '
+              'exposure. The 17-of-23 split is a property of that notice, not of the whole '
+              'record.</p>')
 
     # -- typology: one series, so a single hue and no legend --------------------
     # Only edges running OUT of one of the 23. extracts_value says value moved
@@ -475,8 +505,8 @@ and the least true one.</p>
             typ[row["category"]] = typ.get(row["category"], 0) + row["edges"]
         elif row["extracts_value"]:
             elsewhere += row["edges"]
-    top = max(typ.values())
-    parts.append(f'''<h2>How value left the institutions</h2>
+    top = max(typ.values(), default=1)
+    parts.append(f'''<h2>How value moved out of the institutions</h2>
 <p class="section-note">Every edge carries a relationship from a controlled vocabulary.
 On this evidence base the mechanism counts carry more than any network measure does.</p>
 <p>Counted here are only the {sum(typ.values())} relationships that move value
@@ -514,15 +544,15 @@ make this chart say more than it means.</p>
         parts.append(
             f"<tr><td>{html.escape(key)}</td><td>{html.escape(g.nodes[u]['name'])}</td>"
             f"<td>{html.escape(g.nodes[v]['name'])}</td><td>{html.escape(d['relationship'])}</td>"
-            f"<td class=\"num\">{html.escape(amount) or '&mdash;'}</td>"
+            f"<td class=\"num\">{html.escape(amount) if amount else '&mdash;'}</td>"
             f"<td>{html.escape(d['confidence'])}</td>"
-            f"<td class=\"num\">{html.escape(anchor.split(':')[-1] if anchor else '&mdash;')}</td></tr>")
+            f"<td class=\"num\">{html.escape(short_anchor(anchor)) if anchor else '&mdash;'}</td></tr>")
     parts.append('</tbody></table></div></details>')
 
     parts.append(f'''<footer>
-<p>Built from two documents: the Bank of Ghana&rsquo;s notice of 16 August 2019 revoking the
+<p>Built from two regulators&rsquo; notices: the Bank of Ghana&rsquo;s of 16 August 2019 revoking the
 licences of 23 savings and loans companies and finance houses, and the Securities and Exchange
-Commission&rsquo;s notice of 8 November 2019 revoking 53 fund-management licences. One edge,
+Commission&rsquo;s of 8 November 2019 revoking 53 fund-management licences. One edge,
 GN Savings and Loans&rsquo; membership of Groupe Nduom, comes from the Court of Appeal judgment
 of 21 May 2026, which the Supreme Court has stayed pending appeal. Every node and edge carries
 a citation to a line in its source; the quoted passages are in the repository&rsquo;s evidence
@@ -530,18 +560,17 @@ base. Inferred relationships are excluded from this page.</p>
 <p><strong>What this cannot show is written down.</strong> No individual is named anywhere in
 the evidence base, the graph is in {shape["components"]} pieces, and most relationships carry
 no figure at all. The limitations are set out in full in
-<a href="docs/LIMITATIONS.md">docs/LIMITATIONS.md</a>, and are worth reading before the
+<a href="https://github.com/SamuelAtokwamebaah/related-party-lending-network/blob/main/docs/LIMITATIONS.md">docs/LIMITATIONS.md</a>, and are worth reading before the
 diagrams rather than after them.</p>
 <p>Nothing here is an allegation. Each relationship restates what a regulator or a court published, and
 the page takes no position on any proceeding. Evidence base
-<code>{metrics["verification"]["version"]}</code>, all
-{sum(metrics["verification"]["counts"].values())} edges verified against source.</p>
+<code>{metrics["verification"]["version"]}</code>, {verified_phrase}.</p>
 </footer>
 </div>
 <script>{SCRIPT}</script>
 </body></html>''')
 
-    OUT.write_text("".join(parts), encoding="utf-8")
+    OUT.write_text("".join(parts), encoding="utf-8", newline="\n")
     con.close()
     print(f"components drawn : {len(components)} ({len(cases)} cases, {len(others)} panels)")
     print(f"edges with a quote: {sum(1 for v in evidence.values() if v['quote'])}")
@@ -555,22 +584,28 @@ CASE_NOTES = [
               "to see it. The Bank of Ghana records that uniCredit, formerly Kantamanto "
               "Savings and Loans, was acquired by the Hoda Group of Companies in 2006, and "
               "that it was over-exposed to its sister company uniSecurities to the tune of "
-              "GHS 160.10 million. The SEC then records uniSecurities placing client funds "
-              "with seven related parties of its own, the first of which is Hoda Holdings. "
-              "Whether Hoda Holdings and the Hoda Group are one entity is an open question "
-              "in this repository, not an assumption: if they are, the ownership closes "
-              "back on itself."}),
+              "GHS 160.10 million. The SEC then lists seven related parties of Unisecurities "
+              "(Ghana) Limited, the first of which is Hoda Holdings, under a finding about "
+              "its placement of client funds; it does not say how much went to each. That "
+              "the SEC's Unisecurities (Ghana) Limited is the Bank of Ghana's uniSecurities "
+              "rests on the name, and the limitations say so. Whether Hoda Holdings and the "
+              "Hoda Group are one entity is an open question in this repository, not an "
+              "assumption: if they are, the ownership closes back on itself."}),
     ("corp-ideal-capital-partners",
      {"title": "Ideal Financial Holdings, Ideal Finance, FirsTrust and the group companies",
-      "text": "A common owner above two separately licensed institutions that lent to each "
-              "other. Ideal Financial Holdings acquired EZI Savings and Loans in 2014 and "
-              "renamed it FirsTrust; Ideal Finance then carried related-party exposure to "
-              "FirsTrust and to Ideal Capital Partners; in June 2019 the two applied to "
-              "merge and the Bank of Ghana declined, both being insolvent. The SEC adds the "
-              "piece the banking regulator had no reason to record: Ideal Capital Partners "
-              "held related-party positions in the holding company, in FirsTrust, and in "
-              "two non-financial group companies, Ideal Trade and Ideal Bottling. It is the "
-              "only entity in the evidence base that connects two of the 23."}),
+      "text": "Two licensed institutions and the group companies around them. The Bank of "
+              "Ghana records that Ideal Financial Holdings acquired EZI Savings and Loans in "
+              "2014, which became FirsTrust, and that Ideal Finance carried related-party "
+              "exposure to FirsTrust and to Ideal Capital Partners. The two institutions "
+              "sought to merge in 2019, by a letter of 25 June and a request dated 25 July, "
+              "and the Bank of Ghana refused, both being insolvent. The SEC adds what the "
+              "banking regulator had no reason to record: Ideal Capital Partners had 19% of "
+              "its funds under management in related parties, among them the holding "
+              "company, FirsTrust, and two non-financial group companies, Ideal Trade and "
+              "Ideal Bottling. It is the only entity in the evidence base that connects two "
+              "of the 23, and the connection needs both notices. That Ideal Financial "
+              "Holdings also owns Ideal Finance is inferred from the shared name alone, and "
+              "is not drawn."}),
     ("corp-liberty-asset-management",
      {"title": "Midland and Liberty Asset Management",
       "text": "The smallest of the three and the most complete. The Bank of Ghana records "

@@ -255,7 +255,7 @@ def write_csv(name, header, rows):
         print(f"  {name:26}    - exists, left alone")
         return path
     with path.open("w", newline="", encoding="utf-8") as fh:
-        w = csv.writer(fh)
+        w = csv.writer(fh, lineterminator="\n")
         w.writerow(header)
         w.writerows(rows)
     print(f"  {name:26} {len(rows):>4} rows")
@@ -402,6 +402,10 @@ def main():
                 "edge, from a passage the extractor had missed because its ownership "
                 "pattern matched 'owner' and 'ownership' but not 'owned'.", SOURCE_ID]])
 
+    if SKIPPED and not FORCE:
+        print("\nnothing written: every file already exists and is hand-maintained. "
+              "This seed ran once, at v0.1.")
+        return
     print(f"\nedges written: {len(edge_rows)}  "
           f"(4 renaming rows folded into entity aliases)")
     if unresolved:

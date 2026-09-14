@@ -1,3 +1,7 @@
-# Phase 0 and Phase 1 use the standard library only.
-# Phase 2 builds the graph.
-networkx>=3.0
+# Python 3.10 or later. Phase 0 and Phase 1 use the standard library only.
+# Phase 2 builds the graph with networkx; the map's layout needs numpy.
+# Both are pinned because the drawn coordinates in index.html depend on their
+# random number generators: other versions build the same figures and may
+# place the nodes differently.
+networkx==3.6.1
+numpy==2.5.2

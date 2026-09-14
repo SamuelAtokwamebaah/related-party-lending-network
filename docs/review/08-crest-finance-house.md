@@ -1,6 +1,6 @@
 # 8. Crest Finance House Limited
 
-`inst-crest` · notice section **L415–L449** · 2 seeded edge(s) · 11 uncited passage(s)
+`inst-crest` · notice section **L415–L449** · 3 seeded edge(s) · 11 uncited passage(s)
 
 Read the section in `data/raw/` from L415 to L449, then work through both parts below. Record every decision in `data/verification.csv`.
 
@@ -36,7 +36,21 @@ For each: does the quote support the relationship, the direction, the amount and
 
 > Non-performing exposures to its parent company and a company in which the Chief Executive Officer is a director in excess of statutory limit. The exposures also contributed significantly to the institution's liquidity challenges.
 
-*Note carried from compilation:* Documented officer-interlock; person unnamed
+*Note carried from compilation:* Exposure to a company in which Crest's chief executive is a director; neither the company nor the chief executive is named
+
+### E047 — Crest Finance House Limited ← UNNAMED parent company of Crest
+
+| | |
+|---|---|
+| relationship | `owns` |
+| amount | — |
+| confidence | `documented_unnamed` |
+| anchor | `bog-2019-08-16-savings-loans-revocation:L434` |
+| current decision | confirmed |
+
+> Non-performing exposures to its parent company and a company in which the Chief Executive Officer is a director in excess of statutory limit. The exposures also contributed significantly to the institution's liquidity challenges.
+
+*Note carried from compilation:* 'its parent company'; identity and shareholding not stated
 
 ---
 

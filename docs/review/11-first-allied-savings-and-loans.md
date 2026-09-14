@@ -1,6 +1,6 @@
 # 11. First Allied Savings and Loans Limited
 
-`inst-first-allied` · notice section **L538–L594** · 2 seeded edge(s) · 12 uncited passage(s)
+`inst-first-allied` · notice section **L538–L594** · 2 seeded edge(s) · 11 uncited passage(s)
 
 Read the section in `data/raw/` from L538 to L594, then work through both parts below. Record every decision in `data/verification.csv`.
 
@@ -10,19 +10,19 @@ Read the section in `data/raw/` from L538 to L594, then work through both parts 
 
 For each: does the quote support the relationship, the direction, the amount and its basis, and the confidence class?
 
-### E013 — First Allied Savings and Loans Limited → UNNAMED major shareholder of First Allied
+### E013 — First Allied Savings and Loans Limited ← UNNAMED major shareholder of First Allied
 
 | | |
 |---|---|
-| relationship | `controls` |
+| relationship | `owns` |
 | amount | — |
 | confidence | `documented_unnamed` |
-| anchor | `bog-2019-08-16-savings-loans-revocation:L580` |
+| anchor | `bog-2019-08-16-savings-loans-revocation:L543` |
 | current decision | confirmed |
 
-> The current accounts of eight (8) related companies linked to the major shareholder were overdrawn in excess of GHS 100.00 million and were non- performing.
+> First Allied Savings & Loans Ltd. (FASL) was found to be insolvent with a negative Capital Adequacy Ratio and a negative net worth as of 31 March 2018. The Bank of Ghana directed the Board Chairman/Majority Shareholder and Management of the Institution
 
-*Note carried from compilation:* Person unnamed; role documented
+*Note carried from compilation:* Stated as the institution's Board Chairman/Majority Shareholder (L543); identity and shareholding not stated
 
 ### E014 — First Allied Savings and Loans Limited → UNNAMED eight related companies of First Allied
 
@@ -46,8 +46,7 @@ For each: does the quote support the relationship, the direction, the amount and
 
 These carry related-party, affiliate, ownership, officer or exposure wording and no edge cites them. This is where a missed relationship is most likely. For each: does it describe a relationship between this institution and another party? If so it needs an edge, and the passage needs a row in `data/evidence.csv` under the anchor shown.
 
-- **`bog-2019-08-16-savings-loans-revocation:L543`**
-  > First Allied Savings & Loans Ltd. (FASL) was found to be insolvent with a negative Capital Adequacy Ratio and a negative net worth as of 31 March 2018. The Bank of Ghana directed the Board Chairman/Majority Shareholder and Management of the Institution to immediately inject additional capital to address the capital deficiency. In June 2018, the Bank of Ghana received reports of a run on the institution FASL due to it …
+_None. Every passage carrying relationship wording is cited._
 
 ---
 

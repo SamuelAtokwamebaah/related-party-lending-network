@@ -52,8 +52,18 @@ def read(name):
     if not path.exists():
         print(f"missing required file: data/{name}")
         sys.exit(1)
-    with path.open(encoding="utf-8", newline="") as fh:
-        return list(csv.DictReader(fh))
+    # utf-8-sig: a file saved from Excel as "CSV UTF-8" starts with a byte-order
+    # mark, which would otherwise glue itself to the first column name.
+    with path.open(encoding="utf-8-sig", newline="") as fh:
+        rows = list(csv.DictReader(fh))
+    # A row with FEWER fields than the header is padded with None by DictReader.
+    # Rule 0 in validate() catches the opposite case, too many fields.
+    for n, row in enumerate(rows, start=2):
+        if any(v is None for v in row.values()):
+            print(f"data/{name} line {n}: fewer fields than the header; a comma or a "
+                  f"quote is missing. The database was not written.")
+            sys.exit(1)
+    return rows
 
 
 def split_list(value):
@@ -87,17 +97,44 @@ def source_lines():
     return out
 
 
+PAGE_NUMBER = re.compile(r"^\s*\d{1,3}\s*$")
+ENUMERATOR = re.compile(r"^(?:[a-z]|\d{1,2})[.)]\s+")
+
+
 def quote_starts_at(lines, line_no, quote):
-    """True if the quote begins at line_no, allowing for the source's wrapping.
+    """True if the whole quote begins at line_no, allowing for the source's wrapping.
 
     A quote is a wrapped paragraph, so it is checked against the anchored line
     plus enough following lines to contain it - not against the whole document.
     Checking against the whole document would accept an anchor pointing anywhere,
     which is how a 26-line drift went unnoticed once already.
+
+    Until v0.7 this compared only the first 80 characters, or accepted the quote
+    anywhere in the next 60 lines. That let a word changed late in a long quote,
+    an empty quote, and an anchor placed a few lines early all pass. Now the whole
+    quote must start the window. Two things in the source may sit inside it: a
+    list marker ("c. ") before the quote, and a printed page number where a page
+    break falls inside it.
     """
     want = normalise(quote)
-    window = normalise(" ".join(lines[line_no - 1: line_no - 1 + 60]))
-    return window.startswith(want[:80]) or want in window
+    if len(want) < 20 or not lines[line_no - 1].strip():
+        return False          # an empty or trivial quote, or an anchor on a blank line
+    raw = lines[line_no - 1: line_no - 1 + 60]
+    for body in (raw, [line for line in raw if not PAGE_NUMBER.match(line)]):
+        window = normalise(" ".join(body))
+        if window.startswith(want) or ENUMERATOR.sub("", window).startswith(want):
+            return True
+    return False
+
+
+def name_head(name, n=12):
+    """The leading whole words of a name, at least n characters long."""
+    out = ""
+    for word in name.split():
+        out = f"{out} {word}".strip()
+        if len(out) >= n:
+            break
+    return out
 
 
 def validate(tables, problems):
@@ -122,7 +159,10 @@ def validate(tables, problems):
 
     # --- duplicates (rule 10) -------------------------------------------
     for table, key in (("entities", "entity_id"), ("edges", "edge_id"),
-                       ("evidence", "anchor"), ("roles", "role_id")):
+                       ("evidence", "anchor"), ("roles", "role_id"),
+                       ("sources", "source_id"), ("changelog", "change_id"),
+                       ("resolution_review", "candidate_id"),
+                       ("verification", "edge_id")):
         seen = set()
         for row in tables[table]:
             if row[key] in seen:
@@ -135,7 +175,7 @@ def validate(tables, problems):
         if sid not in sources:
             problems.add(2, f"evidence {anchor}", f"source_id '{sid}' not in sources.csv")
             continue
-        if ":" not in anchor or not anchor.startswith(sid):
+        if not anchor.startswith(sid + ":L"):
             problems.add(11, f"evidence {anchor}", "anchor must read '<source_id>:L<line>'")
             continue
         # Rule 11: the quote must be verbatim AND at the line the anchor names.
@@ -181,8 +221,19 @@ def validate(tables, problems):
                 problems.add(2, f"entities {eid}", f"anchor '{anchor}' not in evidence.csv")
 
     # --- edges ----------------------------------------------------------
+    versions = {r["version"] for r in tables["changelog"]}
     for row in tables["edges"]:
         eid = row["edge_id"]
+        # Rule 13: a version the changelog does not know is a typo or a shifted
+        # column, and version_removed silently takes an edge out of the graph.
+        if row["version_added"] not in versions:
+            problems.add(13, f"edges {eid}",
+                         f"version_added '{row['version_added']}' is not a version in "
+                         "changelog.csv")
+        if row.get("version_removed") and row["version_removed"] not in versions:
+            problems.add(13, f"edges {eid}",
+                         f"version_removed '{row['version_removed']}' is not a version in "
+                         "changelog.csv")
         for field in ("source_entity_id", "target_entity_id"):
             if row[field] not in entities:
                 problems.add(1, f"edges {eid}", f"{field} '{row[field]}' not in entities.csv")
@@ -208,6 +259,12 @@ def validate(tables, problems):
                     problems.add(2, f"edges {eid}", f"anchor '{anchor}' not in evidence.csv")
 
         if row.get("amount_value"):
+            try:
+                float(row["amount_value"])
+            except ValueError:
+                problems.add(7, f"edges {eid}",
+                             f"amount_value '{row['amount_value']}' is not a number; the "
+                             "unit and currency belong in their own columns")
             basis = row.get("amount_basis")
             unit = row.get("amount_unit")
             currency = row.get("amount_currency")
@@ -268,8 +325,10 @@ def validate(tables, problems):
             if not cited:
                 continue
             # Match on the distinctive head of the name, since the notice
-            # abbreviates ("Gold Coast Fund Management" for the full style).
-            if not any(v[:24] in cited or cited.find(v.split()[0]) >= 0 and v[:12] in cited
+            # abbreviates ("Gold Coast Fund Management" for the full style). Whole
+            # words only: until v0.7 a two-letter alias such as "GN" matched inside
+            # any word containing those letters.
+            if not any(re.search(r"(?<!\w)" + re.escape(name_head(v)) + r"(?!\w)", cited)
                        for v in variants):
                 problems.add(12, f"edges {row['edge_id']}",
                              f"{field} '{row[field]}' is a named company but is not "
@@ -286,6 +345,12 @@ def validate(tables, problems):
         for anchor in split_list(row.get("evidence_anchors")):
             if anchor not in anchors:
                 problems.add(2, f"roles {rid}", f"anchor '{anchor}' not in evidence.csv")
+
+    # --- verification ---------------------------------------------------
+    for row in tables["verification"]:
+        if row["edge_id"] not in edge_ids:
+            problems.add(1, f"verification {row['edge_id']}",
+                         "a decision recorded for an edge that is not in edges.csv")
 
     # --- changelog ------------------------------------------------------
     for row in tables["changelog"]:
@@ -356,10 +421,17 @@ def number(value):
 
 
 def build(tables, db_path):
+    """Write to a temporary file and move it into place only once it is complete.
+
+    Until v0.7 the old database was deleted first, so a row that passed
+    validation but failed a schema CHECK left an empty database behind, and the
+    next step read it without complaint.
+    """
     db_path.parent.mkdir(parents=True, exist_ok=True)
-    if db_path.exists():
-        db_path.unlink()
-    con = sqlite3.connect(db_path)
+    tmp = db_path.with_suffix(".building")
+    if tmp.exists():
+        tmp.unlink()
+    con = sqlite3.connect(tmp)
     con.executescript(SQL.read_text(encoding="utf-8"))
     con.execute("PRAGMA foreign_keys = ON")
 
@@ -448,7 +520,9 @@ def build(tables, db_path):
          for r in tables["changelog"]])
 
     con.commit()
-    return con
+    con.close()
+    tmp.replace(db_path)
+    return sqlite3.connect(db_path)
 
 
 def summarise(con):
@@ -464,9 +538,9 @@ def summarise(con):
             "SELECT confidence, COUNT(*) FROM edges GROUP BY confidence ORDER BY 2 DESC"):
         print(f"  {conf:22} {n:>4}")
 
-    extracting = q("SELECT COUNT(*) FROM edges e JOIN relationship_types rt "
-                   "ON rt.relationship = e.relationship WHERE rt.extracts_value = 1")
-    print(f"\nvalue-extracting edges  {extracting:>4} of {q('SELECT COUNT(*) FROM edges')}")
+    moving = q("SELECT COUNT(*) FROM edges e JOIN relationship_types rt "
+               "ON rt.relationship = e.relationship WHERE rt.extracts_value = 1")
+    print(f"\nvalue-moving edges      {moving:>4} of {q('SELECT COUNT(*) FROM edges')}")
 
     seen = dict(con.execute(
         "SELECT COALESCE(v.decision,'pending'), COUNT(*) FROM edges e "
@@ -477,7 +551,7 @@ def summarise(con):
         if seen.get(state):
             print(f"  {state:22} {seen[state]:>4}")
     if seen.get("pending"):
-        print(f"  -> {seen['pending']} edge(s) not yet checked against the notice; "
+        print(f"  -> {seen['pending']} edge(s) not yet checked against the source; "
               f"see docs/review/README.md")
 
     undecided = q("SELECT COUNT(*) FROM resolution_review WHERE decision = 'undecided'")
@@ -486,7 +560,8 @@ def summarise(con):
               f"see data/resolution_review.csv")
 
     version = con.execute(
-        "SELECT version FROM changelog ORDER BY change_date DESC, change_id DESC LIMIT 1"
+        "SELECT version FROM changelog "
+        "ORDER BY change_date DESC, CAST(SUBSTR(change_id, 2) AS INTEGER) DESC LIMIT 1"
     ).fetchone()
     if version:
         print(f"evidence base version   {version[0]}")
@@ -510,9 +585,22 @@ def main():
         sys.exit(1)
 
     print(f"all {sum(len(v) for v in tables.values())} rows pass validation")
-    con = build(tables, Path(args.db))
+    db_path = Path(args.db)
+    db_path = db_path if db_path.is_absolute() else ROOT / db_path
+    try:
+        con = build(tables, db_path)
+    except sqlite3.IntegrityError as exc:
+        # A value outside a schema vocabulary (a currency, a unit, a decision)
+        # passes the rules above and fails the schema's CHECK. Refuse by name.
+        print(f"\nREFUSING TO BUILD - the schema rejected a row: {exc}")
+        print("Check the vocabularies in sql/schema.sql. The database was not written.")
+        sys.exit(1)
     summarise(con)
-    print(f"\nwrote {Path(args.db).relative_to(ROOT)}")
+    try:
+        shown = db_path.relative_to(ROOT)
+    except ValueError:
+        shown = db_path
+    print(f"\nwrote {shown}")
     con.close()
 
 

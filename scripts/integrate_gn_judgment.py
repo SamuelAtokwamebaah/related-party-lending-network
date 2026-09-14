@@ -16,15 +16,16 @@ Four decisions were taken before anything was written down.
 
 The original is NOT vendored. It names individuals - the first appellant, the bench,
 counsel, the receiver - and the Companies House filings that name directors were
-withheld for the same reason. The PDF is held with the Kohl judgments in
-act-930-resolution-timelines/sources/. The transcription in data/raw/ carries the
+withheld for the same reason. The scan is held privately by the author; a
+certified true copy can be obtained from the Registry of the Court of Appeal,
+Accra. The transcription in data/raw/ carries the
 passages used, with printed page numbers, and replaces individuals' names with a
 bracketed description.
 
-The person layer stays empty. The judgment names GN's chairman and a shareholder, so
+The person layer stays empty. The judgment names individuals connected to GN, so
 "no document makes the connection" no longer holds for this institution. But GN is
 the one institution where the latest decision found the revocation unjustified, and
-adding its chairman to a graph of insider relationships behind the failures would
+adding them to a graph of insider relationships behind the failures would
 imply a conclusion that decision cuts against.
 
 Nothing on solvency enters. The appeal is live and the Supreme Court has stayed the
@@ -73,7 +74,7 @@ def load(name):
 
 def save(name, rows, fields):
     with (DATA / name).open("w", encoding="utf-8", newline="") as fh:
-        w = csv.DictWriter(fh, fieldnames=fields)
+        w = csv.DictWriter(fh, fieldnames=fields, lineterminator="\n")
         w.writeheader()
         w.writerows(rows)
 
@@ -118,8 +119,9 @@ SOURCE = {
         "with no text layer. The transcription carries only the passages used or deliberately "
         "declined, each with its printed page number, and was checked by eye against the scan; "
         "rule 11 checks quotes against the transcription, not the scan. The original is not "
-        "vendored because it names individuals; it is held with the Kohl judgments in "
-        "act-930-resolution-timelines/sources/. The Supreme Court stayed execution of this "
+        "vendored because it names individuals; the scan is held privately by the author, "
+        "and a certified true copy can be obtained from the Registry of the Court of Appeal, "
+        "Accra. The Supreme Court stayed execution of this "
         f"judgment on 14 July 2026 pending the Bank of Ghana's appeal ({STAY}); that is press "
         "reporting and no document is in hand. Replaces a press explainer recorded on "
         "4 September 2026. Cited for relationships only, never for solvency or valuation."),
@@ -185,14 +187,34 @@ CHANGELOG = [
      "receivables of GHS 629,091,335 to GN (pp.14-15): evidence on the value of GN's assets, "
      "the question under appeal. (4) A capital deficit of GHS 344.46 million in the Bank of "
      "Ghana's affidavit, against GHS 683.66 million in its notice: a solvency figure, recorded "
-     "and not reconciled. (5) Individuals named as chairman and shareholder: the person layer "
+     "and not reconciled. (5) Individuals named in the judgment: the person layer "
      "stays empty. GN is the one institution where the latest decision found the revocation "
-     "unjustified, and adding its chairman to a graph of insider relationships behind the "
+     "unjustified, and adding individuals connected to it to a graph of insider relationships behind the "
      "failures would imply a conclusion that decision cuts against.", CA),
 ]
 
 
+def superseded_by():
+    """The latest version in the changelog, if it is later than this script's.
+
+    These scripts were each run once and are kept as the record of how a source
+    entered the evidence base. Re-running one over a later evidence base would
+    write back text that a later version corrected, so they refuse.
+    """
+    with (DATA / "changelog.csv").open(encoding="utf-8", newline="") as fh:
+        versions = {r["version"] for r in csv.DictReader(fh)}
+    key = lambda v: tuple(int(x) for x in v.lstrip("v").split("."))
+    later = sorted((v for v in versions if key(v) > key(VERSION)), key=key)
+    return later[-1] if later else None
+
+
 def main():
+    later = superseded_by()
+    if later:
+        print(f"The evidence base is already at {later}. This script integrated {VERSION} "
+              "and is kept as a record; re-running it would restore text that later "
+              "versions corrected. Nothing written.")
+        return 0
     print(f"integrating the GN Court of Appeal judgment at {VERSION}\n")
 
     print(f"  sources             ~ {update('sources.csv', 'source_id', CA, SOURCE)}")
@@ -216,7 +238,7 @@ def main():
            "reason": c[4], "source_id": c[5]} for c in CHANGELOG]
     print(f"  changelog           + {append('changelog.csv', 'change_id', cl)}")
 
-    print("\n  nodes added: 0. edges added: 1. components: unchanged.")
+    print("\n  done. Rows already present were left as they are.")
     print("\nnow run: python run_all.py")
 
 

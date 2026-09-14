@@ -223,13 +223,19 @@ def main():
         md += [""]
 
         path = OUT / f"{number:02d}-{slug(entity['canonical_name'])}.md"
-        path.write_text("\n".join(md) + "\n", encoding="utf-8")
+        path.write_text("\n".join(md) + "\n", encoding="utf-8", newline="\n")
         index.append((number, entity["canonical_name"], path.name, len(mine),
                       len(flagged), len(rest)))
 
     # verification.csv: create it, or add rows for edges that are not in it yet.
-    # Never touch a decision already recorded.
+    # Never touch a decision already recorded - including one for an edge that is
+    # no longer in edges.csv, which is kept and reported rather than dropped.
+    current = {e["edge_id"] for e in edges}
+    orphans = sorted(k for k in existing if k not in current)
+    if orphans:
+        print(f"  warning: decisions kept for edges not in edges.csv: {orphans}")
     rows = [existing[e["edge_id"]] for e in edges if e["edge_id"] in existing]
+    rows += [existing[k] for k in orphans]
     added = 0
     for e in edges:
         if e["edge_id"] not in existing:
@@ -238,7 +244,7 @@ def main():
             added += 1
     rows.sort(key=lambda r: r["edge_id"])
     with VERIFICATION.open("w", newline="", encoding="utf-8") as fh:
-        w = csv.DictWriter(fh, fieldnames=VERIFICATION_FIELDS)
+        w = csv.DictWriter(fh, fieldnames=VERIFICATION_FIELDS, lineterminator="\n")
         w.writeheader()
         w.writerows(rows)
 
@@ -249,9 +255,9 @@ def main():
         "passages they came from, and lists every passage in that section that no edge "
         "cites.",
         "",
-        "The seeded rows are a first pass built by script from the Phase 0 candidate "
-        "sheet. Nothing here should be treated as verified until it carries a decision "
-        "in `data/verification.csv`.",
+        "The seeded rows were a first pass built by script from the Phase 0 candidate "
+        "sheet. An edge counts as verified only once it carries a decision in "
+        "`data/verification.csv`; the loader reports how many do on every build.",
         "",
         "Decisions: `confirmed`, `corrected`, `rejected`, `pending`.",
         "",
@@ -266,7 +272,8 @@ def main():
         idx.append(f"| {number} | {name} | [{filename}]({filename}) | {n_edges} | {mark} | {n_rest} |")
     idx += [
         "",
-        f"**Totals:** {sum(i[3] for i in index)} seeded edges to verify, "
+        f"**Totals:** {sum(i[3] for i in index)} edge listings (an edge touching two "
+        "institutions is listed on both sheets), "
         f"{total_flagged} uncited passages carrying relationship wording, "
         f"{total_uncited - total_flagged} other passages, across {len(index)} institutions.",
         "",
@@ -276,19 +283,24 @@ def main():
         "",
         "## The other notice",
         "",
-        "These sheets cover the Bank of Ghana notice only. The Securities and Exchange "
-        "Commission's notice is arranged by fund manager rather than by institution, so "
-        "its pack is built separately and lives in [sec/](sec/):",
+        "These sheets are built from the sections of the Bank of Ghana notice. They "
+        "also list any Securities and Exchange Commission or court edge touching the "
+        "institution, but the Commission's notice is arranged by fund manager rather "
+        "than by institution, so its own pack is built separately and lives in "
+        "[sec/](sec/). The Court of Appeal judgment on GN has a sheet of its own, "
+        "[ca-2026-05-21-gn-judgment.md](ca-2026-05-21-gn-judgment.md). Two edges touch "
+        "no institution and so appear on no sheet here: E043, whose passage is shown "
+        "on the GN sheet beside E042, and the inferred I002.",
         "",
         "- [sec/01-sections-with-edges.md](sec/01-sections-with-edges.md) — every section "
         "an edge cites, reproduced in full, with the edges drawn from it",
-        "- [sec/02-coverage.md](sec/02-coverage.md) — all 53 sections, marked for whether "
+        "- [sec/02-coverage.md](sec/02-coverage.md) — every section, marked for whether "
         "they name one of the 23 and whether an edge exists. Read this one first: v0.3 "
-        "read four sections and stopped, and eight more named one of the 23.",
+        "read four sections and stopped, and nine more named one of the 23.",
         "",
         "Regenerate with `python scripts/build_sec_review.py`.",
     ]
-    (OUT / "README.md").write_text("\n".join(idx) + "\n", encoding="utf-8")
+    (OUT / "README.md").write_text("\n".join(idx) + "\n", encoding="utf-8", newline="\n")
 
     print(f"sheets written        : {len(index)}")
     print(f"seeded edges covered  : {sum(i[3] for i in index)}")

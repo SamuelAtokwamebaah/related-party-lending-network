@@ -21,7 +21,8 @@ documents do not say. They go in as a separate layer instead, marked
 'placement' in relationship_types, filtered out of v_institution_profile, and
 excluded by default from every related-party figure.
 
-The script is idempotent: it appends only rows whose key is absent, so a second
+[Corrected at v0.7: nine unread sections named one of the 23, not eight; the
+breakdown below adds to nine.] The script appends only rows whose key is absent, so a second
 run changes nothing. Quotes are extracted from the source by line range rather
 than retyped, because retyping one cost a rejected build at v0.3 - a straight
 apostrophe where the source uses a typographic one.
@@ -64,7 +65,7 @@ def load(name):
 
 def save(name, rows, fields):
     with (DATA / name).open("w", encoding="utf-8", newline="") as fh:
-        writer = csv.DictWriter(fh, fieldnames=fields)
+        writer = csv.DictWriter(fh, fieldnames=fields, lineterminator="\n")
         writer.writeheader()
         writer.writerows(rows)
 
@@ -322,7 +323,27 @@ CHANGELOG = [
 ]
 
 
+def superseded_by():
+    """The latest version in the changelog, if it is later than this script's.
+
+    These scripts were each run once and are kept as the record of how a source
+    entered the evidence base. Re-running one over a later evidence base would
+    write back text that a later version corrected, so they refuse.
+    """
+    with (DATA / "changelog.csv").open(encoding="utf-8", newline="") as fh:
+        versions = {r["version"] for r in csv.DictReader(fh)}
+    key = lambda v: tuple(int(x) for x in v.lstrip("v").split("."))
+    later = sorted((v for v in versions if key(v) > key(VERSION)), key=key)
+    return later[-1] if later else None
+
+
 def main():
+    later = superseded_by()
+    if later:
+        print(f"The evidence base is already at {later}. This script integrated {VERSION} "
+              "and is kept as a record; re-running it would restore text that later "
+              "versions corrected. Nothing written.")
+        return 0
     print(f"integrating the placement layer at {VERSION}\n")
 
     # --- evidence ---------------------------------------------------------

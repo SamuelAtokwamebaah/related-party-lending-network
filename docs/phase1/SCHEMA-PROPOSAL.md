@@ -1,5 +1,12 @@
 # Phase 1 — data model and CSV templates (proposal for review)
 
+> **Historical document.** This is the data model as proposed and agreed at v0.1, kept as
+> the record of the design decisions. The built schema has since grown: `sql/schema.sql`
+> now holds fourteen tables and three views, a placement layer (`layer` on
+> `relationship_types`), percentages as an amount unit, a `payments` category in place of
+> `fee_extraction`, and a directional reading of `extracts_value` (LIMITATIONS section 8).
+> Where this document and `sql/schema.sql` differ, the schema is current.
+
 Status: **agreed 4 September 2026**, and built. The schema is in `sql/schema.sql`, the
 loader in `scripts/load.py`, and the templates in `data/`. Section 5 records what was
 decided and what is still open.
@@ -23,14 +30,14 @@ A graph is nodes joined by edges. This one is a **directed multigraph**:
   relationships and collapsing them into one "connection" would throw away the thing that
   makes the pair interesting.
 
-Everything else — centrality, communities, cycles — is Phase 2, and I will explain each
-measure at the point it is used rather than in advance.
+Everything else — centrality, communities, cycles — is Phase 2, and each measure will be
+explained at the point it is used rather than in advance.
 
 ## 1. Design decisions taken from Phase 0
 
 **A renaming is not a new node.** Crest was incorporated as Apex Finance House; FirsTrust
 was EZI Savings and Loans; uniCredit was Kantamanto. Same legal person throughout. In the
-Phase 0 candidate sheet I modelled these as edges to `former_name` nodes, which was wrong
+Phase 0 candidate sheet these were modelled as edges to `former_name` nodes, which was wrong
 — it would inflate the node count and invent structure. They become **aliases** of a
 single entity instead. Only a transaction between two distinct legal persons is an edge.
 
@@ -228,7 +235,7 @@ rather than to the sister-company placements. If a passage cited for "GN placed 
 with Gold Coast Fund Management" does not mention Gold Coast Fund Management, something
 is wrong — and that is now a build failure rather than a reader's problem.
 
-Both rules are covered by a negative test: deliberately mis-anchoring a quote fires
+Both rules were checked by hand against a deliberately broken row: mis-anchoring a quote fires
 rule 11, and repointing an edge at a real but unrelated passage fires rule 12.
 
 ## 5. Questions on this proposal

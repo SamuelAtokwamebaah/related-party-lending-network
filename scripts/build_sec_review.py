@@ -15,7 +15,7 @@ Two sheets, not one per section:
 
 The second sheet is the one that matters, and it exists because of what went
 wrong here. v0.3 read four sections - the four fund managers already in the
-graph - and stopped. Eight more named one of the 23 and were missed. A pack that
+graph - and stopped. Nine more named one of the 23 and were missed. A pack that
 only shows the sections already cited would have hidden that, exactly as a pack
 showing only cited passages would have hidden a missed relationship in the Bank
 of Ghana notice. So every section is listed, and the ones with no edge are
@@ -216,7 +216,8 @@ def main():
                 md += [f"*Note carried from compilation:* {edge['review_note']}", ""]
         md += ["---", ""]
 
-    (OUT / "01-sections-with-edges.md").write_text("\n".join(md) + "\n", encoding="utf-8")
+    (OUT / "01-sections-with-edges.md").write_text("\n".join(md) + "\n", encoding="utf-8",
+                                                   newline="\n")
 
     # --- sheet 2: coverage of all 53 sections -----------------------------
     rows, missed = [], 0
@@ -237,8 +238,9 @@ def main():
         f"{sum(1 for r in rows if r[5])} carry an edge",
         "",
         "This sheet exists because of a real miss. v0.3 read four sections — the four "
-        "fund managers already in the graph — and stopped there. Eight more named one "
-        "of the 23 and were not read. Listing every section is what makes that kind "
+        "fund managers already in the graph — and stopped there. Two of those four name "
+        "one of the 23; nine more sections did, and were not read. Listing every section "
+        "is what makes that kind "
         "of gap visible instead of invisible.",
         "",
         "The **names one of the 23** column is produced by string matching against "
@@ -271,7 +273,7 @@ def main():
         "risk this sheet does not cover.",
         "",
     ]
-    (OUT / "02-coverage.md").write_text("\n".join(md) + "\n", encoding="utf-8")
+    (OUT / "02-coverage.md").write_text("\n".join(md) + "\n", encoding="utf-8", newline="\n")
 
     print(f"  sections            {len(secs)}")
     print(f"  with an edge        {len(edges_by_section)}")

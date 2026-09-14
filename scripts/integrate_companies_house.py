@@ -15,7 +15,7 @@ Two decisions were taken before any of it was written down.
 The identification is NOT treated as established. The Bank of Ghana names "First
 African Remittances, UK" as an affiliate of First African Savings and Loans. The
 register holds a company of that name, in that jurisdiction, in that business,
-with Ghanaian directors resident in Accra, dissolved two months after the licence
+with Ghanaian directors resident in Ghana, dissolved two months after the licence
 was revoked. That is a strong convergence and it is still not a document saying
 the two are the same. It enters as RR007, undecided, and no edge depends on it.
 The company is therefore an isolated node: it is in the evidence base and not in
@@ -61,7 +61,7 @@ def load(name):
 
 def save(name, rows, fields):
     with (DATA / name).open("w", encoding="utf-8", newline="") as fh:
-        w = csv.DictWriter(fh, fieldnames=fields)
+        w = csv.DictWriter(fh, fieldnames=fields, lineterminator="\n")
         w.writeheader()
         w.writerows(rows)
 
@@ -140,9 +140,9 @@ RESOLUTION = [{
                "of First African Savings and Loans. The UK register holds a company of "
                "that name (02722739), incorporated 1992 as First African Forex Bureau "
                "Limited, in financial intermediation, with two directors recorded as "
-               "Ghanaian nationals resident in Accra, which applied to strike itself off "
+               "Ghanaian nationals resident in Ghana, with a correspondence address in Accra, which applied to strike itself off "
                "on 30 May 2019 and was dissolved on 22 October 2019 - two months after "
-               "the licence was revoked over GHS 5.40m the affiliate had not reimbursed."),
+               "the licence was revoked in a notice that cites, among other issues, GHS 5.40m the affiliate had not reimbursed."),
     "decision": "undecided",
     "decided_date": "",
     "decision_note": ("Strong convergence on name, jurisdiction, business, director "
@@ -165,7 +165,7 @@ CHANGELOG = [
     ("C018", "add", "resolution", "RR007",
      "Whether company 02722739 is the affiliate the Bank of Ghana describes. Undecided. "
      "The convergence is strong - name, jurisdiction, business, Ghanaian directors "
-     "resident in Accra, dissolution two months after the revocation - and convergence "
+     "resident in Ghana, dissolution two months after the revocation - and convergence "
      "is not a document. Resolving it would connect named individuals to a bank failure "
      "that no regulator has connected them to.", CH),
     ("C019", "correct", "policy", "person-layer",
@@ -178,7 +178,27 @@ CHANGELOG = [
 ]
 
 
+def superseded_by():
+    """The latest version in the changelog, if it is later than this script's.
+
+    These scripts were each run once and are kept as the record of how a source
+    entered the evidence base. Re-running one over a later evidence base would
+    write back text that a later version corrected, so they refuse.
+    """
+    with (DATA / "changelog.csv").open(encoding="utf-8", newline="") as fh:
+        versions = {r["version"] for r in csv.DictReader(fh)}
+    key = lambda v: tuple(int(x) for x in v.lstrip("v").split("."))
+    later = sorted((v for v in versions if key(v) > key(VERSION)), key=key)
+    return later[-1] if later else None
+
+
 def main():
+    later = superseded_by()
+    if later:
+        print(f"The evidence base is already at {later}. This script integrated {VERSION} "
+              "and is kept as a record; re-running it would restore text that later "
+              "versions corrected. Nothing written.")
+        return 0
     print(f"integrating the Companies House record at {VERSION}\n")
 
     print(f"  sources             + {append('sources.csv', 'source_id', SOURCES)}")

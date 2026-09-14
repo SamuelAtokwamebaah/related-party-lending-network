@@ -2,7 +2,7 @@
 
 `sec-2019-11-08-fund-manager-revocation` · 53 sections · 11 name one of the 23 · 13 carry an edge
 
-This sheet exists because of a real miss. v0.3 read four sections — the four fund managers already in the graph — and stopped there. Eight more named one of the 23 and were not read. Listing every section is what makes that kind of gap visible instead of invisible.
+This sheet exists because of a real miss. v0.3 read four sections — the four fund managers already in the graph — and stopped there. Two of those four name one of the 23; nine more sections did, and were not read. Listing every section is what makes that kind of gap visible instead of invisible.
 
 The **names one of the 23** column is produced by string matching against canonical names and aliases. It is a prompt to look, not a finding: it will miss a spelling nobody has recorded as an alias yet, and it will flag a coincidence of names. Both have happened.
 

@@ -136,7 +136,7 @@ CREATE TABLE institution_attributes (
 CREATE TABLE relationship_types (
     relationship    TEXT PRIMARY KEY,
     category        TEXT NOT NULL CHECK (category IN (
-                        'ownership', 'lending', 'placement', 'fee_extraction',
+                        'ownership', 'lending', 'placement', 'payments',
                         'governance', 'corporate_action')),
     extracts_value  INTEGER NOT NULL CHECK (extracts_value IN (0, 1)),
     layer           TEXT NOT NULL CHECK (layer IN ('related_party', 'placement')),
@@ -209,7 +209,8 @@ CREATE TABLE edge_evidence (
 -- Roles
 -- ---------------------------------------------------------------------------
 
--- Nearly empty today: three placeholder people. It exists so that adding a
+-- Nearly empty today: unnamed shareholders and a chairman, placeholders only.
+-- It exists so that adding a
 -- registry or Companies House source later is data entry, not a migration.
 CREATE TABLE roles (
     role_id         TEXT PRIMARY KEY,
@@ -302,7 +303,7 @@ LEFT JOIN edge_evidence ee ON ee.edge_id = e.edge_id
 LEFT JOIN evidence ev ON ev.anchor = ee.anchor
 WHERE e.version_removed IS NULL OR e.version_removed = '';
 
--- Per-institution extraction profile: how many value-extracting edges, to how
+-- Per-institution profile: how many value-moving edges out of the institution, to how
 -- many distinct counterparties, and how much of it is named.
 CREATE VIEW v_institution_profile AS
 SELECT
@@ -314,7 +315,7 @@ SELECT
     COUNT(DISTINCT e.target_entity_id)                  AS distinct_counterparties,
     SUM(CASE WHEN e.confidence = 'documented' THEN 1 ELSE 0 END)        AS named_edges,
     SUM(CASE WHEN e.confidence = 'documented_unnamed' THEN 1 ELSE 0 END) AS unnamed_edges,
-    -- Only value-extracting edges are summed. amount_basis records how a
+    -- Only value-moving edges are summed. amount_basis records how a
     -- figure was stated, not what it measures, so without this filter a
     -- projected merger cash injection lands in the same total as a
     -- related-party exposure.
@@ -327,6 +328,7 @@ JOIN relationship_types rt ON rt.relationship = e.relationship
 LEFT JOIN institution_attributes ia ON ia.entity_id = en.entity_id
 WHERE en.scope_class = 'core_23'
   AND e.confidence <> 'inferred'
+  AND (e.version_removed IS NULL OR e.version_removed = '')
   -- Placement edges run into an institution from a fund manager, so none of
   -- them would be picked up by this view in any case. The filter is written
   -- anyway: this is the view every headline figure reads, and it should be

@@ -7,15 +7,15 @@ directs,governance,0,related_party,Holds a directorship or board position at the
 lends_to,lending,1,related_party,Extended credit to the target.
 over_exposed_to,lending,1,related_party,Credit exposure to the target beyond the regulatory limit.
 related_party_exposure_to,lending,1,related_party,Exposure the source document classifies as related-party.
-placed_funds_with,placement,1,related_party,Placed institutional or depositor funds with the target.
+placed_funds_with,placement,1,related_party,"Placed institutional, depositor or client funds with the target."
 holds_deposits_in,placement,1,related_party,Holds deposits or investments in the target.
 overdrawn_current_accounts,lending,1,related_party,Target's current accounts with the institution were overdrawn.
 extended_overdraft_facilities_to,lending,1,related_party,Extended overdraft and similar facilities to the target.
 funded_projects_of,lending,1,related_party,Used depositor funds to finance projects of the target.
 transferred_collateral_to,lending,1,related_party,Transferred collateral security to the target with no cash inflow.
-pays_management_fees_to,fee_extraction,1,related_party,Pays management fees to the target.
-pays_rent_to,fee_extraction,1,related_party,Pays rent or premises costs to the target.
-assumed_liability_of_loan_of,fee_extraction,1,related_party,Took onto its own books a loan contracted by the target.
+pays_management_fees_to,payments,1,related_party,Pays management fees to the target.
+pays_rent_to,payments,1,related_party,Pays rent or premises costs to the target.
+assumed_liability_of_loan_of,payments,1,related_party,Took onto its own books a loan contracted by the target.
 pre_financed_receivable_from,placement,1,related_party,Pre-financed a receivable the target failed to reimburse.
 transferred_funds_to,placement,1,related_party,Transferred depositor funds to the target.
 proposed_merger_with,corporate_action,0,related_party,Applied to merge operations with the target.

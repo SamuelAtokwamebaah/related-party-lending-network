@@ -1,6 +1,6 @@
 # 17. Ideal Finance Limited
 
-`inst-ideal-finance` · notice section **L861–L967** · 6 seeded edge(s) · 21 uncited passage(s)
+`inst-ideal-finance` · notice section **L861–L967** · 6 seeded edge(s) · 20 uncited passage(s)
 
 Read the section in `data/raw/` from L861 to L967, then work through both parts below. Record every decision in `data/verification.csv`.
 
@@ -17,14 +17,16 @@ For each: does the quote support the relationship, the direction, the amount and
 | relationship | `proposed_merger_with` |
 | amount | GHS 127.00m (exact) |
 | confidence | `documented` |
-| anchor | `bog-2019-08-16-savings-loans-revocation:L702` |
+| anchor | `bog-2019-08-16-savings-loans-revocation:L702; bog-2019-08-16-savings-loans-revocation:L929` |
 | current decision | confirmed |
 
 > Bank of Gnana declined a request dated 25th July, 2019 to merge the operations of FirsTrust Savings and Loans Limited and Ideal Finance Limited because the two institutions under consideration are both insolvent and illiquid. The total projected cash injection of GHS 127.00 million, if approved, will lead to total shareholders' funds of the proposed merged entity from negative GHS 291.60 million to negative GHS 164.60 million and CAR from negative 78.32% to negative 47.26% leaving a significant capital deficit of GHS 234.05 million. The merger was therefore, not going to address the current financial challenges facing the two institutions, or improve their future prospects.
 
-*Note carried from compilation:* Institution-to-institution link
+> In a letter dated 25th June, 2019, the Bank of Ghana was notified about the intention to merge the operations of Ideal Finance Limited (IFL) and FirsTrust Savings and Loans Limited (FTSL).
 
-*Amount note:* projected cash injection for the proposed merger, not an exposure
+*Note carried from compilation:* Notification letter dated 25 June 2019 (L929); the refusal cites a request dated 25 July 2019 (L702). Refused, both being insolvent
+
+*Amount note:* Projected cash injection of GHS 127.00m into the merged entity, if approved; not a flow between the two parties
 
 ### E024 — Ideal Finance Limited → FirsTrust Savings and Loans Limited
 
@@ -76,7 +78,7 @@ For each: does the quote support the relationship, the direction, the amount and
 
 *Note carried from compilation:* Overlaps E024 and E025; reconcile before use
 
-*Amount note:* total related party loans; reconcile against the GHS 63.19m figure
+*Amount note:* Total related party loans per the onsite examination of September 2017 (L913); the GHS 63.19m on E024 and E025 is a later figure
 
 ### I001 — Ideal Finance Limited ← Ideal Financial Holdings
 
@@ -110,9 +112,6 @@ These carry related-party, affiliate, ownership, officer or exposure wording and
 
 - **`bog-2019-08-16-savings-loans-revocation:L880`**
   > The Institution's shareholders have failed to restore the bank to the required regulatory capital and liquidity levels in spite of long-standing promises that new capital was expected from foreign investors.
-
-- **`bog-2019-08-16-savings-loans-revocation:L929`**
-  > In a letter dated 25th June, 2019, the Bank of Ghana was notified about the intention to merge the operations of Ideal Finance Limited (IFL) and FirsTrust Savings and Loans Limited (FTSL). A review of the documents submitted in connection with the proposed merger and all available records obtained from the two institutions revealed that:
 
 - **`bog-2019-08-16-savings-loans-revocation:L935`**
   > The shareholders' funds of Ideal Finance Limited (IFL) and FirsTrust Savings and Loans Limited (FTSL) as at March 2019 per the merger documents was negative GHS 62.18 million and negative GHS 93.22 million respectively.

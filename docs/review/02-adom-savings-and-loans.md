@@ -14,7 +14,7 @@ For each: does the quote support the relationship, the direction, the amount and
 
 | | |
 |---|---|
-| relationship | `lends_to` |
+| relationship | `over_exposed_to` |
 | amount | — |
 | confidence | `documented_unnamed` |
 | anchor | `bog-2019-08-16-savings-loans-revocation:L224` |
@@ -22,7 +22,7 @@ For each: does the quote support the relationship, the direction, the amount and
 
 > Non-performing related party exposures were far in excess of the statutory limits.
 
-*Note carried from compilation:* No amount stated
+*Note carried from compilation:* Exposures stated to be far in excess of the statutory limits; no amount stated. Shares Adom's placeholder with E003, although the notice does not say the fee recipients and these counterparties are the same parties
 
 ### E003 — Adom Savings and Loans Limited → UNNAMED related parties of Adom
 
@@ -36,7 +36,7 @@ For each: does the quote support the relationship, the direction, the amount and
 
 > Poor earnings due mainly to high management fees paid to related parties.
 
-*Note carried from compilation:* Fee extraction rather than lending
+*Note carried from compilation:* Management fees paid to related parties; no amount stated. See E002 on the shared placeholder
 
 ---
 

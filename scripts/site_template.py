@@ -172,12 +172,14 @@ SCRIPT = """
   var box = document.getElementById('cite');
   var meta = box.querySelector('.meta');
   var quote = box.querySelector('blockquote');
+  var src = box.querySelector('.src');
   function show(el) {
     var amount = el.dataset.amount ? ' · ' + el.dataset.amount : '';
     meta.textContent = el.dataset.edge + ' · ' + el.dataset.from + ' → ' + el.dataset.to +
       ' · ' + el.dataset.rel + amount + ' · ' + el.dataset.conf +
       (el.dataset.anchor ? ' · ' + el.dataset.anchor : '');
     quote.textContent = el.dataset.quote || 'No quoted passage: this edge is inferred and is excluded from every figure.';
+    src.textContent = el.dataset.source ? 'Passage as published by ' + el.dataset.source + '.' : '';
     box.hidden = false;
   }
   document.addEventListener('mouseover', function (e) {

@@ -234,6 +234,7 @@ def typology(con, layer="related_party"):
         JOIN entities se ON se.entity_id = e.source_entity_id
         JOIN entities te ON te.entity_id = e.target_entity_id
         WHERE e.confidence <> 'inferred'
+          AND (e.version_removed IS NULL OR e.version_removed = '')
           AND (? IS NULL OR rt.layer = ?)
         GROUP BY rt.category, rt.relationship, rt.extracts_value, 6
         ORDER BY rt.category, n DESC""", (layer, layer)).fetchall()
@@ -322,7 +323,8 @@ def comparative(con):
         FROM institution_attributes ia
         JOIN entities en ON en.entity_id = ia.entity_id
         LEFT JOIN v_institution_profile p ON p.entity_id = ia.entity_id
-        ORDER BY ia.related_party_exposure DESC, p.value_extracting_edges DESC""").fetchall()
+        ORDER BY ia.related_party_exposure DESC, p.value_extracting_edges DESC,
+                 en.canonical_name""").fetchall()
 
     groups = {1: [], 0: []}
     for r in rows:
@@ -360,8 +362,10 @@ def comparative(con):
 def verification_state(con):
     seen = dict(con.execute(
         "SELECT COALESCE(v.decision,'pending'), COUNT(*) FROM edges e "
-        "LEFT JOIN verification v ON v.edge_id = e.edge_id GROUP BY 1"))
+        "LEFT JOIN verification v ON v.edge_id = e.edge_id "
+        "WHERE e.version_removed IS NULL OR e.version_removed = '' GROUP BY 1"))
     version = con.execute(
-        "SELECT version FROM changelog ORDER BY change_date DESC, change_id DESC LIMIT 1"
+        "SELECT version FROM changelog "
+        "ORDER BY change_date DESC, CAST(SUBSTR(change_id, 2) AS INTEGER) DESC LIMIT 1"
     ).fetchone()
     return {"counts": seen, "version": version[0] if version else "unversioned"}

@@ -50,7 +50,7 @@ For each: does the quote support the relationship, the direction, the amount and
 
 > 15. INTEGRITY FUND MANAGEMENT LTD Integrity Fund Management Ltd (“Integrity”) was incorporated on 22nd August, 2015 and licensed as a Fund Manager on 10th December, 2015. The SEC has directed Integrity to resolve its regulatory infractions, all to no avail. The Specific issue that led to the revocation of its licence was the following: a) Placement of client funds without proper due diligence and the requisite standard of professional conduct contrary to Paragraphs, 2, 3, 6 and 13 of Part X of the Commission’s Compliance Manual for Broker-Dealers, Investment Advisers and Representatives 2008. Over 80% placement of client funds in revoked savings & loans including, Midland S avings & Loans, First Trust Savings & Loans and Legacy Savings & Loans.
 
-*Amount note:* Stated as 'Over 80% placement of client funds in revoked savings & loans' across Midland, FirsTrust and Legacy Capital together. The notice gives no per-institution split, and the figure is a floor.
+*Amount note:* Stated as 'Over 80% placement of client funds in revoked savings & loans including' Midland, FirsTrust and Legacy Capital. The notice gives no per-institution split, the figure is a floor, and 'including' leaves the list open.
 
 ### P010 — Legacy Capital Savings and Loans Ltd. ← Monarch Capital Limited
 

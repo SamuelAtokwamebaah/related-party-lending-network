@@ -16,13 +16,13 @@ For each: does the quote support the relationship, the direction, the amount and
 |---|---|
 | relationship | `assumed_liability_of_loan_of` |
 | amount | GHS 2.91m (exact) |
-| confidence | `documented` |
+| confidence | `documented_unnamed` |
 | anchor | `bog-2019-08-16-savings-loans-revocation:L737` |
 | current decision | confirmed |
 
 > The institution assumed the liability of a loan contracted by the majority shareholder amounting GHS 2.91 million. The loan amount was injected into the institution as equity capital. The liability was however concealed as a suspense account in the books of Global Access Savings and Loans Limited.
 
-*Note carried from compilation:* Concealed in a suspense account
+*Note carried from compilation:* Loan contracted by the majority shareholder, concealed in a suspense account; the shareholder is not named
 
 ### E020 — Global Access Savings and Loans Company Limited → UNNAMED majority shareholder of Global Access
 
@@ -30,15 +30,13 @@ For each: does the quote support the relationship, the direction, the amount and
 |---|---|
 | relationship | `pays_rent_to` |
 | amount | — |
-| confidence | `documented` |
-| anchor | `bog-2019-08-16-savings-loans-revocation:L741; bog-2019-08-16-savings-loans-revocation:L713` |
+| confidence | `documented_unnamed` |
+| anchor | `bog-2019-08-16-savings-loans-revocation:L741` |
 | current decision | confirmed |
 
 > The institution continues to record accumulated losses due mainly to high rent expenses paid to the majority shareholder for the use of its premises.
 
-> 15. GLOBAL ACCESS SAVINGS AND LOANS COMPANY LIMITED
-
-*Note carried from compilation:* Fee extraction; no amount stated
+*Note carried from compilation:* Rent paid to the majority shareholder for the use of its premises; no amount stated
 
 ---
 

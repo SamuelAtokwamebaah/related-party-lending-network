@@ -1,15 +1,17 @@
 """
 Admit the SEC notice of 8 November 2019 as source S6, and record the GN appeal.
 
-A one-off integration, run once and kept for the record. It appends to the
-hand-maintained CSVs in data/ and never rewrites a row that already exists, so
-re-running it is safe and changes nothing.
+A one-off integration, run once and kept for the record. It refuses to run over
+a later evidence base (see superseded_by below). Until v0.7 it claimed to be safe
+to re-run, and it was not: it rewrote GN's status note to the v0.3 text.
 
 Why this source matters. Phase 2 reported, from the Bank of Ghana notice alone,
 that no entity connects two of the 23 institutions. That was true of that
-document and is not true once this one is admitted: the SEC records that Ideal
-Capital Partners held related-party positions in both Ideal Finance and
-FirsTrust. The finding was always phrased as "the notice does not name one"
+document and is not true once this one is admitted. [Corrected at v0.7: the SEC
+names FirsTrust, not Ideal Finance, among Ideal Capital Partners' related parties.
+The connection needs both notices - the Bank of Ghana records Ideal Finance's
+exposure to Ideal Capital Partners, and the SEC records Ideal Capital Partners
+placing funds with FirsTrust.] The finding was always phrased as "the notice does not name one"
 rather than "none exists", and this is why that distinction was worth keeping.
 
 The GN status note is separate and is not evidence for any edge. On 21 May 2026
@@ -182,14 +184,34 @@ def append(name, rows, key):
         for f in fields:
             r.setdefault(f, "")
     with path.open("w", newline="", encoding="utf-8") as fh:
-        w = csv.DictWriter(fh, fieldnames=fields)
+        w = csv.DictWriter(fh, fieldnames=fields, lineterminator="\n")
         w.writeheader()
         w.writerows(existing + [{f: r.get(f, "") for f in fields} for r in added])
     print(f"  {name:26} +{len(added)}")
     return len(added)
 
 
+def superseded_by():
+    """The latest version in the changelog, if it is later than this script's.
+
+    These scripts were each run once and are kept as the record of how a source
+    entered the evidence base. Re-running one over a later evidence base would
+    write back text that a later version corrected, so they refuse.
+    """
+    with (DATA / "changelog.csv").open(encoding="utf-8", newline="") as fh:
+        versions = {r["version"] for r in csv.DictReader(fh)}
+    key = lambda v: tuple(int(x) for x in v.lstrip("v").split("."))
+    later = sorted((v for v in versions if key(v) > key(VERSION)), key=key)
+    return later[-1] if later else None
+
+
 def main():
+    later = superseded_by()
+    if later:
+        print(f"The evidence base is already at {later}. This script integrated {VERSION} "
+              "and is kept as a record; re-running it would restore text that later "
+              "versions corrected. Nothing written.")
+        return 0
     append("sources.csv", SOURCES, "source_id")
 
     append("evidence.csv",
@@ -237,7 +259,7 @@ def main():
         if r["entity_id"] == "corp-ghana-growth-fund":
             r["also_known_as"] = "Gold Coast Advisors Limited[later]"
     with path.open("w", newline="", encoding="utf-8") as fh:
-        w = csv.DictWriter(fh, fieldnames=fields)
+        w = csv.DictWriter(fh, fieldnames=fields, lineterminator="\n")
         w.writeheader()
         w.writerows({f: r.get(f, "") for f in fields} for r in rows)
     print("  entities.csv               status_note on inst-gn; alias corrected on Ghana Growth Fund")
@@ -252,7 +274,7 @@ def main():
                         "verified_date": "", "verified_by": ""})
     ver.sort(key=lambda r: r["edge_id"])
     with path.open("w", newline="", encoding="utf-8") as fh:
-        w = csv.DictWriter(fh, fieldnames=["edge_id", "decision", "note",
+        w = csv.DictWriter(fh, lineterminator="\n", fieldnames=["edge_id", "decision", "note",
                                            "verified_date", "verified_by"])
         w.writeheader()
         w.writerows(ver)

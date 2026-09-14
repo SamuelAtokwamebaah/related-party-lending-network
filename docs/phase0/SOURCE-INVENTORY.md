@@ -1,5 +1,14 @@
 # Phase 0 — source inventory and feasibility gate
 
+> **Historical document.** This is the feasibility assessment of 4 September 2026, kept as
+> the record of how the project's mode was chosen. Counts and plans below are as they stood
+> then. The current state is in the [README](../../README.md),
+> [FINDINGS](../phase2/FINDINGS.md) and [LIMITATIONS](../LIMITATIONS.md). Since this was
+> written, the SEC notice was admitted (v0.3), GN was taken out of the worked examples
+> because its revocation is in live litigation, and a pre-release audit corrected the
+> evidence base (v0.7). Where a statement below was later found to be wrong, it is marked
+> in place.
+
 Status: complete. Mode decided 4 September 2026 — see section 5.
 Date: 4 September 2026. Corrected the same day — see section 7.
 
@@ -13,13 +22,13 @@ what the documents say, so that the graph design follows the evidence.
 
 | # | Source | Status | What it supports |
 |---|--------|--------|------------------|
-| S1 | Bank of Ghana, *Notice of revocation of licences of 23 savings and loans companies and finance houses*, 16 August 2019 | In hand, PDF + extracted text | The whole of the current graph. 9,645 words, 23 per-institution sections, each with a narrative history and a numbered list of the specific regulatory violations |
+| S1 | Bank of Ghana, *Notice of revocation of licences of 23 savings and loans companies and finance houses*, 16 August 2019 | In hand, PDF + extracted text | The whole of the graph at Phase 0. 9,645 words, 23 per-institution sections, each with a narrative history and a numbered list of the specific regulatory violations |
 | S2 | Bank of Ghana, microfinance revocation notice, 31 May 2019 | In hand (`ghana-banking-collapse`) | Out of scope as nodes. Used once, for corroboration: one named related party of a scoped institution appears in this list as a revoked institution in its own right |
 | S3 | Bank of Ghana, microcredit revocation notice, 31 May 2019 | In hand (`ghana-banking-collapse`) | Narrative context only |
 | S4 | `ghana-banking-collapse` verified dataset (`savings_loans_verified.csv`) | In hand | Institution attributes: licence type, incorporation and licensing dates, insolvency date, net worth, CAR, and the coded failure causes including the related-party flag |
-| S5 | Court and academic material in `act-930-resolution-timelines/sources/` | **Kohl mined 13 September 2026. Nothing admitted. GN Court of Appeal judgment (21 May 2026) mined the same day: one edge admitted, `E044`** | *Kohl v Consolidated Bank Ghana*, Court of Appeal, Civil Appeal No H1/95/2021, 28 November 2022, is a depositor of **Beige Bank**, a universal bank revoked on 1 August 2018, suing the bridge bank. The full text was searched against all 75 entities in `data/entities.csv`: **none is named**, and the one string match was the word "expressly". The only individuals it names are the parties, counsel, the bench and the Beige Bank receiver, none connected to a scoped institution. GhaLII carries it twice, as [2022] GHACA 61 and [2022] GHACA 156; both are the same judgment |
+| S5 | Court and academic material held by the author, not published | **Kohl mined 13 September 2026. Nothing admitted. GN Court of Appeal judgment (21 May 2026) mined the same day: one edge admitted, `E044`** | *Kohl v Consolidated Bank Ghana*, Court of Appeal, Civil Appeal No H1/95/2021, 28 November 2022, is a depositor of **Beige Bank**, a universal bank revoked on 1 August 2018, suing the bridge bank. The full text was searched against all 75 entities in `data/entities.csv`: **none is named**, and the one string match was the word "expressly". The only individuals it names are the parties, counsel, the bench and the Beige Bank receiver, none connected to a scoped institution. GhaLII carries it twice, as [2022] GHACA 61 and [2022] GHACA 156; both are the same judgment |
 
-Everything in the graph today comes from **S1 alone**. That is a strength for
+At the Phase 0 gate, everything in the graph came from **S1 alone**. That is a strength for
 traceability — one document, one citation format, one publisher — and a limitation for
 coverage, which section 4 sets out.
 
@@ -95,7 +104,7 @@ relationship, often the count, and sometimes the amount, but not the identity:
 - Global Access — a loan contracted by the majority shareholder, assumed by the
   institution and booked as equity capital, concealed in a suspense account
 
-These are not stylized. A node labelled `UNNAMED eight related companies of First Allied`
+These are not stylised. A node labelled `UNNAMED eight related companies of First Allied`
 asserts exactly what the Bank of Ghana asserted and no more. Treating them as a third
 confidence class — `documented_unnamed`, alongside `documented` and `inferred` — keeps
 them usable without overstating them.
@@ -117,28 +126,31 @@ Union-find over the 37 non-inferred edges as built:
 betweenness centrality and community detection are all measures of position within a
 connected structure. Run on 17 disconnected stars they will return near-zero betweenness
 for almost every node and "communities" that are just the components. Reporting those
-numbers as findings would be a metric dressed up as an insight, and any interviewer who
+numbers as findings would be a metric dressed up as an insight, and any reader who
 knows graphs would see it immediately.
 
-What the source *does* support is real, and there is more of it than I expected:
+What the source *does* support is real, and there is more of it than expected:
 
 1. **Two genuine multi-entity structures.**
    - *Ideal / FirsTrust.* Ideal Financial Holdings acquired EZI Savings and Loans in
      2014 and renamed it FirsTrust. Ideal Finance Limited then carried related-party
      exposure to FirsTrust and to Ideal Capital Partners totalling GHS 63.19 million.
-     In June 2019 the two applied to merge; the Bank of Ghana declined on 25 July 2019
-     because both were insolvent. A common owner, cross-lending between the two, and an
+     In June 2019 the two applied to merge; the Bank of Ghana declined their request of
+     25 July 2019 because both were insolvent. A common owner, cross-lending between the two, and an
      attempted merger of the pair — all from one document. This is a closed loop, and
-     the project's central claim in miniature.
+     *[Corrected at v0.7: the common owner of Ideal Finance is inferred from the name
+     only (I001), and only one direction of exposure is documented. Phase 2 also found
+     this cycle does not move value on every leg, because one leg is the merger
+     application.]*
    - *GN / Groupe Nduom.* GN Savings and Loans placed GHS 761.55 million with its sister
      companies Ghana Growth Fund (Gold Coast Advisors) and Gold Coast Fund Management
      Limited, now Blackshield Capital Management, both licensed by the Securities and
      Exchange Commission rather than the Bank of Ghana. The notice states plainly that
      the failure of those two to repay is what drove GN's insolvency.
-2. **A typology of extraction mechanisms**, visible across all 23: lending to related
+2. **A typology of related-party mechanisms**, visible across all 23: lending to related
    companies; placing depositor funds with sister companies; transferring collateral to
    affiliates with no cash inflow; paying management fees and rent to shareholders;
-   assuming a shareholder's personal liability and booking it as capital.
+   assuming a loan contracted by the majority shareholder and booking it as capital.
 3. **Cross-source corroboration in one case.** Liberty DMI Microfinance, named as a
    related party of Midland, appears as entry 109 in the 31 May 2019 microfinance
    revocation list — a related party that was itself a failed licensed institution.
@@ -159,7 +171,7 @@ Ranked by value against effort. Only the first three are realistic without money
    directors. The one route in hand to a documented person-level node.
 4. **Kohl v Consolidated Bank Ghana** and the other court material already downloaded.
    Cheap to check; unknown yield.
-5. **Registrar-General company filings** for the three holding companies. This is what
+5. **Registrar-General company filings** for the holding companies. This is what
    would actually build the director/shareholder layer the project was conceived around.
    Ghana's register is not freely searchable online and this realistically needs money
    and a physical search. Treat as out of reach and say so in the limitations section.
@@ -172,23 +184,23 @@ Ranked by value against effort. Only the first three are realistic without money
 **Decided 4 September 2026: hybrid, weighted heavily to real entities, with Phase 2
 reframed.** The reasoning below is what the decision was taken on.
 
-- Build the real-entity graph from the 22 documented edges. It is citable line by line
+- Build the real-entity graph from the 22 documented edges (counted before the section 7
+  corrections; 19 after). It is citable line by line
   and it already contains two structures worth walking a reader through.
-- Keep the 17 `documented_unnamed` edges as first-class, rendered distinctly. They are
+- Keep the 17 (18 after section 7) `documented_unnamed` edges as first-class, rendered distinctly. They are
   the Bank of Ghana's own assertions with an unlabelled endpoint, not inventions.
 - Keep `inferred` edges in the store, excluded from every headline figure and off by
-  default in the visualization. There are two, both about common ownership implied by a
+  default in the visualisation. There are two, both about common ownership implied by a
   shared name.
 - **Do not claim a single connected insider network.** Replace the whole-graph centrality
-  framing with: a typology of extraction mechanisms; per-institution structural
+  framing with: a typology of related-party mechanisms; per-institution structural
   attributes; two documented case networks in depth; and the 17-versus-6 comparison
   answered on structural attributes rather than on centrality.
 - Compute the centrality and community measures anyway, and **publish the degenerate
-  result as a documented non-result** — the same treatment the Benford test got in
-  `microfinance-fraud-detection`. "The public record supports 17 components, so
-  betweenness is uninformative" is a defensible sentence in an interview. A fabricated
+  result as a documented non-result**. "The public record supports 17 components, so
+  betweenness is uninformative" is a defensible sentence. A fabricated
   centrality ranking is not.
-- Reserve the stylized reconstruction for a clearly-labelled appendix, if at all: one
+- Reserve the stylised reconstruction for a clearly-labelled appendix, if at all: one
   synthetic figure showing what the *same* structures look like when the counterparty
   identities are known, to make the point about what the public record withholds. It
   would illustrate, never evidence.

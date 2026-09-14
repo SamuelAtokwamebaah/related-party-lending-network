@@ -1,6 +1,6 @@
 # 14. FirsTrust Savings and Loans Limited
 
-`inst-firstrust` · notice section **L657–L712** · 8 seeded edge(s) · 8 uncited passage(s)
+`inst-firstrust` · notice section **L657–L712** · 9 seeded edge(s) · 8 uncited passage(s)
 
 Read the section in `data/raw/` from L657 to L712, then work through both parts below. Record every decision in `data/verification.csv`.
 
@@ -31,14 +31,16 @@ For each: does the quote support the relationship, the direction, the amount and
 | relationship | `proposed_merger_with` |
 | amount | GHS 127.00m (exact) |
 | confidence | `documented` |
-| anchor | `bog-2019-08-16-savings-loans-revocation:L702` |
+| anchor | `bog-2019-08-16-savings-loans-revocation:L702; bog-2019-08-16-savings-loans-revocation:L929` |
 | current decision | confirmed |
 
 > Bank of Gnana declined a request dated 25th July, 2019 to merge the operations of FirsTrust Savings and Loans Limited and Ideal Finance Limited because the two institutions under consideration are both insolvent and illiquid. The total projected cash injection of GHS 127.00 million, if approved, will lead to total shareholders' funds of the proposed merged entity from negative GHS 291.60 million to negative GHS 164.60 million and CAR from negative 78.32% to negative 47.26% leaving a significant capital deficit of GHS 234.05 million. The merger was therefore, not going to address the current financial challenges facing the two institutions, or improve their future prospects.
 
-*Note carried from compilation:* Institution-to-institution link
+> In a letter dated 25th June, 2019, the Bank of Ghana was notified about the intention to merge the operations of Ideal Finance Limited (IFL) and FirsTrust Savings and Loans Limited (FTSL).
 
-*Amount note:* projected cash injection for the proposed merger, not an exposure
+*Note carried from compilation:* Notification letter dated 25 June 2019 (L929); the refusal cites a request dated 25 July 2019 (L702). Refused, both being insolvent
+
+*Amount note:* Projected cash injection of GHS 127.00m into the merged entity, if approved; not a flow between the two parties
 
 ### E024 — FirsTrust Savings and Loans Limited ← Ideal Finance Limited
 
@@ -72,6 +74,20 @@ For each: does the quote support the relationship, the direction, the amount and
 
 *Note carried from compilation:* Acquisition dated 2014
 
+### E049 — FirsTrust Savings and Loans Limited → UNNAMED six related companies of FirsTrust
+
+| | |
+|---|---|
+| relationship | `funded_projects_of` |
+| amount | — |
+| confidence | `documented_unnamed` |
+| anchor | `bog-2019-08-16-savings-loans-revocation:L685` |
+| current decision | confirmed |
+
+> The use of depositors' funds to finance related party projects. The institution is over exposed to six (6) of its related companies to the tune of GHS 17.93 million. The non-performing related party exposures, has contributed significantly to the liquidity challenges of the institution.
+
+*Note carried from compilation:* 'The use of depositors' funds to finance related party projects', the wording that produced E031 for ASN. The notice does not say the projects belong to the six related companies of E017; attached to FirsTrust's related-party placeholder, as E002 and E003 share Adom's
+
 ### P006 — FirsTrust Savings and Loans Limited ← Goldstreet Fund Management Limited
 
 | | |
@@ -96,7 +112,7 @@ For each: does the quote support the relationship, the direction, the amount and
 
 > 15. INTEGRITY FUND MANAGEMENT LTD Integrity Fund Management Ltd (“Integrity”) was incorporated on 22nd August, 2015 and licensed as a Fund Manager on 10th December, 2015. The SEC has directed Integrity to resolve its regulatory infractions, all to no avail. The Specific issue that led to the revocation of its licence was the following: a) Placement of client funds without proper due diligence and the requisite standard of professional conduct contrary to Paragraphs, 2, 3, 6 and 13 of Part X of the Commission’s Compliance Manual for Broker-Dealers, Investment Advisers and Representatives 2008. Over 80% placement of client funds in revoked savings & loans including, Midland S avings & Loans, First Trust Savings & Loans and Legacy Savings & Loans.
 
-*Amount note:* Stated as 'Over 80% placement of client funds in revoked savings & loans' across Midland, FirsTrust and Legacy Capital together. The notice gives no per-institution split, and the figure is a floor.
+*Amount note:* Stated as 'Over 80% placement of client funds in revoked savings & loans including' Midland, FirsTrust and Legacy Capital. The notice gives no per-institution split, the figure is a floor, and 'including' leaves the list open.
 
 ### P014 — FirsTrust Savings and Loans Limited ← Procap Finance Limited
 

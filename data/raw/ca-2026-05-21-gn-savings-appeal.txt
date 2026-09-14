@@ -11,14 +11,14 @@ PROVENANCE. A certified true copy stamped by the Registrar of the Court of Appea
 machine-checked against the original. Each passage carries its printed page number
 so it can be checked by eye against the scan.
 
-THE ORIGINAL IS NOT VENDORED IN THIS REPOSITORY. It names individuals: the first
-appellant, the bench, counsel, the receiver, and officers named in the record. This
-project does not reproduce individuals' names (docs/LIMITATIONS.md section 1), and the
-Companies House filings that name directors were withheld for the same reason. Where a
-passage below would name an individual, the name is replaced with a bracketed
-description. In the title, the leader dots are shortened and the second party's name is
-joined onto one line. Nothing else in a transcribed passage is altered, including the
-judgment's own spelling "Groupe Ndoum".
+THE ORIGINAL IS NOT VENDORED IN THIS REPOSITORY. It names individuals. This project does
+not reproduce individuals' names (docs/LIMITATIONS.md section 1), and the Companies House
+filings that name directors were withheld for the same reason. A name is replaced with a
+bracketed description, and so are two details that would identify a person: an office
+held (page 1) and an exhibit reference formed from initials (page 14). In the title,
+leader dots are shortened and the second party's name is joined onto one line. Nothing
+else in a transcribed passage is altered, including the judgment's own spelling "Groupe
+Ndoum". A certified true copy can be obtained from the Registry of the Court of Appeal.
 
 STATUS. The Supreme Court stayed execution of this judgment in July 2026 (press
 reporting; no document in hand). The appeal is live. This repository takes no position
@@ -36,7 +36,7 @@ PAGE 1, the title of the suit
 
 PAGES 1 TO 2, the court's introduction
 
-The 1st applicant/appellant is a shareholder of the 2nd and 3rd applicants/appellants and chairman of the 3rd applicant/appellant. The 2nd applicant/appellant is shareholder of the 3rd respondent/respondent whilst the 3rd applicant/appellant is a holding company registered under the laws of Ghana. Both the 2nd applicant/appellant and the 3rd respondent/respondent are/were members of the 3rd applicant/appellant until the 3rd respondent/respondent went into receivership after its licence was revoked by the 1st respondent/respondent.
+The 1st applicant/appellant is a shareholder of the 2nd and 3rd applicants/appellants [and holds an office in the 3rd applicant/appellant]. The 2nd applicant/appellant is shareholder of the 3rd respondent/respondent whilst the 3rd applicant/appellant is a holding company registered under the laws of Ghana. Both the 2nd applicant/appellant and the 3rd respondent/respondent are/were members of the 3rd applicant/appellant until the 3rd respondent/respondent went into receivership after its licence was revoked by the 1st respondent/respondent.
 
 PAGE 13, the trial judge, quoted by the Court of Appeal
 
@@ -48,7 +48,7 @@ It is not disputed that the 3rd respondent is a member of Groupe Ndoum (3rd appe
 
 PAGES 14 TO 15, the Court of Appeal
 
-Exhibit PNK 3 is an "Assignment of Receivables" by Gold Coast Advisors formerly known as Ghana Growth Fund Company Ltd to the 3rd respondent, in which as beneficial owner of the sum of Gh¢ 629, 091,335 owed it by the Government of Ghana in respect of projects financed for Government Agencies, particularly Cocoa Board, The Road Fund, GETFUND and Ministry of Finance and Economic Planning, it assigned same to the 3rd respondent.
+Exhibit [reference not reproduced] is an "Assignment of Receivables" by Gold Coast Advisors formerly known as Ghana Growth Fund Company Ltd to the 3rd respondent, in which as beneficial owner of the sum of Gh¢ 629, 091,335 owed it by the Government of Ghana in respect of projects financed for Government Agencies, particularly Cocoa Board, The Road Fund, GETFUND and Ministry of Finance and Economic Planning, it assigned same to the 3rd respondent.
 
 WHAT THIS DOCUMENT DOES AND DOES NOT SETTLE
 

@@ -1,6 +1,6 @@
 # 9. Dream Finance Limited
 
-`inst-dream` · notice section **L450–L499** · 1 seeded edge(s) · 11 uncited passage(s)
+`inst-dream` · notice section **L450–L499** · 2 seeded edge(s) · 11 uncited passage(s)
 
 Read the section in `data/raw/` from L450 to L499, then work through both parts below. Record every decision in `data/verification.csv`.
 
@@ -23,6 +23,20 @@ For each: does the quote support the relationship, the direction, the amount and
 > The use of depositors' funds to finance related party projects. The institution is over exposed to six (6) of its related companies. The non-performing related party exposures, has contributed significantly to the liquidity challenges of the institution.
 
 *Note carried from compilation:* Count stated as six; names not stated
+
+### E048 — Dream Finance Limited → UNNAMED six related companies of Dream
+
+| | |
+|---|---|
+| relationship | `funded_projects_of` |
+| amount | — |
+| confidence | `documented_unnamed` |
+| anchor | `bog-2019-08-16-savings-loans-revocation:L472` |
+| current decision | confirmed |
+
+> The use of depositors' funds to finance related party projects. The institution is over exposed to six (6) of its related companies. The non-performing related party exposures, has contributed significantly to the liquidity challenges of the institution.
+
+*Note carried from compilation:* 'The use of depositors' funds to finance related party projects', the wording that produced E031 for ASN. The notice does not say the projects belong to the six related companies of E011; attached to Dream's related-party placeholder, as E002 and E003 share Adom's
 
 ---
 

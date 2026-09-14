@@ -1,6 +1,6 @@
 # 22. uniCredit Ghana Limited
 
-`inst-unicredit` · notice section **L1100–L1140** · 2 seeded edge(s) · 7 uncited passage(s)
+`inst-unicredit` · notice section **L1100–L1140** · 2 seeded edge(s) · 6 uncited passage(s)
 
 Read the section in `data/raw/` from L1100 to L1140, then work through both parts below. Record every decision in `data/verification.csv`.
 
@@ -17,12 +17,14 @@ For each: does the quote support the relationship, the direction, the amount and
 | relationship | `over_exposed_to` |
 | amount | GHS 160.10m (exact) |
 | confidence | `documented` |
-| anchor | `bog-2019-08-16-savings-loans-revocation:L1127; bog-2019-08-16-savings-loans-revocation:L1100` |
+| anchor | `bog-2019-08-16-savings-loans-revocation:L1127; bog-2019-08-16-savings-loans-revocation:L1100; bog-2019-08-16-savings-loans-revocation:L1108` |
 | current decision | confirmed |
 
 > The institution's adjusted capital adequacy ratio of negative 97.83% as at end May 2019 is in violation of Section 29(2) of Act 930. This is mainly due to the non- performing related party exposures of GHS 160.10 million to uniSecurities which is far in excess of its negative networth.
 
 > 22. UNICREDIT GHANA LIMITED
+
+> The Institution is currently over exposed to a related party, uniSecurities Limited, a sister company.
 
 *Note carried from compilation:* Largest single named-counterparty exposure in the notice
 
@@ -45,9 +47,6 @@ For each: does the quote support the relationship, the direction, the amount and
 ## Part 2a — uncited passages that mention a relationship
 
 These carry related-party, affiliate, ownership, officer or exposure wording and no edge cites them. This is where a missed relationship is most likely. For each: does it describe a relationship between this institution and another party? If so it needs an edge, and the passage needs a row in `data/evidence.csv` under the anchor shown.
-
-- **`bog-2019-08-16-savings-loans-revocation:L1108`**
-  > The Institution is currently over exposed to a related party, uniSecurities Limited, a sister company. The institution's inability to access its funds from uniSecurities, even though overdue, has resulted in severe liquidity challenges and its inability to meet withdrawal requests of customers.
 
 - **`bog-2019-08-16-savings-loans-revocation:L1113`**
   > uniCredit Savings & Loans Ltd. was found to be insolvent with a negative capital adequacy ratio and negative networth following the Bank of Ghana's assessment as of December 2018. The Bank of Ghana directed the Board and Management of the institution to immediately inject additional capital to address the capital deficiency but this has not been successful.

@@ -28,7 +28,7 @@ For each: does the quote support the relationship, the direction, the amount and
 
 | | |
 |---|---|
-| relationship | `lends_to` |
+| relationship | `related_party_exposure_to` |
 | amount | — |
 | confidence | `documented_unnamed` |
 | anchor | `bog-2019-08-16-savings-loans-revocation:L630` |
@@ -36,7 +36,7 @@ For each: does the quote support the relationship, the direction, the amount and
 
 > The institution is unable to meet the withdrawal demands of its depositors. The institution has related party exposure which it is unable to recover.
 
-*Note carried from compilation:* May overlap E015
+*Note carried from compilation:* Related party exposure the institution is unable to recover; its form is not stated. May overlap E015
 
 ---
 

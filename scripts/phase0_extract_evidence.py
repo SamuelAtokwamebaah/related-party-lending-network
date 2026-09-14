@@ -267,9 +267,9 @@ def main():
         })
 
     OUT_MD.parent.mkdir(parents=True, exist_ok=True)
-    OUT_MD.write_text("\n".join(md) + "\n", encoding="utf-8")
+    OUT_MD.write_text("\n".join(md) + "\n", encoding="utf-8", newline="\n")
     with OUT_CSV.open("w", newline="", encoding="utf-8") as fh:
-        w = csv.DictWriter(fh, fieldnames=list(rows[0].keys()))
+        w = csv.DictWriter(fh, fieldnames=list(rows[0].keys()), lineterminator="\n")
         w.writeheader()
         w.writerows(rows)
 

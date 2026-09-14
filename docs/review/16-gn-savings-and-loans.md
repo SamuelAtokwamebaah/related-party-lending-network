@@ -1,6 +1,6 @@
 # 16. GN Savings and Loans Ltd.
 
-`inst-gn` · notice section **L754–L860** · 5 seeded edge(s) · 11 uncited passage(s)
+`inst-gn` · notice section **L754–L860** · 6 seeded edge(s) · 10 uncited passage(s)
 
 Read the section in `data/raw/` from L754 to L860, then work through both parts below. Record every decision in `data/verification.csv`.
 
@@ -84,7 +84,21 @@ For each: does the quote support the relationship, the direction, the amount and
 
 > It is not disputed that the 3rd respondent is a member of Groupe Ndoum (3rd appellant), but since the Audit Reports are about the entire Groupe Ndoum and there is no indication anywhere therein that all or some of the IPCs are directly to the benefit of the 3rd respondent, we do not see how that can form a basis of saying that the figures therein form part of the assets of 3rd respondent; as debts owed it by the Government of Ghana.
 
-*Note carried from compilation:* Stated as undisputed by the Court of Appeal (p.14). The judgment writes '3rd respondent'; the title of the suit (p.1) fixes that as GN. Its introduction (pp.1-2, transcription L39) says the membership lasted until the receivership. The Bank of Ghana notice (L798) places GN's related parties in the Groupe Nduom network but never states GN's own membership. First edge attributed to a court
+*Note carried from compilation:* Stated as undisputed by the Court of Appeal (p.14). The judgment writes '3rd respondent'; the title of the suit (p.1) fixes that as GN. Its introduction (pp.1-2, transcription L39) says the membership lasted until the receivership. The Bank of Ghana notice implies it ('other companies in the Groupe Ndoum network', L798; 'another company owned by Groupe Nduom', L840) but does not state it in terms. First edge attributed to a court
+
+### E046 — GN Savings and Loans Ltd. → UNNAMED related parties of GN in the Groupe Nduom network
+
+| | |
+|---|---|
+| relationship | `over_exposed_to` |
+| amount | — |
+| confidence | `documented_unnamed` |
+| anchor | `bog-2019-08-16-savings-loans-revocation:L826` |
+| current decision | confirmed |
+
+> Contrary to section 64 (2) of the Banks and Specialised Deposit-Taking Institutions Act, 2016 (Act 930), the institution's exposure to its related party has consistently been above the regulatory limit of 25% of net own funds (NOF). Exposures to other affiliates companies were mainly payments made by the bank on behalf of such affiliates.
+
+*Note carried from compilation:* Exposure to its related party consistently above the 25% limit of net own funds; other affiliate exposures were mainly payments made on their behalf. The same wording produced E024 and E025 for Ideal Finance
 
 ---
 
@@ -97,9 +111,6 @@ These carry related-party, affiliate, ownership, officer or exposure wording and
 
 - **`bog-2019-08-16-savings-loans-revocation:L789`**
   > While GN has indicated that government owes it a total amount of GHS 942.98 million of which GHS 102.73 million represented Interim Payment Certificates (IPCs), the Bank of Ghana's assessment is that IPCs totaling GHS 30.33 million only have been confirmed by the Ministry of Finance as at 6th August 2019 as owed to contractors that may be indebted to affiliates of GN. The Bank of Ghana's supervisory assessment shoeed …
-
-- **`bog-2019-08-16-savings-loans-revocation:L826`**
-  > Contrary to section 64 (2) of the Banks and Specialised Deposit-Taking Institutions Act, 2016 (Act 930), the institution's exposure to its related party has consistently been above the regulatory limit of 25% of net own funds (NOF). Exposures to other affiliates companies were mainly payments made by the bank on behalf of such affiliates.
 
 - **`bog-2019-08-16-savings-loans-revocation:L832`**
   > The structure of GN's balance sheet clearly shows that the bank mobilizes deposits for its related companies. The inability of these related companies to honour their obligation to GN has resulted in serious liquidity challenges and contributed to their insolvency as all related party exposures are non-performing. The institution's high non-performing loans (NPL) was mainly attributed to these related party exposures …
