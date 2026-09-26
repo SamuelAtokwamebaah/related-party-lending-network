@@ -1,0 +1,34 @@
+cff-version: 1.2.0
+title: "related-party-lending-network: the insider relationships behind Ghana's 2019 savings and loans failures"
+message: "If you use this evidence base or the network built from it, please cite it using the metadata below."
+type: dataset
+version: 0.7.0
+authors:
+  - family-names: Baah
+    given-names: Samuel Ato Kwame
+    affiliation: "Independent researcher, Accra, Ghana"
+    email: samatohobbs@gmail.com
+    orcid: "https://orcid.org/0009-0002-8773-7525"
+abstract: >-
+  The insider relationships behind the savings and loans companies and finance houses whose
+  licences the Bank of Ghana revoked on 16 August 2019, modelled as a network built only from
+  primary sources: what two regulators published and one court judgment found. Every node and
+  every edge carries a quoted passage and a line number in the source that supports it, and the
+  loader refuses to build if a quotation is not verbatim at the line its citation names. Analyses
+  that returned nothing are published alongside those that did.
+keywords:
+  - network analysis
+  - related-party transactions
+  - bank failure
+  - corporate governance
+  - regulatory data
+  - Ghana banking sector clean-up
+  - reproducible research
+license: MIT
+references:
+  - type: dataset
+    title: "Ghana Banking Sector Collapse: dataset and analysis"
+    authors:
+      - family-names: Baah
+        given-names: Samuel Ato Kwame
+    doi: 10.5281/zenodo.22163244
