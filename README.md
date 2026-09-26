@@ -32,13 +32,18 @@ This project asks the structural question. Institutions, their owners, their hol
 companies and their connected borrowers are modelled as a graph, so that the shape of the
 related-party exposure is visible rather than merely tallied.
 
-It is the third repository in a deliberate arc, each asking a different kind of question:
+It is the third of four repositories in a deliberate arc, each asking a different kind of
+question:
 
 | | repository | question | method |
 |---|---|---|---|
 | 1 | [`ghana-banking-collapse`](https://github.com/SamuelAtokwamebaah/ghana-banking-collapse) | *which* institutions failed, and why | institutional failure analysis over a verified dataset ([DOI](https://doi.org/10.5281/zenodo.22163244)) |
-| 2 | `microfinance-fraud-detection` (not yet public) | how much of a repayment-skimming scheme detection would catch | SQL rules and anomaly detection on a synthetic portfolio, not on these institutions |
+| 2 | [`microfinance-fraud-detection`](https://github.com/SamuelAtokwamebaah/microfinance-fraud-detection) | how much of a repayment-skimming scheme detection would catch | SQL rules and anomaly detection on a synthetic portfolio, not on these institutions |
 | 3 | **`related-party-lending-network`** | how insiders were **structurally** connected | network analysis over a cited evidence base |
+| 4 | [`act-930-resolution-timelines`](https://github.com/SamuelAtokwamebaah/act-930-resolution-timelines) | how long the regulator left insolvent institutions licensed, and what the statute requires of its timing | a journal paper measuring the interval from the Bank of Ghana's own stated insolvency dates |
+
+The fourth is under peer review, so its repository carries the code and the data and the
+manuscript follows on publication.
 
 The third is the one that could most easily have been faked, and that is the point of how
 it is built. A network diagram is persuasive whether or not the relationships in it are
