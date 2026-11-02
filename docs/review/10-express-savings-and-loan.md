@@ -6,16 +6,16 @@ Read the section in `data/raw/` from L500 to L537, then work through both parts 
 
 ---
 
-## Part 1 — edges seeded against this institution
+## Part 1: edges seeded against this institution
 
 For each: does the quote support the relationship, the direction, the amount and its basis, and the confidence class?
 
-### E012 — Express Savings and Loan Limited → UNNAMED related parties of Express
+### E012: Express Savings and Loan Limited → UNNAMED related parties of Express
 
 | | |
 |---|---|
 | relationship | `placed_funds_with` |
-| amount | — |
+| amount | not stated |
 | confidence | `documented_unnamed` |
 | anchor | `bog-2019-08-16-savings-loans-revocation:L528` |
 | current decision | confirmed |
@@ -24,12 +24,12 @@ For each: does the quote support the relationship, the direction, the amount and
 
 *Note carried from compilation:* No amount stated
 
-### P015 — Express Savings and Loan Limited ← Standard Securities Limited
+### P015: Express Savings and Loan Limited ← Standard Securities Limited
 
 | | |
 |---|---|
 | relationship | `placed_client_funds_with` |
-| amount | — |
+| amount | not stated |
 | confidence | `documented` |
 | anchor | `sec-2019-11-08-fund-manager-revocation:L508` |
 | current decision | confirmed |
@@ -40,7 +40,7 @@ For each: does the quote support the relationship, the direction, the amount and
 
 ---
 
-## Part 2a — uncited passages that mention a relationship
+## Part 2a: uncited passages that mention a relationship
 
 These carry related-party, affiliate, ownership, officer or exposure wording and no edge cites them. This is where a missed relationship is most likely. For each: does it describe a relationship between this institution and another party? If so it needs an edge, and the passage needs a row in `data/evidence.csv` under the anchor shown.
 
@@ -49,9 +49,9 @@ These carry related-party, affiliate, ownership, officer or exposure wording and
 
 ---
 
-## Part 2b — the rest of the section (9 passages)
+## Part 2b: the rest of the section (9 passages)
 
-Mostly capital adequacy, net worth and reporting breaches. Listed so the section can be scanned in full — the extractor's vocabulary has been wrong twice already, so its judgement about what is irrelevant is not final.
+Mostly capital adequacy, net worth and reporting breaches. Listed so the section can be scanned in full, because the extractor's vocabulary has been wrong twice already and its judgement about what is irrelevant is not final.
 
 - `L502` Express Savings and Loans Company Limited (ESLL) was licensed by the Bank of Ghana on 14th August, 2007.
 - `L512` The specific issues that resulted in the revocation of the institution's license include the following:

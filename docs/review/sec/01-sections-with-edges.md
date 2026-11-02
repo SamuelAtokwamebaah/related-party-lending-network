@@ -1,4 +1,4 @@
-# SEC notice — sections with edges
+# SEC notice: sections with edges
 
 `sec-2019-11-08-fund-manager-revocation` · 53 sections in the notice · 13 carry an edge
 
@@ -42,42 +42,42 @@ Section 120 of the Securities Industry Act, 2016 (Act 929) and Regulation 18 of 
 g) Failure to pay penalties levied by the Commission for violation of Securities Industry Laws.
 ```
 
-### P001 — Standard Securities Limited → ASN Financial Services Limited
+### P001: Standard Securities Limited → ASN Financial Services Limited
 
 | | |
 |---|---|
 | relationship | `placed_funds_with` |
 | layer | `related_party` |
 | moves value | yes |
-| amount | — |
+| amount | not stated |
 | confidence | `documented` |
 | anchor | `sec-2019-11-08-fund-manager-revocation:L508` |
 | current decision | confirmed |
 
 *Note carried from compilation:* The notice says 'Related party placement with related party called ASN Financial Services Limited'. No figure is stated for it.
 
-### P015 — Standard Securities Limited → Express Savings and Loan Limited
+### P015: Standard Securities Limited → Express Savings and Loan Limited
 
 | | |
 |---|---|
 | relationship | `placed_client_funds_with` |
 | layer | `placement` |
 | moves value | yes |
-| amount | — |
+| amount | not stated |
 | confidence | `documented` |
 | anchor | `sec-2019-11-08-fund-manager-revocation:L508` |
 | current decision | confirmed |
 
 *Note carried from compilation:* Listed under 'Other Placements', distinct from the related-party placement in the same bullet. No figure is stated.
 
-### P016 — Standard Securities Limited → Midland Savings and Loans Company Limited
+### P016: Standard Securities Limited → Midland Savings and Loans Company Limited
 
 | | |
 |---|---|
 | relationship | `placed_client_funds_with` |
 | layer | `placement` |
 | moves value | yes |
-| amount | — |
+| amount | not stated |
 | confidence | `documented` |
 | anchor | `sec-2019-11-08-fund-manager-revocation:L508` |
 | current decision | confirmed |
@@ -121,7 +121,7 @@ Securities Industry Act, 2016 (Act 929) and Securities and Exchange Commission R
 19
 ```
 
-### S014 — Gold Coast Fund Management Limited → Ghana Growth Fund
+### S014: Gold Coast Fund Management Limited → Ghana Growth Fund
 
 | | |
 |---|---|
@@ -168,7 +168,7 @@ practice;
 e) Failure to conduct regular board meetings (Section 188(1) of the Companies Act, 2019 (Act 992).
 ```
 
-### P004 — Corporate Hills Investment Limited → ASN Financial Services Limited
+### P004: Corporate Hills Investment Limited → ASN Financial Services Limited
 
 | | |
 |---|---|
@@ -207,7 +207,7 @@ Trust Savings & Loans (in receivership)
 23
 ```
 
-### P005 — Goldstreet Fund Management Limited → Ideal Finance Limited
+### P005: Goldstreet Fund Management Limited → Ideal Finance Limited
 
 | | |
 |---|---|
@@ -219,7 +219,7 @@ Trust Savings & Loans (in receivership)
 | anchor | `sec-2019-11-08-fund-manager-revocation:L835` |
 | current decision | confirmed |
 
-### P006 — Goldstreet Fund Management Limited → FirsTrust Savings and Loans Limited
+### P006: Goldstreet Fund Management Limited → FirsTrust Savings and Loans Limited
 
 | | |
 |---|---|
@@ -255,7 +255,7 @@ instruments.
 c) Failure to adhere to voluntary payment plans agreed on at Complaints hearings
 ```
 
-### S001 — Ideal Capital Partners → Ideal Financial Holdings
+### S001: Ideal Capital Partners → Ideal Financial Holdings
 
 | | |
 |---|---|
@@ -271,7 +271,7 @@ c) Failure to adhere to voluntary payment plans agreed on at Complaints hearings
 
 *Note carried from compilation:* SEC records Ideal Financial Holdings as a related party of Ideal Capital Partners
 
-### S002 — Ideal Capital Partners → FirsTrust Savings and Loans Limited
+### S002: Ideal Capital Partners → FirsTrust Savings and Loans Limited
 
 | | |
 |---|---|
@@ -287,7 +287,7 @@ c) Failure to adhere to voluntary payment plans agreed on at Complaints hearings
 
 *Note carried from compilation:* The link that connects one counterparty to two of the 23; source spells FirsTrust as Firstrust
 
-### S003 — Ideal Capital Partners → Ideal Trade Limited
+### S003: Ideal Capital Partners → Ideal Trade Limited
 
 | | |
 |---|---|
@@ -303,7 +303,7 @@ c) Failure to adhere to voluntary payment plans agreed on at Complaints hearings
 
 *Note carried from compilation:* Non-financial group company
 
-### S004 — Ideal Capital Partners → Ideal Bottling Limited
+### S004: Ideal Capital Partners → Ideal Bottling Limited
 
 | | |
 |---|---|
@@ -338,7 +338,7 @@ funds in revoked savings & loans including, Midland S avings & Loans, First Trus
 Loans and Legacy Savings & Loans.
 ```
 
-### P007 — Integrity Fund Management Ltd → Midland Savings and Loans Company Limited
+### P007: Integrity Fund Management Ltd → Midland Savings and Loans Company Limited
 
 | | |
 |---|---|
@@ -352,7 +352,7 @@ Loans and Legacy Savings & Loans.
 
 *Amount note:* Stated as 'Over 80% placement of client funds in revoked savings & loans including' Midland, FirsTrust and Legacy Capital. The notice gives no per-institution split, the figure is a floor, and 'including' leaves the list open.
 
-### P008 — Integrity Fund Management Ltd → FirsTrust Savings and Loans Limited
+### P008: Integrity Fund Management Ltd → FirsTrust Savings and Loans Limited
 
 | | |
 |---|---|
@@ -366,7 +366,7 @@ Loans and Legacy Savings & Loans.
 
 *Amount note:* Stated as 'Over 80% placement of client funds in revoked savings & loans including' Midland, FirsTrust and Legacy Capital. The notice gives no per-institution split, the figure is a floor, and 'including' leaves the list open.
 
-### P009 — Integrity Fund Management Ltd → Legacy Capital Savings and Loans Ltd.
+### P009: Integrity Fund Management Ltd → Legacy Capital Savings and Loans Ltd.
 
 | | |
 |---|---|
@@ -410,7 +410,7 @@ practice.
 25
 ```
 
-### P002 — Legacy Fund Management Limited → Legacy Capital Savings and Loans Ltd.
+### P002: Legacy Fund Management Limited → Legacy Capital Savings and Loans Ltd.
 
 | | |
 |---|---|
@@ -451,7 +451,7 @@ for B roker-Dealers, Investment Advisers and Representatives 2008 and general be
 international industry practice.
 ```
 
-### S005 — Liberty Asset Management → Midland Savings and Loans Company Limited
+### S005: Liberty Asset Management → Midland Savings and Loans Company Limited
 
 | | |
 |---|---|
@@ -467,7 +467,7 @@ international industry practice.
 
 *Note carried from compilation:* Midland was over-exposed to Liberty and Liberty held funds with Midland: each held the other
 
-### S006 — Liberty Asset Management → Liberty Commodities Limited
+### S006: Liberty Asset Management → Liberty Commodities Limited
 
 | | |
 |---|---|
@@ -499,7 +499,7 @@ for Broker-Dealers, Investment Advisers and Representatives 2008. The firm place
 funds with Legacy Capital Savings & Loans (in receivership).
 ```
 
-### P010 — Monarch Capital Limited → Legacy Capital Savings and Loans Ltd.
+### P010: Monarch Capital Limited → Legacy Capital Savings and Loans Ltd.
 
 | | |
 |---|---|
@@ -541,7 +541,7 @@ for Broker-Dealers, Investment Advisers and Representatives 2008 and general bes
 industry practice.
 ```
 
-### P011 — Mutual Integrity Asset Management Limited → Commerz Savings and Loans Limited
+### P011: Mutual Integrity Asset Management Limited → Commerz Savings and Loans Limited
 
 | | |
 |---|---|
@@ -557,7 +557,7 @@ industry practice.
 
 *Note carried from compilation:* A second passage of the same notice placing client funds with Commerz; no related-party claim, so it does not bear on the related-party flag
 
-### P012 — Mutual Integrity Asset Management Limited → CDH Savings and Loans Ltd.
+### P012: Mutual Integrity Asset Management Limited → CDH Savings and Loans Ltd.
 
 | | |
 |---|---|
@@ -600,7 +600,7 @@ for Broker -Dealers, Investment Advisers and Representatives 2008 and general be
 international industry practice.
 ```
 
-### P003 — Nordea Capital Limited → Commerz Savings and Loans Limited
+### P003: Nordea Capital Limited → Commerz Savings and Loans Limited
 
 | | |
 |---|---|
@@ -633,7 +633,7 @@ revoked Savings and Loans institutions including Midland Savings and Loans and F
 Savings & Loans .
 ```
 
-### P013 — Procap Finance Limited → Midland Savings and Loans Company Limited
+### P013: Procap Finance Limited → Midland Savings and Loans Company Limited
 
 | | |
 |---|---|
@@ -647,7 +647,7 @@ Savings & Loans .
 
 *Amount note:* Stated as 'Over 68% placement in revoked Savings and Loans institutions including Midland Savings and Loans and FirsTrust' together. The notice gives no per-institution split, the figure is a floor, and 'including' leaves the list open.
 
-### P014 — Procap Finance Limited → FirsTrust Savings and Loans Limited
+### P014: Procap Finance Limited → FirsTrust Savings and Loans Limited
 
 | | |
 |---|---|
@@ -688,98 +688,98 @@ practice.
 30
 ```
 
-### S007 — uniSecurities Limited → Hoda Holdings Ltd
+### S007: uniSecurities Limited → Hoda Holdings Ltd
 
 | | |
 |---|---|
 | relationship | `placed_funds_with` |
 | layer | `related_party` |
 | moves value | yes |
-| amount | — |
+| amount | not stated |
 | confidence | `documented` |
 | anchor | `sec-2019-11-08-fund-manager-revocation:L1140` |
 | current decision | confirmed |
 
 *Note carried from compilation:* The Commission lists these as related parties inside a finding on placement of client funds; it does not state that funds were placed with each, or any amount. That the Commission's Unisecurities (Ghana) Limited is the Bank of Ghana's uniSecurities rests on the name; see LIMITATIONS section 10. Whether Hoda Holdings Ltd is the Hoda Group of Companies that acquired uniCredit is undecided; see RR004
 
-### S008 — uniSecurities Limited → Intrepid Venture Capital Ltd
+### S008: uniSecurities Limited → Intrepid Venture Capital Ltd
 
 | | |
 |---|---|
 | relationship | `placed_funds_with` |
 | layer | `related_party` |
 | moves value | yes |
-| amount | — |
+| amount | not stated |
 | confidence | `documented` |
 | anchor | `sec-2019-11-08-fund-manager-revocation:L1140` |
 | current decision | confirmed |
 
 *Note carried from compilation:* The Commission lists these as related parties inside a finding on placement of client funds; it does not state that funds were placed with each, or any amount. That the Commission's Unisecurities (Ghana) Limited is the Bank of Ghana's uniSecurities rests on the name; see LIMITATIONS section 10
 
-### S009 — uniSecurities Limited → Premier Portfolio
+### S009: uniSecurities Limited → Premier Portfolio
 
 | | |
 |---|---|
 | relationship | `placed_funds_with` |
 | layer | `related_party` |
 | moves value | yes |
-| amount | — |
+| amount | not stated |
 | confidence | `documented` |
 | anchor | `sec-2019-11-08-fund-manager-revocation:L1140` |
 | current decision | confirmed |
 
 *Note carried from compilation:* The Commission lists these as related parties inside a finding on placement of client funds; it does not state that funds were placed with each, or any amount. That the Commission's Unisecurities (Ghana) Limited is the Bank of Ghana's uniSecurities rests on the name; see LIMITATIONS section 10
 
-### S010 — uniSecurities Limited → Integrated Properties Ltd
+### S010: uniSecurities Limited → Integrated Properties Ltd
 
 | | |
 |---|---|
 | relationship | `placed_funds_with` |
 | layer | `related_party` |
 | moves value | yes |
-| amount | — |
+| amount | not stated |
 | confidence | `documented` |
 | anchor | `sec-2019-11-08-fund-manager-revocation:L1140` |
 | current decision | confirmed |
 
 *Note carried from compilation:* The Commission lists these as related parties inside a finding on placement of client funds; it does not state that funds were placed with each, or any amount. That the Commission's Unisecurities (Ghana) Limited is the Bank of Ghana's uniSecurities rests on the name; see LIMITATIONS section 10
 
-### S011 — uniSecurities Limited → Bolton Portfolio Ltd
+### S011: uniSecurities Limited → Bolton Portfolio Ltd
 
 | | |
 |---|---|
 | relationship | `placed_funds_with` |
 | layer | `related_party` |
 | moves value | yes |
-| amount | — |
+| amount | not stated |
 | confidence | `documented` |
 | anchor | `sec-2019-11-08-fund-manager-revocation:L1140` |
 | current decision | confirmed |
 
 *Note carried from compilation:* The Commission lists these as related parties inside a finding on placement of client funds; it does not state that funds were placed with each, or any amount. That the Commission's Unisecurities (Ghana) Limited is the Bank of Ghana's uniSecurities rests on the name; see LIMITATIONS section 10
 
-### S012 — uniSecurities Limited → Numa Logistics
+### S012: uniSecurities Limited → Numa Logistics
 
 | | |
 |---|---|
 | relationship | `placed_funds_with` |
 | layer | `related_party` |
 | moves value | yes |
-| amount | — |
+| amount | not stated |
 | confidence | `documented` |
 | anchor | `sec-2019-11-08-fund-manager-revocation:L1140` |
 | current decision | confirmed |
 
 *Note carried from compilation:* The Commission lists these as related parties inside a finding on placement of client funds; it does not state that funds were placed with each, or any amount. That the Commission's Unisecurities (Ghana) Limited is the Bank of Ghana's uniSecurities rests on the name; see LIMITATIONS section 10
 
-### S013 — uniSecurities Limited → Alban Logistics
+### S013: uniSecurities Limited → Alban Logistics
 
 | | |
 |---|---|
 | relationship | `placed_funds_with` |
 | layer | `related_party` |
 | moves value | yes |
-| amount | — |
+| amount | not stated |
 | confidence | `documented` |
 | anchor | `sec-2019-11-08-fund-manager-revocation:L1140` |
 | current decision | confirmed |

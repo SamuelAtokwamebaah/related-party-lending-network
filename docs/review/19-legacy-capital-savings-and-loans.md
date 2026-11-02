@@ -6,11 +6,11 @@ Read the section in `data/raw/` from L1005 to L1039, then work through both part
 
 ---
 
-## Part 1 — edges seeded against this institution
+## Part 1: edges seeded against this institution
 
 For each: does the quote support the relationship, the direction, the amount and its basis, and the confidence class?
 
-### E027 — Legacy Capital Savings and Loans Ltd. → UNNAMED related parties of Legacy Capital
+### E027: Legacy Capital Savings and Loans Ltd. → UNNAMED related parties of Legacy Capital
 
 | | |
 |---|---|
@@ -24,7 +24,7 @@ For each: does the quote support the relationship, the direction, the amount and
 
 *Note carried from compilation:* Amount stated; names not
 
-### P002 — Legacy Capital Savings and Loans Ltd. ← Legacy Fund Management Limited
+### P002: Legacy Capital Savings and Loans Ltd. ← Legacy Fund Management Limited
 
 | | |
 |---|---|
@@ -38,7 +38,7 @@ For each: does the quote support the relationship, the direction, the amount and
 
 *Note carried from compilation:* 'Placement of 18% of funds in related party Legacy Capital Savings Limited'. Settles resolution candidate RR006: the Commission states the relationship, so it no longer rests on a shared name.
 
-### P009 — Legacy Capital Savings and Loans Ltd. ← Integrity Fund Management Ltd
+### P009: Legacy Capital Savings and Loans Ltd. ← Integrity Fund Management Ltd
 
 | | |
 |---|---|
@@ -52,7 +52,7 @@ For each: does the quote support the relationship, the direction, the amount and
 
 *Amount note:* Stated as 'Over 80% placement of client funds in revoked savings & loans including' Midland, FirsTrust and Legacy Capital. The notice gives no per-institution split, the figure is a floor, and 'including' leaves the list open.
 
-### P010 — Legacy Capital Savings and Loans Ltd. ← Monarch Capital Limited
+### P010: Legacy Capital Savings and Loans Ltd. ← Monarch Capital Limited
 
 | | |
 |---|---|
@@ -66,7 +66,7 @@ For each: does the quote support the relationship, the direction, the amount and
 
 ---
 
-## Part 2a — uncited passages that mention a relationship
+## Part 2a: uncited passages that mention a relationship
 
 These carry related-party, affiliate, ownership, officer or exposure wording and no edge cites them. This is where a missed relationship is most likely. For each: does it describe a relationship between this institution and another party? If so it needs an edge, and the passage needs a row in `data/evidence.csv` under the anchor shown.
 
@@ -75,9 +75,9 @@ These carry related-party, affiliate, ownership, officer or exposure wording and
 
 ---
 
-## Part 2b — the rest of the section (7 passages)
+## Part 2b: the rest of the section (7 passages)
 
-Mostly capital adequacy, net worth and reporting breaches. Listed so the section can be scanned in full — the extractor's vocabulary has been wrong twice already, so its judgement about what is irrelevant is not final.
+Mostly capital adequacy, net worth and reporting breaches. Listed so the section can be scanned in full, because the extractor's vocabulary has been wrong twice already and its judgement about what is irrelevant is not final.
 
 - `L1007` Legacy Capital Savings & Loans Company Limited (LCSL) was licensed by Bank of Ghana to operate as a savings and loans company on August 12, 2016, afte …
 - `L1018` The specific issues that led to the revocation of its license included the following:

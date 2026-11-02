@@ -42,7 +42,7 @@ Regenerate with `python scripts/build_review_pack.py`. It rewrites the sheets an
 
 These sheets are built from the sections of the Bank of Ghana notice. They also list any Securities and Exchange Commission or court edge touching the institution, but the Commission's notice is arranged by fund manager rather than by institution, so its own pack is built separately and lives in [sec/](sec/). The Court of Appeal judgment on GN has a sheet of its own, [ca-2026-05-21-gn-judgment.md](ca-2026-05-21-gn-judgment.md). Two edges touch no institution and so appear on no sheet here: E043, whose passage is shown on the GN sheet beside E042, and the inferred I002.
 
-- [sec/01-sections-with-edges.md](sec/01-sections-with-edges.md) — every section an edge cites, reproduced in full, with the edges drawn from it
-- [sec/02-coverage.md](sec/02-coverage.md) — every section, marked for whether they name one of the 23 and whether an edge exists. Read this one first: v0.3 read four sections and stopped, and nine more named one of the 23.
+- [sec/01-sections-with-edges.md](sec/01-sections-with-edges.md): every section an edge cites, reproduced in full, with the edges drawn from it
+- [sec/02-coverage.md](sec/02-coverage.md): every section, marked for whether they name one of the 23 and whether an edge exists. Read this one first: v0.3 read four sections and stopped, and nine more named one of the 23.
 
 Regenerate with `python scripts/build_sec_review.py`.

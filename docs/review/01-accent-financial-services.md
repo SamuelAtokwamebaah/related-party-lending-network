@@ -6,16 +6,16 @@ Read the section in `data/raw/` from L166 to L201, then work through both parts 
 
 ---
 
-## Part 1 — edges seeded against this institution
+## Part 1: edges seeded against this institution
 
 For each: does the quote support the relationship, the direction, the amount and its basis, and the confidence class?
 
-### E001 — Accent Financial Services Limited → UNNAMED related parties of Accent
+### E001: Accent Financial Services Limited → UNNAMED related parties of Accent
 
 | | |
 |---|---|
 | relationship | `lends_to` |
-| amount | — |
+| amount | not stated |
 | confidence | `documented_unnamed` |
 | anchor | `bog-2019-08-16-savings-loans-revocation:L188` |
 | current decision | confirmed |
@@ -26,7 +26,7 @@ For each: does the quote support the relationship, the direction, the amount and
 
 ---
 
-## Part 2a — uncited passages that mention a relationship
+## Part 2a: uncited passages that mention a relationship
 
 These carry related-party, affiliate, ownership, officer or exposure wording and no edge cites them. This is where a missed relationship is most likely. For each: does it describe a relationship between this institution and another party? If so it needs an edge, and the passage needs a row in `data/evidence.csv` under the anchor shown.
 
@@ -38,9 +38,9 @@ These carry related-party, affiliate, ownership, officer or exposure wording and
 
 ---
 
-## Part 2b — the rest of the section (9 passages)
+## Part 2b: the rest of the section (9 passages)
 
-Mostly capital adequacy, net worth and reporting breaches. Listed so the section can be scanned in full — the extractor's vocabulary has been wrong twice already, so its judgement about what is irrelevant is not final.
+Mostly capital adequacy, net worth and reporting breaches. Listed so the section can be scanned in full, because the extractor's vocabulary has been wrong twice already and its judgement about what is irrelevant is not final.
 
 - `L168` Accent Financial Services Limited was incorporated in Ghana on 21st November, 2012 and was licensed by the Bank of Ghana to commence operations in Jun …
 - `L175` The specific issues that led to the revocation of its license included the following:

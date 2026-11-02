@@ -6,16 +6,16 @@ Read the section in `data/raw/` from L202 to L238, then work through both parts 
 
 ---
 
-## Part 1 — edges seeded against this institution
+## Part 1: edges seeded against this institution
 
 For each: does the quote support the relationship, the direction, the amount and its basis, and the confidence class?
 
-### E002 — Adom Savings and Loans Limited → UNNAMED related parties of Adom
+### E002: Adom Savings and Loans Limited → UNNAMED related parties of Adom
 
 | | |
 |---|---|
 | relationship | `over_exposed_to` |
-| amount | — |
+| amount | not stated |
 | confidence | `documented_unnamed` |
 | anchor | `bog-2019-08-16-savings-loans-revocation:L224` |
 | current decision | confirmed |
@@ -24,12 +24,12 @@ For each: does the quote support the relationship, the direction, the amount and
 
 *Note carried from compilation:* Exposures stated to be far in excess of the statutory limits; no amount stated. Shares Adom's placeholder with E003, although the notice does not say the fee recipients and these counterparties are the same parties
 
-### E003 — Adom Savings and Loans Limited → UNNAMED related parties of Adom
+### E003: Adom Savings and Loans Limited → UNNAMED related parties of Adom
 
 | | |
 |---|---|
 | relationship | `pays_management_fees_to` |
-| amount | — |
+| amount | not stated |
 | confidence | `documented_unnamed` |
 | anchor | `bog-2019-08-16-savings-loans-revocation:L229` |
 | current decision | confirmed |
@@ -40,7 +40,7 @@ For each: does the quote support the relationship, the direction, the amount and
 
 ---
 
-## Part 2a — uncited passages that mention a relationship
+## Part 2a: uncited passages that mention a relationship
 
 These carry related-party, affiliate, ownership, officer or exposure wording and no edge cites them. This is where a missed relationship is most likely. For each: does it describe a relationship between this institution and another party? If so it needs an edge, and the passage needs a row in `data/evidence.csv` under the anchor shown.
 
@@ -52,9 +52,9 @@ These carry related-party, affiliate, ownership, officer or exposure wording and
 
 ---
 
-## Part 2b — the rest of the section (8 passages)
+## Part 2b: the rest of the section (8 passages)
 
-Mostly capital adequacy, net worth and reporting breaches. Listed so the section can be scanned in full — the extractor's vocabulary has been wrong twice already, so its judgement about what is irrelevant is not final.
+Mostly capital adequacy, net worth and reporting breaches. Listed so the section can be scanned in full, because the extractor's vocabulary has been wrong twice already and its judgement about what is irrelevant is not final.
 
 - `L204` Adom Savings and Loans Company Limited is a financial services company incorporated under the Companies Act, 1963 (Act 179) in January 2010 and licens …
 - `L215` Among other things, the Bank of Ghana's supervisory assessments revealed the following:

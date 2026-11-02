@@ -371,8 +371,8 @@ def build():
 <h1>Seventeen structures, not one network</h1>
 <p class="lede">Related-party lending appears in 17 of the 23 savings &amp; loans companies
 and finance houses whose licences the Bank of Ghana revoked on 16&nbsp;August&nbsp;2019. This
-is what those relationships look like when two regulators&rsquo; notices are read as a graph
-&mdash; including one loop that neither document shows on its own.</p>
+is what those relationships look like when two regulators&rsquo; notices are read as a graph,
+including one loop that neither document shows on its own.</p>
 </header>''')
 
     if pending:
@@ -408,7 +408,7 @@ Eleven of its 53 sections name one of the 23 institutions.</p>
 <p>The clearest result needs both documents and appears in neither alone. The Bank of Ghana
 records <strong>Midland</strong> as over-exposed to <strong>Liberty Asset Management</strong>;
 the SEC records Liberty holding 9.45% of its funds with Midland. Each held the other, and
-value moves along both arrows &mdash; the one closed funding loop in the evidence base. Money leaves Midland to a related party, and that party&rsquo;s client funds come back in. Whether either side ended better off is not something these documents say.</p>
+value moves along both arrows: the one closed funding loop in the evidence base. Money leaves Midland to a related party, and that party&rsquo;s client funds come back in. Whether either side ended better off is not something these documents say.</p>
 <p>The graph is still in {shape['components']} pieces, and one entity now connects two
 institutions where none did before. A negative result from a single source is a statement
 about that source.</p>
@@ -437,13 +437,13 @@ about that source.</p>
     parts.append(f'<h2>The other {len(others)}</h2>')
     parts.append('<p class="section-note">Each is an institution and the related parties the '
                  'notices, and in one case a court, attribute to it. None connects to any '
-                 'other panel &mdash; that '
+                 'other panel, and that '
                  'disconnection is the finding, not a drawing artefact.</p>')
     parts.append('<div class="grid">')
     for comp in others:
         inst = sorted((g.nodes[n]["name"] for n in comp
                        if g.nodes[n]["scope_class"] == "core_23"), key=len)
-        cap = short_name(inst[0], "institution") if inst else "—"
+        cap = short_name(inst[0], "institution") if inst else "counterparties only"
         note = next((contested[n] for n in comp if n in contested), "")
         flag = (f'<div class="status"><strong>Contested.</strong> {html.escape(note)}</div>'
                 if note else "")
@@ -472,7 +472,7 @@ alleged. There are <strong>{pl["edges"]} such edges</strong>, from
 <strong>{ifa["components_related_party_only"]} components, largest
 {ifa["largest_component_related_party_only"]}</strong>, to
 <strong>{ifa["components_if_admitted"]} components, largest
-{ifa["largest_component_if_admitted"]}</strong> &mdash; one structure holding most of
+{ifa["largest_component_if_admitted"]}</strong>, one structure holding most of
 the graph. That structure is real. It is not an insider network: it is a set of
 institutions that happen to share a fund manager who placed client money in both.
 Presenting it as the headline would be the most flattering version of this project
@@ -512,7 +512,7 @@ On this evidence base the mechanism counts carry more than any network measure d
 <p>Counted here are only the {sum(typ.values())} relationships that move value
 <em>out of one of the 23</em>. A further {elsewhere} move value along a related-party
 relationship that runs the other way, or between two parties neither of which is one of
-the 23 &mdash; mostly fund managers placing their clients&rsquo; money with their own
+the 23, mostly fund managers placing their clients&rsquo; money with their own
 related companies. That is a real finding and a different one, and adding it here would
 make this chart say more than it means.</p>
 <div class="bars">''')
@@ -544,9 +544,9 @@ make this chart say more than it means.</p>
         parts.append(
             f"<tr><td>{html.escape(key)}</td><td>{html.escape(g.nodes[u]['name'])}</td>"
             f"<td>{html.escape(g.nodes[v]['name'])}</td><td>{html.escape(d['relationship'])}</td>"
-            f"<td class=\"num\">{html.escape(amount) if amount else '&mdash;'}</td>"
+            f"<td class=\"num\">{html.escape(amount) if amount else 'not stated'}</td>"
             f"<td>{html.escape(d['confidence'])}</td>"
-            f"<td class=\"num\">{html.escape(short_anchor(anchor)) if anchor else '&mdash;'}</td></tr>")
+            f"<td class=\"num\">{html.escape(short_anchor(anchor)) if anchor else 'none'}</td></tr>")
     parts.append('</tbody></table></div></details>')
 
     parts.append(f'''<footer>
@@ -557,8 +557,8 @@ GN Savings and Loans&rsquo; membership of Groupe Nduom, comes from the Court of 
 of 21 May 2026, which the Supreme Court has stayed pending appeal. Every node and edge carries
 a citation to a line in its source; the quoted passages are in the repository&rsquo;s evidence
 base. Inferred relationships are excluded from this page.</p>
-<p><strong>What this cannot show is written down.</strong> No individual is named anywhere in
-the evidence base, the graph is in {shape["components"]} pieces, and most relationships carry
+<p><strong>What this cannot show is written down.</strong> No individual appears as a node in
+this graph, the graph is in {shape["components"]} pieces, and most relationships carry
 no figure at all. The limitations are set out in full in
 <a href="https://github.com/SamuelAtokwamebaah/related-party-lending-network/blob/main/docs/LIMITATIONS.md">docs/LIMITATIONS.md</a>, and are worth reading before the
 diagrams rather than after them.</p>

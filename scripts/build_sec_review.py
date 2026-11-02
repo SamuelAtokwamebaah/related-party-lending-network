@@ -111,7 +111,7 @@ def squash(text):
 
 def amount_str(edge):
     if not edge.get("amount_value"):
-        return "—"
+        return "not stated"
     if edge.get("amount_unit") == "percent":
         return f"{edge['amount_value']}% ({edge.get('amount_basis') or '?'})"
     unit = "m" if edge.get("amount_unit") == "million" else ""
@@ -158,7 +158,7 @@ def main():
 
     # --- sheet 1: the sections an edge cites, in full ---------------------
     md = [
-        "# SEC notice — sections with edges",
+        "# SEC notice: sections with edges",
         "",
         f"`{SOURCE_ID}` · {len(secs)} sections in the notice · "
         f"{len(edges_by_section)} carry an edge",
@@ -197,7 +197,7 @@ def main():
                 "canonical_name", edge["target_entity_id"])
             rel = rels.get(edge["relationship"], {})
             md += [
-                f"### {edge['edge_id']} — {src} → {tgt}",
+                f"### {edge['edge_id']}: {src} → {tgt}",
                 "",
                 "| | |",
                 "|---|---|",
@@ -231,14 +231,14 @@ def main():
         rows.append((num, name, start, end, named, n_edges))
 
     md = [
-        "# SEC notice — coverage of all sections",
+        "# SEC notice: coverage of all sections",
         "",
         f"`{SOURCE_ID}` · {len(secs)} sections · "
         f"{sum(1 for r in rows if r[4])} name one of the 23 · "
         f"{sum(1 for r in rows if r[5])} carry an edge",
         "",
-        "This sheet exists because of a real miss. v0.3 read four sections — the four "
-        "fund managers already in the graph — and stopped there. Two of those four name "
+        "This sheet exists because of a real miss. v0.3 read four sections, the four "
+        "fund managers already in the graph, and stopped there. Two of those four name "
         "one of the 23; nine more sections did, and were not read. Listing every section "
         "is what makes that kind "
         "of gap visible instead of invisible.",
@@ -265,7 +265,7 @@ def main():
     for num, name, start, end, named, n_edges in rows:
         flag = " **←**" if named and not n_edges else ""
         md.append(f"| {num} | {name.title()} | L{start}–L{end} | "
-                  f"{', '.join(named) if named else '—'} | {n_edges or '—'}{flag} |")
+                  f"{', '.join(named) if named else 'none'} | {n_edges or 0}{flag} |")
     md += [
         "",
         "Sections naming none of the 23 are still part of the notice and may name a "

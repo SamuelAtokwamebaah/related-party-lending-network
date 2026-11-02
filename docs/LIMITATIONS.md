@@ -14,8 +14,8 @@ and, except for the GN judgment (section 11), the documents in `sources/`.
 The project was conceived to model insider relationships: who owned the institutions that
 failed, who sat on their boards, and whether the same people appear behind more than one
 failure. **The evidence base contains no named person.** The one `person` node in the
-graph is a placeholder — *"UNNAMED major shareholder of First Allied"*, whom the notice also
-calls the Board Chairman — because that is exactly as far as the Bank of Ghana's notice
+graph is a placeholder, *"UNNAMED major shareholder of First Allied"*, whom the notice also
+calls the Board Chairman, because that is exactly as far as the Bank of Ghana's notice
 goes. The majority shareholder of Global Access is also a placeholder, and is not typed as
 a person, because the notice does not say whether it is one.
 
@@ -32,7 +32,7 @@ parties' names in the title of a published judgment cited in section 13.
 Building the person layer needs the Registrar-General's company filings. Ghana's register
 is not freely searchable online; the realistic route is a paid physical search in Accra.
 
-**UK Companies House has now been searched, and the layer is still empty — by decision.**
+**UK Companies House has now been searched, and the layer is still empty, by decision.**
 The register holds FIRST AFRICAN REMITTANCES LIMITED (02722739), incorporated 12 June 1992
 as First African Forex Bureau Limited, in financial intermediation, dissolved by voluntary
 strike-off on 22 October 2019. It names two directors serving at dissolution, both
@@ -52,11 +52,11 @@ Naming three private individuals in a repository about a banking collapse, on th
 of an identification the project itself marks open, would assert by juxtaposition a
 connection no document makes. The counts, nationalities and filing sequence are recorded
 in `data/raw/`; the names are not. So the person layer is empty because of a choice about
-what the evidence supports, not because the data could not be found — and that is a
+what the evidence supports, not because the data could not be found, and that is a
 different and more honest kind of gap.
 
 The company's last filed accounts and its annual returns were also examined, and
-deliberately not vendored for the same reason — they name individuals and shareholdings.
+deliberately not vendored for the same reason: they name individuals and shareholdings.
 The relevant negative is recorded in the changelog: **the accounts contain no related-party
 note, name no Ghanaian counterparty, and mention no sum resembling the GHS 5.40m.** They do
 not settle `RR007` either.
@@ -93,8 +93,8 @@ document's purpose.
 
 The project has already been caught by this once, in the right direction: reading the Bank
 of Ghana notice alone, no entity connected two of the 23. Reading the Commission's notice
-as well, one does. That was published as a property of the document — *the notice does not
-name one* — rather than as a fact about the world, which is why it could be updated rather
+as well, one does. That was published as a property of the document (*the notice does not
+name one*) rather than as a fact about the world, which is why it could be updated rather
 than retracted. The same caution applies to everything still reported as absent.
 
 Sources checked and found to yield nothing are recorded rather than quietly dropped: the
@@ -105,12 +105,12 @@ Bank of Ghana's 1 August 2018 universal-bank notice names none of these entities
 
 Every edge carries a confidence class, and the counts matter as much as the graph:
 
-- **`documented`** — the source names both ends
-- **`documented_unnamed`** — the source states the relationship, often with a count and an
+- **`documented`**: the source names both ends
+- **`documented_unnamed`**: the source states the relationship, often with a count and an
   amount, but does not name the counterparty. *"Related party transactions with eight
   related companies"* is the Bank of Ghana's assertion, not an inference, but the other
   end of the edge is a placeholder node
-- **`inferred`** — stated by no source. There are two. One is common ownership implied by
+- **`inferred`**: stated by no source. There are two. One is common ownership implied by
   a shared name (Ideal Financial Holdings and Ideal Finance); the other rests on a sibling
   relationship and a 2006 acquisition (the Hoda Group and uniSecurities). They carry no
   citation, and are excluded from every figure and from the map
@@ -135,14 +135,14 @@ project is expected to produce:
 
 What carries the analysis instead is the typology of mechanisms, the per-institution
 comparison on structural attributes, and three worked examples. Those do not depend on
-connectivity — though see section 7 on how much the comparison can actually bear.
+connectivity, though see section 7 on how much the comparison can actually bear.
 
 ## 5. Amounts are barely comparable, and most edges have none
 
 Twenty-nine of seventy-five edges carry a figure. They are not the same kind of figure:
 
 - 8 exact cedi amounts, 1 stated as a floor
-- 20 percentages — shares of a fund manager's own book, which have no currency and cannot
+- 20 percentages: shares of a fund manager's own book, which have no currency and cannot
   be converted to one
 - of those percentages, 11 are `combined_total`: one share stated across several
   counterparties at once, with no per-counterparty split available
@@ -151,7 +151,7 @@ Twenty-nine of seventy-five edges carry a figure. They are not the same kind of 
 value-moving edges out of an institution are ever summed. **GHS 261.72m is quantified
 across 7 of the 17 flagged institutions.** That is a floor on a floor: it is what the Bank
 of Ghana notice happened to state in cedis, not an estimate of what was lost. It is also a
-stock of exposure rather than a loss — see section 9 — and it adds figures from different
+stock of exposure rather than a loss (see section 9), and it adds figures from different
 dates: one of them, GHS 52.70m at Ideal Finance, comes from an onsite examination of
 September 2017. The actual losses are much larger and this project does not estimate them.
 
@@ -171,7 +171,7 @@ true one: those institutions share a fund manager who placed client money in bot
 is not evidence that they share an owner.
 
 The consequence runs the other way too. One institution the Bank of Ghana did **not** flag
-for related-party exposure — Commerz — appears in the Commission's notice on the receiving
+for related-party exposure, Commerz, appears in the Commission's notice on the receiving
 end of a placement the Commission describes as related-party. The 17-against-6 split is a
 property of the Bank of Ghana notice, not of the record.
 
@@ -185,8 +185,8 @@ not one.
 The `related_party_exposure` flag comes from `ghana-banking-collapse`, which coded it from
 the Bank of Ghana notice of 16 August 2019. The edges were extracted from **the same
 notice**. Two readings of one document agreeing tells you the extraction pipeline neither
-dropped an institution nor invented one — genuinely worth knowing, and the reason it is
-reported — but it is not corroboration by a second source, and the separation was close to
+dropped an institution nor invented one, genuinely worth knowing and the reason it is
+reported, but it is not corroboration by a second source, and the separation was close to
 guaranteed by where both variables come from.
 
 The same caution applies to any future comparison built on these two variables. They are
@@ -200,8 +200,8 @@ institution, and the two were conflated once in this repository's own output. Th
 calls these edges *value-moving* for that reason.
 
 Of the related-party edges that move value, 34 run out of one of the 23. The other 17
-either point into an institution — a fund manager placing client money there moves value
-*in* — or run between two parties neither of which is one of the 23, mostly fund managers
+either point into an institution (a fund manager placing client money there moves value
+*in*) or run between two parties neither of which is one of the 23, mostly fund managers
 placing their clients' money with their own related companies. That last group is a real
 finding about those fund managers and a different finding from anything about the 23.
 
@@ -213,7 +213,7 @@ side ended up better off is a question these documents do not answer.
 
 ## 9. Exposure is not loss
 
-Every cedi figure here is a **stock of exposure at a point in time** — a related-party
+Every cedi figure here is a **stock of exposure at a point in time**: a related-party
 credit exposure, a liability assumed, a receivable pre-financed. None is a realised loss,
 a recovery, or a transfer out of the institution's estate. GHS 160.10m of over-exposure at
 uniCredit says the concentration breached the limit, not that GHS 160.10m disappeared.
@@ -241,7 +241,7 @@ party of Legacy Fund Management, so they are two firms; at v0.7 the Bank of Ghan
 Commerz and Sterling Financial Services as two separate licensees, revoked on the same day.
 
 **Matching across documents follows a stated rule.** Where two documents use the same legal
-name — allowing for punctuation, case and a jurisdiction suffix — they are treated as the
+name, allowing for punctuation, case and a jurisdiction suffix, they are treated as the
 same entity. Where the names differ, the match is made only on a document, and otherwise
 becomes a resolution candidate. Every edge linking the SEC notice to the Bank of Ghana's
 entities depends on this rule, and the strength behind each match is not the same:
@@ -249,7 +249,7 @@ entities depends on this rule, and the strength behind each match is not the sam
 - **Gold Coast Fund Management**: matched on a document. The Bank of Ghana calls it SEC
   licensed and "now Blackshield Capital Management"; the Commission's section is
   "Blackshield Capital Management Ltd (formerly Gold Coast Fund Management Limited)".
-- **Liberty Asset Management**: same name, and the two notices corroborate each other —
+- **Liberty Asset Management**: same name, and the two notices corroborate each other;
   each names the other side of the Midland relationship.
 - **Ideal Capital Partners**: same name, and the Commission's section names Ideal Financial
   Holdings and FirsTrust as its related parties.
@@ -287,13 +287,13 @@ verbatim, in full, **at the line its anchor names**, and unless a named counterp
 named, as whole words, in the passage cited for its edge.
 
 **The passes were not identical, and the record says which was which.** The 39 edges of
-the first pass — 37 from the Bank of Ghana notice and the two inferred edges — were worked
+the first pass, 37 from the Bank of Ghana notice and the two inferred edges, were worked
 institution by institution from the sheets in `docs/review/`, each of which pairs an edge
 with its passage *and* lists every uncited passage in the same section. Two of them, `E043`
 and `I002`, touch no institution and so appear on no sheet; `E043`'s passage is shown on the
 GN sheet beside `E042`. The 30 edges from the Commission's notice were checked against
 `docs/review/sec/01-sections-with-edges.md`, which reproduces each cited section in full;
-the guarantee that nothing was missed comes from a different control there —
+the guarantee that nothing was missed comes from a different control there,
 `02-coverage.md`, which lists all 53 sections of that notice and flags any that names one
 of the 23 without carrying an edge. Per-edge checking shows the edges that exist are
 right. Only the coverage sheet shows that the ones that should exist do.
@@ -313,7 +313,7 @@ found that rule 11 had been checking only the first 80 characters of a quote. Un
 then, a citation guaranteed its quote began correctly, not that all of it was verbatim.
 Every quote passes the stricter rule.
 
-That guarantees the citations are real. It does not guarantee the *reading* is right — a
+That guarantees the citations are real. It does not guarantee the *reading* is right: a
 passage can be quoted correctly and still be interpreted too strongly. Two classes of
 judgment are not mechanically checkable and were made by a person:
 
@@ -322,7 +322,7 @@ judgment are not mechanically checkable and were made by a person:
 
 The review pack in `docs/review/` exists to make both re-checkable: it lists, beside every
 cited passage, every passage in the same section that no edge cites. That is where a
-missed relationship would hide, and it has caught one — the Commission's notice was
+missed relationship would hide, and it has caught one: the Commission's notice was
 under-read at v0.3, and nine sections naming one of the 23 went unnoticed until every
 section was listed rather than only the cited ones. It has limits too. Three of the five
 relationships the audit added sat in passages already cited for a different edge, which
@@ -336,11 +336,11 @@ In rough order of value against effort:
    layer this project was conceived around. Needs money and a physical search in Accra.
 2. **Receiver's reports and the loan books.** Not public. They would replace
    *"eight related companies"* with eight names.
-3. **A document settling `RR007`** — anything stating that UK company 02722739 is the
+3. **A document settling `RR007`**: anything stating that UK company 02722739 is the
    affiliate the Bank of Ghana names. A receiver's report, a filed account naming the
    Ghanaian counterparty, or a court listing would do it. Companies House alone gives
    convergence, not identification.
-4. **A document settling the uniSecurities match** — anything in the Commission's record
+4. **A document settling the uniSecurities match**: anything in the Commission's record
    connecting Unisecurities (Ghana) Limited to uniCredit or the Hoda Group (section 10).
 5. **The Bank of Ghana notice of 4 January 2019.** Public, not yet read.
 6. **The Supreme Court's decision on GN**, or its stay order of 14 July 2026, to replace
@@ -355,5 +355,5 @@ edge. All four are written down so that nobody, including a later version of thi
 project, searches them twice.
 
 Nothing in this list is a reason to discount what is here. The point of the list is that
-the ceiling on this analysis is a property of the public record, not of the method — and
+the ceiling on this analysis is a property of the public record, not of the method, and
 that where the record is thin, this repository says so rather than filling the gap.

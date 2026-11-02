@@ -6,16 +6,16 @@ Read the section in `data/raw/` from L338 to L384, then work through both parts 
 
 ---
 
-## Part 1 — edges seeded against this institution
+## Part 1: edges seeded against this institution
 
 For each: does the quote support the relationship, the direction, the amount and its basis, and the confidence class?
 
-### E006 — CDH Savings and Loans Ltd. → Ivory Finance Company Limited
+### E006: CDH Savings and Loans Ltd. → Ivory Finance Company Limited
 
 | | |
 |---|---|
 | relationship | `succeeded` |
-| amount | — |
+| amount | not stated |
 | confidence | `documented` |
 | anchor | `bog-2019-08-16-savings-loans-revocation:L340` |
 | current decision | confirmed |
@@ -24,12 +24,12 @@ For each: does the quote support the relationship, the direction, the amount and
 
 *Note carried from compilation:* Corporate succession not a related-party edge
 
-### E007 — CDH Savings and Loans Ltd. → UNNAMED affiliates of CDH
+### E007: CDH Savings and Loans Ltd. → UNNAMED affiliates of CDH
 
 | | |
 |---|---|
 | relationship | `transferred_collateral_to` |
-| amount | — |
+| amount | not stated |
 | confidence | `documented_unnamed` |
 | anchor | `bog-2019-08-16-savings-loans-revocation:L368` |
 | current decision | confirmed |
@@ -38,12 +38,12 @@ For each: does the quote support the relationship, the direction, the amount and
 
 *Note carried from compilation:* Collateral transferred to affiliates with no cash inflow; the notice frames it as an overstatement of the balance sheet
 
-### E008 — CDH Savings and Loans Ltd. → UNNAMED affiliates of CDH
+### E008: CDH Savings and Loans Ltd. → UNNAMED affiliates of CDH
 
 | | |
 |---|---|
 | relationship | `over_exposed_to` |
-| amount | — |
+| amount | not stated |
 | confidence | `documented_unnamed` |
 | anchor | `bog-2019-08-16-savings-loans-revocation:L373` |
 | current decision | confirmed |
@@ -52,12 +52,12 @@ For each: does the quote support the relationship, the direction, the amount and
 
 *Note carried from compilation:* Ratio stated not an amount; count not stated
 
-### E045 — CDH Savings and Loans Ltd. → UNNAMED related companies of CDH
+### E045: CDH Savings and Loans Ltd. → UNNAMED related companies of CDH
 
 | | |
 |---|---|
 | relationship | `placed_funds_with` |
-| amount | — |
+| amount | not stated |
 | confidence | `documented_unnamed` |
 | anchor | `bog-2019-08-16-savings-loans-revocation:L381` |
 | current decision | confirmed |
@@ -66,7 +66,7 @@ For each: does the quote support the relationship, the direction, the amount and
 
 *Note carried from compilation:* Placements/investments with related companies that CDH could not access; count and amount not stated. Held apart from ph-cdh-affiliates, because the notice says 'related companies' here and 'affiliate companies' elsewhere and does not say they are the same
 
-### P012 — CDH Savings and Loans Ltd. ← Mutual Integrity Asset Management Limited
+### P012: CDH Savings and Loans Ltd. ← Mutual Integrity Asset Management Limited
 
 | | |
 |---|---|
@@ -82,7 +82,7 @@ For each: does the quote support the relationship, the direction, the amount and
 
 ---
 
-## Part 2a — uncited passages that mention a relationship
+## Part 2a: uncited passages that mention a relationship
 
 These carry related-party, affiliate, ownership, officer or exposure wording and no edge cites them. This is where a missed relationship is most likely. For each: does it describe a relationship between this institution and another party? If so it needs an edge, and the passage needs a row in `data/evidence.csv` under the anchor shown.
 
@@ -91,9 +91,9 @@ These carry related-party, affiliate, ownership, officer or exposure wording and
 
 ---
 
-## Part 2b — the rest of the section (4 passages)
+## Part 2b: the rest of the section (4 passages)
 
-Mostly capital adequacy, net worth and reporting breaches. Listed so the section can be scanned in full — the extractor's vocabulary has been wrong twice already, so its judgement about what is irrelevant is not final.
+Mostly capital adequacy, net worth and reporting breaches. Listed so the section can be scanned in full, because the extractor's vocabulary has been wrong twice already and its judgement about what is irrelevant is not final.
 
 - `L352` The Specific issues which led to the revocation of the company's license are the following:
 - `L355` The institution's Net worth of negative GHS 171.36 million as at end May 2019 violated Section 28(1) Act 930.

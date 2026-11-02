@@ -6,7 +6,7 @@ Read the section in `data/raw/` from L277 to L305, then work through both parts 
 
 ---
 
-## Part 1 — edges seeded against this institution
+## Part 1: edges seeded against this institution
 
 For each: does the quote support the relationship, the direction, the amount and its basis, and the confidence class?
 
@@ -14,7 +14,7 @@ _No edge was seeded for this institution._
 
 ---
 
-## Part 2a — uncited passages that mention a relationship
+## Part 2a: uncited passages that mention a relationship
 
 These carry related-party, affiliate, ownership, officer or exposure wording and no edge cites them. This is where a missed relationship is most likely. For each: does it describe a relationship between this institution and another party? If so it needs an edge, and the passage needs a row in `data/evidence.csv` under the anchor shown.
 
@@ -26,9 +26,9 @@ These carry related-party, affiliate, ownership, officer or exposure wording and
 
 ---
 
-## Part 2b — the rest of the section (6 passages)
+## Part 2b: the rest of the section (6 passages)
 
-Mostly capital adequacy, net worth and reporting breaches. Listed so the section can be scanned in full — the extractor's vocabulary has been wrong twice already, so its judgement about what is irrelevant is not final.
+Mostly capital adequacy, net worth and reporting breaches. Listed so the section can be scanned in full, because the extractor's vocabulary has been wrong twice already and its judgement about what is irrelevant is not final.
 
 - `L279` Alpha Capital Savings and Loans Limited was licensed by the Bank of Ghana in January 2015 and commenced operations in April 2015.
 - `L290` The institution's Net worth of negative GHS 11.51 million as at end May 2019, violating Section 28(1) of Act 930.

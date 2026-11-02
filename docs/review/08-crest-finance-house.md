@@ -6,16 +6,16 @@ Read the section in `data/raw/` from L415 to L449, then work through both parts 
 
 ---
 
-## Part 1 — edges seeded against this institution
+## Part 1: edges seeded against this institution
 
 For each: does the quote support the relationship, the direction, the amount and its basis, and the confidence class?
 
-### E009 — Crest Finance House Limited → UNNAMED parent company of Crest
+### E009: Crest Finance House Limited → UNNAMED parent company of Crest
 
 | | |
 |---|---|
 | relationship | `over_exposed_to` |
-| amount | — |
+| amount | not stated |
 | confidence | `documented_unnamed` |
 | anchor | `bog-2019-08-16-savings-loans-revocation:L434` |
 | current decision | confirmed |
@@ -24,12 +24,12 @@ For each: does the quote support the relationship, the direction, the amount and
 
 *Note carried from compilation:* Exactly one parent implied
 
-### E010 — Crest Finance House Limited → UNNAMED company in which the Crest CEO is a director
+### E010: Crest Finance House Limited → UNNAMED company in which the Crest CEO is a director
 
 | | |
 |---|---|
 | relationship | `over_exposed_to` |
-| amount | — |
+| amount | not stated |
 | confidence | `documented_unnamed` |
 | anchor | `bog-2019-08-16-savings-loans-revocation:L434` |
 | current decision | confirmed |
@@ -38,12 +38,12 @@ For each: does the quote support the relationship, the direction, the amount and
 
 *Note carried from compilation:* Exposure to a company in which Crest's chief executive is a director; neither the company nor the chief executive is named
 
-### E047 — Crest Finance House Limited ← UNNAMED parent company of Crest
+### E047: Crest Finance House Limited ← UNNAMED parent company of Crest
 
 | | |
 |---|---|
 | relationship | `owns` |
-| amount | — |
+| amount | not stated |
 | confidence | `documented_unnamed` |
 | anchor | `bog-2019-08-16-savings-loans-revocation:L434` |
 | current decision | confirmed |
@@ -54,7 +54,7 @@ For each: does the quote support the relationship, the direction, the amount and
 
 ---
 
-## Part 2a — uncited passages that mention a relationship
+## Part 2a: uncited passages that mention a relationship
 
 These carry related-party, affiliate, ownership, officer or exposure wording and no edge cites them. This is where a missed relationship is most likely. For each: does it describe a relationship between this institution and another party? If so it needs an edge, and the passage needs a row in `data/evidence.csv` under the anchor shown.
 
@@ -66,9 +66,9 @@ These carry related-party, affiliate, ownership, officer or exposure wording and
 
 ---
 
-## Part 2b — the rest of the section (9 passages)
+## Part 2b: the rest of the section (9 passages)
 
-Mostly capital adequacy, net worth and reporting breaches. Listed so the section can be scanned in full — the extractor's vocabulary has been wrong twice already, so its judgement about what is irrelevant is not final.
+Mostly capital adequacy, net worth and reporting breaches. Listed so the section can be scanned in full, because the extractor's vocabulary has been wrong twice already and its judgement about what is irrelevant is not final.
 
 - `L422` In 2015, Bank of Ghana found the institution to be insolvent with serious liquidity challenges. The institution's capital adequacy ratio and net worth …
 - `L426` The specific issues that led to the revocation of its license included the following:

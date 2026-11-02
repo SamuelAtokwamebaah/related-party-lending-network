@@ -4,6 +4,21 @@ Modelling the insider relationships behind Ghana's 2019 savings & loans failures
 network, built from primary sources: what two regulators published, and one court
 judgment.
 
+### [Open the map](https://samuelatokwamebaah.github.io/related-party-lending-network/)
+
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="docs/images/map-headline-dark.png">
+  <img src="docs/images/map-headline-light.png" alt="Seventeen structures, not one network. Related-party lending appears in 17 of the 23 savings and loans companies and finance houses whose licences the Bank of Ghana revoked on 16 August 2019. Six figures follow: 23 institutions, 2 regulators' notices, 60 related-party edges, 17 separate structures, 1 entity linking two institutions, 1 circular funding loop.">
+</picture>
+
+**The headline is a negative result, and it is the honest one.** The documented graph falls
+into **17 disconnected components**, the largest holding 10 nodes. There is no single
+insider network behind these failures in the public record, so whole-network centrality and
+community detection are reported here as the degenerate non-results they are rather than
+dressed up as findings. Two things do cross between institutions, and **neither is visible
+in either regulator's notice on its own**: one entity connecting two of the 23, and one
+closed funding loop.
+
 > **Status: complete at `v0.7`.** All 75 edges have been checked by hand against the
 > source that supports them, and the decisions are recorded in `data/verification.csv` and
 > versioned in `data/changelog.csv`. Nothing here is a finding about any institution or
@@ -14,7 +29,7 @@ judgment.
 
 | | |
 |---|---|
-| [`index.html`](index.html) | the map. Every connection shows the passage behind it. Open it in a browser: GitHub displays the file as source |
+| [the map](https://samuelatokwamebaah.github.io/related-party-lending-network/) | every connection shows the passage behind it. Rendered from the database by `scripts/build_site.py` into [`index.html`](index.html), which GitHub itself displays as source |
 | [docs/LIMITATIONS.md](docs/LIMITATIONS.md) | **what this cannot show, and why.** Read it before the findings, not after |
 | [docs/phase2/FINDINGS.md](docs/phase2/FINDINGS.md) | the analyses in full, including the ones that returned nothing |
 
@@ -61,10 +76,10 @@ names, and the analyses that returned nothing are published alongside the ones t
   reporting because no document is in hand.
 - Every node and every edge carries a source document and a line-level anchor.
 - Each edge carries a confidence class:
-  - `documented` — the source names both ends of the relationship
-  - `documented_unnamed` — the source states the relationship, and often the count and
+  - `documented`: the source names both ends of the relationship
+  - `documented_unnamed`: the source states the relationship, and often the count and
     the amount, but not the counterparty's identity
-  - `inferred` — not stated in any source in hand. Excluded from every headline figure
+  - `inferred`: not stated in any source in hand. Excluded from every headline figure
     and from the map.
 - An entity is matched across two documents only where both use the same legal name,
   allowing for punctuation, case and a jurisdiction suffix. A different name is resolved
@@ -81,7 +96,7 @@ and excluded from every figure. Of those, **60 edges form the related-party grap
 13 sit in a separate placement layer described below.
 
 The 17 institutions carrying a value-moving edge out are exactly the 17 flagged for
-related-party exposure in `ghana-banking-collapse` — but that agreement is a **consistency
+related-party exposure in `ghana-banking-collapse`, but that agreement is a **consistency
 check, not a confirmation**. Both sides are readings of the same Bank of Ghana notice, so
 the separation was close to guaranteed. It shows the extraction pipeline neither dropped
 an institution nor invented one. It is not a second source corroborating the first, and
@@ -101,16 +116,27 @@ sourcing standard rather than against it:
   Securities and Exchange Commission records Ideal Capital Partners holding funds in
   related parties that include FirsTrust. Phase 2 reported, from the Bank of Ghana notice
   alone, that no entity connected two of the 23. That was stated as a property of the
-  document — *the notice does not name one* — rather than of the world, which is why the
+  document (*the notice does not name one*) rather than of the world, which is why the
   finding could be updated instead of retracted.
 - **The one closed funding loop appears in neither notice alone.** The Bank of Ghana
   records Midland as over-exposed to Liberty Asset Management; the Securities and Exchange
   Commission records Liberty placing 9.45% of its funds with Midland. Each held the other,
   and value moves along both arrows. Five cycles exist and exactly one qualifies: the
   other four carry a merger application, an acquisition or an ownership stake on some leg,
-  which is structure, not money. It is called a *funding* loop on purpose — value leaves
+  which is structure, not money. It is called a *funding* loop on purpose: value leaves
   Midland to a related party and that party's client money funds Midland. Whether either
   side ended better off is not something these documents say.
+
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="docs/images/map-network-dark.png">
+  <img src="docs/images/map-network-light.png" alt="The largest component drawn as a graph. uniSecurities sits at the centre with arrows out to Hoda Holdings Ltd, Intrepid Venture Capital Ltd, Integrated Properties Ltd, Premier Portfolio, Numa Logistics, Alban Logistics and Bolton Portfolio Ltd, an arrow in from uniCredit Ghana, and a dotted structural arrow from the Hoda Group of Companies into uniCredit Ghana.">
+</picture>
+
+<sub>The largest structure in the evidence base, and it takes both regulators to see it. The
+Bank of Ghana records uniCredit's exposure to its sister company; the Commission lists
+uniSecurities' related parties. Solid arrows move value, dotted ones are structural only.
+Whether Hoda Holdings and the Hoda Group are one entity is an open question here (`RR004`),
+not an assumption.</sub>
 
 The three worked examples are the uniCredit / uniSecurities / Hoda component, the Ideal
 Financial Holdings cluster, and Midland / Liberty. GN Savings and Loans is **not** among
@@ -132,19 +158,19 @@ not: a fund manager placing client money in one of the 23, with **no related-par
 attached**. Value moves; no insider relationship is alleged. There are 13 such edges from
 7 fund managers, reaching 8 of the 23.
 
-They are held in a separate layer — `layer = 'placement'` in `relationship_types`,
+They are held in a separate layer, `layer = 'placement'` in `relationship_types`,
 filtered out of `v_institution_profile`, excluded from every figure in the related-party
 analysis, and shown on the page in a table rather than in the diagrams.
 
 The reason is a number rather than a principle. Five of the seven fund managers name more
 than one of the 23. Admitting these as ordinary edges would take the graph from **17
-components, largest 10** to **12 components, largest 26** — one structure holding most of
+components, largest 10** to **12 components, largest 26**, one structure holding most of
 the graph. That structure is real, and it is not an insider network: it is a set of
 institutions that share a fund manager who placed client money in both. It would be the
 most impressive version of this project and the least true one.
 
 One of the eight institutions the placement layer reaches is **Commerz**, which the Bank
-of Ghana did *not* flag for related-party exposure — and a separate fund manager, Nordea
+of Ghana did *not* flag for related-party exposure; a separate fund manager, Nordea
 Capital, is recorded as placing 50% of its funds under management with Commerz *as a
 related party*. The clean 17-against-6 split is a property of the Bank of Ghana notice,
 not of the record as a whole. (Nordea's edge, `P003`, carries a P prefix from the batch it
@@ -159,7 +185,7 @@ rather than as a finding.
 
 The register holds **FIRST AFRICAN REMITTANCES LIMITED (02722739)**, incorporated in 1992
 as First African Forex Bureau Limited, in financial intermediation, which applied to strike
-itself off on 30 May 2019 and was dissolved on 22 October 2019 — two months after the Bank
+itself off on 30 May 2019 and was dissolved on 22 October 2019, two months after the Bank
 of Ghana revoked First African Savings and Loans' licence in a notice that cites, among
 other issues, GHS 5.40m its UK affiliate had not reimbursed. Two directors serving at
 dissolution, both recorded as Ghanaian nationals resident in Ghana, with a correspondence
@@ -171,12 +197,12 @@ depends on it. The company sits in the evidence base and not in the graph: at v0
 graph stayed at 63 nodes and 54 edges, exactly as before.
 
 The register also names the individuals. They are **not reproduced here**. No regulator has
-named any individual in connection with this failure, and the identification is open —
-naming them would assert by juxtaposition a connection no document makes. Counts,
+named any individual in connection with this failure, and the identification is open.
+Naming them would assert by juxtaposition a connection no document makes. Counts,
 nationalities and the filing sequence are recorded; names are not.
 
 **On provenance.** The register's summary pages publish no archived document, so what
-could be transcribed from them was, at first, all there was — and a quote checked against a
+could be transcribed from them was, at first, all there was, and a quote checked against a
 transcription is only checked against the transcription. That has been fixed where it
 matters. The Registrar's own notices are downloaded and vendored in `sources/`: the first
 Gazette notice, the striking-off suspension, and the dissolution. They are one-page scans
@@ -186,7 +212,7 @@ the register transcription only: the strike-off application of 30 May 2019, and 
 2019 for the suspension, whose notice carries no date.
 
 That upgrade also turned an inference into a quotation. The suspension of the strike-off
-had been read from the filing sequence; the notice states it outright — *"suspended as an
+had been read from the filing sequence; the notice states it outright: *"suspended as an
 objection has been received by the Registrar"*. The Registrar does not say who objected.
 
 The register-summary transcription now supports only what nothing else does: the registered
@@ -279,6 +305,8 @@ docs/phase1/  SCHEMA-PROPOSAL.md    the data model as agreed at v0.1 (historical
 docs/phase2/  FINDINGS.md           the analyses, with what they cannot show
               metrics.json          the same numbers, machine-readable
 index.html    the network map, rendered from the database
+docs/images/  screenshots of that map for this file, light and dark, and the card
+              GitHub shows when the repository is linked somewhere else
 docs/review/  one verification sheet per institution, built from the Bank of Ghana notice
 docs/review/sec/  the SEC notice: sections with edges, and coverage of every section
 docs/review/ca-2026-05-21-gn-judgment.md  the GN judgment: transcription against the scan
@@ -316,7 +344,7 @@ one sheet per cited section of the Commission's notice plus a coverage sheet lis
 What makes the pack worth having is what it lists *besides* the citations: every passage
 in the same section that no edge cites, and every section of the Commission's notice from
 which no edge was drawn. That is where a missed relationship hides, and it has caught two
-kinds — the Commission's notice was under-read at v0.3, and nine sections naming one of the
+kinds: the Commission's notice was under-read at v0.3, and nine sections naming one of the
 23 went unnoticed until every section was listed rather than only the cited ones. It did
 not catch everything. The pre-release audit found five relationships the Bank of Ghana
 notice states and no edge recorded: two in passages the sheets listed as uncited, and three
@@ -337,7 +365,7 @@ visible in the data rather than buried:
   different entities, each on a document: at v0.4, because the Commission calls Legacy
   Capital Savings a related party of Legacy Fund Management; at v0.7, because the Bank of
   Ghana lists Commerz and Sterling Financial Services as two separate licensees. `RR007`
-  was opened at v0.5 by the Companies House search — see above.
+  was opened at v0.5 by the Companies House search; see above.
 - Two edges are classed `inferred`. They rest on no source, carry no citation, and are
   excluded from every figure and from the map.
 

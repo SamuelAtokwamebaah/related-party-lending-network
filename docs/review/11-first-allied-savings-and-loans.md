@@ -6,16 +6,16 @@ Read the section in `data/raw/` from L538 to L594, then work through both parts 
 
 ---
 
-## Part 1 — edges seeded against this institution
+## Part 1: edges seeded against this institution
 
 For each: does the quote support the relationship, the direction, the amount and its basis, and the confidence class?
 
-### E013 — First Allied Savings and Loans Limited ← UNNAMED major shareholder of First Allied
+### E013: First Allied Savings and Loans Limited ← UNNAMED major shareholder of First Allied
 
 | | |
 |---|---|
 | relationship | `owns` |
-| amount | — |
+| amount | not stated |
 | confidence | `documented_unnamed` |
 | anchor | `bog-2019-08-16-savings-loans-revocation:L543` |
 | current decision | confirmed |
@@ -24,7 +24,7 @@ For each: does the quote support the relationship, the direction, the amount and
 
 *Note carried from compilation:* Stated as the institution's Board Chairman/Majority Shareholder (L543); identity and shareholding not stated
 
-### E014 — First Allied Savings and Loans Limited → UNNAMED eight related companies of First Allied
+### E014: First Allied Savings and Loans Limited → UNNAMED eight related companies of First Allied
 
 | | |
 |---|---|
@@ -42,7 +42,7 @@ For each: does the quote support the relationship, the direction, the amount and
 
 ---
 
-## Part 2a — uncited passages that mention a relationship
+## Part 2a: uncited passages that mention a relationship
 
 These carry related-party, affiliate, ownership, officer or exposure wording and no edge cites them. This is where a missed relationship is most likely. For each: does it describe a relationship between this institution and another party? If so it needs an edge, and the passage needs a row in `data/evidence.csv` under the anchor shown.
 
@@ -50,9 +50,9 @@ _None. Every passage carrying relationship wording is cited._
 
 ---
 
-## Part 2b — the rest of the section (11 passages)
+## Part 2b: the rest of the section (11 passages)
 
-Mostly capital adequacy, net worth and reporting breaches. Listed so the section can be scanned in full — the extractor's vocabulary has been wrong twice already, so its judgement about what is irrelevant is not final.
+Mostly capital adequacy, net worth and reporting breaches. Listed so the section can be scanned in full, because the extractor's vocabulary has been wrong twice already and its judgement about what is irrelevant is not final.
 
 - `L540` First Allied Savings and Loans Limited (FASL) was licensed by Bank of Ghana to operate as a savings and loans company on March 27, 1996.
 - `L555` A review of the institution's operations in July 2018 revealed that its reported financial statements did not reflect its true state of affairs. An ad …

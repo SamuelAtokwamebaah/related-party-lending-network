@@ -130,7 +130,7 @@ Decision: **confirmed**, 14 September 2026, Samuel Ato Kwame Baah
 | field | before the audit | now |
 |---|---|---|
 | amount_note | total related party loans; reconcile against the GHS 63.19m figure | Total related party loans per the onsite examination of September 2017 (L913); the GHS 63.19m on E024 and E025 is a later figure |
-| as_at_date | — | 2017-09 |
+| as_at_date | none | 2017-09 |
 
 *Why:* Changed in the v0.7 pre-release audit: as_at_date 2017-09 added: the figure comes from the September 2017 onsite examination, which explains why it differs from the GHS 63.19m. Previously confirmed on 2026-09-04 by Samuel Ato Kwame Baah. Awaiting a re-check against the source.
 
@@ -174,17 +174,17 @@ Decision: **confirmed**, 14 September 2026, Samuel Ato Kwame Baah
 
 | field | before the audit | now |
 |---|---|---|
-| source_entity_id | — | `inst-cdh` |
-| target_entity_id | — | `ph-cdh-related-companies` |
+| source_entity_id | none | `inst-cdh` |
+| target_entity_id | none | `ph-cdh-related-companies` |
 | relationship | *(new edge)* | `placed_funds_with` |
-| amount_value | — | — |
-| amount_currency | — | — |
-| amount_unit | — | — |
-| amount_basis | — | — |
-| amount_note | — | — |
-| as_at_date | — | — |
-| confidence | — | `documented_unnamed` |
-| evidence_anchors | — | bog-2019-08-16-savings-loans-revocation:L381 |
+| amount_value | none | none |
+| amount_currency | none | none |
+| amount_unit | none | none |
+| amount_basis | none | none |
+| amount_note | none | none |
+| as_at_date | none | none |
+| confidence | none | `documented_unnamed` |
+| evidence_anchors | none | bog-2019-08-16-savings-loans-revocation:L381 |
 
 *Why:* Changed in the v0.7 pre-release audit: added in the pre-release audit. Awaiting a re-check against the source.
 
@@ -202,17 +202,17 @@ Decision: **confirmed**, 14 September 2026, Samuel Ato Kwame Baah
 
 | field | before the audit | now |
 |---|---|---|
-| source_entity_id | — | `inst-gn` |
-| target_entity_id | — | `ph-gn-related-parties` |
+| source_entity_id | none | `inst-gn` |
+| target_entity_id | none | `ph-gn-related-parties` |
 | relationship | *(new edge)* | `over_exposed_to` |
-| amount_value | — | — |
-| amount_currency | — | — |
-| amount_unit | — | — |
-| amount_basis | — | — |
-| amount_note | — | — |
-| as_at_date | — | — |
-| confidence | — | `documented_unnamed` |
-| evidence_anchors | — | bog-2019-08-16-savings-loans-revocation:L826 |
+| amount_value | none | none |
+| amount_currency | none | none |
+| amount_unit | none | none |
+| amount_basis | none | none |
+| amount_note | none | none |
+| as_at_date | none | none |
+| confidence | none | `documented_unnamed` |
+| evidence_anchors | none | bog-2019-08-16-savings-loans-revocation:L826 |
 
 *Why:* Changed in the v0.7 pre-release audit: added in the pre-release audit. Awaiting a re-check against the source.
 
@@ -230,17 +230,17 @@ Decision: **confirmed**, 14 September 2026, Samuel Ato Kwame Baah
 
 | field | before the audit | now |
 |---|---|---|
-| source_entity_id | — | `ph-crest-parent` |
-| target_entity_id | — | `inst-crest` |
+| source_entity_id | none | `ph-crest-parent` |
+| target_entity_id | none | `inst-crest` |
 | relationship | *(new edge)* | `owns` |
-| amount_value | — | — |
-| amount_currency | — | — |
-| amount_unit | — | — |
-| amount_basis | — | — |
-| amount_note | — | — |
-| as_at_date | — | — |
-| confidence | — | `documented_unnamed` |
-| evidence_anchors | — | bog-2019-08-16-savings-loans-revocation:L434 |
+| amount_value | none | none |
+| amount_currency | none | none |
+| amount_unit | none | none |
+| amount_basis | none | none |
+| amount_note | none | none |
+| as_at_date | none | none |
+| confidence | none | `documented_unnamed` |
+| evidence_anchors | none | bog-2019-08-16-savings-loans-revocation:L434 |
 
 *Why:* Changed in the v0.7 pre-release audit: added in the pre-release audit. Awaiting a re-check against the source.
 
@@ -258,17 +258,17 @@ Decision: **confirmed**, 14 September 2026, Samuel Ato Kwame Baah
 
 | field | before the audit | now |
 |---|---|---|
-| source_entity_id | — | `inst-dream` |
-| target_entity_id | — | `ph-dream-6` |
+| source_entity_id | none | `inst-dream` |
+| target_entity_id | none | `ph-dream-6` |
 | relationship | *(new edge)* | `funded_projects_of` |
-| amount_value | — | — |
-| amount_currency | — | — |
-| amount_unit | — | — |
-| amount_basis | — | — |
-| amount_note | — | — |
-| as_at_date | — | — |
-| confidence | — | `documented_unnamed` |
-| evidence_anchors | — | bog-2019-08-16-savings-loans-revocation:L472 |
+| amount_value | none | none |
+| amount_currency | none | none |
+| amount_unit | none | none |
+| amount_basis | none | none |
+| amount_note | none | none |
+| as_at_date | none | none |
+| confidence | none | `documented_unnamed` |
+| evidence_anchors | none | bog-2019-08-16-savings-loans-revocation:L472 |
 
 *Why:* Changed in the v0.7 pre-release audit: added in the pre-release audit. Awaiting a re-check against the source.
 
@@ -286,17 +286,17 @@ Decision: **confirmed**, 14 September 2026, Samuel Ato Kwame Baah
 
 | field | before the audit | now |
 |---|---|---|
-| source_entity_id | — | `inst-firstrust` |
-| target_entity_id | — | `ph-firstrust-6` |
+| source_entity_id | none | `inst-firstrust` |
+| target_entity_id | none | `ph-firstrust-6` |
 | relationship | *(new edge)* | `funded_projects_of` |
-| amount_value | — | — |
-| amount_currency | — | — |
-| amount_unit | — | — |
-| amount_basis | — | — |
-| amount_note | — | — |
-| as_at_date | — | — |
-| confidence | — | `documented_unnamed` |
-| evidence_anchors | — | bog-2019-08-16-savings-loans-revocation:L685 |
+| amount_value | none | none |
+| amount_currency | none | none |
+| amount_unit | none | none |
+| amount_basis | none | none |
+| amount_note | none | none |
+| as_at_date | none | none |
+| confidence | none | `documented_unnamed` |
+| evidence_anchors | none | bog-2019-08-16-savings-loans-revocation:L685 |
 
 *Why:* Changed in the v0.7 pre-release audit: added in the pre-release audit. Awaiting a re-check against the source.
 
@@ -315,7 +315,7 @@ Decision: **confirmed**, 14 September 2026, Samuel Ato Kwame Baah
 | field | before the audit | now |
 |---|---|---|
 | amount_note | 99.41% of funds under management; a ratio, not an amount | 99.41% of funds under management per the 2nd Quarter 2018 placement report; a ratio, not an amount |
-| as_at_date | — | 2018-06-30 |
+| as_at_date | none | 2018-06-30 |
 
 *Why:* Changed in the v0.7 pre-release audit: as_at_date 2018-06-30 added from the 2nd Quarter 2018 placement report. Previously confirmed on 2026-09-04 by Samuel Ato Kwame Baah. Awaiting a re-check against the source.
 

@@ -13,12 +13,14 @@ STYLE = """
   --border:    #e2e2dc;
   --text-primary:   #0b0b0b;
   --text-secondary: #52514e;
-  --text-muted:     #78776f;
+  --text-muted:     #717069;
   --series-1: #2a78d6;
   --series-2: #eb6834;
   --series-3: #1baf7a;
   --edge:     #9a998f;
-  --accent:   #2a78d6;
+  /* Darker than --series-1, which is the same blue: this one carries link text
+     and has to clear 4.5:1 on every surface, not the 3:1 a drawn mark needs. */
+  --accent:   #2670c8;
 }
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) {

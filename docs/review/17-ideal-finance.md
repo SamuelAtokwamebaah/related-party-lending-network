@@ -6,11 +6,11 @@ Read the section in `data/raw/` from L861 to L967, then work through both parts 
 
 ---
 
-## Part 1 — edges seeded against this institution
+## Part 1: edges seeded against this institution
 
 For each: does the quote support the relationship, the direction, the amount and its basis, and the confidence class?
 
-### E018 — Ideal Finance Limited ← FirsTrust Savings and Loans Limited
+### E018: Ideal Finance Limited ← FirsTrust Savings and Loans Limited
 
 | | |
 |---|---|
@@ -28,12 +28,12 @@ For each: does the quote support the relationship, the direction, the amount and
 
 *Amount note:* Projected cash injection of GHS 127.00m into the merged entity, if approved; not a flow between the two parties
 
-### E024 — Ideal Finance Limited → FirsTrust Savings and Loans Limited
+### E024: Ideal Finance Limited → FirsTrust Savings and Loans Limited
 
 | | |
 |---|---|
 | relationship | `related_party_exposure_to` |
-| amount | — |
+| amount | not stated |
 | confidence | `documented` |
 | anchor | `bog-2019-08-16-savings-loans-revocation:L894; bog-2019-08-16-savings-loans-revocation:L861` |
 | current decision | confirmed |
@@ -46,12 +46,12 @@ For each: does the quote support the relationship, the direction, the amount and
 
 *Amount note:* GHS 63.19m is stated across E024 and E025 together
 
-### E025 — Ideal Finance Limited → Ideal Capital Partners
+### E025: Ideal Finance Limited → Ideal Capital Partners
 
 | | |
 |---|---|
 | relationship | `related_party_exposure_to` |
-| amount | — |
+| amount | not stated |
 | confidence | `documented` |
 | anchor | `bog-2019-08-16-savings-loans-revocation:L894; bog-2019-08-16-savings-loans-revocation:L861` |
 | current decision | confirmed |
@@ -64,7 +64,7 @@ For each: does the quote support the relationship, the direction, the amount and
 
 *Amount note:* GHS 63.19m is stated across E024 and E025 together
 
-### E026 — Ideal Finance Limited → UNNAMED affiliates of Ideal Finance
+### E026: Ideal Finance Limited → UNNAMED affiliates of Ideal Finance
 
 | | |
 |---|---|
@@ -80,19 +80,19 @@ For each: does the quote support the relationship, the direction, the amount and
 
 *Amount note:* Total related party loans per the onsite examination of September 2017 (L913); the GHS 63.19m on E024 and E025 is a later figure
 
-### I001 — Ideal Finance Limited ← Ideal Financial Holdings
+### I001: Ideal Finance Limited ← Ideal Financial Holdings
 
 | | |
 |---|---|
 | relationship | `owns` |
-| amount | — |
+| amount | not stated |
 | confidence | `inferred` |
-| anchor | `(none — inferred)` |
+| anchor | `(none, inferred)` |
 | current decision | confirmed |
 
 *Note carried from compilation:* INFERRED from name only. No source in hand states it. Excluded from headline findings until documented
 
-### P005 — Ideal Finance Limited ← Goldstreet Fund Management Limited
+### P005: Ideal Finance Limited ← Goldstreet Fund Management Limited
 
 | | |
 |---|---|
@@ -106,7 +106,7 @@ For each: does the quote support the relationship, the direction, the amount and
 
 ---
 
-## Part 2a — uncited passages that mention a relationship
+## Part 2a: uncited passages that mention a relationship
 
 These carry related-party, affiliate, ownership, officer or exposure wording and no edge cites them. This is where a missed relationship is most likely. For each: does it describe a relationship between this institution and another party? If so it needs an edge, and the passage needs a row in `data/evidence.csv` under the anchor shown.
 
@@ -127,9 +127,9 @@ These carry related-party, affiliate, ownership, officer or exposure wording and
 
 ---
 
-## Part 2b — the rest of the section (15 passages)
+## Part 2b: the rest of the section (15 passages)
 
-Mostly capital adequacy, net worth and reporting breaches. Listed so the section can be scanned in full — the extractor's vocabulary has been wrong twice already, so its judgement about what is irrelevant is not final.
+Mostly capital adequacy, net worth and reporting breaches. Listed so the section can be scanned in full, because the extractor's vocabulary has been wrong twice already and its judgement about what is irrelevant is not final.
 
 - `L863` Ideal Finance Limited was incorporated in 2009 under the Companies Act, 1963 (Act 179 and licensed by the Bank of Ghana under the Non-Bank Financial I …
 - `L869` Ideal Finance has been faced with severe insolvency and liquidity challenges over the past two years. The Institution faces a significant capital shor …

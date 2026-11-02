@@ -24,7 +24,9 @@ keywords:
   - regulatory data
   - Ghana banking sector clean-up
   - reproducible research
-license: MIT
+license:
+  - MIT
+  - CC-BY-4.0
 references:
   - type: dataset
     title: "Ghana Banking Sector Collapse: dataset and analysis"

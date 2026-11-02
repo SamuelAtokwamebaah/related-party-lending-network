@@ -6,11 +6,11 @@ Read the section in `data/raw/` from L713 to L753, then work through both parts 
 
 ---
 
-## Part 1 — edges seeded against this institution
+## Part 1: edges seeded against this institution
 
 For each: does the quote support the relationship, the direction, the amount and its basis, and the confidence class?
 
-### E019 — Global Access Savings and Loans Company Limited → UNNAMED majority shareholder of Global Access
+### E019: Global Access Savings and Loans Company Limited → UNNAMED majority shareholder of Global Access
 
 | | |
 |---|---|
@@ -24,12 +24,12 @@ For each: does the quote support the relationship, the direction, the amount and
 
 *Note carried from compilation:* Loan contracted by the majority shareholder, concealed in a suspense account; the shareholder is not named
 
-### E020 — Global Access Savings and Loans Company Limited → UNNAMED majority shareholder of Global Access
+### E020: Global Access Savings and Loans Company Limited → UNNAMED majority shareholder of Global Access
 
 | | |
 |---|---|
 | relationship | `pays_rent_to` |
-| amount | — |
+| amount | not stated |
 | confidence | `documented_unnamed` |
 | anchor | `bog-2019-08-16-savings-loans-revocation:L741` |
 | current decision | confirmed |
@@ -40,7 +40,7 @@ For each: does the quote support the relationship, the direction, the amount and
 
 ---
 
-## Part 2a — uncited passages that mention a relationship
+## Part 2a: uncited passages that mention a relationship
 
 These carry related-party, affiliate, ownership, officer or exposure wording and no edge cites them. This is where a missed relationship is most likely. For each: does it describe a relationship between this institution and another party? If so it needs an edge, and the passage needs a row in `data/evidence.csv` under the anchor shown.
 
@@ -49,9 +49,9 @@ These carry related-party, affiliate, ownership, officer or exposure wording and
 
 ---
 
-## Part 2b — the rest of the section (9 passages)
+## Part 2b: the rest of the section (9 passages)
 
-Mostly capital adequacy, net worth and reporting breaches. Listed so the section can be scanned in full — the extractor's vocabulary has been wrong twice already, so its judgement about what is irrelevant is not final.
+Mostly capital adequacy, net worth and reporting breaches. Listed so the section can be scanned in full, because the extractor's vocabulary has been wrong twice already and its judgement about what is irrelevant is not final.
 
 - `L715` Global Access Savings and Loans Company Limited was incorporated under the laws of Ghana in 1998 and commenced business in February 2000 as a Partner  …
 - `L730` The specific issues that led to the revocation of its license included the following:

@@ -81,7 +81,7 @@ def match_section_to_entity(section_name, entities):
 
 def amount_str(edge):
     if not edge.get("amount_value"):
-        return "—"
+        return "not stated"
     unit = "m" if edge.get("amount_unit") == "million" else ""
     basis = edge.get("amount_basis") or "?"
     return f"{edge.get('amount_currency','?')} {edge['amount_value']}{unit} ({basis})"
@@ -151,7 +151,7 @@ def main():
             "",
             "---",
             "",
-            "## Part 1 — edges seeded against this institution",
+            "## Part 1: edges seeded against this institution",
             "",
             "For each: does the quote support the relationship, the direction, the "
             "amount and its basis, and the confidence class?",
@@ -167,14 +167,14 @@ def main():
             direction = "→" if other[0] == "target" else "←"
             prior = existing.get(e["edge_id"], {}).get("decision", "")
             md += [
-                f"### {e['edge_id']} — {entity['canonical_name']} {direction} {counterparty}",
+                f"### {e['edge_id']}: {entity['canonical_name']} {direction} {counterparty}",
                 "",
                 f"| | |",
                 f"|---|---|",
                 f"| relationship | `{e['relationship']}` |",
                 f"| amount | {amount_str(e)} |",
                 f"| confidence | `{e['confidence']}` |",
-                f"| anchor | `{e.get('evidence_anchors') or '(none — inferred)'}` |",
+                f"| anchor | `{e.get('evidence_anchors') or '(none, inferred)'}` |",
                 f"| current decision | {prior or '**pending**'} |",
                 "",
             ]
@@ -190,7 +190,7 @@ def main():
         md += [
             "---",
             "",
-            "## Part 2a — uncited passages that mention a relationship",
+            "## Part 2a: uncited passages that mention a relationship",
             "",
             "These carry related-party, affiliate, ownership, officer or exposure "
             "wording and no edge cites them. This is where a missed relationship is "
@@ -208,11 +208,11 @@ def main():
         md += [
             "---",
             "",
-            f"## Part 2b — the rest of the section ({len(rest)} passages)",
+            f"## Part 2b: the rest of the section ({len(rest)} passages)",
             "",
             "Mostly capital adequacy, net worth and reporting breaches. Listed so the "
-            "section can be scanned in full — the extractor's vocabulary has been wrong "
-            "twice already, so its judgement about what is irrelevant is not final.",
+            "section can be scanned in full, because the extractor's vocabulary has been "
+            "wrong twice already and its judgement about what is irrelevant is not final.",
             "",
         ]
         if not rest:
@@ -292,9 +292,9 @@ def main():
         "no institution and so appear on no sheet here: E043, whose passage is shown "
         "on the GN sheet beside E042, and the inferred I002.",
         "",
-        "- [sec/01-sections-with-edges.md](sec/01-sections-with-edges.md) — every section "
+        "- [sec/01-sections-with-edges.md](sec/01-sections-with-edges.md): every section "
         "an edge cites, reproduced in full, with the edges drawn from it",
-        "- [sec/02-coverage.md](sec/02-coverage.md) — every section, marked for whether "
+        "- [sec/02-coverage.md](sec/02-coverage.md): every section, marked for whether "
         "they name one of the 23 and whether an edge exists. Read this one first: v0.3 "
         "read four sections and stopped, and nine more named one of the 23.",
         "",

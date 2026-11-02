@@ -6,11 +6,11 @@ Read the section in `data/raw/` from L657 to L712, then work through both parts 
 
 ---
 
-## Part 1 — edges seeded against this institution
+## Part 1: edges seeded against this institution
 
 For each: does the quote support the relationship, the direction, the amount and its basis, and the confidence class?
 
-### E017 — FirsTrust Savings and Loans Limited → UNNAMED six related companies of FirsTrust
+### E017: FirsTrust Savings and Loans Limited → UNNAMED six related companies of FirsTrust
 
 | | |
 |---|---|
@@ -24,7 +24,7 @@ For each: does the quote support the relationship, the direction, the amount and
 
 *Note carried from compilation:* Count and amount stated; names not
 
-### E018 — FirsTrust Savings and Loans Limited → Ideal Finance Limited
+### E018: FirsTrust Savings and Loans Limited → Ideal Finance Limited
 
 | | |
 |---|---|
@@ -42,12 +42,12 @@ For each: does the quote support the relationship, the direction, the amount and
 
 *Amount note:* Projected cash injection of GHS 127.00m into the merged entity, if approved; not a flow between the two parties
 
-### E024 — FirsTrust Savings and Loans Limited ← Ideal Finance Limited
+### E024: FirsTrust Savings and Loans Limited ← Ideal Finance Limited
 
 | | |
 |---|---|
 | relationship | `related_party_exposure_to` |
-| amount | — |
+| amount | not stated |
 | confidence | `documented` |
 | anchor | `bog-2019-08-16-savings-loans-revocation:L894; bog-2019-08-16-savings-loans-revocation:L861` |
 | current decision | confirmed |
@@ -60,12 +60,12 @@ For each: does the quote support the relationship, the direction, the amount and
 
 *Amount note:* GHS 63.19m is stated across E024 and E025 together
 
-### E037 — FirsTrust Savings and Loans Limited ← Ideal Financial Holdings
+### E037: FirsTrust Savings and Loans Limited ← Ideal Financial Holdings
 
 | | |
 |---|---|
 | relationship | `acquired` |
-| amount | — |
+| amount | not stated |
 | confidence | `documented` |
 | anchor | `bog-2019-08-16-savings-loans-revocation:L659` |
 | current decision | confirmed |
@@ -74,12 +74,12 @@ For each: does the quote support the relationship, the direction, the amount and
 
 *Note carried from compilation:* Acquisition dated 2014
 
-### E049 — FirsTrust Savings and Loans Limited → UNNAMED six related companies of FirsTrust
+### E049: FirsTrust Savings and Loans Limited → UNNAMED six related companies of FirsTrust
 
 | | |
 |---|---|
 | relationship | `funded_projects_of` |
-| amount | — |
+| amount | not stated |
 | confidence | `documented_unnamed` |
 | anchor | `bog-2019-08-16-savings-loans-revocation:L685` |
 | current decision | confirmed |
@@ -88,7 +88,7 @@ For each: does the quote support the relationship, the direction, the amount and
 
 *Note carried from compilation:* 'The use of depositors' funds to finance related party projects', the wording that produced E031 for ASN. The notice does not say the projects belong to the six related companies of E017; attached to FirsTrust's related-party placeholder, as E002 and E003 share Adom's
 
-### P006 — FirsTrust Savings and Loans Limited ← Goldstreet Fund Management Limited
+### P006: FirsTrust Savings and Loans Limited ← Goldstreet Fund Management Limited
 
 | | |
 |---|---|
@@ -100,7 +100,7 @@ For each: does the quote support the relationship, the direction, the amount and
 
 > 13. GOLDSTREET FUND MANAGEMENT LIMITED (FORMERLY GOLDSTREET INVESTMENTS LTD) Goldstreet Fund Management Limited (“Goldstreet”) was incorporated on the 17th December, 2014. It was licensed by the SEC as a Fund Manager on 29th September, 2015. The SEC has had a number of engagements with Goldstreet including Hearings pursuant to section 19 of Act 929, decisions have been issued by the SEC against Goldstreet with directives to take steps to comply and resolve its regulatory infractions, all to no avail. The Specific issues that led to the revocation of its licence included the following a) Failure to honour clients’ redemption requests; b) Payment of operational activities using client funds contrary to Section 160 of the Act 929; c) Non submission of statutory reports contrary to Regulations 33 (1) (a) (b) (c ) and (6) of LI 1728 d) Placement of client funds with out proper due diligence and the requisite standard of professional conduct contrary to Paragraphs, 2, 3, 6 and 13 of Part X of the Commission’s Compliance Manual for Broker -Dealers, Investment Advisers and Representatives 2008. Placements include 50.61% with Ideal Finance Ltd ( in receivership) and 10.06% with First Trust Savings & Loans (in receivership)
 
-### P008 — FirsTrust Savings and Loans Limited ← Integrity Fund Management Ltd
+### P008: FirsTrust Savings and Loans Limited ← Integrity Fund Management Ltd
 
 | | |
 |---|---|
@@ -114,7 +114,7 @@ For each: does the quote support the relationship, the direction, the amount and
 
 *Amount note:* Stated as 'Over 80% placement of client funds in revoked savings & loans including' Midland, FirsTrust and Legacy Capital. The notice gives no per-institution split, the figure is a floor, and 'including' leaves the list open.
 
-### P014 — FirsTrust Savings and Loans Limited ← Procap Finance Limited
+### P014: FirsTrust Savings and Loans Limited ← Procap Finance Limited
 
 | | |
 |---|---|
@@ -128,7 +128,7 @@ For each: does the quote support the relationship, the direction, the amount and
 
 *Amount note:* Stated as 'Over 68% placement in revoked Savings and Loans institutions including Midland Savings and Loans and FirsTrust' together. The notice gives no per-institution split, the figure is a floor, and 'including' leaves the list open.
 
-### S002 — FirsTrust Savings and Loans Limited ← Ideal Capital Partners
+### S002: FirsTrust Savings and Loans Limited ← Ideal Capital Partners
 
 | | |
 |---|---|
@@ -146,7 +146,7 @@ For each: does the quote support the relationship, the direction, the amount and
 
 ---
 
-## Part 2a — uncited passages that mention a relationship
+## Part 2a: uncited passages that mention a relationship
 
 These carry related-party, affiliate, ownership, officer or exposure wording and no edge cites them. This is where a missed relationship is most likely. For each: does it describe a relationship between this institution and another party? If so it needs an edge, and the passage needs a row in `data/evidence.csv` under the anchor shown.
 
@@ -158,9 +158,9 @@ These carry related-party, affiliate, ownership, officer or exposure wording and
 
 ---
 
-## Part 2b — the rest of the section (6 passages)
+## Part 2b: the rest of the section (6 passages)
 
-Mostly capital adequacy, net worth and reporting breaches. Listed so the section can be scanned in full — the extractor's vocabulary has been wrong twice already, so its judgement about what is irrelevant is not final.
+Mostly capital adequacy, net worth and reporting breaches. Listed so the section can be scanned in full, because the extractor's vocabulary has been wrong twice already and its judgement about what is irrelevant is not final.
 
 - `L666` Bank of Ghana's reviews conducted in 2015, 2016 and 2017 all showed that the institution was showing severe signs of distress. The institution reporte …
 - `L674` The institution's Net worth of negative GHS 175.90 million as at end May 2019 indicates that its paid up capital is impaired in violation of Section 2 …

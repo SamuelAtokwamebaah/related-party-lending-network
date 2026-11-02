@@ -6,16 +6,16 @@ Read the section in `data/raw/` from L1040 to L1085, then work through both part
 
 ---
 
-## Part 1 — edges seeded against this institution
+## Part 1: edges seeded against this institution
 
 For each: does the quote support the relationship, the direction, the amount and its basis, and the confidence class?
 
-### E028 — Midland Savings and Loans Company Limited → Liberty Asset Management
+### E028: Midland Savings and Loans Company Limited → Liberty Asset Management
 
 | | |
 |---|---|
 | relationship | `over_exposed_to` |
-| amount | — |
+| amount | not stated |
 | confidence | `documented` |
 | anchor | `bog-2019-08-16-savings-loans-revocation:L1065; bog-2019-08-16-savings-loans-revocation:L1040` |
 | current decision | confirmed |
@@ -26,12 +26,12 @@ For each: does the quote support the relationship, the direction, the amount and
 
 *Note carried from compilation:* Named; no amount
 
-### E029 — Midland Savings and Loans Company Limited → Liberty DMI Microfinance
+### E029: Midland Savings and Loans Company Limited → Liberty DMI Microfinance
 
 | | |
 |---|---|
 | relationship | `over_exposed_to` |
-| amount | — |
+| amount | not stated |
 | confidence | `documented` |
 | anchor | `bog-2019-08-16-savings-loans-revocation:L1065; bog-2019-08-16-savings-loans-revocation:L1040` |
 | current decision | confirmed |
@@ -42,12 +42,12 @@ For each: does the quote support the relationship, the direction, the amount and
 
 *Note carried from compilation:* Named; no amount
 
-### E030 — Midland Savings and Loans Company Limited → Griffin Financial Services
+### E030: Midland Savings and Loans Company Limited → Griffin Financial Services
 
 | | |
 |---|---|
 | relationship | `over_exposed_to` |
-| amount | — |
+| amount | not stated |
 | confidence | `documented` |
 | anchor | `bog-2019-08-16-savings-loans-revocation:L1065; bog-2019-08-16-savings-loans-revocation:L1040` |
 | current decision | confirmed |
@@ -58,7 +58,7 @@ For each: does the quote support the relationship, the direction, the amount and
 
 *Note carried from compilation:* Notice says "such as", so the list is not exhaustive
 
-### P007 — Midland Savings and Loans Company Limited ← Integrity Fund Management Ltd
+### P007: Midland Savings and Loans Company Limited ← Integrity Fund Management Ltd
 
 | | |
 |---|---|
@@ -72,7 +72,7 @@ For each: does the quote support the relationship, the direction, the amount and
 
 *Amount note:* Stated as 'Over 80% placement of client funds in revoked savings & loans including' Midland, FirsTrust and Legacy Capital. The notice gives no per-institution split, the figure is a floor, and 'including' leaves the list open.
 
-### P013 — Midland Savings and Loans Company Limited ← Procap Finance Limited
+### P013: Midland Savings and Loans Company Limited ← Procap Finance Limited
 
 | | |
 |---|---|
@@ -86,12 +86,12 @@ For each: does the quote support the relationship, the direction, the amount and
 
 *Amount note:* Stated as 'Over 68% placement in revoked Savings and Loans institutions including Midland Savings and Loans and FirsTrust' together. The notice gives no per-institution split, the figure is a floor, and 'including' leaves the list open.
 
-### P016 — Midland Savings and Loans Company Limited ← Standard Securities Limited
+### P016: Midland Savings and Loans Company Limited ← Standard Securities Limited
 
 | | |
 |---|---|
 | relationship | `placed_client_funds_with` |
-| amount | — |
+| amount | not stated |
 | confidence | `documented` |
 | anchor | `sec-2019-11-08-fund-manager-revocation:L508` |
 | current decision | confirmed |
@@ -100,7 +100,7 @@ For each: does the quote support the relationship, the direction, the amount and
 
 *Note carried from compilation:* Listed under 'Other Placements', distinct from the related-party placement in the same bullet. No figure is stated.
 
-### S005 — Midland Savings and Loans Company Limited ← Liberty Asset Management
+### S005: Midland Savings and Loans Company Limited ← Liberty Asset Management
 
 | | |
 |---|---|
@@ -118,7 +118,7 @@ For each: does the quote support the relationship, the direction, the amount and
 
 ---
 
-## Part 2a — uncited passages that mention a relationship
+## Part 2a: uncited passages that mention a relationship
 
 These carry related-party, affiliate, ownership, officer or exposure wording and no edge cites them. This is where a missed relationship is most likely. For each: does it describe a relationship between this institution and another party? If so it needs an edge, and the passage needs a row in `data/evidence.csv` under the anchor shown.
 
@@ -127,9 +127,9 @@ These carry related-party, affiliate, ownership, officer or exposure wording and
 
 ---
 
-## Part 2b — the rest of the section (9 passages)
+## Part 2b: the rest of the section (9 passages)
 
-Mostly capital adequacy, net worth and reporting breaches. Listed so the section can be scanned in full — the extractor's vocabulary has been wrong twice already, so its judgement about what is irrelevant is not final.
+Mostly capital adequacy, net worth and reporting breaches. Listed so the section can be scanned in full, because the extractor's vocabulary has been wrong twice already and its judgement about what is irrelevant is not final.
 
 - `L1042` Midland Savings and Loan Company Limited was licensed by the Bank of Ghana to operate as a Savings and Loans Company on October 21, 1996. It commenced …
 - `L1051` The specific issues that led to the revocation of the institution's licence included the following:

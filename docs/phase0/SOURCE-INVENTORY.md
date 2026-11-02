@@ -1,4 +1,4 @@
-# Phase 0 — source inventory and feasibility gate
+# Phase 0: source inventory and feasibility gate
 
 > **Historical document.** This is the feasibility assessment of 4 September 2026, kept as
 > the record of how the project's mode was chosen. Counts and plans below are as they stood
@@ -9,8 +9,8 @@
 > evidence base (v0.7). Where a statement below was later found to be wrong, it is marked
 > in place.
 
-Status: complete. Mode decided 4 September 2026 — see section 5.
-Date: 4 September 2026. Corrected the same day — see section 7.
+Status: complete. Mode decided 4 September 2026; see section 5.
+Date: 4 September 2026. Corrected the same day; see section 7.
 
 This document answers one question: **what network can the sources in hand actually
 support?** Nothing here is a finding about any institution or person. It is a count of
@@ -29,7 +29,7 @@ what the documents say, so that the graph design follows the evidence.
 | S5 | Court and academic material held by the author, not published | **Kohl mined 13 September 2026. Nothing admitted. GN Court of Appeal judgment (21 May 2026) mined the same day: one edge admitted, `E044`** | *Kohl v Consolidated Bank Ghana*, Court of Appeal, Civil Appeal No H1/95/2021, 28 November 2022, is a depositor of **Beige Bank**, a universal bank revoked on 1 August 2018, suing the bridge bank. The full text was searched against all 75 entities in `data/entities.csv`: **none is named**, and the one string match was the word "expressly". The only individuals it names are the parties, counsel, the bench and the Beige Bank receiver, none connected to a scoped institution. GhaLII carries it twice, as [2022] GHACA 61 and [2022] GHACA 156; both are the same judgment |
 
 At the Phase 0 gate, everything in the graph came from **S1 alone**. That is a strength for
-traceability — one document, one citation format, one publisher — and a limitation for
+traceability (one document, one citation format, one publisher) and a limitation for
 coverage, which section 4 sets out.
 
 ## 2. What S1 yields
@@ -43,27 +43,27 @@ number) and `docs/phase0/source-inventory.csv` (one row per institution).
 - 23 of 23 sections contain at least one matched bullet
 - **69 matched bullets** in total
 - 14 sections use the words "related party" or "related parties" explicitly
-- 6 sections state an ownership history — an acquisition, a takeover or a renaming
+- 6 sections state an ownership history: an acquisition, a takeover or a renaming
 
 Hand-curating those bullets into edges gives `docs/phase0/candidate-edges.csv`:
 
 | | Count |
 |---|---|
 | Candidate edges | 43 |
-| — documented, counterparty named | 19 |
-| — documented, counterparty unnamed | 18 |
-| — inferred, excluded from headline findings | 2 |
-| — renamings, folded into aliases rather than kept as edges | 4 |
+| of which documented, counterparty named | 19 |
+| of which documented, counterparty unnamed | 18 |
+| of which inferred, excluded from headline findings | 2 |
+| of which renamings, folded into aliases rather than kept as edges | 4 |
 | Distinct nodes in the built graph | 50 |
 | Institutions carrying at least one related-party edge | **17 of 23** |
 
 That 17 reproduces the headline finding already published in `ghana-banking-collapse`,
-arrived at here by a different route — passage extraction rather than manual coding.
+arrived at here by a different route: passage extraction rather than manual coding.
 The two methods disagree on nothing.
 
 One reconciliation detail worth keeping. A regex for "related part*" alone finds 14, not
 17. The gap is institutions where the notice describes the same conduct in different
-words — Global Access, where the institution "assumed the liability of a loan contracted
+words. Global Access, where the institution "assumed the liability of a loan contracted
 by the majority shareholder" and pays "high rent expenses" to that shareholder, never
 uses the phrase "related party". The published flag is right and the narrow regex is
 wrong. **Vocabulary, not conduct, is what varies across these 23 sections**, which is
@@ -73,16 +73,16 @@ the argument for extracting passages and reading them rather than counting keywo
 
 Nineteen entities other than the 23 institutions are named outright:
 
-**Counterparties (11)** — AllTime Capital Limited; Ivory Finance Company Limited;
+**Counterparties (11)**: AllTime Capital Limited; Ivory Finance Company Limited;
 First African Remittances, UK; Ghana Growth Fund (Gold Coast Advisors); Gold Coast Fund
 Management Limited (now Blackshield Capital Management); Ideal Capital Partners;
 uniSecurities Limited; Liberty Asset Management; Liberty DMI Microfinance; Griffin
 Financial Services; International Business Solutions (USA).
 
-**Holding companies (4)** — Groupe Nduom; Ideal Financial Holdings; Nordcom Africa
+**Holding companies (4)**: Groupe Nduom; Ideal Financial Holdings; Nordcom Africa
 Holdings Limited; Hoda Group of Companies.
 
-**Former names (4)** — Sterling Savings and Loans Limited; Apex Finance House Limited;
+**Former names (4)**: Sterling Savings and Loans Limited; Apex Finance House Limited;
 EZI Savings and Loans Limited; Kantamanto Savings and Loans Company Limited.
 
 The holding companies matter most. They are the only entities in the source that sit
@@ -94,19 +94,19 @@ directorship and shareholding would attach if a registry source is ever obtained
 Eighteen edges are real edges with an unlabelled endpoint. The notice states the
 relationship, often the count, and sometimes the amount, but not the identity:
 
-- First Allied — "the current accounts of eight (8) related companies linked to the
+- First Allied: "the current accounts of eight (8) related companies linked to the
   major shareholder were overdrawn in excess of GHS 100.00 million"
-- FirsTrust — "over exposed to six (6) of its related companies to the tune of
+- FirsTrust: "over exposed to six (6) of its related companies to the tune of
   GHS 17.93 million"
-- Dream Finance — "over exposed to six (6) of its related companies"
-- Crest — "exposures to its parent company **and a company in which the Chief Executive
+- Dream Finance: "over exposed to six (6) of its related companies"
+- Crest: "exposures to its parent company **and a company in which the Chief Executive
   Officer is a director**"
-- Global Access — a loan contracted by the majority shareholder, assumed by the
+- Global Access: a loan contracted by the majority shareholder, assumed by the
   institution and booked as equity capital, concealed in a suspense account
 
 These are not stylised. A node labelled `UNNAMED eight related companies of First Allied`
 asserts exactly what the Bank of Ghana asserted and no more. Treating them as a third
-confidence class — `documented_unnamed`, alongside `documented` and `inferred` — keeps
+confidence class, `documented_unnamed`, alongside `documented` and `inferred`, keeps
 them usable without overstating them.
 
 ## 3. The honest problem: the graph is fragmented
@@ -137,7 +137,7 @@ What the source *does* support is real, and there is more of it than expected:
      exposure to FirsTrust and to Ideal Capital Partners totalling GHS 63.19 million.
      In June 2019 the two applied to merge; the Bank of Ghana declined their request of
      25 July 2019 because both were insolvent. A common owner, cross-lending between the two, and an
-     attempted merger of the pair — all from one document. This is a closed loop, and
+     attempted merger of the pair, all from one document. This is a closed loop, and
      *[Corrected at v0.7: the common owner of Ideal Finance is inferred from the name
      only (I001), and only one direction of exposure is documented. Phase 2 also found
      this cycle does not move value on every leg, because one leg is the merger
@@ -153,7 +153,7 @@ What the source *does* support is real, and there is more of it than expected:
    assuming a loan contracted by the majority shareholder and booking it as capital.
 3. **Cross-source corroboration in one case.** Liberty DMI Microfinance, named as a
    related party of Midland, appears as entry 109 in the 31 May 2019 microfinance
-   revocation list — a related party that was itself a failed licensed institution.
+   revocation list: a related party that was itself a failed licensed institution.
 
 ## 4. What would change the answer
 
@@ -166,7 +166,7 @@ Ranked by value against effort. Only the first three are realistic without money
    same groups reappear across institutions.
 2. **BoG notices of 1 August 2018 and 4 January 2019 (the universal banks).** Public.
    uniBank and GN Bank sit directly behind two of the scoped institutions. Admitting
-   them requires a narrow amendment to the scope rule — see the question in section 6.
+   them requires a narrow amendment to the scope rule; see the question in section 6.
 3. **UK Companies House** for First African Remittances, UK. Free, open, and it names
    directors. The one route in hand to a documented person-level node.
 4. **Kohl v Consolidated Bank Ghana** and the other court material already downloaded.
@@ -212,7 +212,7 @@ widened. That decision should be made against the evidence then, not assumed now
 
 1. ~~**Scope amendment.**~~ **Decided 4 September 2026.** A non-S&L institution may enter
    as a node **only** where a scoped institution's own notice names it as a counterparty
-   or a common owner — GN Bank and uniBank being the cases in view. Every such node is
+   or a common owner, GN Bank and uniBank being the cases in view. Every such node is
    flagged as a documented scope exception in the methodology note and carries the
    citation that admitted it. The other 395 remain narrative context with no nodes.
 2. **Sterling.** Commerz Savings and Loans is described as "formerly known as Sterling
@@ -237,7 +237,7 @@ committed. Nothing published outside this repository relied on them.
    `str.splitlines()`, which breaks on form feeds as well as newlines. This notice
    carries 27 form feeds, one per page break, so anchors ran progressively ahead of the
    line a reader sees in `grep`, `sed` or an editor. Anchors now match. The quotes were
-   never wrong — only the pointers to them — but an anchor nobody can follow is not a
+   never wrong, only the pointers to them, but an anchor nobody can follow is not a
    citation, so this was worth stopping for.
 2. **Three GN edges pointed at the wrong paragraph.** E021, E022 and E023 were anchored
    to a generic passage rather than to the sister-company placements. Corrected to L798.

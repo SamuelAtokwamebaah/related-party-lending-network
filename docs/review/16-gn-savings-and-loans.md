@@ -6,16 +6,16 @@ Read the section in `data/raw/` from L754 to L860, then work through both parts 
 
 ---
 
-## Part 1 — edges seeded against this institution
+## Part 1: edges seeded against this institution
 
 For each: does the quote support the relationship, the direction, the amount and its basis, and the confidence class?
 
-### E021 — GN Savings and Loans Ltd. → UNNAMED related parties of GN in the Groupe Nduom network
+### E021: GN Savings and Loans Ltd. → UNNAMED related parties of GN in the Groupe Nduom network
 
 | | |
 |---|---|
 | relationship | `extended_overdraft_facilities_to` |
-| amount | — |
+| amount | not stated |
 | confidence | `documented_unnamed` |
 | anchor | `bog-2019-08-16-savings-loans-revocation:L798` |
 | current decision | confirmed |
@@ -24,12 +24,12 @@ For each: does the quote support the relationship, the direction, the amount and
 
 *Note carried from compilation:* Group named; members partly named below
 
-### E022 — GN Savings and Loans Ltd. → Ghana Growth Fund
+### E022: GN Savings and Loans Ltd. → Ghana Growth Fund
 
 | | |
 |---|---|
 | relationship | `placed_funds_with` |
-| amount | — |
+| amount | not stated |
 | confidence | `documented` |
 | anchor | `bog-2019-08-16-savings-loans-revocation:L798` |
 | current decision | confirmed |
@@ -40,12 +40,12 @@ For each: does the quote support the relationship, the direction, the amount and
 
 *Amount note:* GHS 761.55m is stated across E022 and E023 together
 
-### E023 — GN Savings and Loans Ltd. → Gold Coast Fund Management Limited
+### E023: GN Savings and Loans Ltd. → Gold Coast Fund Management Limited
 
 | | |
 |---|---|
 | relationship | `placed_funds_with` |
-| amount | — |
+| amount | not stated |
 | confidence | `documented` |
 | anchor | `bog-2019-08-16-savings-loans-revocation:L798` |
 | current decision | confirmed |
@@ -56,12 +56,12 @@ For each: does the quote support the relationship, the direction, the amount and
 
 *Amount note:* GHS 761.55m is stated across E022 and E023 together
 
-### E042 — GN Savings and Loans Ltd. → International Business Solutions
+### E042: GN Savings and Loans Ltd. → International Business Solutions
 
 | | |
 |---|---|
 | relationship | `transferred_funds_to` |
-| amount | — |
+| amount | not stated |
 | confidence | `documented` |
 | anchor | `bog-2019-08-16-savings-loans-revocation:L840` |
 | current decision | confirmed |
@@ -70,12 +70,12 @@ For each: does the quote support the relationship, the direction, the amount and
 
 *Note carried from compilation:* Amounts are USD 62,255,516.93, GBP 718,528.59 and EUR 4,200 - not cedis, and three currencies in one transfer
 
-### E044 — GN Savings and Loans Ltd. → Groupe Nduom
+### E044: GN Savings and Loans Ltd. → Groupe Nduom
 
 | | |
 |---|---|
 | relationship | `part_of` |
-| amount | — |
+| amount | not stated |
 | confidence | `documented` |
 | anchor | `ca-2026-05-21-gn-savings-appeal:L35;ca-2026-05-21-gn-savings-appeal:L47` |
 | current decision | confirmed |
@@ -86,12 +86,12 @@ For each: does the quote support the relationship, the direction, the amount and
 
 *Note carried from compilation:* Stated as undisputed by the Court of Appeal (p.14). The judgment writes '3rd respondent'; the title of the suit (p.1) fixes that as GN. Its introduction (pp.1-2, transcription L39) says the membership lasted until the receivership. The Bank of Ghana notice implies it ('other companies in the Groupe Ndoum network', L798; 'another company owned by Groupe Nduom', L840) but does not state it in terms. First edge attributed to a court
 
-### E046 — GN Savings and Loans Ltd. → UNNAMED related parties of GN in the Groupe Nduom network
+### E046: GN Savings and Loans Ltd. → UNNAMED related parties of GN in the Groupe Nduom network
 
 | | |
 |---|---|
 | relationship | `over_exposed_to` |
-| amount | — |
+| amount | not stated |
 | confidence | `documented_unnamed` |
 | anchor | `bog-2019-08-16-savings-loans-revocation:L826` |
 | current decision | confirmed |
@@ -102,7 +102,7 @@ For each: does the quote support the relationship, the direction, the amount and
 
 ---
 
-## Part 2a — uncited passages that mention a relationship
+## Part 2a: uncited passages that mention a relationship
 
 These carry related-party, affiliate, ownership, officer or exposure wording and no edge cites them. This is where a missed relationship is most likely. For each: does it describe a relationship between this institution and another party? If so it needs an edge, and the passage needs a row in `data/evidence.csv` under the anchor shown.
 
@@ -117,9 +117,9 @@ These carry related-party, affiliate, ownership, officer or exposure wording and
 
 ---
 
-## Part 2b — the rest of the section (7 passages)
+## Part 2b: the rest of the section (7 passages)
 
-Mostly capital adequacy, net worth and reporting breaches. Listed so the section can be scanned in full — the extractor's vocabulary has been wrong twice already, so its judgement about what is irrelevant is not final.
+Mostly capital adequacy, net worth and reporting breaches. Listed so the section can be scanned in full, because the extractor's vocabulary has been wrong twice already and its judgement about what is irrelevant is not final.
 
 - `L756` GN Savings and Loans Company Limited was originally incorporated as First National Savings and Loans (FNSL) Company Limited and licensed as a Savings  …
 - `L761` On 4th January 2019, the Bank of Ghana approved a request to reclassify GN Bank from a universal bank to a Savings and Loans company following its ina …
