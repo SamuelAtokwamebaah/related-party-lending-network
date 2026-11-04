@@ -357,6 +357,19 @@ def build():
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Related-party lending network &middot; Ghana savings &amp; loans, 2019</title>
 <meta name="description" content="A network reconstruction of related-party lending behind the 23 Ghanaian savings and loans failures of 2019, built from the Bank of Ghana and Securities and Exchange Commission revocation notices and one Court of Appeal judgment.">
+<link rel="canonical" href="https://samuelatokwamebaah.github.io/related-party-lending-network/">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://samuelatokwamebaah.github.io/related-party-lending-network/">
+<meta property="og:title" content="Related-party lending behind Ghana&#39;s 2019 bank failures">
+<meta property="og:description" content="A network reconstruction of related-party lending behind the 23 Ghanaian savings and loans failures of 2019, built from the Bank of Ghana and Securities and Exchange Commission revocation notices and one Court of Appeal judgment.">
+<meta property="og:image" content="https://samuelatokwamebaah.github.io/related-party-lending-network/docs/images/social-preview.png">
+<meta property="og:image:width" content="1280">
+<meta property="og:image:height" content="640">
+<meta property="og:image:alt" content="Seventeen structures, not one network. 23 institutions, 60 related-party edges, 17 separate structures, 75 edges checked by hand.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Related-party lending behind Ghana&#39;s 2019 bank failures">
+<meta name="twitter:description" content="A network reconstruction of related-party lending behind the 23 Ghanaian savings and loans failures of 2019, built from the Bank of Ghana and Securities and Exchange Commission revocation notices and one Court of Appeal judgment.">
+<meta name="twitter:image" content="https://samuelatokwamebaah.github.io/related-party-lending-network/docs/images/social-preview.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Newsreader:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
